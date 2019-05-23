@@ -3,7 +3,7 @@
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 
-// 为了解决mac下声音无法输出,总之发现使用绝对路径可以完成目标,蛋疼,因此以此种方式暂时处理
+// 为了解决mac下声音无法输出,总之发现使用绝对路径可以完成目标,蛋疼,因此以此种方式暂时处理.
 static const QString s_curDir = QDir::currentPath() + "/";
 
 AudioPlayer::AudioPlayer(QObject *parent)
