@@ -5,7 +5,7 @@
 
 class QPainter;
 
-// 敌人移动的航线
+// 敌人移动的航线.
 class WayPoint
 {
 public:
