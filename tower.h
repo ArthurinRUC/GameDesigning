@@ -15,7 +15,7 @@ class Tower : QObject
 {
 	Q_OBJECT
 public:
-	Tower(QPoint pos, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/tower.png"));
+    Tower(QPoint pos, MainWindow *game, int attackRange, int damage, int fireRate, const QPixmap &sprite);
 	~Tower();
 
 	void draw(QPainter *painter) const;
@@ -23,27 +23,28 @@ public:
 	void targetKilled();
 	void attackEnemy();
 	void chooseEnemyForAttack(Enemy *enemy);
-	void removeBullet();
+    //void removeBullet();
 	void damageEnemy();
 	void lostSightOfEnemy();
 
 private slots:
-	void shootWeapon();
+    //不同派生类（不同塔）需要发射不同子弹，需要虚函数
+    virtual void shootWeapon();
 
 private:
 	bool			m_attacking;
-	int				m_attackRange;	// 代表塔可以攻击到敌人的距离
-	int				m_damage;		// 代表攻击敌人时造成的伤害
-	int				m_fireRate;		// 代表再次攻击敌人的时间间隔
 	qreal			m_rotationSprite;
 
 	Enemy *			m_chooseEnemy;
 	MainWindow *	m_game;
 	QTimer *		m_fireRateTimer;
 
-    //必备三件套~
+    int				m_attackRange;	// 代表塔可以攻击到敌人的距离
+    int				m_damage;		// 代表攻击敌人时造成的伤害
+    int				m_fireRate;		// 代表再次攻击敌人的时间间隔
+
     const QPoint	m_pos; //塔的圆心
-	const QPixmap	m_sprite;
+    const QPixmap	m_sprite;
 
 	static const QSize ms_fixedSize;
 };

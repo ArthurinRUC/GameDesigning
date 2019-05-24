@@ -22,7 +22,11 @@ SOURCES += main.cpp\
     enemy.cpp \
     bullet.cpp \
     audioplayer.cpp \
-    plistreader.cpp
+    plistreader.cpp \
+    normaltower.cpp \
+    firetower.cpp \
+    icetower.cpp \
+    lasertower.cpp
 
 HEADERS  += mainwindow.h \
     towerposition.h \
@@ -32,7 +36,11 @@ HEADERS  += mainwindow.h \
     enemy.h \
     bullet.h \
     audioplayer.h \
-    plistreader.h
+    plistreader.h \
+    normaltower.h \
+    firetower.h \
+    icetower.h \
+    lasertower.h
 
 FORMS    += mainwindow.ui
 

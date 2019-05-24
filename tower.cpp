@@ -11,16 +11,16 @@
 
 const QSize Tower::ms_fixedSize(42, 42);
 
-Tower::Tower(QPoint pos, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/tower.png"*/) //炮塔图片【可改】
-	: m_attacking(false)
-	, m_attackRange(70)
-	, m_damage(10)
-	, m_fireRate(1000)
+Tower::Tower(QPoint pos, MainWindow *game, int attackRange, int damage, int fireRate, const QPixmap &sprite)
+    : m_attacking(false)
 	, m_rotationSprite(0.0)
     , m_chooseEnemy(nullptr)
-	, m_game(game)
-	, m_pos(pos)
-	, m_sprite(sprite)
+    , m_game(game)
+    , m_attackRange(attackRange)
+    , m_damage(damage)
+    , m_fireRate(fireRate)
+    , m_pos(pos)
+    , m_sprite(sprite)
 {
 	m_fireRateTimer = new QTimer(this);
 	connect(m_fireRateTimer, SIGNAL(timeout()), this, SLOT(shootWeapon()));
