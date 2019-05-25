@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     enemy.cpp \
     bullet.cpp \
     audioplayer.cpp \
-    plistreader.cpp
+    plistreader.cpp \
+    tscene.cpp
 
 HEADERS  += mainwindow.h \
     towerposition.h \
@@ -32,7 +33,8 @@ HEADERS  += mainwindow.h \
     enemy.h \
     bullet.h \
     audioplayer.h \
-    plistreader.h
+    plistreader.h \
+    tscene.h
 
 FORMS    += mainwindow.ui
 

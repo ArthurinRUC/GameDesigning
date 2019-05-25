@@ -11,5 +11,7 @@
         <file>config/Info.plist</file>
         <file>config/TowersPosition.plist</file>
         <file>config/Waves.plist</file>
+        <file>image/logo.jpg</file>
+        <file>background/scene1.jpg</file>
     </qresource>
 </RCC>

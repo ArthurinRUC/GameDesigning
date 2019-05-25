@@ -13,6 +13,8 @@
 #include <QXmlStreamReader>
 #include <QtDebug>
 
+#include "tscene.h"
+
 static const int TowerCost = 300;
 
 MainWindow::MainWindow(QWidget *parent)
@@ -26,6 +28,14 @@ MainWindow::MainWindow(QWidget *parent)
 {
     //此处开始构造MainWindow
 	ui->setupUi(this);
+
+    this->setWindowIcon(QIcon(":/image/logo.jpg"));
+
+    this->setMouseTracking(true);                //track mouse when mouse isn`t pressed
+    this->setFixedSize(800, 600);
+    scene = new tStartScreen(this);
+    connect(this->scene, SIGNAL(toTitle()), this, SLOT(back()));
+
 
 	preLoadWavesInfo();
     loadTowerPositions(); //调用位置函数

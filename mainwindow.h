@@ -5,6 +5,7 @@
 #include <QList>
 #include "towerposition.h"
 #include "tower.h"
+#include "tscene.h"
 
 namespace Ui {
 class MainWindow;
@@ -21,6 +22,7 @@ class MainWindow : public QMainWindow
 	
 public:
     explicit MainWindow(QWidget *parent = nullptr);
+    tScene* scene;
 	~MainWindow();
 
 	void getHpDamage(int damage = 1);
