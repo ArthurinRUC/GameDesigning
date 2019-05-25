@@ -40,6 +40,8 @@ private slots:
 	void updateMap();
 	void gameStart();
 
+    void on_pushButton_clicked();
+
 private:
     void loadTowerPositions(); //√
 	void addWayPoints();
