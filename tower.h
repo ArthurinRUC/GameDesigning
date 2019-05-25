@@ -15,7 +15,7 @@ class Tower : QObject
 {
 	Q_OBJECT
 public:
-    Tower(QPoint pos, MainWindow *game, int attackRange, int damage, int fireRate, const QPixmap &sprite);
+    Tower(QPoint pos, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/normaltower.png"), int attackRange = 70, int damage = 10, int fireRate = 1000);
 	~Tower();
 
 	void draw(QPainter *painter) const;
@@ -29,7 +29,7 @@ public:
 
 private slots:
     //不同派生类（不同塔）需要发射不同子弹，需要虚函数
-    virtual void shootWeapon();
+    /*virtual*/ void shootWeapon();
 
 private:
 	bool			m_attacking;
@@ -47,6 +47,35 @@ private:
     const QPixmap	m_sprite;
 
 	static const QSize ms_fixedSize;
+};
+
+class NormalTower: public Tower
+{
+public:
+    NormalTower(QPoint pos, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/normaltower.png"));
+    ~NormalTower();
+
+};
+
+class FireTower : public Tower
+{
+public:
+    FireTower(QPoint pos, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/firetower.png"));
+    ~FireTower();
+};
+
+class IceTower : public Tower
+{
+public:
+    IceTower(QPoint pos, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/icetower.png"));
+    ~IceTower();
+};
+
+class LaserTower : public Tower
+{
+public:
+    LaserTower(QPoint pos, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/lasertower.png"));
+    ~LaserTower();
 };
 
 #endif // TOWER_H

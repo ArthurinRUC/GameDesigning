@@ -11,7 +11,7 @@
 
 const QSize Tower::ms_fixedSize(42, 42);
 
-Tower::Tower(QPoint pos, MainWindow *game, int attackRange, int damage, int fireRate, const QPixmap &sprite)
+Tower::Tower(QPoint pos, MainWindow *game, const QPixmap &sprite, int attackRange, int damage, int fireRate)
     : m_attacking(false)
 	, m_rotationSprite(0.0)
     , m_chooseEnemy(nullptr)
@@ -118,4 +118,48 @@ void Tower::lostSightOfEnemy()
 
 	m_fireRateTimer->stop();
 	m_rotationSprite = 0.0;
+}
+
+NormalTower::NormalTower(QPoint pos, MainWindow *game, const QPixmap &sprite)
+    : Tower(pos, game, sprite)
+{
+
+}
+
+NormalTower::~NormalTower()
+{
+
+}
+
+FireTower::FireTower(QPoint pos, MainWindow *game, const QPixmap &sprite)
+    : Tower(pos, game, sprite)
+{
+
+}
+
+FireTower::~FireTower()
+{
+
+}
+
+IceTower::IceTower(QPoint pos, MainWindow *game, const QPixmap &sprite)
+    : Tower(pos, game, sprite)
+{
+
+}
+
+IceTower::~IceTower()
+{
+
+}
+
+LaserTower::LaserTower(QPoint pos, MainWindow *game, const QPixmap &sprite)
+: Tower(pos, game, sprite)
+{
+
+}
+
+LaserTower::~LaserTower()
+{
+
 }
