@@ -36,13 +36,13 @@ void tStartScreen::onTimer()
     if (frame > 0)
     {
         frame --;
-        if (frame > 500)
+        if (frame > 50)
         {
-            this->front->setStyleSheet("background: rgba(0,0,0," + QString::number((frame - 500) / 500.0) +")");
+            this->front->setStyleSheet("background: rgba(0,0,0," + QString::number((frame - 50) / 50.0) +")");
         }
-        if (frame < 300)
+        if (frame < 30)
         {
-            this->front->setStyleSheet("background: rgba(0,0,0," + QString::number((300 - frame) / 300.0) +")");
+            this->front->setStyleSheet("background: rgba(0,0,0," + QString::number((30 - frame) / 30.0) +")");
         }
     }
     else
@@ -67,7 +67,7 @@ tStartScene::tStartScene(QWidget* parent) : tScene(parent)
     btn2->setGeometry(500, 205, 180, 180);
     btn1->show();
     btn2->show();
-    title->setText("Select a Scene");
+    title->setText("Scene Selection");
     title->setGeometry(290, 0, 240, 100);
     title->setFont(QFont("Consolas", 18));
     title->show();

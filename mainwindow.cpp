@@ -30,13 +30,13 @@ MainWindow::MainWindow(QWidget *parent)
 	ui->setupUi(this);
 
     this->setWindowIcon(QIcon(":/image/logo.jpg"));
-
+    this->setWindowTitle("Tower Defense");
     this->setMouseTracking(true);                //track mouse when mouse isn`t pressed
     this->setFixedSize(800, 600);
     scene = new tStartScreen(this);
     connect(this->scene, SIGNAL(toTitle()), this, SLOT(back()));
 
-
+    // 以下为原有游戏的代码
 	preLoadWavesInfo();
     loadTowerPositions(); //调用位置函数
 	addWayPoints();

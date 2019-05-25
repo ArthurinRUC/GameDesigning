@@ -35,7 +35,7 @@ public:
 private:
     QMovie* background = new QMovie(":/background/scene1.jpg");
     QWidget* front = new QWidget(this);
-    int frame = 1000;
+    int frame = 100;
 private slots:
     void onTimer();
 };
