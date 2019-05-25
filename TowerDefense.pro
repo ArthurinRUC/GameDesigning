@@ -38,3 +38,6 @@ FORMS    += mainwindow.ui
 
 RESOURCES += \
     resource.qrc
+
+DISTFILES += \
+    uml_class.qmodel
