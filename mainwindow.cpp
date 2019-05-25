@@ -25,13 +25,7 @@ MainWindow::MainWindow(QWidget *parent)
 	, m_gameWin(false)
 {
     //此处开始构造MainWindow
-
 	ui->setupUi(this);
-
-    this->setWindowIcon(QIcon("D:/NewQt/GameDesigning/image/logo.jpg"));
-    this->setWindowTitle("Tower Defense Game");
-    this->setFixedSize(700,490);
-
 
 	preLoadWavesInfo();
     loadTowerPositions(); //调用位置函数
@@ -43,10 +37,10 @@ MainWindow::MainWindow(QWidget *parent)
     //每30ms发送一个更新信号
 	QTimer *timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(updateMap()));
-    timer->start(30);
+	timer->start(30);
 
 	// 设置300ms后游戏启动
-    QTimer::singleShot(3000, this, SLOT(gameStart()));
+	QTimer::singleShot(300, this, SLOT(gameStart()));
 }
 
 MainWindow::~MainWindow()

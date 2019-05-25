@@ -34,8 +34,7 @@ HEADERS  += mainwindow.h \
     audioplayer.h \
     plistreader.h
 
-FORMS    += mainwindow.ui \
-    dialog.ui
+FORMS    += mainwindow.ui
 
 RESOURCES += \
     resource.qrc

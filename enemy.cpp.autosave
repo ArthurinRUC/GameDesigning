@@ -61,7 +61,7 @@ void Enemy::move()
 			// 表示进入基地
 			m_game->getHpDamage();
 			m_game->removedEnemy(this);
-			return;
+            return;
 		}
 	}
 
