@@ -13,5 +13,9 @@
         <file>config/Waves.plist</file>
         <file>image/logo.jpg</file>
         <file>background/scene1.jpg</file>
+        <file>GameMap/微信图片_201905251517414.jpg</file>
+        <file>GameMap/choose1.jpg</file>
+        <file>GameMap/Title.jpg</file>
+        <file>GameMap/choose2.jpg</file>
     </qresource>
 </RCC>

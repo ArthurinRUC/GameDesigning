@@ -25,6 +25,7 @@ public:
     tScene* scene;
 	~MainWindow();
 
+
 	void getHpDamage(int damage = 1);
 	void removedEnemy(Enemy *enemy);
 	void removedBullet(Bullet *bullet);
@@ -39,8 +40,12 @@ protected:
     void mousePressEvent(QMouseEvent *); //√
 
 private slots:
-	void updateMap();
-	void gameStart();
+    void back();
+    //void startEasy();
+   // void startHard();
+
+    void updateMap(); //原来的槽
+    void gameStart(); //原来的槽
 
 private:
     void loadTowerPositions(); //√

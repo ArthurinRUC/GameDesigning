@@ -58,6 +58,28 @@ MainWindow::~MainWindow()
 	delete ui;
 }
 
+void MainWindow::back()
+{
+    this->setFixedSize(800, 600);
+    delete scene;
+    scene = new tStartScene(this);
+    connect(this->scene, SIGNAL(toEasy()), this, SLOT(startEasy()));
+    connect(this->scene, SIGNAL(toHard()), this, SLOT(startHard()));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 void MainWindow::loadTowerPositions()
 {
     //读取文件中的炮塔位置信息，可以不用深究，但是可以修改位置【可改】
