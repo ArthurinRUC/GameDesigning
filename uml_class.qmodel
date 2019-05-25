@@ -50,7 +50,7 @@
                          <object>{25b707c2-987e-4ef4-b648-baf878cdcb5f}</object>
                          <context>GameDesigning</context>
                          <name>AudioPlayer</name>
-                         <pos>x:270;y:170</pos>
+                         <pos>x:-15;y:60</pos>
                          <rect>x:-110;y:-65;w:220;h:130</rect>
                          <visual-role>0</visual-role>
                         </DObject>
@@ -59,9 +59,163 @@
                       </DClass>
                      </instance>
                     </item>
+                    <item>
+                     <instance type="DClass">
+                      <DClass>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{8de5bc79-68b8-4b9e-86b8-b8be2f3ce0b4}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{ca08d413-d9ea-4b1e-801b-ff8ce7f976dd}</object>
+                         <context>GameDesigning</context>
+                         <name>Bullet</name>
+                         <pos>x:1235;y:650</pos>
+                         <rect>x:-370;y:-125;w:740;h:250</rect>
+                         <visual-role>5</visual-role>
+                        </DObject>
+                       </base-DObject>
+                       <show-all-members>true</show-all-members>
+                      </DClass>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DClass">
+                      <DClass>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{da89bfbf-1597-4530-82da-aaed575c929d}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{159e4940-9b75-4c5c-89e8-271321700f3a}</object>
+                         <context>GameDesigning</context>
+                         <name>Enemy</name>
+                         <pos>x:165;y:1045</pos>
+                         <rect>x:-285;y:-170;w:570;h:340</rect>
+                         <visual-role>6</visual-role>
+                        </DObject>
+                       </base-DObject>
+                       <show-all-members>true</show-all-members>
+                      </DClass>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DClass">
+                      <DClass>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{467094e9-7099-4fb5-a0a1-19c240fb7873}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{c2ad678b-dbe5-4a1c-a13f-8d826626c3f4}</object>
+                         <context>GameDesigning</context>
+                         <name>MainWindow</name>
+                         <pos>x:290;y:225</pos>
+                         <rect>x:-125;y:-255;w:250;h:510</rect>
+                         <visual-role>0</visual-role>
+                        </DObject>
+                       </base-DObject>
+                       <show-all-members>true</show-all-members>
+                      </DClass>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DClass">
+                      <DClass>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{dcc1a9f0-faf7-4076-b665-5e76f04cf6ac}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{89e5e0e2-0831-4d09-9f96-2f61c226ab46}</object>
+                         <context>GameDesigning</context>
+                         <name>PListReader</name>
+                         <pos>x:615;y:75</pos>
+                         <rect>x:-125;y:-105;w:250;h:210</rect>
+                         <visual-role>0</visual-role>
+                        </DObject>
+                       </base-DObject>
+                       <show-all-members>true</show-all-members>
+                      </DClass>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DClass">
+                      <DClass>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{897a562c-20bd-4830-8ad1-31fceaf82eb2}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{1b5ab547-a8ab-4b8a-97d0-11d9b4eebfa4}</object>
+                         <context>GameDesigning</context>
+                         <name>Tower</name>
+                         <pos>x:115;y:680</pos>
+                         <rect>x:-245;y:-175;w:490;h:350</rect>
+                         <visual-role>5</visual-role>
+                        </DObject>
+                       </base-DObject>
+                       <show-all-members>true</show-all-members>
+                      </DClass>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DClass">
+                      <DClass>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{66b31c43-38f8-4104-a5fe-950c537bcf1d}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{46fcdaca-c4a5-4c25-ba37-e7f06383b1f6}</object>
+                         <context>GameDesigning</context>
+                         <name>TowerPosition</name>
+                         <pos>x:595;y:625</pos>
+                         <rect>x:-225;y:-105;w:450;h:210</rect>
+                         <visual-role>5</visual-role>
+                        </DObject>
+                       </base-DObject>
+                       <show-all-members>true</show-all-members>
+                      </DClass>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DClass">
+                      <DClass>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{467f02aa-1da8-4804-a5c5-68c449bed6de}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{92d0734a-49cc-4fb0-bb10-c4900f496526}</object>
+                         <context>GameDesigning</context>
+                         <name>WayPoint</name>
+                         <pos>x:630;y:960</pos>
+                         <rect>x:-120;y:-85;w:240;h:170</rect>
+                         <visual-role>8</visual-role>
+                        </DObject>
+                       </base-DObject>
+                       <show-all-members>true</show-all-members>
+                      </DClass>
+                     </instance>
+                    </item>
                    </qlist>
                   </elements>
-                  <last-modified>1558768753858</last-modified>
+                  <last-modified>1558769432198</last-modified>
                   <toolbarid>General</toolbarid>
                  </MDiagram>
                 </base-MDiagram>
@@ -110,30 +264,1031 @@
                             <qlist>
                              <item>
                               <MClassMember>
-                               <uid>{79f2b9cd-5be8-4f41-a2db-151e0dbdea8b}</uid>
+                               <uid>{f1bbe77b-3c3a-420a-bd3e-517a1089e6ab}</uid>
                                <type>2</type>
                                <declaration>explicit AudioPlayer(QObject *parent = 0)</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{d12006b7-d45a-45a6-bafe-864b2404f643}</uid>
+                               <uid>{58b33034-56f9-4544-9328-4726142c44f5}</uid>
                                <type>2</type>
                                <declaration>void startBGM()</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{fe7268b4-44ce-40f4-9ae8-65cd20029861}</uid>
+                               <uid>{61be16a7-20fe-4ecd-aa81-d4faf3992235}</uid>
                                <type>2</type>
                                <declaration>void playSound(SoundType soundType)</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{5434ea89-7aa3-4fcf-a0ff-37ba9c955271}</uid>
+                               <uid>{0249b654-b8d2-4f3e-8eff-c338929ebe8e}</uid>
                                <type>1</type>
                                <declaration>QMediaPlayer *m_backgroundMusic</declaration>
+                              </MClassMember>
+                             </item>
+                            </qlist>
+                           </members>
+                          </MClass>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                      <item>
+                       <handle>
+                        <uid>{ca08d413-d9ea-4b1e-801b-ff8ce7f976dd}</uid>
+                        <target>
+                         <instance type="MClass">
+                          <MClass>
+                           <base-MObject>
+                            <MObject>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{ca08d413-d9ea-4b1e-801b-ff8ce7f976dd}</uid>
+                               <flags>1</flags>
+                              </MElement>
+                             </base-MElement>
+                             <name>Bullet</name>
+                            </MObject>
+                           </base-MObject>
+                           <members>
+                            <qlist>
+                             <item>
+                              <MClassMember>
+                               <uid>{b5ee04f2-0b07-495d-a5a1-2d77a00d8ded}</uid>
+                               <type>2</type>
+                               <declaration>Bullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, 		   MainWindow *game, const QPixmap &amp;sprite = QPixmap(&quot;:/image/bullet.png&quot;))</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{6002cd20-0cb8-4251-a290-18ba71b37310}</uid>
+                               <type>2</type>
+                               <properties>4</properties>
+                               <declaration>void draw(QPainter *painter)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{f5b33770-ac40-4cb3-a77a-efc5ee9d0f5f}</uid>
+                               <type>2</type>
+                               <declaration>void move()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{3027bf59-141e-4368-bdea-b85d7813b075}</uid>
+                               <type>2</type>
+                               <declaration>void setCurrentPos(QPoint pos)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{f772c4cc-6446-4410-9471-f4e2766e9cef}</uid>
+                               <type>2</type>
+                               <properties>4</properties>
+                               <declaration>QPoint currentPos()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{2486b248-3b2f-4353-9204-67b59e9af9fa}</uid>
+                               <type>1</type>
+                               <declaration>const QPoint	m_startPos</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{a752a888-39f0-435f-bbca-acc0d6052f95}</uid>
+                               <type>1</type>
+                               <declaration>const QPoint	m_targetPos</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{433e9a82-12c8-4beb-8a50-c208f149d5f8}</uid>
+                               <type>1</type>
+                               <declaration>const QPixmap	m_sprite</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{7d338811-ce22-4f2b-8fac-85d481d6d4d2}</uid>
+                               <type>1</type>
+                               <declaration>QPoint			m_currentPos</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{eaf1f01c-179c-4078-bcf6-7fe37f4bb9f5}</uid>
+                               <type>1</type>
+                               <declaration>Enemy *			m_target</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{c64b4550-e770-415a-94eb-078a0808bf25}</uid>
+                               <type>1</type>
+                               <declaration>MainWindow *	m_game</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{b4c651a3-b495-4620-98d3-ddbbc32078be}</uid>
+                               <type>1</type>
+                               <declaration>int				m_damage</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{aacfe5d5-5c42-4cd5-bede-8f61c571b3ba}</uid>
+                               <type>1</type>
+                               <properties>64</properties>
+                               <declaration>const QSize ms_fixedSize</declaration>
+                              </MClassMember>
+                             </item>
+                            </qlist>
+                           </members>
+                          </MClass>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                      <item>
+                       <handle>
+                        <uid>{159e4940-9b75-4c5c-89e8-271321700f3a}</uid>
+                        <target>
+                         <instance type="MClass">
+                          <MClass>
+                           <base-MObject>
+                            <MObject>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{159e4940-9b75-4c5c-89e8-271321700f3a}</uid>
+                               <flags>1</flags>
+                              </MElement>
+                             </base-MElement>
+                             <name>Enemy</name>
+                            </MObject>
+                           </base-MObject>
+                           <members>
+                            <qlist>
+                             <item>
+                              <MClassMember>
+                               <uid>{de02bf6e-83ed-413b-8eb7-d5811275f577}</uid>
+                               <type>2</type>
+                               <declaration>Enemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &amp;sprite = QPixmap(&quot;:/image/enemy.png&quot;))</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{791060f5-1e57-4964-977f-9e08fc75a0ef}</uid>
+                               <type>2</type>
+                               <declaration>~Enemy()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{a7b62025-023e-462e-a025-399d0739eca5}</uid>
+                               <type>2</type>
+                               <properties>4</properties>
+                               <declaration>void draw(QPainter *painter)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{c684b80c-ed3a-4ce2-af60-2d890e2abca1}</uid>
+                               <type>2</type>
+                               <declaration>void move()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{3d408cb4-d692-418f-8980-430e814920b3}</uid>
+                               <type>2</type>
+                               <declaration>void getDamage(int damage)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{e65d2ca4-3dc7-48c2-9172-73311a206361}</uid>
+                               <type>2</type>
+                               <declaration>void getRemoved()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{e31fb2b7-b902-4ec2-a5d0-768afb37268e}</uid>
+                               <type>2</type>
+                               <declaration>void getAttacked(Tower *attacker)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{b19d9a26-0c52-4265-b3dc-c73b767adbfe}</uid>
+                               <type>2</type>
+                               <declaration>void gotLostSight(Tower *attacker)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{c56fefd9-b501-4e6e-a6a9-44099b7f87ad}</uid>
+                               <type>2</type>
+                               <properties>4</properties>
+                               <declaration>QPoint pos()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{b18593b2-cc93-4897-a3b5-a1c04e6c842a}</uid>
+                               <type>1</type>
+                               <declaration>bool			m_active</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{cae212c4-d7fb-4a88-b3e8-0286cbb8f099}</uid>
+                               <type>1</type>
+                               <declaration>int				m_maxHp</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{9ef8914b-835b-40f9-9d64-91ce02bf6923}</uid>
+                               <type>1</type>
+                               <declaration>int				m_currentHp</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{6d14f62d-ad12-40b8-b8ae-0a47ab3638b2}</uid>
+                               <type>1</type>
+                               <declaration>qreal			m_walkingSpeed</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{2812f3f2-d323-4304-b9d1-0b40acbb1a07}</uid>
+                               <type>1</type>
+                               <declaration>qreal			m_rotationSprite</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{b57224cc-e782-4da0-a8b0-22f4c9ce391b}</uid>
+                               <type>1</type>
+                               <declaration>QPoint			m_pos</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{f3aec79a-6fa7-4072-bbe8-ae47359c90b4}</uid>
+                               <type>1</type>
+                               <declaration>WayPoint *		m_destinationWayPoint</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{9e671f94-d2b5-46da-9806-7364be88e75e}</uid>
+                               <type>1</type>
+                               <declaration>MainWindow *	m_game</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{9f2ceaa5-2984-4655-aa09-11b964f35cf9}</uid>
+                               <type>1</type>
+                               <declaration>QList&lt;Tower *&gt;	m_attackedTowersList</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{f670b85b-0f1a-4136-8667-d68dc9311066}</uid>
+                               <type>1</type>
+                               <declaration>const QPixmap	m_sprite</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{a6d4f0ed-867b-4426-b62e-7cfe50317659}</uid>
+                               <type>1</type>
+                               <properties>64</properties>
+                               <declaration>const QSize ms_fixedSize</declaration>
+                              </MClassMember>
+                             </item>
+                            </qlist>
+                           </members>
+                          </MClass>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                      <item>
+                       <handle>
+                        <uid>{c2ad678b-dbe5-4a1c-a13f-8d826626c3f4}</uid>
+                        <target>
+                         <instance type="MClass">
+                          <MClass>
+                           <base-MObject>
+                            <MObject>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{c2ad678b-dbe5-4a1c-a13f-8d826626c3f4}</uid>
+                               <flags>1</flags>
+                              </MElement>
+                             </base-MElement>
+                             <name>MainWindow</name>
+                            </MObject>
+                           </base-MObject>
+                           <members>
+                            <qlist>
+                             <item>
+                              <MClassMember>
+                               <uid>{bca7e995-c5b2-45bf-a6f4-4684afcb4a93}</uid>
+                               <type>2</type>
+                               <declaration>explicit MainWindow(QWidget *parent = nullptr)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{9b301825-4eb9-431b-988e-7a21919510aa}</uid>
+                               <type>2</type>
+                               <declaration>~MainWindow()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{0f14f2a2-06d1-48fe-9f7c-f228b3b31c84}</uid>
+                               <type>2</type>
+                               <declaration>void getHpDamage(int damage = 1)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{2110720e-9d9f-4caf-b303-49b73ceeeda7}</uid>
+                               <type>2</type>
+                               <declaration>void removedEnemy(Enemy *enemy)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{8b58b902-c973-420f-be9f-68d776548d5a}</uid>
+                               <type>2</type>
+                               <declaration>void removedBullet(Bullet *bullet)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{e0cb6d48-41ed-482e-a091-770fb3f645f9}</uid>
+                               <type>2</type>
+                               <declaration>void addBullet(Bullet *bullet)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{2dde6219-6a3a-4f75-a35d-31f5d057f7d9}</uid>
+                               <type>2</type>
+                               <declaration>void awardGold(int gold)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{6232a21b-b810-472c-8245-205171fef0d7}</uid>
+                               <type>2</type>
+                               <properties>4</properties>
+                               <declaration>AudioPlayer* audioPlayer()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{2e3b6abf-70d4-470e-b9f7-6630f39bbea5}</uid>
+                               <type>2</type>
+                               <properties>4</properties>
+                               <declaration>QList&lt;Enemy *&gt; enemyList()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{a07b67ad-dfc5-4db0-9577-a71994d5fa23}</uid>
+                               <type>2</type>
+                               <declaration>void paintEvent(QPaintEvent *)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{8bb5b9fd-4099-4c07-a3ed-c3b332915615}</uid>
+                               <type>2</type>
+                               <declaration>void mousePressEvent(QMouseEvent *)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{34611608-9d00-4fb2-9333-69392f450399}</uid>
+                               <type>2</type>
+                               <declaration>void loadTowerPositions()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{9d1c9e4f-226c-4816-87d8-a84635ec997c}</uid>
+                               <type>2</type>
+                               <declaration>void addWayPoints()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{470ff115-8b8c-415b-b3c7-e8403020fdf6}</uid>
+                               <type>2</type>
+                               <declaration>bool loadWave()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{e8e3e82b-da73-4ecb-9160-703045266b42}</uid>
+                               <type>2</type>
+                               <properties>4</properties>
+                               <declaration>bool canBuyTower()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{66e7d824-197f-4d62-ba3c-c13ecf58976b}</uid>
+                               <type>2</type>
+                               <declaration>void drawWave(QPainter *painter)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{c82f3249-29ee-4c16-be97-6a49cafc53f3}</uid>
+                               <type>2</type>
+                               <declaration>void drawHP(QPainter *painter)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{bceda660-3264-4666-bb4b-28e0e121adc3}</uid>
+                               <type>2</type>
+                               <declaration>void drawPlayerGold(QPainter *painter)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{9fa8c4c7-7503-4b2a-a782-d233bac4c439}</uid>
+                               <type>2</type>
+                               <declaration>void doGameOver()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{92aef30f-7c62-4788-8130-10eaeff1876e}</uid>
+                               <type>2</type>
+                               <declaration>void preLoadWavesInfo()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{635d8b21-6f58-4d08-beb4-11fe46af2a58}</uid>
+                               <type>1</type>
+                               <declaration>Ui::MainWindow *		ui</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{9adb4d64-dac8-46c7-b61f-bd8662816f02}</uid>
+                               <type>1</type>
+                               <declaration>int						m_waves</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{4f0e743a-e03d-4890-9dbf-b4f6f1cb7750}</uid>
+                               <type>1</type>
+                               <declaration>int						m_playerHp</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{a48f0005-14e2-480a-a62c-04deca6c58da}</uid>
+                               <type>1</type>
+                               <declaration>int						m_playrGold</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{a743fe11-b93c-4407-a6ff-c09d58d69445}</uid>
+                               <type>1</type>
+                               <declaration>bool					m_gameEnded</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{ef756cbf-7edf-4a5f-affc-4bcc73de211a}</uid>
+                               <type>1</type>
+                               <declaration>bool					m_gameWin</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{aa1b0228-fa93-417e-aba4-e589ffbc4bbe}</uid>
+                               <type>1</type>
+                               <declaration>AudioPlayer *			m_audioPlayer</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{cd2412dc-6239-439d-b30f-c8b3eb657b2c}</uid>
+                               <type>1</type>
+                               <declaration>QList&lt;QVariant&gt;			m_wavesInfo</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{21340bd1-61ba-4547-aac2-b4a571efb8de}</uid>
+                               <type>1</type>
+                               <declaration>QList&lt;TowerPosition&gt;	m_towerPositionsList</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{f445a71e-8ade-4069-ae3e-0e094c7f7ede}</uid>
+                               <type>1</type>
+                               <declaration>QList&lt;Tower *&gt;			m_towersList</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{12fff8eb-ff99-4389-b585-685ad4ccd4c7}</uid>
+                               <type>1</type>
+                               <declaration>QList&lt;WayPoint *&gt;		m_wayPointsList</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{9dd00684-69e0-4008-91a8-d5a8523858d4}</uid>
+                               <type>1</type>
+                               <declaration>QList&lt;Enemy *&gt;			m_enemyList</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{85ff8f43-222d-467d-8b75-6bbd03d367b0}</uid>
+                               <type>1</type>
+                               <declaration>QList&lt;Bullet *&gt;			m_bulletList</declaration>
+                              </MClassMember>
+                             </item>
+                            </qlist>
+                           </members>
+                          </MClass>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                      <item>
+                       <handle>
+                        <uid>{89e5e0e2-0831-4d09-9f96-2f61c226ab46}</uid>
+                        <target>
+                         <instance type="MClass">
+                          <MClass>
+                           <base-MObject>
+                            <MObject>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{89e5e0e2-0831-4d09-9f96-2f61c226ab46}</uid>
+                               <flags>1</flags>
+                              </MElement>
+                             </base-MElement>
+                             <name>PListReader</name>
+                            </MObject>
+                           </base-MObject>
+                           <members>
+                            <qlist>
+                             <item>
+                              <MClassMember>
+                               <uid>{5543d24d-ac4a-4217-8caa-dc67b21fc927}</uid>
+                               <type>2</type>
+                               <declaration>PListReader()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{610bcec5-f4fa-4462-a216-2a33c9fa854b}</uid>
+                               <type>2</type>
+                               <declaration>bool read(QIODevice *device)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{35e53237-773d-4e9d-bf7e-f86214e8836f}</uid>
+                               <type>2</type>
+                               <properties>4</properties>
+                               <declaration>const QList&lt;QVariant&gt; data()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{d512076c-738c-462c-a297-0dec5b106b22}</uid>
+                               <type>2</type>
+                               <properties>4</properties>
+                               <declaration>QString errorString()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{95615f1b-d0da-4b5e-9c37-1e519a690fe2}</uid>
+                               <type>2</type>
+                               <declaration>void readPList()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{77f280fa-c218-49fb-affc-c259738020c5}</uid>
+                               <type>2</type>
+                               <declaration>void readArray(QList&lt;QVariant&gt; &amp;array)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{36ec2779-4c0b-4308-8e8b-5fe52da68d10}</uid>
+                               <type>2</type>
+                               <declaration>void readDict(QList&lt;QVariant&gt; &amp;array)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{3807b290-3f1f-4cdd-8f5d-8812dc19d7b9}</uid>
+                               <type>2</type>
+                               <declaration>void readKey(QMap&lt;QString, QVariant&gt; &amp;dict)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{f4d976da-3fda-4afd-911b-a1e142c50bb7}</uid>
+                               <type>1</type>
+                               <declaration>QXmlStreamReader	m_xmlReader</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{75676c6d-bf84-4c2a-9bdb-ef83ebbc7c60}</uid>
+                               <type>1</type>
+                               <declaration>QList&lt;QVariant&gt;		m_data</declaration>
+                              </MClassMember>
+                             </item>
+                            </qlist>
+                           </members>
+                          </MClass>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                      <item>
+                       <handle>
+                        <uid>{1b5ab547-a8ab-4b8a-97d0-11d9b4eebfa4}</uid>
+                        <target>
+                         <instance type="MClass">
+                          <MClass>
+                           <base-MObject>
+                            <MObject>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{1b5ab547-a8ab-4b8a-97d0-11d9b4eebfa4}</uid>
+                               <flags>1</flags>
+                              </MElement>
+                             </base-MElement>
+                             <name>Tower</name>
+                            </MObject>
+                           </base-MObject>
+                           <members>
+                            <qlist>
+                             <item>
+                              <MClassMember>
+                               <uid>{dffa50c9-a090-43fa-93d9-ed9d164185c0}</uid>
+                               <type>2</type>
+                               <declaration>Tower(QPoint pos, MainWindow *game, const QPixmap &amp;sprite = QPixmap(&quot;:/image/tower.png&quot;))</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{5b92025d-06c7-4ca0-841e-8462e9f718e3}</uid>
+                               <type>2</type>
+                               <declaration>~Tower()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{70269943-93bc-4ab1-beb7-fb023da1e1bd}</uid>
+                               <type>2</type>
+                               <properties>4</properties>
+                               <declaration>void draw(QPainter *painter)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{211c07cc-a358-4367-b9b7-f1f0375167bf}</uid>
+                               <type>2</type>
+                               <declaration>void checkEnemyInRange()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{a1d19f8a-1758-4f53-a137-44af6ad1ecb5}</uid>
+                               <type>2</type>
+                               <declaration>void targetKilled()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{5d7d211f-f4b9-4cd5-8bfe-da81f6281cc4}</uid>
+                               <type>2</type>
+                               <declaration>void attackEnemy()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{a32bffcd-64cd-4463-b755-4f0f23afdafe}</uid>
+                               <type>2</type>
+                               <declaration>void chooseEnemyForAttack(Enemy *enemy)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{feb73607-7b3c-447a-a92d-a4345f910e47}</uid>
+                               <type>2</type>
+                               <declaration>void removeBullet()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{eda2733e-3be7-4dbf-86e3-a1c1d4c51920}</uid>
+                               <type>2</type>
+                               <declaration>void damageEnemy()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{99025162-1ecc-46f2-bc6f-45529910b6e2}</uid>
+                               <type>2</type>
+                               <declaration>void lostSightOfEnemy()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{655fda8f-7262-48ef-a6d8-46c7784e1b76}</uid>
+                               <type>1</type>
+                               <declaration>bool			m_attacking</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{1638d14d-b4bb-40fa-bd16-9e86fc572700}</uid>
+                               <type>1</type>
+                               <declaration>int				m_attackRange</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{88a93f25-6f1f-40ac-8ae8-46841743a50a}</uid>
+                               <type>1</type>
+                               <declaration>int				m_damage</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{63ce8a54-e0ef-4f34-8948-2a70d096f644}</uid>
+                               <type>1</type>
+                               <declaration>int				m_fireRate</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{d4fc663c-465c-4d43-a44d-181a44f575eb}</uid>
+                               <type>1</type>
+                               <declaration>qreal			m_rotationSprite</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{c1cd9142-cb6e-492f-9943-d9338a7e7884}</uid>
+                               <type>1</type>
+                               <declaration>Enemy *			m_chooseEnemy</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{7b309cb5-f552-41df-9ffb-6c0ce4c70a13}</uid>
+                               <type>1</type>
+                               <declaration>MainWindow *	m_game</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{6079c4bb-f198-4c6a-8dc9-3e83346f5c42}</uid>
+                               <type>1</type>
+                               <declaration>QTimer *		m_fireRateTimer</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{6095cffc-8159-420b-ba16-4dea294936c5}</uid>
+                               <type>1</type>
+                               <declaration>const QPoint	m_pos</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{85b3842a-f03b-410b-979a-c6a6be13249b}</uid>
+                               <type>1</type>
+                               <declaration>const QPixmap	m_sprite</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{8f6370cb-2ecf-4128-9837-4cbf4af9f7c5}</uid>
+                               <type>1</type>
+                               <properties>64</properties>
+                               <declaration>const QSize ms_fixedSize</declaration>
+                              </MClassMember>
+                             </item>
+                            </qlist>
+                           </members>
+                          </MClass>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                      <item>
+                       <handle>
+                        <uid>{46fcdaca-c4a5-4c25-ba37-e7f06383b1f6}</uid>
+                        <target>
+                         <instance type="MClass">
+                          <MClass>
+                           <base-MObject>
+                            <MObject>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{46fcdaca-c4a5-4c25-ba37-e7f06383b1f6}</uid>
+                               <flags>1</flags>
+                              </MElement>
+                             </base-MElement>
+                             <name>TowerPosition</name>
+                            </MObject>
+                           </base-MObject>
+                           <members>
+                            <qlist>
+                             <item>
+                              <MClassMember>
+                               <uid>{df72b831-1c25-470d-8be7-91299141608f}</uid>
+                               <type>2</type>
+                               <declaration>TowerPosition(QPoint pos, const QPixmap &amp;sprite = QPixmap(&quot;:/image/open_spot.png&quot;))</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{71f5f760-2671-437d-b634-663b73c66a65}</uid>
+                               <type>2</type>
+                               <declaration>void setHasTower(bool hasTower = true)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{f39428fb-5ed0-41d6-b0ed-064b5d61c5a4}</uid>
+                               <type>2</type>
+                               <properties>4</properties>
+                               <declaration>bool hasTower()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{9ca56259-889b-4235-a129-d93a568da708}</uid>
+                               <type>2</type>
+                               <properties>4</properties>
+                               <declaration>const QPoint centerPos()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{a24fe758-24fe-48c7-9525-0bea47b71807}</uid>
+                               <type>2</type>
+                               <properties>4</properties>
+                               <declaration>bool containPoint(const QPoint &amp;pos)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{56f9d8e3-6f66-4be0-a8ba-fdafbb3fd00d}</uid>
+                               <type>2</type>
+                               <properties>4</properties>
+                               <declaration>void draw(QPainter *painter)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{4311d21f-88c9-405a-a448-63a7faa4b361}</uid>
+                               <type>1</type>
+                               <declaration>bool		m_hasTower</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{8db6385b-7764-4f22-ae91-a775db2a097f}</uid>
+                               <type>1</type>
+                               <declaration>QPoint		m_pos</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{731ad9f0-7c9d-45f8-b92f-61e9408bf396}</uid>
+                               <type>1</type>
+                               <declaration>QPixmap		m_sprite</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{3886e6f7-501d-4c82-aa02-ff0c0c5ad6da}</uid>
+                               <type>1</type>
+                               <properties>64</properties>
+                               <declaration>const QSize ms_fixedSize</declaration>
+                              </MClassMember>
+                             </item>
+                            </qlist>
+                           </members>
+                          </MClass>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                      <item>
+                       <handle>
+                        <uid>{92d0734a-49cc-4fb0-bb10-c4900f496526}</uid>
+                        <target>
+                         <instance type="MClass">
+                          <MClass>
+                           <base-MObject>
+                            <MObject>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{92d0734a-49cc-4fb0-bb10-c4900f496526}</uid>
+                               <flags>1</flags>
+                              </MElement>
+                             </base-MElement>
+                             <name>WayPoint</name>
+                            </MObject>
+                           </base-MObject>
+                           <members>
+                            <qlist>
+                             <item>
+                              <MClassMember>
+                               <uid>{143066dc-00d7-4291-9f44-62ed1893458d}</uid>
+                               <type>2</type>
+                               <declaration>WayPoint(QPoint pos)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{641fa7f5-6cb5-4949-a621-6eb0dbad07a9}</uid>
+                               <type>2</type>
+                               <declaration>void setNextWayPoint(WayPoint *nextPoint)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{1009a5fa-d337-478c-a65e-cb8bffb5c4af}</uid>
+                               <type>2</type>
+                               <properties>4</properties>
+                               <declaration>WayPoint* nextWayPoint()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{4208f62e-6ce5-474a-8848-bba3775199f9}</uid>
+                               <type>2</type>
+                               <properties>4</properties>
+                               <declaration>const QPoint pos()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{ad6ebd7e-795f-410c-9eda-7e2c6dc99ae1}</uid>
+                               <type>2</type>
+                               <properties>4</properties>
+                               <declaration>void draw(QPainter *painter)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{c8b6feb7-39e1-4393-80ae-add751b2d201}</uid>
+                               <type>1</type>
+                               <declaration>const QPoint		m_pos</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{a1105a38-f4d7-43a1-a2b5-eebc394b01a8}</uid>
+                               <type>1</type>
+                               <declaration>WayPoint *			m_nextWayPoint</declaration>
                               </MClassMember>
                              </item>
                             </qlist>
