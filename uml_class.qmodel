@@ -264,28 +264,28 @@
                             <qlist>
                              <item>
                               <MClassMember>
-                               <uid>{f1bbe77b-3c3a-420a-bd3e-517a1089e6ab}</uid>
+                               <uid>{b3b5ebd6-42a5-4b90-8500-21802319e982}</uid>
                                <type>2</type>
                                <declaration>explicit AudioPlayer(QObject *parent = 0)</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{58b33034-56f9-4544-9328-4726142c44f5}</uid>
+                               <uid>{b7efdc97-0c46-4ec0-abdd-ddce0743f44a}</uid>
                                <type>2</type>
                                <declaration>void startBGM()</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{61be16a7-20fe-4ecd-aa81-d4faf3992235}</uid>
+                               <uid>{61c842b6-cfb7-4737-8479-68acb9982f97}</uid>
                                <type>2</type>
                                <declaration>void playSound(SoundType soundType)</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{0249b654-b8d2-4f3e-8eff-c338929ebe8e}</uid>
+                               <uid>{d8b0ad8b-0edc-4a1e-b493-98ff636a8d5d}</uid>
                                <type>1</type>
                                <declaration>QMediaPlayer *m_backgroundMusic</declaration>
                               </MClassMember>
