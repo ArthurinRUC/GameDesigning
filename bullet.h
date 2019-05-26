@@ -12,7 +12,7 @@ class Enemy1;
 class Enemy2;
 class MainWindow;
 
-class Bullet : QObject
+class Bullet : public QObject
 {
 	Q_OBJECT
     //Qt动画效果
@@ -43,12 +43,16 @@ protected:
 
 class NormalBullet: public Bullet
 {
+    Q_OBJECT
+
 public:
     NormalBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/normalbullet.png"));
 };
 
 class FireBullet: public Bullet
 {
+    Q_OBJECT
+
 public:
     FireBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, MainWindow *game, int fireattack, const QPixmap &sprite = QPixmap(":/image/firebullet.png"));
 
@@ -58,6 +62,8 @@ private:
 
 class IceBullet: public Bullet
 {
+    Q_OBJECT
+
 public:
     IceBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, MainWindow *game, int slowspeed, const QPixmap &sprite = QPixmap(":/image/icebullet.png"));
 
@@ -67,6 +73,8 @@ private:
 
 class LaserBullet: public Bullet
 {
+    Q_OBJECT
+
 public:
     LaserBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/laserbullet.png"));
 

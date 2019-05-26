@@ -47,7 +47,7 @@ protected:
     int				m_attackRange;	// 代表塔可以攻击到敌人的距离
     int				m_damage;		// 代表攻击敌人时造成的伤害
     int				m_fireRate;		// 代表再次攻击敌人的时间间隔
-    int             m_level;        //等级
+    int             m_level;        // 等级
 
     const QPoint	m_pos; //塔的圆心
     const QPixmap	m_sprite;
@@ -59,7 +59,7 @@ class NormalTower: public Tower
 {
     Q_OBJECT
 public:
-    NormalTower(QPoint pos, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/normaltower.png"));
+    NormalTower(QPoint pos, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/tower.png"));
     ~NormalTower();
 
     void levelup();
