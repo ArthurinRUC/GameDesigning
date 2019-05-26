@@ -56,3 +56,27 @@ QPoint Bullet::currentPos() const
 {
 	return m_currentPos;
 }
+
+NormalBullet::NormalBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, MainWindow *game, const QPixmap &sprite)
+    :Bullet(startPos, targetPoint, damage, target, game, sprite)
+{
+
+}
+
+FireBullet::FireBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, MainWindow *game, int fireattack, const QPixmap &sprite)
+    :Bullet(startPos, targetPoint, damage, target, game, sprite), fire_attack(fireattack)
+{
+
+}
+
+IceBullet::IceBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, MainWindow *game, int slowspeed, const QPixmap &sprite)
+    :Bullet(startPos, targetPoint, damage, target, game, sprite), slow_speed(slowspeed)
+{
+
+}
+
+LaserBullet::LaserBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, MainWindow *game, const QPixmap &sprite)
+    :Bullet(startPos, targetPoint, damage, target, game, sprite)
+{
+
+}

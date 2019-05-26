@@ -40,5 +40,4 @@ RESOURCES += \
     resource.qrc
 
 DISTFILES += \
-    td_class.qmodel \
     uml_class.qmodel
