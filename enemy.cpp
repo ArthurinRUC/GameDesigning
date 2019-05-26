@@ -13,9 +13,7 @@
 
 //血条长度
 static const int Health_Bar_Width = 20;
-
 const QSize Enemy::ms_fixedSize(52, 52);
-
 Enemy::Enemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy.png")*/)
 	: QObject(0)
 	, m_active(false)
@@ -27,41 +25,31 @@ Enemy::Enemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* 
 	, m_destinationWayPoint(startWayPoint->nextWayPoint())
 	, m_game(game)
 	, m_sprite(sprite)
-{
-}
-
-Enemy::~Enemy()
-{
+{}
+Enemy::~Enemy(){
 	m_attackedTowersList.clear();
 	m_destinationWayPoint = NULL;
 	m_game = NULL;
 }
-
-void Enemy::doActivate()
-{
+void Enemy::doActivate(){
 	m_active = true;
 }
-
-void Enemy::move()
-{
+void Enemy::move(){
 	if (!m_active)
 		return;
 
-	if (collisionWithCircle(m_pos, 1, m_destinationWayPoint->pos(), 1))
-	{
+	if (collisionWithCircle(m_pos, 1, m_destinationWayPoint->pos(), 1)){
 		// 敌人抵达了一个航点
-		if (m_destinationWayPoint->nextWayPoint())
-		{
+		if (m_destinationWayPoint->nextWayPoint()){
 			// 还有下一个航点
 			m_pos = m_destinationWayPoint->pos();
 			m_destinationWayPoint = m_destinationWayPoint->nextWayPoint();
 		}
-		else
-		{
+		else{
 			// 表示进入基地
 			m_game->getHpDamage();
 			m_game->removedEnemy(this);
-			return;
+            return;
 		}
 	}
 
@@ -80,9 +68,7 @@ void Enemy::move()
 	// 默认图片向左,需要修正180度转右
 	m_rotationSprite = qRadiansToDegrees(qAtan2(normalized.y(), normalized.x())) + 180;
 }
-
-void Enemy::draw(QPainter *painter) const
-{
+void Enemy::draw(QPainter *painter) const{
 	if (!m_active)
 		return;
 
@@ -111,9 +97,7 @@ void Enemy::draw(QPainter *painter) const
 
 	painter->restore();
 }
-
-void Enemy::getRemoved()
-{
+void Enemy::getRemoved(){
 	if (m_attackedTowersList.empty())
 		return;
 
@@ -122,33 +106,66 @@ void Enemy::getRemoved()
 	// 通知game,此敌人已经阵亡
 	m_game->removedEnemy(this);
 }
-
-void Enemy::getDamage(int damage)
-{
+void Enemy::getDamage(int damage){
 	m_game->audioPlayer()->playSound(LaserShootSound);
 	m_currentHp -= damage;
 
 	// 阵亡,需要移除
-	if (m_currentHp <= 0)
-	{
+	if (m_currentHp <= 0){
 		m_game->audioPlayer()->playSound(EnemyDestorySound);
 		m_game->awardGold(200);
 		getRemoved();
 	}
 }
-
-void Enemy::getAttacked(Tower *attacker)
-{
+void Enemy::getAttacked(Tower *attacker){
 	m_attackedTowersList.push_back(attacker);
 }
-
 // 表明敌人已经逃离了攻击范围
-void Enemy::gotLostSight(Tower *attacker)
-{
+void Enemy::gotLostSight(Tower *attacker){
 	m_attackedTowersList.removeOne(attacker);
 }
-
-QPoint Enemy::pos() const
-{
+QPoint Enemy::pos() const{
 	return m_pos;
+}
+
+Enemy1::Enemy1(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy1.png")*/)
+    :Enemy(startWayPoint, game,sprite/* = QPixmap(":/image/enemy1.png")*/)
+{
+    this->m_active=false;
+    this->m_maxHp=40;
+    this->m_currentHp=40;
+    this->m_walkingSpeed=1.0;
+    this->m_rotationSprite=0.0;
+    this->m_pos=startWayPoint->pos();
+    this->m_destinationWayPoint=startWayPoint->nextWayPoint();
+}
+void Enemy1::getDamage(int damage){
+    m_game->audioPlayer()->playSound(LaserShootSound);
+    m_currentHp -= damage;
+    if (m_currentHp <= 0){//敌人阵亡,需要移除
+        m_game->audioPlayer()->playSound(EnemyDestorySound);
+        m_game->awardGold(200);//奖励金钱
+        getRemoved();
+    }
+}
+
+Enemy2::Enemy2(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy2.png")*/)
+    :Enemy(startWayPoint, game,sprite/* = QPixmap(":/image/enemy2.png")*/)
+{
+    this->m_active=false;
+    this->m_maxHp=80;
+    this->m_currentHp=80;
+    this->m_walkingSpeed=2.0;
+    this->m_rotationSprite=0.0;
+    this->m_pos=startWayPoint->pos();
+    this->m_destinationWayPoint=startWayPoint->nextWayPoint();
+}
+void Enemy2::getDamage(int damage){
+    m_game->audioPlayer()->playSound(LaserShootSound);
+    m_currentHp -= damage;
+    if (m_currentHp <= 0){//敌人阵亡,需要移除
+        m_game->audioPlayer()->playSound(EnemyDestorySound);
+        m_game->awardGold(400);//奖励金钱
+        getRemoved();
+    }
 }

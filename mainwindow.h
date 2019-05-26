@@ -12,6 +12,8 @@ class MainWindow;
 
 class WayPoint;
 class Enemy;
+class Enemy1;
+class Enemy2;
 class Bullet;
 class AudioPlayer;
 

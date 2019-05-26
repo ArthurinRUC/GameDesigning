@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
 	, m_playerHp(5)
 	, m_playrGold(1000)
 	, m_gameEnded(false)
-	, m_gameWin(false)
+    , m_gameWin(false)
 {
     //此处开始构造MainWindow
 	ui->setupUi(this);
@@ -43,19 +43,16 @@ MainWindow::MainWindow(QWidget *parent)
 	QTimer::singleShot(300, this, SLOT(gameStart()));
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow(){
 	delete ui;
 }
 
-void MainWindow::loadTowerPositions()
-{
+void MainWindow::loadTowerPositions(){
     //读取文件中的炮塔位置信息，可以不用深究，但是可以修改位置【可改】
 
     //这里可以改变炮塔的位置，文件是html格式
 	QFile file(":/config/TowersPosition.plist");
-	if (!file.open(QFile::ReadOnly | QFile::Text))
-	{
+	if (!file.open(QFile::ReadOnly | QFile::Text)){
 		QMessageBox::warning(this, "TowerDefense", "Cannot Open TowersPosition.plist");
 		return;
 	}
@@ -63,22 +60,18 @@ void MainWindow::loadTowerPositions()
 	PListReader reader;
 	reader.read(&file);
 
-	QList<QVariant> array = reader.data();
-	foreach (QVariant dict, array)
-	{
+    QList<QVariant> array = reader.data();
+    foreach (QVariant dict, array){
 		QMap<QString, QVariant> point = dict.toMap();
 		int x = point.value("x").toInt();
 		int y = point.value("y").toInt();
 		m_towerPositionsList.push_back(QPoint(x, y));
 	}
-
 	file.close();
 }
 
-void MainWindow::paintEvent(QPaintEvent *)
-{
-	if (m_gameEnded || m_gameWin)
-	{
+void MainWindow::paintEvent(QPaintEvent *){
+	if (m_gameEnded || m_gameWin){
 		QString text = m_gameEnded ? "YOU LOST!!!" : "YOU WIN!!!";
 		QPainter painter(this);
 		painter.setPen(QPen(Qt::red));
@@ -116,15 +109,12 @@ void MainWindow::paintEvent(QPaintEvent *)
     painter.drawPixmap(0, 0, cachePix);//QPixmap cachePix(":/image/Bg.png");
 }
 
-void MainWindow::mousePressEvent(QMouseEvent *event)
-{
+void MainWindow::mousePressEvent(QMouseEvent *event){
     //单击鼠标后的处理
 	QPoint pressPos = event->pos();
 	auto it = m_towerPositionsList.begin();
-	while (it != m_towerPositionsList.end())
-	{
-		if (canBuyTower() && it->containPoint(pressPos) && !it->hasTower())
-		{
+	while (it != m_towerPositionsList.end()){
+		if (canBuyTower() && it->containPoint(pressPos) && !it->hasTower()){
 			m_audioPlayer->playSound(TowerPlaceSound);
 			m_playrGold -= TowerCost;
 			it->setHasTower();
@@ -134,38 +124,28 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             update(); //调用paintevent(),重绘画面
 			break;
 		}
-
 		++it;
 	}
 }
-
-bool MainWindow::canBuyTower() const
-{
+bool MainWindow::canBuyTower() const{
 	if (m_playrGold >= TowerCost)
 		return true;
 	return false;
 }
 
-void MainWindow::drawWave(QPainter *painter)
-{
+void MainWindow::drawWave(QPainter *painter){
 	painter->setPen(QPen(Qt::red));
 	painter->drawText(QRect(400, 5, 100, 25), QString("WAVE : %1").arg(m_waves + 1));
 }
-
-void MainWindow::drawHP(QPainter *painter)
-{
+void MainWindow::drawHP(QPainter *painter){
 	painter->setPen(QPen(Qt::red));
 	painter->drawText(QRect(30, 5, 100, 25), QString("HP : %1").arg(m_playerHp));
 }
-
-void MainWindow::drawPlayerGold(QPainter *painter)
-{
+void MainWindow::drawPlayerGold(QPainter *painter){
 	painter->setPen(QPen(Qt::red));
 	painter->drawText(QRect(200, 5, 200, 25), QString("GOLD : %1").arg(m_playrGold));
 }
-
-void MainWindow::doGameOver()
-{
+void MainWindow::doGameOver(){
 	if (!m_gameEnded)
 	{
 		m_gameEnded = true;
@@ -173,20 +153,14 @@ void MainWindow::doGameOver()
 		// 暂时以打印替代,见paintEvent处理
 	}
 }
-
-void MainWindow::awardGold(int gold)
-{
+void MainWindow::awardGold(int gold){
 	m_playrGold += gold;
 	update();
 }
-
-AudioPlayer *MainWindow::audioPlayer() const
-{
+AudioPlayer *MainWindow::audioPlayer() const{
 	return m_audioPlayer;
 }
-
-void MainWindow::addWayPoints()
-{
+void MainWindow::addWayPoints(){
     //敌人航点【可改】
 	WayPoint *wayPoint1 = new WayPoint(QPoint(420, 285));
 	m_wayPointsList.push_back(wayPoint1);
@@ -211,17 +185,13 @@ void MainWindow::addWayPoints()
 	m_wayPointsList.push_back(wayPoint6);
 	wayPoint6->setNextWayPoint(wayPoint5);
 }
-
-void MainWindow::getHpDamage(int damage/* = 1*/)
-{
+void MainWindow::getHpDamage(int damage/* = 1*/){
 	m_audioPlayer->playSound(LifeLoseSound);
 	m_playerHp -= damage;
 	if (m_playerHp <= 0)
 		doGameOver();
 }
-
-void MainWindow::removedEnemy(Enemy *enemy)
-{
+void MainWindow::removedEnemy(Enemy *enemy){
 	Q_ASSERT(enemy);
 
 	m_enemyList.removeOne(enemy);
@@ -238,36 +208,27 @@ void MainWindow::removedEnemy(Enemy *enemy)
 		}
 	}
 }
-
-void MainWindow::removedBullet(Bullet *bullet)
-{
+void MainWindow::removedBullet(Bullet *bullet){
 	Q_ASSERT(bullet);
 
 	m_bulletList.removeOne(bullet);
 	delete bullet;
 }
-
-void MainWindow::addBullet(Bullet *bullet)
-{
+void MainWindow::addBullet(Bullet *bullet){
 	Q_ASSERT(bullet);
 
 	m_bulletList.push_back(bullet);
 }
-
-void MainWindow::updateMap()
-{
+void MainWindow::updateMap(){
 	foreach (Enemy *enemy, m_enemyList)
 		enemy->move();
 	foreach (Tower *tower, m_towersList)
 		tower->checkEnemyInRange();
 	update();
 }
-
-void MainWindow::preLoadWavesInfo()
-{
+void MainWindow::preLoadWavesInfo(){
 	QFile file(":/config/Waves.plist");
-	if (!file.open(QFile::ReadOnly | QFile::Text))
-	{
+	if (!file.open(QFile::ReadOnly | QFile::Text)){
 		QMessageBox::warning(this, "TowerDefense", "Cannot Open TowersPosition.plist");
 		return;
 	}
@@ -281,33 +242,29 @@ void MainWindow::preLoadWavesInfo()
 	file.close();
 }
 
-bool MainWindow::loadWave()
-{
+bool MainWindow::loadWave(){
 	if (m_waves >= m_wavesInfo.size())
 		return false;
 
 	WayPoint *startWayPoint = m_wayPointsList.back();
 	QList<QVariant> curWavesInfo = m_wavesInfo[m_waves].toList();
 
-	for (int i = 0; i < curWavesInfo.size(); ++i)
-	{
+	for (int i = 0; i < curWavesInfo.size(); ++i){
 		QMap<QString, QVariant> dict = curWavesInfo[i].toMap();
 		int spawnTime = dict.value("spawnTime").toInt();
 
-		Enemy *enemy = new Enemy(startWayPoint, this);
+        Enemy *enemy;
+        if(i%2==0) enemy = new Enemy1(startWayPoint, this);
+        else enemy=new Enemy2(startWayPoint, this);
 		m_enemyList.push_back(enemy);
 		QTimer::singleShot(spawnTime, enemy, SLOT(doActivate()));
 	}
 
 	return true;
 }
-
-QList<Enemy *> MainWindow::enemyList() const
-{
+QList<Enemy *> MainWindow::enemyList() const{
 	return m_enemyList;
 }
-
-void MainWindow::gameStart()
-{
+void MainWindow::gameStart(){
 	loadWave();
 }
