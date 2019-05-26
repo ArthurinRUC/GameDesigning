@@ -119,7 +119,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event){
 			m_playrGold -= TowerCost;
 			it->setHasTower();
 
-            Tower *tower = new Tower(it->centerPos(), this);
+            Tower *tower = new NormalTower(it->centerPos(), this);
 			m_towersList.push_back(tower);
             update(); //调用paintevent(),重绘画面
 			break;

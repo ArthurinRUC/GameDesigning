@@ -13,7 +13,7 @@ class Enemy2;
 class MainWindow;
 class QTimer;
 
-class Tower : QObject
+class Tower : public QObject
 {
 	Q_OBJECT
 public:
@@ -57,6 +57,7 @@ protected:
 
 class NormalTower: public Tower
 {
+    Q_OBJECT
 public:
     NormalTower(QPoint pos, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/normaltower.png"));
     ~NormalTower();
@@ -69,6 +70,7 @@ protected slots:
 
 class FireTower : public Tower
 {
+    Q_OBJECT
 public:
     FireTower(QPoint pos, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/firetower.png"));
     ~FireTower();
@@ -84,6 +86,7 @@ private:
 
 class IceTower : public Tower
 {
+    Q_OBJECT
 public:
     IceTower(QPoint pos, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/icetower.png"));
     ~IceTower();
@@ -99,6 +102,7 @@ private:
 
 class LaserTower : public Tower
 {
+    Q_OBJECT
 public:
     LaserTower(QPoint pos, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/lasertower.png"));
     ~LaserTower();
