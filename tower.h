@@ -8,6 +8,8 @@
 
 class QPainter;
 class Enemy;
+class Enemy1;
+class Enemy2;
 class MainWindow;
 class QTimer;
 
