@@ -11,7 +11,7 @@
 
 const QSize Tower::ms_fixedSize(42, 42);
 
-Tower::Tower(QPoint pos, MainWindow *game, const QPixmap &sprite, int attackRange, int damage, int fireRate)
+Tower::Tower(QPoint pos, MainWindow *game, const QPixmap &sprite, int attackRange, int damage, int fireRate, int level)
     : m_attacking(false)
 	, m_rotationSprite(0.0)
     , m_chooseEnemy(nullptr)
@@ -19,6 +19,7 @@ Tower::Tower(QPoint pos, MainWindow *game, const QPixmap &sprite, int attackRang
     , m_attackRange(attackRange)
     , m_damage(damage)
     , m_fireRate(fireRate)
+    , m_level(level)
     , m_pos(pos)
     , m_sprite(sprite)
 {
@@ -93,12 +94,6 @@ void Tower::chooseEnemyForAttack(Enemy *enemy)
 	m_chooseEnemy->getAttacked(this);
 }
 
-void Tower::shootWeapon()
-{
-	Bullet *bullet = new Bullet(m_pos, m_chooseEnemy->pos(), m_damage, m_chooseEnemy, m_game);
-	bullet->move();
-	m_game->addBullet(bullet);
-}
 
 void Tower::targetKilled()
 {
@@ -120,6 +115,11 @@ void Tower::lostSightOfEnemy()
 	m_rotationSprite = 0.0;
 }
 
+void Tower::levelup()
+{
+
+}
+
 NormalTower::NormalTower(QPoint pos, MainWindow *game, const QPixmap &sprite)
     : Tower(pos, game, sprite)
 {
@@ -127,6 +127,19 @@ NormalTower::NormalTower(QPoint pos, MainWindow *game, const QPixmap &sprite)
 }
 
 NormalTower::~NormalTower()
+{
+
+}
+
+
+void NormalTower::shootWeapon()
+{
+    Bullet *bullet = new NormalBullet(m_pos, m_chooseEnemy->pos(), m_damage, m_chooseEnemy, m_game);
+    bullet->move();
+    m_game->addBullet(bullet);
+}
+
+void NormalTower::levelup()
 {
 
 }
@@ -142,6 +155,18 @@ FireTower::~FireTower()
 
 }
 
+void FireTower::shootWeapon()
+{
+    Bullet *bullet = new FireBullet(m_pos, m_chooseEnemy->pos(), m_damage, m_chooseEnemy, m_game, fireattack);
+    bullet->move();
+    m_game->addBullet(bullet);
+}
+
+void FireTower::levelup()
+{
+
+}
+
 IceTower::IceTower(QPoint pos, MainWindow *game, const QPixmap &sprite)
     : Tower(pos, game, sprite)
 {
@@ -153,6 +178,18 @@ IceTower::~IceTower()
 
 }
 
+void IceTower::levelup()
+{
+
+}
+
+void IceTower::shootWeapon()
+{
+    Bullet *bullet = new IceBullet(m_pos, m_chooseEnemy->pos(), m_damage, m_chooseEnemy, m_game, slowspeed);
+    bullet->move();
+    m_game->addBullet(bullet);
+}
+
 LaserTower::LaserTower(QPoint pos, MainWindow *game, const QPixmap &sprite)
 : Tower(pos, game, sprite)
 {
@@ -162,4 +199,16 @@ LaserTower::LaserTower(QPoint pos, MainWindow *game, const QPixmap &sprite)
 LaserTower::~LaserTower()
 {
 
+}
+
+void LaserTower::levelup()
+{
+
+}
+
+void LaserTower::shootWeapon()
+{
+    Bullet *bullet = new LaserBullet(m_pos, m_chooseEnemy->pos(), m_damage, m_chooseEnemy, m_game);
+    bullet->move();
+    m_game->addBullet(bullet);
 }

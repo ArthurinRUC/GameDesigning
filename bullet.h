@@ -17,18 +17,17 @@ class Bullet : QObject
 	Q_PROPERTY(QPoint m_currentPos READ currentPos WRITE setCurrentPos)
 
 public:
-	Bullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target,
-		   MainWindow *game, const QPixmap &sprite = QPixmap(":/image/bullet.png"));
+    Bullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/bullet.png"));
 
 	void draw(QPainter *painter) const;
 	void move();
 	void setCurrentPos(QPoint pos);
 	QPoint currentPos() const;
 
-private slots:
+protected slots:
 	void hitTarget();
 
-private:
+protected:
 	const QPoint	m_startPos;
 	const QPoint	m_targetPos;
 	const QPixmap	m_sprite;
@@ -38,6 +37,37 @@ private:
 	int				m_damage;
 
 	static const QSize ms_fixedSize;
+};
+
+class NormalBullet: public Bullet
+{
+public:
+    NormalBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/normalbullet.png"));
+};
+
+class FireBullet: public Bullet
+{
+public:
+    FireBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, MainWindow *game, int fireattack, const QPixmap &sprite = QPixmap(":/image/firebullet.png"));
+
+private:
+    int fire_attack;
+};
+
+class IceBullet: public Bullet
+{
+public:
+    IceBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, MainWindow *game, int slowspeed, const QPixmap &sprite = QPixmap(":/image/icebullet.png"));
+
+private:
+    int slow_speed;
+};
+
+class LaserBullet: public Bullet
+{
+public:
+    LaserBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/laserbullet.png"));
+
 };
 
 #endif // BULLET_H
