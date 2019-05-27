@@ -18,7 +18,7 @@ public:
     virtual ~Enemy();
 	void draw(QPainter *painter) const;
 	void move();
-    virtual void getDamage(int damage);
+    virtual void getDamage(int bulletKind);
 	void getRemoved();
 	void getAttacked(Tower *attacker);
 	void gotLostSight(Tower *attacker);

@@ -16,10 +16,10 @@ static const int Health_Bar_Width = 20;
 const QSize Enemy::ms_fixedSize(52, 52);
 Enemy::Enemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy.png")*/)
 	: QObject(0)
-	, m_active(false)
+	, m_active(false)//决定painter是否显示enemy对象，不可通过m_active设置enemy暂停移动
 	, m_maxHp(40)
 	, m_currentHp(40)
-	, m_walkingSpeed(1.0)
+	, m_walkingSpeed(1.0)//可以通过将m_walkingSpeed置0达到暂停移动的效果
 	, m_rotationSprite(0.0)
 	, m_pos(startWayPoint->pos())
 	, m_destinationWayPoint(startWayPoint->nextWayPoint())
@@ -37,7 +37,6 @@ void Enemy::doActivate(){
 void Enemy::move(){
 	if (!m_active)
 		return;
-
 	if (collisionWithCircle(m_pos, 1, m_destinationWayPoint->pos(), 1)){
 		// 敌人抵达了一个航点
 		if (m_destinationWayPoint->nextWayPoint()){
@@ -47,12 +46,11 @@ void Enemy::move(){
 		}
 		else{
 			// 表示进入基地
-			m_game->getHpDamage();
+			m_game->getHpDamage();//修改，减少生命数与敌人类型相关？？？
 			m_game->removedEnemy(this);
             return;
 		}
 	}
-
 	// 还在前往航点的路上
 	// 目标航点的坐标
 	QPoint targetPoint = m_destinationWayPoint->pos();
@@ -69,7 +67,7 @@ void Enemy::move(){
 	m_rotationSprite = qRadiansToDegrees(qAtan2(normalized.y(), normalized.x())) + 180;
 }
 void Enemy::draw(QPainter *painter) const{
-	if (!m_active)
+	if (!m_active)//！！！
 		return;
 
 	painter->save();
@@ -106,14 +104,34 @@ void Enemy::getRemoved(){
 	// 通知game,此敌人已经阵亡
 	m_game->removedEnemy(this);
 }
-void Enemy::getDamage(int damage){
-	m_game->audioPlayer()->playSound(LaserShootSound);
-	m_currentHp -= damage;
+void Enemy::getDamage(int bulletKind){
+	m_game->audioPlayer()->playSound(LaserShootSound);//日后是否需要实现不同子弹击中敌人音效不同？？？
+	
+    switch(bulletKind){
+    case 0://NormalBullet
+        m_currentHp -= 10;//注意未来需要与子弹和塔契合
+        break;
+    case 1://FireBullet
+        m_currentHp -= 8;
+        //2个计时器？？？一个用于持续减血，QTimer，connect，（每隔一段时间减一定血 专为火球设计减血函数（考虑减血时长未截止敌人就死亡的情况
+                        //一个用于喊停减血过程（即停止上述计时器的执行
+        break;
+    case 2://IceBullet
+        m_currentHp -= 8;
+        m_walkingSpeed /= 2.0;
+        //计时器恢复原速度QTimer singleshot
+        break;
+    case 3://LaserBullet
+        m_currentHp -= 20;//其他效果？？？
+        break;
+    }
+    
 
 	// 阵亡,需要移除
+    //此处是否需要单独设为一函数，方便实现FireBullet持续减血的效果？？？
 	if (m_currentHp <= 0){
 		m_game->audioPlayer()->playSound(EnemyDestorySound);
-		m_game->awardGold(200);
+		m_game->awardGold(200);//奖金数额与敌人类型相关？？？
 		getRemoved();
 	}
 }

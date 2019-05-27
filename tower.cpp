@@ -18,13 +18,14 @@ Tower::Tower(QPoint pos, MainWindow *game, const QPixmap &sprite, int attackRang
     , m_game(game)
     , m_attackRange(attackRange)
     , m_damage(damage)
-    , m_fireRate(fireRate)
+    , m_fireRate(fireRate)//开火频率
     , m_level(level)
     , m_pos(pos)
     , m_sprite(sprite)
 {
 	m_fireRateTimer = new QTimer(this);
 	connect(m_fireRateTimer, SIGNAL(timeout()), this, SLOT(shootWeapon()));
+    //start(fireRate)开始后，每经过fireRate时间，执行一次shootWeapon()
 }
 
 Tower::~Tower()
