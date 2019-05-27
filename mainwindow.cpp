@@ -34,6 +34,11 @@ MainWindow::MainWindow(QWidget *parent)
 	m_audioPlayer = new AudioPlayer(this);
 	m_audioPlayer->startBGM();
 
+    //每500ms更新一次灼烧状态
+    QTimer *Firetime = new QTimer(this);
+    connect(Firetime, SIGNAL(timeout()), this, SLOT(Fireattack()));
+    Firetime->start(500);
+
     //每30ms发送一个更新信号
 	QTimer *timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(updateMap()));
@@ -45,6 +50,18 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow(){
 	delete ui;
+}
+
+void MainWindow::Fireattack()
+{
+    foreach(Enemy *enemy, m_enemyList)
+    {
+        if (enemy->fire != 0)
+        {
+            enemy->fire--;
+            enemy->getFireDamage(5);
+        }
+    }
 }
 
 void MainWindow::loadTowerPositions(){

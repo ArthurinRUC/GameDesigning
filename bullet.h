@@ -46,7 +46,7 @@ class NormalBullet: public Bullet
     Q_OBJECT
 
 public:
-    NormalBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/normalbullet.png"));
+    NormalBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/bullet.png"));
 };
 
 class FireBullet: public Bullet

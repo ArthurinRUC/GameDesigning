@@ -16,6 +16,7 @@ static const int Health_Bar_Width = 20;
 const QSize Enemy::ms_fixedSize(52, 52);
 Enemy::Enemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy.png")*/)
 	: QObject(0)
+    , fire(100)
 	, m_active(false)//决定painter是否显示enemy对象，不可通过m_active设置enemy暂停移动
 	, m_maxHp(40)
 	, m_currentHp(40)
@@ -96,11 +97,9 @@ void Enemy::draw(QPainter *painter) const{
 	painter->restore();
 }
 void Enemy::getRemoved(){
-	if (m_attackedTowersList.empty())
-		return;
-
-	foreach (Tower *attacker, m_attackedTowersList)
-		attacker->targetKilled();
+    if (!m_attackedTowersList.empty())
+        foreach (Tower *attacker, m_attackedTowersList)
+            attacker->targetKilled();
 	// 通知game,此敌人已经阵亡
 	m_game->removedEnemy(this);
 }
@@ -110,6 +109,7 @@ void Enemy::getDamage(int bulletKind){
     switch(bulletKind){
     case 0://NormalBullet
         m_currentHp -= 10;//注意未来需要与子弹和塔契合
+        fire = 6;
         break;
     case 1://FireBullet
         m_currentHp -= 8;
@@ -126,15 +126,26 @@ void Enemy::getDamage(int bulletKind){
         break;
     }
     
-
-	// 阵亡,需要移除
-    //此处是否需要单独设为一函数，方便实现FireBullet持续减血的效果？？？
-	if (m_currentHp <= 0){
-		m_game->audioPlayer()->playSound(EnemyDestorySound);
-		m_game->awardGold(200);//奖金数额与敌人类型相关？？？
-		getRemoved();
-	}
+    // 阵亡,需要移除
+    canRemove();
 }
+
+void Enemy::canRemove()
+{
+    if (m_currentHp <= 0){
+        m_game->audioPlayer()->playSound(EnemyDestorySound);
+        m_game->awardGold(200);//奖金数额与敌人类型相关？？？
+        getRemoved();
+    }
+}
+void Enemy::getFireDamage(int damage)
+{
+    m_currentHp -= damage;
+
+    // 阵亡,需要移除
+    canRemove();
+}
+
 void Enemy::getAttacked(Tower *attacker){
 	m_attackedTowersList.push_back(attacker);
 }
@@ -157,6 +168,7 @@ Enemy1::Enemy1(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/
     this->m_pos=startWayPoint->pos();
     this->m_destinationWayPoint=startWayPoint->nextWayPoint();
 }
+/*
 void Enemy1::getDamage(int damage){
     m_game->audioPlayer()->playSound(LaserShootSound);
     m_currentHp -= damage;
@@ -166,6 +178,7 @@ void Enemy1::getDamage(int damage){
         getRemoved();
     }
 }
+*/
 
 Enemy2::Enemy2(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy2.png")*/)
     :Enemy(startWayPoint, game,sprite/* = QPixmap(":/image/enemy2.png")*/)
@@ -178,6 +191,7 @@ Enemy2::Enemy2(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/
     this->m_pos=startWayPoint->pos();
     this->m_destinationWayPoint=startWayPoint->nextWayPoint();
 }
+/*
 void Enemy2::getDamage(int damage){
     m_game->audioPlayer()->playSound(LaserShootSound);
     m_currentHp -= damage;
@@ -187,3 +201,4 @@ void Enemy2::getDamage(int damage){
         getRemoved();
     }
 }
+*/

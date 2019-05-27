@@ -40,7 +40,7 @@ void Bullet::hitTarget(){
 	// 后续炮弹再攻击到的敌人就是无效内存区域
 	// 因此先判断下敌人是否还有效
 	if (m_game->enemyList().indexOf(m_target) != -1)
-		m_target->getDamage(m_damage);
+        m_target->getDamage(0);
    //将m_damage替换为表示子弹类型的变量m_kind，是否需要添加表示炮塔等级的变量？（高级炮塔所发射的子弹杀伤力更强
 	m_game->removedBullet(this);
 }

@@ -18,11 +18,15 @@ public:
     virtual ~Enemy();
 	void draw(QPainter *painter) const;
 	void move();
-    virtual void getDamage(int bulletKind);
+    void getDamage(int bulletKind);
 	void getRemoved();
+    void canRemove();
+    void getFireDamage(int damage);
 	void getAttacked(Tower *attacker);
 	void gotLostSight(Tower *attacker);
     QPoint pos() const;
+
+    int             fire;
     //private:
     bool			m_active;
     int				m_maxHp;
@@ -43,14 +47,14 @@ class Enemy1:public Enemy{
     Q_OBJECT
 public:
     Enemy1(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/enemy1.png"));
-    void getDamage(int damage);
+    //void getDamage(int damage);
 };
 
 class Enemy2:public Enemy{
     Q_OBJECT
 public:
     Enemy2(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/enemy2.png"));
-    void getDamage(int damage);
+    //void getDamage(int damage);
 };
 
 #endif // ENEMY_H

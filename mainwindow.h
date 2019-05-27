@@ -29,7 +29,7 @@ public:
 	void removedEnemy(Enemy *enemy);
 	void removedBullet(Bullet *bullet);
 	void addBullet(Bullet *bullet);
-	void awardGold(int gold);
+    void awardGold(int gold);
 
 	AudioPlayer* audioPlayer() const;
 	QList<Enemy *> enemyList() const;
@@ -41,6 +41,7 @@ protected:
 private slots:
 	void updateMap();
 	void gameStart();
+    void Fireattack();
 
 private:
     void loadTowerPositions(); //√
