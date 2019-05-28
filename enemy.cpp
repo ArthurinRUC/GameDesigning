@@ -16,8 +16,10 @@ static const int Health_Bar_Width = 20;
 const QSize Enemy::ms_fixedSize(52, 52);
 Enemy::Enemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy.png")*/)
 	: QObject(0)
-    , fire(10)
-      ,ice(15)//暂时赋值，日后修改
+    , fire(0)
+    , ice(0)//暂时赋值，日后修改
+    , m_normalSpeed(1.0)
+    , m_slowSpeed(1.0)
 	, m_active(false)//决定painter是否显示enemy对象，不可通过m_active设置enemy暂停移动
 	, m_maxHp(40)
 	, m_currentHp(40)
@@ -104,27 +106,28 @@ void Enemy::getRemoved(){
 	// 通知game,此敌人已经阵亡
 	m_game->removedEnemy(this);
 }
-void Enemy::getDamage(int bulletKind){
+void Enemy::getDamage(int bulletKind, int damage){
 	m_game->audioPlayer()->playSound(LaserShootSound);//日后是否需要实现不同子弹击中敌人音效不同？？？
-	
-    switch(bulletKind){
-    case 0://NormalBullet
-        m_currentHp -= 10;//注意未来需要与子弹和塔契合
-        fire = 6;
-        break;
-    case 1://FireBullet
-        m_currentHp -= 8;
-        //2个计时器？？？一个用于持续减血，QTimer，connect，（每隔一段时间减一定血 专为火球设计减血函数（考虑减血时长未截止敌人就死亡的情况
-                        //一个用于喊停减血过程（即停止上述计时器的执行
-        break;
-    case 2://IceBullet
-        m_currentHp -= 8;
-        m_walkingSpeed /= 2.0;
-        //计时器恢复原速度QTimer singleshot
-        break;
-    case 3://LaserBullet
-        m_currentHp -= 20;//其他效果？？？
-        break;
+    m_currentHp -= damage;
+
+    switch(bulletKind)
+    {
+        case 0://NormalBullet
+            break;
+
+        case 1://FireBullet
+            fire = 30;
+            fireattack = 1;
+            ice = 15;
+            m_slowSpeed = m_normalSpeed * 0.5;
+            break;
+
+        case 2://IceBullet
+            ice = 15;
+            break;
+
+        case 3://LaserBullet
+            break;
     }
     
     // 阵亡,需要移除
@@ -161,11 +164,13 @@ QPoint Enemy::pos() const{
 Enemy1::Enemy1(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy1.png")*/)
     :Enemy(startWayPoint, game,sprite/* = QPixmap(":/image/enemy1.png")*/)
 {
-    this->m_active=false;
-    this->m_maxHp=40;
-    this->m_currentHp=40;
-    this->m_walkingSpeed=1.0;
-    this->m_rotationSprite=0.0;
+    this->m_active = false;
+    this->m_maxHp = 40;
+    this->m_currentHp = 40;
+    this->m_walkingSpeed= 1.0;
+    this->m_normalSpeed = 1.0;
+    this->m_slowSpeed = 1.0;
+    this->m_rotationSprite = 0.0;
     this->m_pos=startWayPoint->pos();
     this->m_destinationWayPoint=startWayPoint->nextWayPoint();
 }
@@ -185,10 +190,12 @@ Enemy2::Enemy2(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/
     :Enemy(startWayPoint, game,sprite/* = QPixmap(":/image/enemy2.png")*/)
 {
     this->m_active=false;
-    this->m_maxHp=80;
-    this->m_currentHp=80;
-    this->m_walkingSpeed=2.0;
-    this->m_rotationSprite=0.0;
+    this->m_maxHp = 80;
+    this->m_currentHp = 80;
+    this->m_walkingSpeed = 2.0;
+    this->m_normalSpeed = 2.0;
+    this->m_slowSpeed = 2.0;
+    this->m_rotationSprite = 0.0;
     this->m_pos=startWayPoint->pos();
     this->m_destinationWayPoint=startWayPoint->nextWayPoint();
 }

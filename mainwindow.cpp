@@ -34,10 +34,10 @@ MainWindow::MainWindow(QWidget *parent)
 	m_audioPlayer = new AudioPlayer(this);
 	m_audioPlayer->startBGM();
 
-    //每500ms更新一次灼烧状态
+    //每100ms更新一次灼烧状态
     QTimer *Firetime = new QTimer(this);
     connect(Firetime, SIGNAL(timeout()), this, SLOT(FireIceattack()));
-    Firetime->start(500);
+    Firetime->start(100);
 
     //每30ms发送一个更新信号
 	QTimer *timer = new QTimer(this);
@@ -57,12 +57,15 @@ void MainWindow::FireIceattack()
     foreach(Enemy *enemy, m_enemyList){
         if (enemy->fire != 0){
             enemy->fire--;
-            enemy->getFireDamage(5);
+            enemy->getFireDamage(enemy->fireattack);
         }
         if(enemy->ice != 0){
-            if(enemy->ice ==15) enemy->m_walkingSpeed /= 2.0;//ice是否需要单独变量规定初值（不同敌人特性），日后处理
-            enemy->ice --;
-            if(enemy->ice ==0) enemy->m_walkingSpeed *= 4.0;//为了效果对比明显就暂时*4
+            if(enemy->ice == 15)
+                enemy->m_walkingSpeed = enemy->m_slowSpeed;
+                //ice是否需要单独变量规定初值（不同敌人特性），日后处理
+            enemy->ice--;
+            if(enemy->ice == 0)
+                enemy->m_walkingSpeed = enemy->m_normalSpeed;
         }
     }
 
