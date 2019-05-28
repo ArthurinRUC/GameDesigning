@@ -16,7 +16,8 @@ static const int Health_Bar_Width = 20;
 const QSize Enemy::ms_fixedSize(52, 52);
 Enemy::Enemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy.png")*/)
 	: QObject(0)
-    , fire(100)
+    , fire(10)
+      ,ice(15)//暂时赋值，日后修改
 	, m_active(false)//决定painter是否显示enemy对象，不可通过m_active设置enemy暂停移动
 	, m_maxHp(40)
 	, m_currentHp(40)

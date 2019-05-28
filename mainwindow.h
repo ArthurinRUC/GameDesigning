@@ -41,7 +41,7 @@ protected:
 private slots:
 	void updateMap();
 	void gameStart();
-    void Fireattack();
+    void FireIceattack();
 
 private:
     void loadTowerPositions(); //√

@@ -27,6 +27,7 @@ public:
     QPoint pos() const;
 
     int             fire;
+    int             ice;
     //private:
     bool			m_active;
     int				m_maxHp;
