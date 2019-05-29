@@ -17,5 +17,7 @@
         <file>GameMap/choose1.jpg</file>
         <file>GameMap/Title.jpg</file>
         <file>GameMap/choose2.jpg</file>
+        <file>GameMap/easyMap.jpg</file>
+        <file>GameMap/hardMap.jpg</file>
     </qresource>
 </RCC>

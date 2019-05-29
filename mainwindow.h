@@ -40,9 +40,9 @@ protected:
     void mousePressEvent(QMouseEvent *); //√
 
 private slots:
-    void back();
-    //void startEasy();
-   // void startHard();
+    void back();    // 来到主界面
+    void startEasy();
+    void startHard();
 
     void updateMap(); //原来的槽
     void gameStart(); //原来的槽

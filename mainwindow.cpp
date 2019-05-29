@@ -36,6 +36,11 @@ MainWindow::MainWindow(QWidget *parent)
     scene = new tStartScreen(this);
     connect(this->scene, SIGNAL(toTitle()), this, SLOT(back()));
 
+
+
+
+
+
     // 以下为原有游戏的代码
 	preLoadWavesInfo();
     loadTowerPositions(); //调用位置函数
@@ -66,6 +71,23 @@ void MainWindow::back()
     connect(this->scene, SIGNAL(toEasy()), this, SLOT(startEasy()));
     connect(this->scene, SIGNAL(toHard()), this, SLOT(startHard()));
 }
+
+void MainWindow::startEasy()
+{
+    this->setFixedSize(900, 600);
+    delete scene;                            //remeber to delete !!!
+    scene = new easyScene(this);
+    connect(this->scene, SIGNAL(toTitle()), this, SLOT(back()));
+}
+
+void MainWindow::startHard()
+{
+    this->setFixedSize(900, 600);
+    delete scene;
+    scene = new hardScene(this);
+    connect(this->scene, SIGNAL(toTitle()), this, SLOT(back()));
+}
+
 
 
 

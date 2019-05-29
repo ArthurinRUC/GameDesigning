@@ -59,16 +59,16 @@ tStartScene::tStartScene(QWidget* parent) : tScene(parent)
     this->show();
     btn1->setStyleSheet("QLabel{border: 5px solid #000000;} QLabel:hover{border:10px solid #EE0000;}");
     btn2->setStyleSheet("QLabel{border: 5px solid #000000;} QLabel:hover{border:10px solid #EE0000;}");
-    btn1->setMovie(lawn);
-    lawn->start();
-    btn2->setMovie(dark);
-    dark->start();
+    btn1->setMovie(easy);
+    easy->start();
+    btn2->setMovie(hard);
+    hard->start();
     btn1->setGeometry(120, 205, 180, 180);
     btn2->setGeometry(500, 205, 180, 180);
     btn1->show();
     btn2->show();
-    title->setText("Scene Selection");
-    title->setGeometry(290, 0, 240, 100);
+    title->setText("choose a level");
+    title->setGeometry(250, 0, 300, 100);
     title->setFont(QFont("Consolas", 18));
     title->show();
 
@@ -99,8 +99,8 @@ tStartScene::tStartScene(QWidget* parent) : tScene(parent)
 tStartScene::~tStartScene()
 {
     delete this->background;
-    delete this->lawn;
-    delete this->dark;
+    delete this->easy;
+    delete this->hard;
     delete this->btn1;
     delete this->btn2;
     delete this->title;
@@ -117,4 +117,58 @@ void tStartScene::mousePressEvent(QMouseEvent *event)
     {
         emit toHard();
     }
+}
+
+easyScene::easyScene(QWidget* parent) : tScene(parent)
+{
+    this->setGeometry(-120, 0, 1400, 600);
+    //this->cellSize = QPoint(81, 100);
+    //this->rect = QRect(250, 85, 729, 500);
+    this->setMovie(this->background);
+    this->background->start();
+    this->show();
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(onTimer()));
+    timer->start(20);
+    //this->uiSetup();
+}
+
+
+easyScene::~easyScene()
+{
+    delete this->background;
+}
+
+
+void easyScene::leave()
+{
+    emit toTitle();
+}
+
+
+// 以下是对复杂地图的设计
+hardScene::hardScene(QWidget* parent) : tScene(parent)
+{
+    this->setGeometry(-120, 0, 1400, 600);
+    //this->cellSize = QPoint(81, 100);
+    //this->rect = QRect(250, 85, 729, 500);
+    this->setMovie(this->background);
+    this->background->start();
+    this->show();
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(onTimer()));
+    timer->start(20);
+    //this->uiSetup();
+}
+
+hardScene::~hardScene()
+{
+    delete this->background;
+}
+
+
+
+void hardScene::leave()
+{
+    emit toTitle();
 }
