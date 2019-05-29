@@ -74,7 +74,7 @@ void MainWindow::back()
 
 void MainWindow::startEasy()
 {
-    this->setFixedSize(900, 600);
+    this->setFixedSize(800, 600);
     delete scene;                            //remeber to delete !!!
     scene = new easyScene(this);
     connect(this->scene, SIGNAL(toTitle()), this, SLOT(back()));
@@ -82,7 +82,7 @@ void MainWindow::startEasy()
 
 void MainWindow::startHard()
 {
-    this->setFixedSize(900, 600);
+    this->setFixedSize(800, 600);
     delete scene;
     scene = new hardScene(this);
     connect(this->scene, SIGNAL(toTitle()), this, SLOT(back()));

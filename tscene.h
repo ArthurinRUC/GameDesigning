@@ -41,6 +41,7 @@ private slots:
     void onTimer();
 };
 
+// 下面这个类设置选择的界面
 class tStartScene : public tScene
 {
     Q_OBJECT
@@ -69,8 +70,8 @@ public:
 protected:
     //void keyPressEvent(QKeyEvent *event);
 private:
-    QMovie* background = new QMovie(":/GameMap/easyMap.jpg");
-    QPushButton* exit = new QPushButton(this);
+    QMovie* background = new QMovie(":/GameMap/easyMap2.jpg");
+    //QPushButton* exit = new QPushButton(this);
     //QPoint cell;
     //void uiSetup();
 private slots:
@@ -87,8 +88,8 @@ public:
 protected:
     //void keyPressEvent(QKeyEvent *event); //僵尸的出现
 private:
-    QMovie* background = new QMovie(":/GameMap/hardMap.jpg");
-    QPushButton* exit = new QPushButton(this);
+    QMovie* background = new QMovie(":/GameMap/hardMap2.jpg");
+    //QPushButton* exit = new QPushButton(this);
     //QPoint cell;
     //void uiSetup(); //在PVZ中用来设计僵尸的出现等
 private slots:

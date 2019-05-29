@@ -121,7 +121,7 @@ void tStartScene::mousePressEvent(QMouseEvent *event)
 
 easyScene::easyScene(QWidget* parent) : tScene(parent)
 {
-    this->setGeometry(-120, 0, 1400, 600);
+    this->setGeometry(0, 0, 800, 600);
     //this->cellSize = QPoint(81, 100);
     //this->rect = QRect(250, 85, 729, 500);
     this->setMovie(this->background);
@@ -149,7 +149,7 @@ void easyScene::leave()
 // 以下是对复杂地图的设计
 hardScene::hardScene(QWidget* parent) : tScene(parent)
 {
-    this->setGeometry(-120, 0, 1400, 600);
+    this->setGeometry(0, 0, 1400, 600);
     //this->cellSize = QPoint(81, 100);
     //this->rect = QRect(250, 85, 729, 500);
     this->setMovie(this->background);
