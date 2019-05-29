@@ -135,7 +135,21 @@ NormalTower::~NormalTower()
 
 void NormalTower::shootWeapon()
 {
-    Bullet *bullet = new NormalBullet(m_pos, m_chooseEnemy->pos(), m_damage, m_chooseEnemy, m_game);
+    static int t = 0;
+    t++;
+    Bullet *bullet;
+    switch(t%3)
+    {
+    case 0:
+        bullet = new NormalBullet(m_pos, m_chooseEnemy->pos(), m_damage, m_chooseEnemy, m_game);
+        break;
+    case 1:
+        bullet = new FireBullet(m_pos, m_chooseEnemy->pos(), m_damage, m_chooseEnemy, m_game, 1, 1);
+        break;
+    case 2:
+        bullet = new IceBullet(m_pos, m_chooseEnemy->pos(), m_damage, m_chooseEnemy, m_game, 2, 0.5);
+        break;
+    }
     bullet->move();
     m_game->addBullet(bullet);
 }

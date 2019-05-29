@@ -5,6 +5,7 @@
 #include <QPoint>
 #include <QSize>
 #include <QPixmap>
+#include "bullet.h"
 
 class WayPoint;
 class QPainter;
@@ -18,7 +19,7 @@ public:
     virtual ~Enemy();
 	void draw(QPainter *painter) const;
 	void move();
-    void getDamage(int bulletKind, int damage);
+    void getDamage(Bullet *bullet);
 	void getRemoved();
     void canRemove();
     void getFireDamage(int damage);
