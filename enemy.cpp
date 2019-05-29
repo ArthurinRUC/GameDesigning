@@ -106,24 +106,23 @@ void Enemy::getRemoved(){
 	// 通知game,此敌人已经阵亡
 	m_game->removedEnemy(this);
 }
-void Enemy::getDamage(int bulletKind, int damage){
+void Enemy::getDamage(Bullet *bullet){
 	m_game->audioPlayer()->playSound(LaserShootSound);//日后是否需要实现不同子弹击中敌人音效不同？？？
-    m_currentHp -= damage;
+    m_currentHp -= bullet->m_damage;
 
-    switch(bulletKind)
+    switch(bullet->bulletKind)
     {
         case 0://NormalBullet
             break;
 
         case 1://FireBullet
             fire = 30;
-            fireattack = 1;
-            ice = 15;
-            m_slowSpeed = m_normalSpeed * 0.5;
+            fireattack = bullet->fire_attack;
             break;
 
         case 2://IceBullet
             ice = 15;
+            m_slowSpeed = m_normalSpeed * bullet->slow_speed;
             break;
 
         case 3://LaserBullet

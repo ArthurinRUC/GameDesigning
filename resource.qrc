@@ -13,5 +13,8 @@
         <file>config/Waves.plist</file>
         <file>image/enemy1.png</file>
         <file>image/enemy2.png</file>
+        <file>image/firebullet.png</file>
+        <file>image/icebullet.png</file>
+        <file>image/normalbullet.png</file>
     </qresource>
 </RCC>
