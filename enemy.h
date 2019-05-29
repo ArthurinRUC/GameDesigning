@@ -15,7 +15,7 @@ class Tower;
 class Enemy : public QObject{
 	Q_OBJECT
 public:
-	Enemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/enemy.png"));
+    Enemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/enemy1.png"));
     virtual ~Enemy();
 	void draw(QPainter *painter) const;
 	void move();
@@ -35,6 +35,8 @@ public:
     int				m_maxHp;
     int				m_currentHp;
     int             HPdamage;//对“萝卜”的伤害
+    qreal           fireattackLevel;
+    qreal           antiSlowspeed;
     qreal           m_normalSpeed; //正常速度
     qreal             fireattack; //每0.5秒钟受到多少火焰伤害
     qreal           m_slowSpeed; //寒冰状态的速度
@@ -71,7 +73,7 @@ public:
 class fastEnemy:public Enemy{
     Q_OBJECT
 public:
-    fastEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/enemy5.png"));
+    fastEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/enemy4.png"));
 };
 
 class bossEnemy:public Enemy{

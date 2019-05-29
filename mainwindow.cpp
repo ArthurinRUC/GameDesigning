@@ -277,8 +277,24 @@ bool MainWindow::loadWave(){
 		int spawnTime = dict.value("spawnTime").toInt();
 
         Enemy *enemy;
-        if(i%2==0) enemy = new Enemy1(startWayPoint, this);
-        else enemy=new Enemy2(startWayPoint, this);
+        int j=i%5;
+        switch(j){
+            case 0:
+                enemy = new normalEnemy(startWayPoint, this);
+                break;
+            case 1:
+                enemy=new iceEnemy(startWayPoint, this);
+                break;
+            case 2:
+                enemy=new fireEnemy(startWayPoint, this);
+                break;
+            case 3:
+                enemy=new fastEnemy(startWayPoint, this);
+                break;
+            case 4:
+                enemy=new bossEnemy(startWayPoint, this);
+                break;
+        }
 		m_enemyList.push_back(enemy);
 		QTimer::singleShot(spawnTime, enemy, SLOT(doActivate()));
 	}

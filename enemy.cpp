@@ -14,13 +14,15 @@
 //血条长度
 static const int Health_Bar_Width = 20;
 const QSize Enemy::ms_fixedSize(52, 52);
-Enemy::Enemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy.png")*/)
+Enemy::Enemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy1.png")*/)
     : QObject(0)
     , m_active(false)//决定painter是否显示enemy对象，不可通过m_active设置enemy暂停移动
     , fire(0)
     , ice(0)//暂时赋值，日后修改
 	, m_maxHp(40)
-	, m_currentHp(40)
+    , m_currentHp(40)
+    , fireattackLevel(1.0)
+    , antiSlowspeed(1.0)
     , m_normalSpeed(1.0)
     , m_slowSpeed(1.0)
     , m_walkingSpeed(1.0)//可以通过将m_walkingSpeed置0达到暂停移动的效果
@@ -114,17 +116,14 @@ void Enemy::getDamage(Bullet *bullet){
     {
         case 0://NormalBullet
             break;
-
         case 1://FireBullet
-            fire = 30;
-            fireattack = bullet->fire_attack;
+            fire = fireLevel;
+            fireattack = bullet->fire_attack*fireattackLevel;
             break;
-
         case 2://IceBullet
-            ice = 15;
-            m_slowSpeed = m_normalSpeed * bullet->slow_speed;
+            ice = iceLevel;
+            m_slowSpeed = m_normalSpeed * bullet->slow_speed*antiSlowspeed;
             break;
-
         case 3://LaserBullet
             break;
     }
@@ -163,8 +162,6 @@ QPoint Enemy::pos() const{
 normalEnemy::normalEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy1.png")*/)
     :Enemy(startWayPoint, game,sprite/* = QPixmap(":/image/enemy1.png")*/)
 {
-    this->m_slowSpeed =m_normalSpeed*0.5;
-    this->fireattack=1.0;
     this->fireLevel=15;
     this->iceLevel=15;
     this->HPdamage=1;
@@ -178,8 +175,7 @@ iceEnemy::iceEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &spr
 {
     this->m_maxHp = 45;
     this->m_currentHp = 45;
-    this->m_slowSpeed = m_normalSpeed*0.8;
-    this->fireattack=1.0;
+    this->antiSlowspeed=2.0;
     this->fireLevel=20;
     this->iceLevel=10;
     this->HPdamage=1;
@@ -193,8 +189,8 @@ fireEnemy::fireEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &s
 {
     this->m_maxHp = 50;
     this->m_currentHp = 50;
-    this->m_slowSpeed = m_normalSpeed*0.4;
-    this->fireattack=0.8;
+    this->antiSlowspeed=1.2;
+    this->fireattackLevel=0.8;
     this->fireLevel=10;
     this->iceLevel=20;
     this->HPdamage=2;
@@ -209,8 +205,8 @@ fastEnemy::fastEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &s
     this->m_maxHp = 40;
     this->m_currentHp = 40;
     this->m_normalSpeed=2.5;
-    this->m_slowSpeed = m_normalSpeed*0.6;
-    this->fireattack=1.0;
+    this->m_walkingSpeed=2.5;
+    this->antiSlowspeed=2.0;
     this->fireLevel=15;
     this->iceLevel=15;
     this->HPdamage=2;
@@ -225,7 +221,8 @@ bossEnemy::bossEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &s
     this->m_maxHp = 80;
     this->m_currentHp = 80;
     this->m_normalSpeed=1.5;
-    this->m_slowSpeed = m_normalSpeed*0.5;
+    this->m_walkingSpeed=1.5;
+    this->antiSlowspeed=1.5;
     this->fireattack=1.0;
     this->fireLevel=10;
     this->iceLevel=10;
