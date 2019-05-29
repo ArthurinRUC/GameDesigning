@@ -116,10 +116,6 @@ void Tower::lostSightOfEnemy()
 	m_rotationSprite = 0.0;
 }
 
-void Tower::levelup()
-{
-
-}
 
 NormalTower::NormalTower(QPoint pos, MainWindow *game, const QPixmap &sprite)
     : Tower(pos, game, sprite)
@@ -156,7 +152,10 @@ void NormalTower::shootWeapon()
 
 void NormalTower::levelup()
 {
-
+    if (m_level == 3) //3级为最高级
+        return;
+    m_level++;
+    m_damage += 5; //每升一级子弹加5点伤害
 }
 
 FireTower::FireTower(QPoint pos, MainWindow *game, const QPixmap &sprite)
@@ -179,7 +178,11 @@ void FireTower::shootWeapon()
 
 void FireTower::levelup()
 {
-
+    if (m_level == 3) //3级为最高级
+        return;
+    m_level++;
+    m_damage += 5; //每升一级，火焰子弹加5点伤害
+    fireattack += 1; //每升一级，火焰子弹加1点灼烧伤害
 }
 
 IceTower::IceTower(QPoint pos, MainWindow *game, const QPixmap &sprite)
@@ -195,7 +198,11 @@ IceTower::~IceTower()
 
 void IceTower::levelup()
 {
-
+    if (m_level == 3) //3级为最高级
+        return;
+    m_level++;
+    m_damage += 5; //每升一级，寒冰子弹加5点伤害
+    slowspeed -= 0.1; //每升一级，寒冰子弹增加10%减速效果
 }
 
 void IceTower::shootWeapon()
@@ -218,7 +225,10 @@ LaserTower::~LaserTower()
 
 void LaserTower::levelup()
 {
-
+    if (m_level == 3) //3级为最高级
+        return;
+    m_level++;
+    m_damage += 10; //每升一级，激光子弹加10点伤害
 }
 
 void LaserTower::shootWeapon()
