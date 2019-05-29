@@ -18,6 +18,18 @@ public:
 
     QTimer* timer = nullptr;
 
+    QLabel* MoneyFront = new QLabel(this);
+    QLabel* MoneyBar = new QLabel(this);
+    QMovie* moneybar = new QMovie(":/image/info_bar.png");
+
+    QLabel* LifeFront = new QLabel(this);
+    QLabel* LifeBar = new QLabel(this);
+    QMovie* lifebar = new QMovie(":/image/info_bar.png");
+
+    QLabel* WaveFront = new QLabel(this);
+    QLabel* WaveBar = new QLabel(this);
+    QMovie* wavebar = new QMovie(":image/info_bar.png");
+
 
 signals:
     void toTitle();
@@ -73,7 +85,7 @@ private:
     QMovie* background = new QMovie(":/GameMap/easyMap2.jpg");
     //QPushButton* exit = new QPushButton(this);
     //QPoint cell;
-    //void uiSetup();
+    void uiSetup();
 private slots:
     //void onTimer();
     void leave(); // emit toTitle();

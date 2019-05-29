@@ -21,5 +21,6 @@
         <file>GameMap/hardMap.jpg</file>
         <file>GameMap/easyMap2.jpg</file>
         <file>GameMap/hardMap2.jpg</file>
+        <file>image/info_bar.png</file>
     </qresource>
 </RCC>

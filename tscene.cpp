@@ -130,13 +130,33 @@ easyScene::easyScene(QWidget* parent) : tScene(parent)
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(onTimer()));
     timer->start(20);
-    //this->uiSetup();
+    this->uiSetup();
 }
 
+void easyScene::uiSetup()
+{
+    MoneyBar->setGeometry(120, 400, 300, 200);
+    moneybar->start();
+    MoneyBar->show();
+    MoneyBar->setMovie(moneybar);
+
+
+}
 
 easyScene::~easyScene()
 {
     delete this->background;
+    if (!(this->MoneyFront == nullptr)) delete this->MoneyFront;
+    if (!(this->MoneyBar == nullptr)) delete this->MoneyBar;
+    if (!(this->moneybar == nullptr))delete this->moneybar;
+
+    if (!(this->LifeFront == nullptr)) delete this->LifeFront;
+    if (!(this->LifeBar == nullptr)) delete this->LifeBar;
+    if (!(this->lifebar == nullptr))delete this->lifebar;
+
+    if (!(this->WaveFront == nullptr)) delete this->WaveFront;
+    if (!(this->WaveBar == nullptr)) delete this->WaveBar;
+    if (!(this->wavebar == nullptr))delete this->wavebar;
 }
 
 
