@@ -25,7 +25,7 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
 	~MainWindow();
 
-	void getHpDamage(int damage = 1);
+    void getHpDamage(int damage = 1);//敌人属性
 	void removedEnemy(Enemy *enemy);
 	void removedBullet(Bullet *bullet);
 	void addBullet(Bullet *bullet);

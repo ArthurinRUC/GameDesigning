@@ -15,15 +15,15 @@
 static const int Health_Bar_Width = 20;
 const QSize Enemy::ms_fixedSize(52, 52);
 Enemy::Enemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy.png")*/)
-	: QObject(0)
+    : QObject(0)
+    , m_active(false)//决定painter是否显示enemy对象，不可通过m_active设置enemy暂停移动
     , fire(0)
     , ice(0)//暂时赋值，日后修改
-    , m_normalSpeed(1.0)
-    , m_slowSpeed(1.0)
-	, m_active(false)//决定painter是否显示enemy对象，不可通过m_active设置enemy暂停移动
 	, m_maxHp(40)
 	, m_currentHp(40)
-	, m_walkingSpeed(1.0)//可以通过将m_walkingSpeed置0达到暂停移动的效果
+    , m_normalSpeed(1.0)
+    , m_slowSpeed(1.0)
+    , m_walkingSpeed(1.0)//可以通过将m_walkingSpeed置0达到暂停移动的效果
 	, m_rotationSprite(0.0)
 	, m_pos(startWayPoint->pos())
 	, m_destinationWayPoint(startWayPoint->nextWayPoint())
@@ -117,8 +117,8 @@ void Enemy::getDamage(int bulletKind, int damage){
 
         case 1://FireBullet
             fire = 30;
-            fireattack = 1;
-            ice = 15;
+            fireattack = 1;//子类各自属性
+            ice = 15;//+=
             m_slowSpeed = m_normalSpeed * 0.5;
             break;
 
@@ -161,52 +161,77 @@ QPoint Enemy::pos() const{
 	return m_pos;
 }
 
-Enemy1::Enemy1(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy1.png")*/)
+normalEnemy::normalEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy1.png")*/)
     :Enemy(startWayPoint, game,sprite/* = QPixmap(":/image/enemy1.png")*/)
 {
-    this->m_active = false;
-    this->m_maxHp = 40;
-    this->m_currentHp = 40;
-    this->m_walkingSpeed= 1.0;
-    this->m_normalSpeed = 1.0;
-    this->m_slowSpeed = 1.0;
+    this->m_slowSpeed =m_normalSpeed*0.5;
+    this->fireattack=1.0;
+    this->fireLevel=15;
+    this->iceLevel=15;
+    this->HPdamage=1;
     this->m_rotationSprite = 0.0;
     this->m_pos=startWayPoint->pos();
     this->m_destinationWayPoint=startWayPoint->nextWayPoint();
 }
-/*
-void Enemy1::getDamage(int damage){
-    m_game->audioPlayer()->playSound(LaserShootSound);
-    m_currentHp -= damage;
-    if (m_currentHp <= 0){//敌人阵亡,需要移除
-        m_game->audioPlayer()->playSound(EnemyDestorySound);
-        m_game->awardGold(200);//奖励金钱
-        getRemoved();
-    }
-}
-*/
 
-Enemy2::Enemy2(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy2.png")*/)
+iceEnemy::iceEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy2.png")*/)
     :Enemy(startWayPoint, game,sprite/* = QPixmap(":/image/enemy2.png")*/)
 {
-    this->m_active=false;
-    this->m_maxHp = 80;
-    this->m_currentHp = 80;
-    this->m_walkingSpeed = 2.0;
-    this->m_normalSpeed = 2.0;
-    this->m_slowSpeed = 2.0;
+    this->m_maxHp = 45;
+    this->m_currentHp = 45;
+    this->m_slowSpeed = m_normalSpeed*0.8;
+    this->fireattack=1.0;
+    this->fireLevel=20;
+    this->iceLevel=10;
+    this->HPdamage=1;
     this->m_rotationSprite = 0.0;
     this->m_pos=startWayPoint->pos();
     this->m_destinationWayPoint=startWayPoint->nextWayPoint();
 }
-/*
-void Enemy2::getDamage(int damage){
-    m_game->audioPlayer()->playSound(LaserShootSound);
-    m_currentHp -= damage;
-    if (m_currentHp <= 0){//敌人阵亡,需要移除
-        m_game->audioPlayer()->playSound(EnemyDestorySound);
-        m_game->awardGold(400);//奖励金钱
-        getRemoved();
-    }
+
+fireEnemy::fireEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy3.png")*/)
+    :Enemy(startWayPoint, game,sprite/* = QPixmap(":/image/enemy3.png")*/)
+{
+    this->m_maxHp = 50;
+    this->m_currentHp = 50;
+    this->m_slowSpeed = m_normalSpeed*0.4;
+    this->fireattack=0.8;
+    this->fireLevel=10;
+    this->iceLevel=20;
+    this->HPdamage=2;
+    this->m_rotationSprite = 0.0;
+    this->m_pos=startWayPoint->pos();
+    this->m_destinationWayPoint=startWayPoint->nextWayPoint();
 }
-*/
+
+fastEnemy::fastEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy4.png")*/)
+    :Enemy(startWayPoint, game,sprite/* = QPixmap(":/image/enemy4.png")*/)
+{
+    this->m_maxHp = 40;
+    this->m_currentHp = 40;
+    this->m_normalSpeed=2.5;
+    this->m_slowSpeed = m_normalSpeed*0.6;
+    this->fireattack=1.0;
+    this->fireLevel=15;
+    this->iceLevel=15;
+    this->HPdamage=2;
+    this->m_rotationSprite = 0.0;
+    this->m_pos=startWayPoint->pos();
+    this->m_destinationWayPoint=startWayPoint->nextWayPoint();
+}
+
+bossEnemy::bossEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy5.png")*/)
+    :Enemy(startWayPoint, game,sprite/* = QPixmap(":/image/enemy5.png")*/)
+{
+    this->m_maxHp = 80;
+    this->m_currentHp = 80;
+    this->m_normalSpeed=1.5;
+    this->m_slowSpeed = m_normalSpeed*0.5;
+    this->fireattack=1.0;
+    this->fireLevel=10;
+    this->iceLevel=10;
+    this->HPdamage=3;
+    this->m_rotationSprite = 0.0;
+    this->m_pos=startWayPoint->pos();
+    this->m_destinationWayPoint=startWayPoint->nextWayPoint();
+}

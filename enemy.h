@@ -26,16 +26,18 @@ public:
 	void gotLostSight(Tower *attacker);
     QPoint pos() const;
 
-    int             fire; //受到火焰伤害？
-    int             fireattack; //每0.5秒钟受到多少火焰伤害
-    int             ice; //受到减速？
-    qreal           m_normalSpeed; //正常速度
-    qreal           m_slowSpeed; //寒冰状态的速度
-    //private:
-    bool			m_active;
+    bool            m_active;
+    int             fire; //当前是否受到火焰伤害
+    int             fireLevel;//对火焰的抗性
+    int             ice; //
+    int             iceLevel;//对冰雪的抗性
     int				m_maxHp;
     int				m_currentHp;
-    qreal			m_walkingSpeed;
+    int             HPdamage;//对“萝卜”的伤害
+    qreal           m_normalSpeed; //正常速度
+    qreal             fireattack; //每0.5秒钟受到多少火焰伤害
+    qreal           m_slowSpeed; //寒冰状态的速度
+    qreal			m_walkingSpeed;//当前行走速度
     qreal			m_rotationSprite;
     QPoint			m_pos;
     WayPoint *		m_destinationWayPoint;
@@ -47,18 +49,34 @@ public slots:
 	void doActivate();
 };
 
-class Enemy1:public Enemy{
+class normalEnemy:public Enemy{
     Q_OBJECT
 public:
-    Enemy1(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/enemy1.png"));
-    //void getDamage(int damage);
+    normalEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/enemy1.png"));
 };
 
-class Enemy2:public Enemy{
+class iceEnemy:public Enemy{
     Q_OBJECT
 public:
-    Enemy2(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/enemy2.png"));
-    //void getDamage(int damage);
+    iceEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/enemy2.png"));
+};
+
+class fireEnemy:public Enemy{
+    Q_OBJECT
+public:
+    fireEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/enemy3.png"));
+};
+
+class fastEnemy:public Enemy{
+    Q_OBJECT
+public:
+    fastEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/enemy5.png"));
+};
+
+class bossEnemy:public Enemy{
+    Q_OBJECT
+public:
+    bossEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/enemy5.png"));
 };
 
 #endif // ENEMY_H

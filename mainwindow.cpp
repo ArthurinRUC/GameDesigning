@@ -62,7 +62,6 @@ void MainWindow::FireIceattack()
         if(enemy->ice != 0){
             if(enemy->ice == 15)
                 enemy->m_walkingSpeed = enemy->m_slowSpeed;
-                //ice是否需要单独变量规定初值（不同敌人特性），日后处理
             enemy->ice--;
             if(enemy->ice == 0)
                 enemy->m_walkingSpeed = enemy->m_normalSpeed;
