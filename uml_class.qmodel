@@ -72,9 +72,9 @@
                          <object>{ca08d413-d9ea-4b1e-801b-ff8ce7f976dd}</object>
                          <context>GameDesigning</context>
                          <name>Bullet</name>
-                         <pos>x:1235;y:650</pos>
+                         <pos>x:1340;y:1315</pos>
                          <rect>x:-370;y:-125;w:740;h:250</rect>
-                         <visual-role>5</visual-role>
+                         <visual-role>9</visual-role>
                         </DObject>
                        </base-DObject>
                        <show-all-members>true</show-all-members>
@@ -94,7 +94,7 @@
                          <object>{159e4940-9b75-4c5c-89e8-271321700f3a}</object>
                          <context>GameDesigning</context>
                          <name>Enemy</name>
-                         <pos>x:205;y:1125</pos>
+                         <pos>x:595;y:1320</pos>
                          <rect>x:-285;y:-245;w:570;h:490</rect>
                          <visual-role>6</visual-role>
                         </DObject>
@@ -160,8 +160,8 @@
                          <object>{1b5ab547-a8ab-4b8a-97d0-11d9b4eebfa4}</object>
                          <context>GameDesigning</context>
                          <name>Tower</name>
-                         <pos>x:115;y:680</pos>
-                         <rect>x:-245;y:-175;w:490;h:350</rect>
+                         <pos>x:690;y:850</pos>
+                         <rect>x:-440;y:-190;w:880;h:380</rect>
                          <visual-role>5</visual-role>
                         </DObject>
                        </base-DObject>
@@ -182,9 +182,10 @@
                          <object>{46fcdaca-c4a5-4c25-ba37-e7f06383b1f6}</object>
                          <context>GameDesigning</context>
                          <name>TowerPosition</name>
-                         <pos>x:595;y:625</pos>
+                         <pos>x:680;y:520</pos>
                          <rect>x:-225;y:-105;w:450;h:210</rect>
                          <visual-role>5</visual-role>
+                         <visual-role2>5</visual-role2>
                         </DObject>
                        </base-DObject>
                        <show-all-members>true</show-all-members>
@@ -204,7 +205,7 @@
                          <object>{92d0734a-49cc-4fb0-bb10-c4900f496526}</object>
                          <context>GameDesigning</context>
                          <name>WayPoint</name>
-                         <pos>x:630;y:960</pos>
+                         <pos>x:-40;y:1325</pos>
                          <rect>x:-120;y:-85;w:240;h:170</rect>
                          <visual-role>8</visual-role>
                         </DObject>
@@ -225,11 +226,13 @@
                          </base-DElement>
                          <object>{64f4c690-331f-4668-ba5a-a68d9ec573b0}</object>
                          <name>iceEnemy</name>
-                         <pos>x:80;y:1450</pos>
-                         <rect>x:-40;y:-30;w:80;h:60</rect>
-                         <visual-role>0</visual-role>
+                         <pos>x:255;y:1725</pos>
+                         <rect>x:-295;y:-35;w:590;h:70</rect>
+                         <visual-role>6</visual-role>
+                         <visual-role2>1</visual-role2>
                         </DObject>
                        </base-DObject>
+                       <show-all-members>true</show-all-members>
                       </DClass>
                      </instance>
                     </item>
@@ -245,11 +248,13 @@
                          </base-DElement>
                          <object>{c78860b9-6052-479b-b057-77d22897bdc9}</object>
                          <name>fireEnemy</name>
-                         <pos>x:185;y:1450</pos>
-                         <rect>x:-40;y:-30;w:80;h:60</rect>
-                         <visual-role>0</visual-role>
+                         <pos>x:580;y:1825</pos>
+                         <rect>x:-295;y:-35;w:590;h:70</rect>
+                         <visual-role>6</visual-role>
+                         <visual-role2>1</visual-role2>
                         </DObject>
                        </base-DObject>
+                       <show-all-members>true</show-all-members>
                       </DClass>
                      </instance>
                     </item>
@@ -265,11 +270,13 @@
                          </base-DElement>
                          <object>{45f861db-b3fc-4689-8d62-4b2852d697d6}</object>
                          <name>fastEnemy</name>
-                         <pos>x:295;y:1450</pos>
-                         <rect>x:-40;y:-30;w:80;h:60</rect>
-                         <visual-role>0</visual-role>
+                         <pos>x:900;y:1725</pos>
+                         <rect>x:-295;y:-35;w:590;h:70</rect>
+                         <visual-role>6</visual-role>
+                         <visual-role2>1</visual-role2>
                         </DObject>
                        </base-DObject>
+                       <show-all-members>true</show-all-members>
                       </DClass>
                      </instance>
                     </item>
@@ -285,11 +292,13 @@
                          </base-DElement>
                          <object>{83967032-b539-4435-b58c-b6a1b6967e2f}</object>
                          <name>bossEnemy</name>
-                         <pos>x:400;y:1450</pos>
-                         <rect>x:-40;y:-30;w:80;h:60</rect>
-                         <visual-role>0</visual-role>
+                         <pos>x:1000;y:1630</pos>
+                         <rect>x:-300;y:-35;w:600;h:70</rect>
+                         <visual-role>6</visual-role>
+                         <visual-role2>1</visual-role2>
                         </DObject>
                        </base-DObject>
+                       <show-all-members>true</show-all-members>
                       </DClass>
                      </instance>
                     </item>
@@ -301,8 +310,8 @@
                          <uid>{e6b8a42b-cd2b-419b-a4ac-ae95607f2e9a}</uid>
                         </DElement>
                        </base-DElement>
-                       <pos>x:200;y:1450</pos>
-                       <rect>x:-270;y:-50;w:540;h:100</rect>
+                       <pos>x:575;y:1730</pos>
+                       <rect>x:-755;y:-150;w:1510;h:300</rect>
                       </DBoundary>
                      </instance>
                     </item>
@@ -318,11 +327,13 @@
                          </base-DElement>
                          <object>{40d39d0d-4ee9-4be3-aca9-9c8b295a828b}</object>
                          <name>normalEnemy</name>
-                         <pos>x:-20;y:1450</pos>
-                         <rect>x:-40;y:-30;w:80;h:60</rect>
-                         <visual-role>0</visual-role>
+                         <pos>x:155;y:1630</pos>
+                         <rect>x:-305;y:-35;w:610;h:70</rect>
+                         <visual-role>6</visual-role>
+                         <visual-role2>1</visual-role2>
                         </DObject>
                        </base-DObject>
+                       <show-all-members>true</show-all-members>
                       </DClass>
                      </instance>
                     </item>
@@ -416,9 +427,277 @@
                       </DInheritance>
                      </instance>
                     </item>
+                    <item>
+                     <instance type="DBoundary">
+                      <DBoundary>
+                       <base-DElement>
+                        <DElement>
+                         <uid>{9e55aab0-8016-4416-b1b1-99a37d25ae5c}</uid>
+                        </DElement>
+                       </base-DElement>
+                       <pos>x:-105;y:825</pos>
+                       <rect>x:-340;y:-330;w:680;h:660</rect>
+                      </DBoundary>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DClass">
+                      <DClass>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{127ec1fd-48cc-43a6-b961-4b82d9e3f437}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{792eb291-5f4c-4592-a8d5-235bd668675e}</object>
+                         <name>LaserTower</name>
+                         <pos>x:-125;y:1070</pos>
+                         <rect>x:-270;y:-55;w:540;h:110</rect>
+                         <visual-role>5</visual-role>
+                         <visual-role2>1</visual-role2>
+                        </DObject>
+                       </base-DObject>
+                       <show-all-members>true</show-all-members>
+                      </DClass>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DClass">
+                      <DClass>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{b4a510fd-04b9-4618-b194-1665c62337ca}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{2c9bdd6e-57b4-4316-b8dd-49ec1f0d5aef}</object>
+                         <name>IceTower</name>
+                         <pos>x:-115;y:920</pos>
+                         <rect>x:-260;y:-65;w:520;h:130</rect>
+                         <visual-role>5</visual-role>
+                         <visual-role2>1</visual-role2>
+                        </DObject>
+                       </base-DObject>
+                       <show-all-members>true</show-all-members>
+                      </DClass>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DClass">
+                      <DClass>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{14596e0d-f200-4845-a815-de997e264819}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{4546e041-6e19-4d5d-b0e5-2cd481d5d6e4}</object>
+                         <name>FireTower</name>
+                         <pos>x:-120;y:765</pos>
+                         <rect>x:-260;y:-65;w:520;h:130</rect>
+                         <visual-role>5</visual-role>
+                         <visual-role2>1</visual-role2>
+                        </DObject>
+                       </base-DObject>
+                       <show-all-members>true</show-all-members>
+                      </DClass>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DClass">
+                      <DClass>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{b526733f-fbc5-4846-aeb9-55e58acfcd21}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{01707947-079d-40a6-b770-ccfe1d4f1ae5}</object>
+                         <name> NormalTower</name>
+                         <pos>x:-120;y:620</pos>
+                         <rect>x:-260;y:-55;w:520;h:110</rect>
+                         <visual-role>5</visual-role>
+                         <visual-role2>1</visual-role2>
+                        </DObject>
+                       </base-DObject>
+                       <show-all-members>true</show-all-members>
+                      </DClass>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DInheritance">
+                      <DInheritance>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{43fac707-becb-432b-8a35-762a9a4e8b47}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{7e63710e-2041-4c09-a1b2-5146f14ea534}</object>
+                         <a>{b526733f-fbc5-4846-aeb9-55e58acfcd21}</a>
+                         <b>{897a562c-20bd-4830-8ad1-31fceaf82eb2}</b>
+                        </DRelation>
+                       </base-DRelation>
+                      </DInheritance>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DInheritance">
+                      <DInheritance>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{f796b68d-66a3-4e4a-8b57-9a12ec01463d}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{eae06303-4186-476d-be1f-992a85c34c1f}</object>
+                         <a>{14596e0d-f200-4845-a815-de997e264819}</a>
+                         <b>{897a562c-20bd-4830-8ad1-31fceaf82eb2}</b>
+                        </DRelation>
+                       </base-DRelation>
+                      </DInheritance>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DInheritance">
+                      <DInheritance>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{4f44fcc1-d0c4-4430-9f3f-edf8999d31a0}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{d56ce5e2-bea3-455f-914e-783e7a4d886a}</object>
+                         <a>{b4a510fd-04b9-4618-b194-1665c62337ca}</a>
+                         <b>{897a562c-20bd-4830-8ad1-31fceaf82eb2}</b>
+                        </DRelation>
+                       </base-DRelation>
+                      </DInheritance>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DInheritance">
+                      <DInheritance>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{0ef7e9fa-4e43-45db-989c-04dcb83a67b5}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{242a227a-92d9-4702-b94b-2218343325b3}</object>
+                         <a>{127ec1fd-48cc-43a6-b961-4b82d9e3f437}</a>
+                         <b>{897a562c-20bd-4830-8ad1-31fceaf82eb2}</b>
+                        </DRelation>
+                       </base-DRelation>
+                      </DInheritance>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DDependency">
+                      <DDependency>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{85b172f8-7955-4511-a896-91dd1feec121}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{7973c403-45cd-440d-944d-b360c2c2d3ba}</object>
+                         <a>{897a562c-20bd-4830-8ad1-31fceaf82eb2}</a>
+                         <b>{66b31c43-38f8-4104-a5fe-950c537bcf1d}</b>
+                        </DRelation>
+                       </base-DRelation>
+                      </DDependency>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DDependency">
+                      <DDependency>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{63d567d9-57a4-4324-b8ce-c10741df45a8}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{6f3dd00f-968a-4094-9a2c-f73397957833}</object>
+                         <a>{66b31c43-38f8-4104-a5fe-950c537bcf1d}</a>
+                         <b>{897a562c-20bd-4830-8ad1-31fceaf82eb2}</b>
+                        </DRelation>
+                       </base-DRelation>
+                      </DDependency>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DDependency">
+                      <DDependency>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{afaaff95-5032-43da-9407-f48136b547b4}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{776c9338-2742-417e-9390-c8affea6558e}</object>
+                         <a>{897a562c-20bd-4830-8ad1-31fceaf82eb2}</a>
+                         <b>{8de5bc79-68b8-4b9e-86b8-b8be2f3ce0b4}</b>
+                        </DRelation>
+                       </base-DRelation>
+                      </DDependency>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DDependency">
+                      <DDependency>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{1f495927-467f-4942-a605-48635e455326}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{deea5e0e-1aaa-46b3-a8bb-8eadf021b127}</object>
+                         <a>{8de5bc79-68b8-4b9e-86b8-b8be2f3ce0b4}</a>
+                         <b>{897a562c-20bd-4830-8ad1-31fceaf82eb2}</b>
+                        </DRelation>
+                       </base-DRelation>
+                      </DDependency>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DAssociation">
+                      <DAssociation>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{fe4431b0-0d90-4b0a-9b2f-68d0a5804a02}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{8238b84f-26ff-40c9-8f25-4a23c7740b15}</object>
+                         <a>{da89bfbf-1597-4530-82da-aaed575c929d}</a>
+                         <b>{467f02aa-1da8-4804-a5c5-68c449bed6de}</b>
+                        </DRelation>
+                       </base-DRelation>
+                       <a>
+                        <DAssociationEnd>
+                         <navigable>true</navigable>
+                        </DAssociationEnd>
+                       </a>
+                      </DAssociation>
+                     </instance>
+                    </item>
                    </qlist>
                   </elements>
-                  <last-modified>1559118791591</last-modified>
+                  <last-modified>1559213431605</last-modified>
                   <toolbarid>General</toolbarid>
                  </MDiagram>
                 </base-MDiagram>
@@ -515,20 +794,50 @@
                               </MElement>
                              </base-MElement>
                              <name>Bullet</name>
+                             <relations>
+                              <handles>
+                               <handles>
+                                <qlist>
+                                 <item>
+                                  <handle>
+                                   <uid>{deea5e0e-1aaa-46b3-a8bb-8eadf021b127}</uid>
+                                   <target>
+                                    <instance type="MDependency">
+                                     <MDependency>
+                                      <base-MRelation>
+                                       <MRelation>
+                                        <base-MElement>
+                                         <MElement>
+                                          <uid>{deea5e0e-1aaa-46b3-a8bb-8eadf021b127}</uid>
+                                         </MElement>
+                                        </base-MElement>
+                                        <a>{ca08d413-d9ea-4b1e-801b-ff8ce7f976dd}</a>
+                                        <b>{1b5ab547-a8ab-4b8a-97d0-11d9b4eebfa4}</b>
+                                       </MRelation>
+                                      </base-MRelation>
+                                     </MDependency>
+                                    </instance>
+                                   </target>
+                                  </handle>
+                                 </item>
+                                </qlist>
+                               </handles>
+                              </handles>
+                             </relations>
                             </MObject>
                            </base-MObject>
                            <members>
                             <qlist>
                              <item>
                               <MClassMember>
-                               <uid>{b5ee04f2-0b07-495d-a5a1-2d77a00d8ded}</uid>
+                               <uid>{cba49be8-be76-497e-8f9f-45d6ce616163}</uid>
                                <type>2</type>
                                <declaration>Bullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, 		   MainWindow *game, const QPixmap &amp;sprite = QPixmap(&quot;:/image/bullet.png&quot;))</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{6002cd20-0cb8-4251-a290-18ba71b37310}</uid>
+                               <uid>{7133fe9f-9564-4c5f-89dc-4223e7f60512}</uid>
                                <type>2</type>
                                <properties>4</properties>
                                <declaration>void draw(QPainter *painter)</declaration>
@@ -536,21 +845,21 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{f5b33770-ac40-4cb3-a77a-efc5ee9d0f5f}</uid>
+                               <uid>{7b8a8bdf-dddf-43ef-8372-6abdc774e061}</uid>
                                <type>2</type>
                                <declaration>void move()</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{3027bf59-141e-4368-bdea-b85d7813b075}</uid>
+                               <uid>{e50c5ddd-cb64-4100-87d5-39dd59f9dc07}</uid>
                                <type>2</type>
                                <declaration>void setCurrentPos(QPoint pos)</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{f772c4cc-6446-4410-9471-f4e2766e9cef}</uid>
+                               <uid>{8b69c731-be25-42a8-9df5-10831ab38271}</uid>
                                <type>2</type>
                                <properties>4</properties>
                                <declaration>QPoint currentPos()</declaration>
@@ -558,56 +867,56 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{2486b248-3b2f-4353-9204-67b59e9af9fa}</uid>
+                               <uid>{d5ae21ae-1aa0-4c0e-89ff-f006ff8ce13f}</uid>
                                <type>1</type>
                                <declaration>const QPoint	m_startPos</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{a752a888-39f0-435f-bbca-acc0d6052f95}</uid>
+                               <uid>{550962f4-8207-4269-8f3d-cc9926434ba4}</uid>
                                <type>1</type>
                                <declaration>const QPoint	m_targetPos</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{433e9a82-12c8-4beb-8a50-c208f149d5f8}</uid>
+                               <uid>{1414a01c-a1a1-4670-adbf-060af9276e4e}</uid>
                                <type>1</type>
                                <declaration>const QPixmap	m_sprite</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{7d338811-ce22-4f2b-8fac-85d481d6d4d2}</uid>
+                               <uid>{00d924c4-5ae2-42f2-8823-2ac2df3e91a3}</uid>
                                <type>1</type>
                                <declaration>QPoint			m_currentPos</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{eaf1f01c-179c-4078-bcf6-7fe37f4bb9f5}</uid>
+                               <uid>{14f3c56f-4a2f-4758-b3d2-3bae6894bf58}</uid>
                                <type>1</type>
                                <declaration>Enemy *			m_target</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{c64b4550-e770-415a-94eb-078a0808bf25}</uid>
+                               <uid>{d1ae84eb-d939-4232-b094-c784abfcfb39}</uid>
                                <type>1</type>
                                <declaration>MainWindow *	m_game</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{b4c651a3-b495-4620-98d3-ddbbc32078be}</uid>
+                               <uid>{4601649c-df53-49ec-8820-52f1cf6b3a0c}</uid>
                                <type>1</type>
                                <declaration>int				m_damage</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{aacfe5d5-5c42-4cd5-bede-8f61c571b3ba}</uid>
+                               <uid>{8c067741-522f-40ee-9e7c-a02e9d57e992}</uid>
                                <type>1</type>
                                <properties>64</properties>
                                <declaration>const QSize ms_fixedSize</declaration>
@@ -635,20 +944,55 @@
                               </MElement>
                              </base-MElement>
                              <name>Enemy</name>
+                             <relations>
+                              <handles>
+                               <handles>
+                                <qlist>
+                                 <item>
+                                  <handle>
+                                   <uid>{8238b84f-26ff-40c9-8f25-4a23c7740b15}</uid>
+                                   <target>
+                                    <instance type="MAssociation">
+                                     <MAssociation>
+                                      <base-MRelation>
+                                       <MRelation>
+                                        <base-MElement>
+                                         <MElement>
+                                          <uid>{8238b84f-26ff-40c9-8f25-4a23c7740b15}</uid>
+                                         </MElement>
+                                        </base-MElement>
+                                        <a>{159e4940-9b75-4c5c-89e8-271321700f3a}</a>
+                                        <b>{92d0734a-49cc-4fb0-bb10-c4900f496526}</b>
+                                       </MRelation>
+                                      </base-MRelation>
+                                      <a>
+                                       <MAssociationEnd>
+                                        <navigable>true</navigable>
+                                       </MAssociationEnd>
+                                      </a>
+                                     </MAssociation>
+                                    </instance>
+                                   </target>
+                                  </handle>
+                                 </item>
+                                </qlist>
+                               </handles>
+                              </handles>
+                             </relations>
                             </MObject>
                            </base-MObject>
                            <members>
                             <qlist>
                              <item>
                               <MClassMember>
-                               <uid>{075734f2-79cc-4d6f-b5dd-838c655f7516}</uid>
+                               <uid>{f1497995-398c-47af-a750-f0c5357f51fb}</uid>
                                <type>2</type>
                                <declaration>Enemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &amp;sprite = QPixmap(&quot;:/image/enemy1.png&quot;))</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{a923182f-2392-47fd-8eb3-548d77656ad2}</uid>
+                               <uid>{b5a6482a-5b8a-4671-90fe-e3ae97a3b0c6}</uid>
                                <type>2</type>
                                <properties>1</properties>
                                <declaration>~Enemy()</declaration>
@@ -656,7 +1000,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{b7df87e3-aefa-40f9-9c98-eb2ee0060638}</uid>
+                               <uid>{2ee64eba-aae9-4fd2-9de9-1831b1c8535e}</uid>
                                <type>2</type>
                                <properties>4</properties>
                                <declaration>void draw(QPainter *painter)</declaration>
@@ -664,56 +1008,56 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{f0b68b46-0698-4839-a610-66fda02a0e2f}</uid>
+                               <uid>{723365cb-3b0f-4709-9298-5642bf7a44a7}</uid>
                                <type>2</type>
                                <declaration>void move()</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{5785f0e0-028b-4be0-b440-59afe3bd4326}</uid>
+                               <uid>{99304086-c9ea-4eb5-ab3f-c2f9e31810fb}</uid>
                                <type>2</type>
                                <declaration>void getDamage(Bullet *bullet)</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{3fbaa864-0fad-484f-9acf-f2ba1ab091e2}</uid>
+                               <uid>{5b4ffd22-70e8-4f30-bd35-f066167b5086}</uid>
                                <type>2</type>
                                <declaration>void getRemoved()</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{f2821f3a-27d7-47da-b6ad-958a74f1094b}</uid>
+                               <uid>{eaee9a5c-6cbd-447f-a2e1-a39786f6a235}</uid>
                                <type>2</type>
                                <declaration>void canRemove()</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{61982631-a5b0-4852-b95e-0d675c80de8b}</uid>
+                               <uid>{3eeeb469-3d9e-4da5-90cd-711f2fca7ce0}</uid>
                                <type>2</type>
                                <declaration>void getFireDamage(int damage)</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{d98538c2-7f4f-4d81-8b09-666af262c452}</uid>
+                               <uid>{d45fedcc-85f6-4790-b40f-db665fe7a71a}</uid>
                                <type>2</type>
                                <declaration>void getAttacked(Tower *attacker)</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{b0085294-e934-4675-a40b-fd1a927d4669}</uid>
+                               <uid>{ea237584-ceb8-4888-a56e-1461de34ae78}</uid>
                                <type>2</type>
                                <declaration>void gotLostSight(Tower *attacker)</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{6c85afad-3d39-448e-ad77-e9a67618824f}</uid>
+                               <uid>{0225a38b-5290-4033-a845-6d40a5b4248c}</uid>
                                <type>2</type>
                                <properties>4</properties>
                                <declaration>QPoint pos()</declaration>
@@ -721,147 +1065,147 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{57a2e16f-56a8-4580-af18-9f4cb0fae782}</uid>
+                               <uid>{8f896538-26f2-41d5-b68e-fd04248378cc}</uid>
                                <type>1</type>
                                <declaration>bool            m_active</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{bdba52b3-dcc0-4271-892f-cd8a84f2998d}</uid>
+                               <uid>{ecb0b179-b298-44ef-8aa2-985be354c289}</uid>
                                <type>1</type>
                                <declaration>int             fire</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{33b60182-8df1-419a-8350-bae801afa348}</uid>
+                               <uid>{fd42f0fa-97cf-4a02-8c0d-918b3807cef7}</uid>
                                <type>1</type>
                                <declaration>int             fireLevel</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{d50823b5-37bd-4c75-96c8-b6090ff2fac2}</uid>
+                               <uid>{facccf02-b4f7-4a80-bf3d-76690d5b8fdc}</uid>
                                <type>1</type>
                                <declaration>int             ice</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{dca94256-b720-4ff9-a6ac-f36abdf822f0}</uid>
+                               <uid>{1f305218-7a9e-433c-918f-6a559514158b}</uid>
                                <type>1</type>
                                <declaration>int             iceLevel</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{bd3ee76d-e323-4acd-a232-c7db08931cd1}</uid>
+                               <uid>{4fd30566-5db1-4e62-9b62-54242d2fc1bb}</uid>
                                <type>1</type>
                                <declaration>int				m_maxHp</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{e43777cb-fcc0-471d-ab72-be5380b2698f}</uid>
+                               <uid>{8d3e7580-d6d7-4198-8e11-bac4fa6de03d}</uid>
                                <type>1</type>
                                <declaration>int				m_currentHp</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{ffd6d98b-7255-46cf-a099-9e161f5e3cd2}</uid>
+                               <uid>{81adfefa-b7ca-4d42-9483-a178715c03c2}</uid>
                                <type>1</type>
                                <declaration>int             HPdamage</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{3a334cef-d261-4f85-9db7-76dc24e0cbd3}</uid>
+                               <uid>{dde0c540-8562-4f67-a078-7fa3c755a943}</uid>
                                <type>1</type>
                                <declaration>qreal           fireattackLevel</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{a9f2a468-321d-4478-a66f-2215a5dcf329}</uid>
+                               <uid>{34397e45-ce76-4afe-8897-660f86dc9112}</uid>
                                <type>1</type>
                                <declaration>qreal           antiSlowspeed</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{e32fccef-355c-47af-862e-304746860497}</uid>
+                               <uid>{ec72f52a-a1e8-4232-842c-f63616a81822}</uid>
                                <type>1</type>
                                <declaration>qreal           m_normalSpeed</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{d1928dee-8682-430e-9ebe-aa29787c0ea0}</uid>
+                               <uid>{0bd8e168-d7c9-4215-a381-40b3f81fda78}</uid>
                                <type>1</type>
                                <declaration>qreal             fireattack</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{f7d2c737-1430-4007-9292-e36eee861499}</uid>
+                               <uid>{576c8586-52fe-4045-87cf-b01b316fc61d}</uid>
                                <type>1</type>
                                <declaration>qreal           m_slowSpeed</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{efd75279-c83d-416c-99b9-351299e9c70e}</uid>
+                               <uid>{4240e4b4-bab5-4a93-8334-cdd27cebd18c}</uid>
                                <type>1</type>
                                <declaration>qreal			m_walkingSpeed</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{c19d52d9-a83d-4800-9edc-142a49b0ad25}</uid>
+                               <uid>{19f39982-9aee-46a1-ad16-dde56dc63675}</uid>
                                <type>1</type>
                                <declaration>qreal			m_rotationSprite</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{abd9898f-0d1c-43f3-b0e5-6ce07f6cf933}</uid>
+                               <uid>{ece9087c-3659-434b-927f-d6572d7836d3}</uid>
                                <type>1</type>
                                <declaration>QPoint			m_pos</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{556b1af4-5dc1-4ef3-bbe1-474e440a4892}</uid>
+                               <uid>{89df1957-2cc0-4cde-9a14-b2164a4e0582}</uid>
                                <type>1</type>
                                <declaration>WayPoint *		m_destinationWayPoint</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{ddf5c719-a6ee-46cc-9523-64b238ffc3b7}</uid>
+                               <uid>{763841fe-9fd8-4ad6-87f9-baff46428c0e}</uid>
                                <type>1</type>
                                <declaration>MainWindow *	m_game</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{2955b22a-e6ce-4733-a64e-2473189af803}</uid>
+                               <uid>{5085d7c4-c9b1-455a-8d14-7d89b9566044}</uid>
                                <type>1</type>
                                <declaration>QList&lt;Tower *&gt;	m_attackedTowersList</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{21526cfe-2b34-4848-b1a0-fe0f46e37557}</uid>
+                               <uid>{8280211e-c804-49be-98d4-944f865412c7}</uid>
                                <type>1</type>
                                <declaration>const QPixmap	m_sprite</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{3b9dc9ec-8524-4d9a-8da5-3ab197faae94}</uid>
+                               <uid>{a9598885-03aa-4cb4-972c-2926c7bf4416}</uid>
                                <type>1</type>
                                <properties>64</properties>
                                <declaration>const QSize ms_fixedSize</declaration>
@@ -1247,27 +1591,101 @@
                               </MElement>
                              </base-MElement>
                              <name>Tower</name>
+                             <relations>
+                              <handles>
+                               <handles>
+                                <qlist>
+                                 <item>
+                                  <handle>
+                                   <uid>{62a742de-00e3-4db8-a453-4a62a2d5a27b}</uid>
+                                   <target>
+                                    <instance type="MDependency">
+                                     <MDependency>
+                                      <base-MRelation>
+                                       <MRelation>
+                                        <base-MElement>
+                                         <MElement>
+                                          <uid>{62a742de-00e3-4db8-a453-4a62a2d5a27b}</uid>
+                                         </MElement>
+                                        </base-MElement>
+                                        <a>{1b5ab547-a8ab-4b8a-97d0-11d9b4eebfa4}</a>
+                                        <b>{46fcdaca-c4a5-4c25-ba37-e7f06383b1f6}</b>
+                                       </MRelation>
+                                      </base-MRelation>
+                                     </MDependency>
+                                    </instance>
+                                   </target>
+                                  </handle>
+                                 </item>
+                                 <item>
+                                  <handle>
+                                   <uid>{7973c403-45cd-440d-944d-b360c2c2d3ba}</uid>
+                                   <target>
+                                    <instance type="MDependency">
+                                     <MDependency>
+                                      <base-MRelation>
+                                       <MRelation>
+                                        <base-MElement>
+                                         <MElement>
+                                          <uid>{7973c403-45cd-440d-944d-b360c2c2d3ba}</uid>
+                                         </MElement>
+                                        </base-MElement>
+                                        <a>{1b5ab547-a8ab-4b8a-97d0-11d9b4eebfa4}</a>
+                                        <b>{46fcdaca-c4a5-4c25-ba37-e7f06383b1f6}</b>
+                                       </MRelation>
+                                      </base-MRelation>
+                                     </MDependency>
+                                    </instance>
+                                   </target>
+                                  </handle>
+                                 </item>
+                                 <item>
+                                  <handle>
+                                   <uid>{776c9338-2742-417e-9390-c8affea6558e}</uid>
+                                   <target>
+                                    <instance type="MDependency">
+                                     <MDependency>
+                                      <base-MRelation>
+                                       <MRelation>
+                                        <base-MElement>
+                                         <MElement>
+                                          <uid>{776c9338-2742-417e-9390-c8affea6558e}</uid>
+                                         </MElement>
+                                        </base-MElement>
+                                        <a>{1b5ab547-a8ab-4b8a-97d0-11d9b4eebfa4}</a>
+                                        <b>{ca08d413-d9ea-4b1e-801b-ff8ce7f976dd}</b>
+                                       </MRelation>
+                                      </base-MRelation>
+                                     </MDependency>
+                                    </instance>
+                                   </target>
+                                  </handle>
+                                 </item>
+                                </qlist>
+                               </handles>
+                              </handles>
+                             </relations>
                             </MObject>
                            </base-MObject>
                            <members>
                             <qlist>
                              <item>
                               <MClassMember>
-                               <uid>{dffa50c9-a090-43fa-93d9-ed9d164185c0}</uid>
+                               <uid>{92d3cb64-1278-4304-b788-4e78e8044400}</uid>
                                <type>2</type>
-                               <declaration>Tower(QPoint pos, MainWindow *game, const QPixmap &amp;sprite = QPixmap(&quot;:/image/tower.png&quot;))</declaration>
+                               <declaration>Tower(QPoint pos, MainWindow *game, const QPixmap &amp;sprite = QPixmap(&quot;:/image/normaltower.png&quot;), int attackRange = 70, int damage = 10, int fireRate = 1000, int level = 1)</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{5b92025d-06c7-4ca0-841e-8462e9f718e3}</uid>
+                               <uid>{3480215b-6d4f-4dd9-8ece-9e2eb653c632}</uid>
                                <type>2</type>
                                <declaration>~Tower()</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{70269943-93bc-4ab1-beb7-fb023da1e1bd}</uid>
+                               <uid>{75bf6c9e-4de6-47fa-ac2d-7c09497e0965}</uid>
                                <type>2</type>
                                <properties>4</properties>
                                <declaration>void draw(QPainter *painter)</declaration>
@@ -1275,126 +1693,142 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{211c07cc-a358-4367-b9b7-f1f0375167bf}</uid>
+                               <uid>{303bc0ff-6ba7-4b09-bb3c-9ff16f2926db}</uid>
                                <type>2</type>
                                <declaration>void checkEnemyInRange()</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{a1d19f8a-1758-4f53-a137-44af6ad1ecb5}</uid>
+                               <uid>{b5922ebc-fd59-44bd-ad90-14dd13f54c18}</uid>
                                <type>2</type>
                                <declaration>void targetKilled()</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{5d7d211f-f4b9-4cd5-8bfe-da81f6281cc4}</uid>
+                               <uid>{ed2ccd61-ea29-41a8-8153-51903d3320bc}</uid>
                                <type>2</type>
                                <declaration>void attackEnemy()</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{a32bffcd-64cd-4463-b755-4f0f23afdafe}</uid>
+                               <uid>{78bda302-8731-441e-85fa-08853c5e96a8}</uid>
                                <type>2</type>
                                <declaration>void chooseEnemyForAttack(Enemy *enemy)</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{feb73607-7b3c-447a-a92d-a4345f910e47}</uid>
-                               <type>2</type>
-                               <declaration>void removeBullet()</declaration>
-                              </MClassMember>
-                             </item>
-                             <item>
-                              <MClassMember>
-                               <uid>{eda2733e-3be7-4dbf-86e3-a1c1d4c51920}</uid>
+                               <uid>{ce626256-0d27-4af8-bf6e-3a4e81ec4414}</uid>
                                <type>2</type>
                                <declaration>void damageEnemy()</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{99025162-1ecc-46f2-bc6f-45529910b6e2}</uid>
+                               <uid>{47e8da7e-eee3-4366-a054-cfbc4f8ed0db}</uid>
                                <type>2</type>
                                <declaration>void lostSightOfEnemy()</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{655fda8f-7262-48ef-a6d8-46c7784e1b76}</uid>
+                               <uid>{33fe72b2-748b-41ed-b8d1-da571b448c0f}</uid>
+                               <type>2</type>
+                               <properties>3</properties>
+                               <declaration>void levelup()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{e6537009-b6e8-4643-a2bf-c0e86ece01be}</uid>
+                               <type>2</type>
+                               <properties>3</properties>
+                               <declaration>void shootWeapon()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{387a78ab-af94-486a-bf5e-3aaab87975a8}</uid>
                                <type>1</type>
                                <declaration>bool			m_attacking</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{1638d14d-b4bb-40fa-bd16-9e86fc572700}</uid>
-                               <type>1</type>
-                               <declaration>int				m_attackRange</declaration>
-                              </MClassMember>
-                             </item>
-                             <item>
-                              <MClassMember>
-                               <uid>{88a93f25-6f1f-40ac-8ae8-46841743a50a}</uid>
-                               <type>1</type>
-                               <declaration>int				m_damage</declaration>
-                              </MClassMember>
-                             </item>
-                             <item>
-                              <MClassMember>
-                               <uid>{63ce8a54-e0ef-4f34-8948-2a70d096f644}</uid>
-                               <type>1</type>
-                               <declaration>int				m_fireRate</declaration>
-                              </MClassMember>
-                             </item>
-                             <item>
-                              <MClassMember>
-                               <uid>{d4fc663c-465c-4d43-a44d-181a44f575eb}</uid>
+                               <uid>{0ead5fab-2949-4833-bfa2-4e06fae36d26}</uid>
                                <type>1</type>
                                <declaration>qreal			m_rotationSprite</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{c1cd9142-cb6e-492f-9943-d9338a7e7884}</uid>
+                               <uid>{d59d4030-a1e0-40e6-9f11-2e0acf73644c}</uid>
                                <type>1</type>
                                <declaration>Enemy *			m_chooseEnemy</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{7b309cb5-f552-41df-9ffb-6c0ce4c70a13}</uid>
+                               <uid>{8ea53d95-f293-49e7-8122-a8ead2807622}</uid>
                                <type>1</type>
                                <declaration>MainWindow *	m_game</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{6079c4bb-f198-4c6a-8dc9-3e83346f5c42}</uid>
+                               <uid>{47dddfc6-fba7-411d-8e5c-a5ba08500698}</uid>
                                <type>1</type>
                                <declaration>QTimer *		m_fireRateTimer</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{6095cffc-8159-420b-ba16-4dea294936c5}</uid>
+                               <uid>{40380429-e1e9-4563-a07b-fd88c80b113b}</uid>
+                               <type>1</type>
+                               <declaration>int				m_attackRange</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{8e72ad57-fb78-4e35-849f-b098b7bbd036}</uid>
+                               <type>1</type>
+                               <declaration>int				m_damage</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{30b0c9b6-cf27-40ff-b2ae-08315f274861}</uid>
+                               <type>1</type>
+                               <declaration>int				m_fireRate</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{3a0315d9-0fba-4153-811e-376217f9baa8}</uid>
+                               <type>1</type>
+                               <declaration>int             m_level</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{0ae1b115-1c96-4910-808a-585544001050}</uid>
                                <type>1</type>
                                <declaration>const QPoint	m_pos</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{85b3842a-f03b-410b-979a-c6a6be13249b}</uid>
+                               <uid>{0daded68-651d-4d93-891e-7a9017a4981d}</uid>
                                <type>1</type>
                                <declaration>const QPixmap	m_sprite</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{8f6370cb-2ecf-4128-9837-4cbf4af9f7c5}</uid>
+                               <uid>{ce72a696-6778-4814-b8d5-bd5651d0c6c1}</uid>
                                <type>1</type>
                                <properties>64</properties>
                                <declaration>const QSize ms_fixedSize</declaration>
@@ -1422,27 +1856,57 @@
                               </MElement>
                              </base-MElement>
                              <name>TowerPosition</name>
+                             <relations>
+                              <handles>
+                               <handles>
+                                <qlist>
+                                 <item>
+                                  <handle>
+                                   <uid>{6f3dd00f-968a-4094-9a2c-f73397957833}</uid>
+                                   <target>
+                                    <instance type="MDependency">
+                                     <MDependency>
+                                      <base-MRelation>
+                                       <MRelation>
+                                        <base-MElement>
+                                         <MElement>
+                                          <uid>{6f3dd00f-968a-4094-9a2c-f73397957833}</uid>
+                                         </MElement>
+                                        </base-MElement>
+                                        <a>{46fcdaca-c4a5-4c25-ba37-e7f06383b1f6}</a>
+                                        <b>{1b5ab547-a8ab-4b8a-97d0-11d9b4eebfa4}</b>
+                                       </MRelation>
+                                      </base-MRelation>
+                                     </MDependency>
+                                    </instance>
+                                   </target>
+                                  </handle>
+                                 </item>
+                                </qlist>
+                               </handles>
+                              </handles>
+                             </relations>
                             </MObject>
                            </base-MObject>
                            <members>
                             <qlist>
                              <item>
                               <MClassMember>
-                               <uid>{df72b831-1c25-470d-8be7-91299141608f}</uid>
+                               <uid>{38c0548a-e761-4711-b25e-1ab538a223e7}</uid>
                                <type>2</type>
                                <declaration>TowerPosition(QPoint pos, const QPixmap &amp;sprite = QPixmap(&quot;:/image/open_spot.png&quot;))</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{71f5f760-2671-437d-b634-663b73c66a65}</uid>
+                               <uid>{b7c52dd0-7cf6-428b-9b11-2f121616010e}</uid>
                                <type>2</type>
                                <declaration>void setHasTower(bool hasTower = true)</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{f39428fb-5ed0-41d6-b0ed-064b5d61c5a4}</uid>
+                               <uid>{e50d8825-76be-4633-8c80-70333e4e898a}</uid>
                                <type>2</type>
                                <properties>4</properties>
                                <declaration>bool hasTower()</declaration>
@@ -1450,7 +1914,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{9ca56259-889b-4235-a129-d93a568da708}</uid>
+                               <uid>{4b6099e0-b557-441b-b73d-8934408a814e}</uid>
                                <type>2</type>
                                <properties>4</properties>
                                <declaration>const QPoint centerPos()</declaration>
@@ -1458,7 +1922,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{a24fe758-24fe-48c7-9525-0bea47b71807}</uid>
+                               <uid>{3829a884-0c27-43d1-a3d6-87a9b94e5220}</uid>
                                <type>2</type>
                                <properties>4</properties>
                                <declaration>bool containPoint(const QPoint &amp;pos)</declaration>
@@ -1466,7 +1930,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{56f9d8e3-6f66-4be0-a8ba-fdafbb3fd00d}</uid>
+                               <uid>{9e899277-484b-4418-a547-927e41e6c80b}</uid>
                                <type>2</type>
                                <properties>4</properties>
                                <declaration>void draw(QPainter *painter)</declaration>
@@ -1474,28 +1938,28 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{4311d21f-88c9-405a-a448-63a7faa4b361}</uid>
+                               <uid>{6852e968-a92a-489b-bef4-89ddfa6a6d48}</uid>
                                <type>1</type>
                                <declaration>bool		m_hasTower</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{8db6385b-7764-4f22-ae91-a775db2a097f}</uid>
+                               <uid>{59b50025-4549-4eb6-864f-a7cb7cddd9ed}</uid>
                                <type>1</type>
                                <declaration>QPoint		m_pos</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{731ad9f0-7c9d-45f8-b92f-61e9408bf396}</uid>
+                               <uid>{e82eb038-8671-49b1-96c5-6473ad76dd2c}</uid>
                                <type>1</type>
                                <declaration>QPixmap		m_sprite</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{3886e6f7-501d-4c82-aa02-ff0c0c5ad6da}</uid>
+                               <uid>{41758a2c-728e-40e1-bae8-8f75b6dd2898}</uid>
                                <type>1</type>
                                <properties>64</properties>
                                <declaration>const QSize ms_fixedSize</declaration>
@@ -1529,21 +1993,21 @@
                             <qlist>
                              <item>
                               <MClassMember>
-                               <uid>{143066dc-00d7-4291-9f44-62ed1893458d}</uid>
+                               <uid>{1d5b354a-19c0-4c16-9b35-3b0c8c2ad4b5}</uid>
                                <type>2</type>
                                <declaration>WayPoint(QPoint pos)</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{641fa7f5-6cb5-4949-a621-6eb0dbad07a9}</uid>
+                               <uid>{38ad6192-e5a4-463d-89b7-d773e0e3d5b1}</uid>
                                <type>2</type>
                                <declaration>void setNextWayPoint(WayPoint *nextPoint)</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{1009a5fa-d337-478c-a65e-cb8bffb5c4af}</uid>
+                               <uid>{47448f8d-5d06-497e-abdc-21f18f911cde}</uid>
                                <type>2</type>
                                <properties>4</properties>
                                <declaration>WayPoint* nextWayPoint()</declaration>
@@ -1551,7 +2015,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{4208f62e-6ce5-474a-8848-bba3775199f9}</uid>
+                               <uid>{7265da85-9456-45cb-926a-b79a98ab2b24}</uid>
                                <type>2</type>
                                <properties>4</properties>
                                <declaration>const QPoint pos()</declaration>
@@ -1559,7 +2023,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{ad6ebd7e-795f-410c-9eda-7e2c6dc99ae1}</uid>
+                               <uid>{db43522e-327b-49e5-9240-e9f64ffa5105}</uid>
                                <type>2</type>
                                <properties>4</properties>
                                <declaration>void draw(QPainter *painter)</declaration>
@@ -1567,14 +2031,14 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{c8b6feb7-39e1-4393-80ae-add751b2d201}</uid>
+                               <uid>{ff99ef9a-712a-400b-a4ea-f0655e9be81f}</uid>
                                <type>1</type>
                                <declaration>const QPoint		m_pos</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{a1105a38-f4d7-43a1-a2b5-eebc394b01a8}</uid>
+                               <uid>{2fafe1a1-a8d4-47cf-ad4e-84a07ccc1a20}</uid>
                                <type>1</type>
                                <declaration>WayPoint *			m_nextWayPoint</declaration>
                               </MClassMember>
@@ -1665,6 +2129,17 @@
                   </relations>
                  </MObject>
                 </base-MObject>
+                <members>
+                 <qlist>
+                  <item>
+                   <MClassMember>
+                    <uid>{99bf6a6a-edea-4bde-9a15-78ddbadddbaf}</uid>
+                    <type>2</type>
+                    <declaration>normalEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &amp;sprite = QPixmap(&quot;:/image/enemy1.png&quot;))</declaration>
+                   </MClassMember>
+                  </item>
+                 </qlist>
+                </members>
                </MClass>
               </instance>
              </target>
@@ -1716,6 +2191,17 @@
                   </relations>
                  </MObject>
                 </base-MObject>
+                <members>
+                 <qlist>
+                  <item>
+                   <MClassMember>
+                    <uid>{b6182a6e-927b-40af-b16c-92075801d8f0}</uid>
+                    <type>2</type>
+                    <declaration>iceEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &amp;sprite = QPixmap(&quot;:/image/enemy2.png&quot;))</declaration>
+                   </MClassMember>
+                  </item>
+                 </qlist>
+                </members>
                </MClass>
               </instance>
              </target>
@@ -1767,6 +2253,17 @@
                   </relations>
                  </MObject>
                 </base-MObject>
+                <members>
+                 <qlist>
+                  <item>
+                   <MClassMember>
+                    <uid>{0ae0fa78-76be-4bef-90fd-a8678e14232d}</uid>
+                    <type>2</type>
+                    <declaration>fireEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &amp;sprite = QPixmap(&quot;:/image/enemy3.png&quot;))</declaration>
+                   </MClassMember>
+                  </item>
+                 </qlist>
+                </members>
                </MClass>
               </instance>
              </target>
@@ -1818,6 +2315,17 @@
                   </relations>
                  </MObject>
                 </base-MObject>
+                <members>
+                 <qlist>
+                  <item>
+                   <MClassMember>
+                    <uid>{44a71375-a4eb-4141-9335-d16ecb1da3da}</uid>
+                    <type>2</type>
+                    <declaration>fastEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &amp;sprite = QPixmap(&quot;:/image/enemy4.png&quot;))</declaration>
+                   </MClassMember>
+                  </item>
+                 </qlist>
+                </members>
                </MClass>
               </instance>
              </target>
@@ -1869,6 +2377,17 @@
                   </relations>
                  </MObject>
                 </base-MObject>
+                <members>
+                 <qlist>
+                  <item>
+                   <MClassMember>
+                    <uid>{e4c58b8b-ebab-4dc1-9bb2-d7078af61526}</uid>
+                    <type>2</type>
+                    <declaration>bossEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &amp;sprite = QPixmap(&quot;:/image/enemy5.png&quot;))</declaration>
+                   </MClassMember>
+                  </item>
+                 </qlist>
+                </members>
                </MClass>
               </instance>
              </target>
@@ -1891,6 +2410,352 @@
                  </MObject>
                 </base-MObject>
                </MPackage>
+              </instance>
+             </target>
+            </handle>
+           </item>
+           <item>
+            <handle>
+             <uid>{01707947-079d-40a6-b770-ccfe1d4f1ae5}</uid>
+             <target>
+              <instance type="MClass">
+               <MClass>
+                <base-MObject>
+                 <MObject>
+                  <base-MElement>
+                   <MElement>
+                    <uid>{01707947-079d-40a6-b770-ccfe1d4f1ae5}</uid>
+                   </MElement>
+                  </base-MElement>
+                  <name> NormalTower</name>
+                  <relations>
+                   <handles>
+                    <handles>
+                     <qlist>
+                      <item>
+                       <handle>
+                        <uid>{7e63710e-2041-4c09-a1b2-5146f14ea534}</uid>
+                        <target>
+                         <instance type="MInheritance">
+                          <MInheritance>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{7e63710e-2041-4c09-a1b2-5146f14ea534}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{01707947-079d-40a6-b770-ccfe1d4f1ae5}</a>
+                             <b>{1b5ab547-a8ab-4b8a-97d0-11d9b4eebfa4}</b>
+                            </MRelation>
+                           </base-MRelation>
+                          </MInheritance>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                     </qlist>
+                    </handles>
+                   </handles>
+                  </relations>
+                 </MObject>
+                </base-MObject>
+                <members>
+                 <qlist>
+                  <item>
+                   <MClassMember>
+                    <uid>{a11f6211-f32d-4970-9c83-067cc3cc2b31}</uid>
+                    <type>2</type>
+                    <declaration>NormalTower(QPoint pos, MainWindow *game, const QPixmap &amp;sprite = QPixmap(&quot;:/image/tower.png&quot;))</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{67932fd4-ab86-4f4d-ba0d-fc2eea49cef5}</uid>
+                    <type>2</type>
+                    <declaration>~NormalTower()</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{0401df70-a1af-43f4-88cc-6f1daa7a69a7}</uid>
+                    <type>2</type>
+                    <declaration>void levelup()</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{6fda77b7-5318-4201-ac92-fc79d60a51de}</uid>
+                    <type>2</type>
+                    <declaration>void shootWeapon()</declaration>
+                   </MClassMember>
+                  </item>
+                 </qlist>
+                </members>
+               </MClass>
+              </instance>
+             </target>
+            </handle>
+           </item>
+           <item>
+            <handle>
+             <uid>{4546e041-6e19-4d5d-b0e5-2cd481d5d6e4}</uid>
+             <target>
+              <instance type="MClass">
+               <MClass>
+                <base-MObject>
+                 <MObject>
+                  <base-MElement>
+                   <MElement>
+                    <uid>{4546e041-6e19-4d5d-b0e5-2cd481d5d6e4}</uid>
+                   </MElement>
+                  </base-MElement>
+                  <name>FireTower</name>
+                  <relations>
+                   <handles>
+                    <handles>
+                     <qlist>
+                      <item>
+                       <handle>
+                        <uid>{eae06303-4186-476d-be1f-992a85c34c1f}</uid>
+                        <target>
+                         <instance type="MInheritance">
+                          <MInheritance>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{eae06303-4186-476d-be1f-992a85c34c1f}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{4546e041-6e19-4d5d-b0e5-2cd481d5d6e4}</a>
+                             <b>{1b5ab547-a8ab-4b8a-97d0-11d9b4eebfa4}</b>
+                            </MRelation>
+                           </base-MRelation>
+                          </MInheritance>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                     </qlist>
+                    </handles>
+                   </handles>
+                  </relations>
+                 </MObject>
+                </base-MObject>
+                <members>
+                 <qlist>
+                  <item>
+                   <MClassMember>
+                    <uid>{3c14108b-2178-4c39-9786-4b1a71a0ab47}</uid>
+                    <type>2</type>
+                    <declaration>FireTower(QPoint pos, MainWindow *game, const QPixmap &amp;sprite = QPixmap(&quot;:/image/firetower.png&quot;))</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{02db70ab-d9f6-4f76-9ba5-5fddc8e1d981}</uid>
+                    <type>2</type>
+                    <declaration>~FireTower()</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{fac9e9c3-b6c1-44b9-81ee-cf7285cb79c5}</uid>
+                    <type>2</type>
+                    <declaration>void levelup()</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{c0bac9cf-7562-4746-9c4d-a77554f3bf82}</uid>
+                    <type>2</type>
+                    <declaration>void shootWeapon()</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{808077d6-e622-4d99-a679-988ebe8f8d65}</uid>
+                    <type>1</type>
+                    <declaration>int fireattack</declaration>
+                   </MClassMember>
+                  </item>
+                 </qlist>
+                </members>
+               </MClass>
+              </instance>
+             </target>
+            </handle>
+           </item>
+           <item>
+            <handle>
+             <uid>{2c9bdd6e-57b4-4316-b8dd-49ec1f0d5aef}</uid>
+             <target>
+              <instance type="MClass">
+               <MClass>
+                <base-MObject>
+                 <MObject>
+                  <base-MElement>
+                   <MElement>
+                    <uid>{2c9bdd6e-57b4-4316-b8dd-49ec1f0d5aef}</uid>
+                   </MElement>
+                  </base-MElement>
+                  <name>IceTower</name>
+                  <relations>
+                   <handles>
+                    <handles>
+                     <qlist>
+                      <item>
+                       <handle>
+                        <uid>{d56ce5e2-bea3-455f-914e-783e7a4d886a}</uid>
+                        <target>
+                         <instance type="MInheritance">
+                          <MInheritance>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{d56ce5e2-bea3-455f-914e-783e7a4d886a}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{2c9bdd6e-57b4-4316-b8dd-49ec1f0d5aef}</a>
+                             <b>{1b5ab547-a8ab-4b8a-97d0-11d9b4eebfa4}</b>
+                            </MRelation>
+                           </base-MRelation>
+                          </MInheritance>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                     </qlist>
+                    </handles>
+                   </handles>
+                  </relations>
+                 </MObject>
+                </base-MObject>
+                <members>
+                 <qlist>
+                  <item>
+                   <MClassMember>
+                    <uid>{9457a074-ba81-4a2f-8a01-132adcc1d532}</uid>
+                    <type>1</type>
+                    <declaration>int slowspeed</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{19346037-f858-4baa-8f64-a4bbb0881b50}</uid>
+                    <type>2</type>
+                    <declaration>void shootWeapon()</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{16310e0f-3825-430d-9b4f-f3fd8f2b7768}</uid>
+                    <type>2</type>
+                    <declaration>IceTower(QPoint pos, MainWindow *game, const QPixmap &amp;sprite = QPixmap(&quot;:/image/icetower.png&quot;))</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{4e4bc666-fb9c-400f-9189-27781c6d237c}</uid>
+                    <type>2</type>
+                    <declaration>~IceTower()</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{0a197afd-bf80-46ab-b7be-4937c75d74f6}</uid>
+                    <type>2</type>
+                    <declaration>void levelup()</declaration>
+                   </MClassMember>
+                  </item>
+                 </qlist>
+                </members>
+               </MClass>
+              </instance>
+             </target>
+            </handle>
+           </item>
+           <item>
+            <handle>
+             <uid>{792eb291-5f4c-4592-a8d5-235bd668675e}</uid>
+             <target>
+              <instance type="MClass">
+               <MClass>
+                <base-MObject>
+                 <MObject>
+                  <base-MElement>
+                   <MElement>
+                    <uid>{792eb291-5f4c-4592-a8d5-235bd668675e}</uid>
+                   </MElement>
+                  </base-MElement>
+                  <name>LaserTower</name>
+                  <relations>
+                   <handles>
+                    <handles>
+                     <qlist>
+                      <item>
+                       <handle>
+                        <uid>{242a227a-92d9-4702-b94b-2218343325b3}</uid>
+                        <target>
+                         <instance type="MInheritance">
+                          <MInheritance>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{242a227a-92d9-4702-b94b-2218343325b3}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{792eb291-5f4c-4592-a8d5-235bd668675e}</a>
+                             <b>{1b5ab547-a8ab-4b8a-97d0-11d9b4eebfa4}</b>
+                            </MRelation>
+                           </base-MRelation>
+                          </MInheritance>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                     </qlist>
+                    </handles>
+                   </handles>
+                  </relations>
+                 </MObject>
+                </base-MObject>
+                <members>
+                 <qlist>
+                  <item>
+                   <MClassMember>
+                    <uid>{1492107c-6ad1-4f35-ab43-5de22d20d7fa}</uid>
+                    <type>2</type>
+                    <declaration>LaserTower(QPoint pos, MainWindow *game, const QPixmap &amp;sprite = QPixmap(&quot;:/image/lasertower.png&quot;))</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{d10fbe0c-78eb-45fe-b1bf-8f771b9f64a5}</uid>
+                    <type>2</type>
+                    <declaration>~LaserTower()</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{dcb17676-3c5c-474c-895b-c0e73b395d7a}</uid>
+                    <type>2</type>
+                    <declaration>void levelup()</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{0f83e999-d492-4cfb-9296-c7a5217c3441}</uid>
+                    <type>2</type>
+                    <declaration>void shootWeapon()</declaration>
+                   </MClassMember>
+                  </item>
+                 </qlist>
+                </members>
+               </MClass>
               </instance>
              </target>
             </handle>
