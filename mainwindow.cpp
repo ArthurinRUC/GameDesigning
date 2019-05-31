@@ -41,7 +41,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 
-    // 以下为原有游戏的代码
+   /* // 以下为原有游戏的代码
 	preLoadWavesInfo();
     loadTowerPositions(); //调用位置函数
 	addWayPoints();
@@ -55,7 +55,7 @@ MainWindow::MainWindow(QWidget *parent)
 	timer->start(30);
 
 	// 设置300ms后游戏启动
-	QTimer::singleShot(300, this, SLOT(gameStart()));
+    QTimer::singleShot(300, this, SLOT(gameStart()));*/
 }
 
 MainWindow::~MainWindow()

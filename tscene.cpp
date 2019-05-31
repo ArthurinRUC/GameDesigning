@@ -88,27 +88,16 @@ tStartScene::tStartScene(QWidget* parent) : tScene(parent)
     title->setFont(QFont("Consolas", 18));
     title->show();
 
-    /*文件操作 设置从文本读取用户名和时间
-    QFile file(":/user.txt");      //文件操作 读取文件中的用户名
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-    QTextStream in(&file);
-    QStringList string_list;
-    QString line = in.readLine();
-    string_list=line.split(" ");   //分割文本 用元素初始化对象
-
-    QString user_name=string_list[0];
-    QString best_time=string_list[1];
-    QString str1="User: "+user_name;
-    QString str2="BestTime: "+best_time;
-    UserName->setGeometry(40, 430, 300, 100);
-    BestTime->setGeometry(40,460,300,100);
-    UserName->setText(str1);
-    BestTime->setText(str2);
-    UserName->setFont(QFont("Consolas", 14));
-    BestTime->setFont(QFont("Consolas", 14));
-    UserName->show();
-    BestTime->show();
-    file.close();*/
+    QString str1="Easy Map";
+    QString str2="Hard Map";
+    easyStr->setGeometry(150, 400, 300, 100);
+    hardStr->setGeometry(530,400,300,100);
+    easyStr->setText(str1);
+    hardStr->setText(str2);
+    easyStr->setFont(QFont("Consolas", 14));
+    hardStr->setFont(QFont("Consolas", 14));
+    easyStr->show();
+    hardStr->show();
 
 }
 
@@ -120,6 +109,8 @@ tStartScene::~tStartScene()
     delete this->btn1;
     delete this->btn2;
     delete this->title;
+    delete this->easyStr;
+    delete this->hardStr;
 }
 
 
@@ -197,6 +188,15 @@ void easyScene::uiSetup()
     WaveLabel->show();
     WaveLabel->setMovie(wavelabel);
 
+    exit->setGeometry(700, 0, 60, 60); //设置退出按钮
+    exit->setFlat(true);
+    exit->setIcon(QIcon(":/image/Leave.png"));
+    exit->setIconSize(QSize(60,60));
+    exit->setStyleSheet("background: transparent");
+    exit->setCursor(Qt::PointingHandCursor);
+    connect(exit, SIGNAL(clicked()), this, SLOT(leave()));
+    exit->show();
+    exit->raise();
 }
 
 easyScene::~easyScene()
@@ -215,6 +215,57 @@ easyScene::~easyScene()
     if (!(this->wavebar == nullptr))delete this->wavebar;
 }
 
+void easyScene::keyPressEvent(QKeyEvent *event)
+{
+    switch(event->key())
+    {
+    /*case Qt::Key_1:
+        this->putZombie(qrand() % 5, 0);
+        break;
+    case Qt::Key_2:
+        this->putZombie(qrand() % 5, 1);
+        break;
+    case Qt::Key_3:
+        this->putZombie(qrand() % 5, 2);
+        break;
+    case Qt::Key_4:
+        this->putZombie(qrand() % 5, 3);
+        break;
+    case Qt::Key_5:
+        this->putZombie(qrand() % 5, 4);
+        break;
+    case Qt::Key_6:
+        this->putZombie(qrand() % 5, 5);
+        break;
+    case Qt::Key_7:
+        this->putZombie(qrand() % 5, 6);
+        break;
+    case Qt::Key_8:
+        this->sunPoint += 100;
+        break;
+    case Qt::Key_9:
+        this->threat = 6001;
+        break;*/
+    case Qt::Key_Escape:
+        emit toTitle();
+        break;
+    }
+}
+
+void easyScene::onTimer()
+{
+    /*this->removeDeath();
+    this->act();
+    this->SunFront->setText(QString::number(this->sunPoint));
+    this->createZombie();
+    if (qrand() % 521 < 100)
+    {
+        zBonus* sun = new zSunFall(this);
+        Bonuses.append(sun);
+    }*/
+    this->exit->raise();
+    //this->judge();
+}
 
 void easyScene::leave()
 {

@@ -7,6 +7,7 @@
 #include<QLabel>
 #include<QMouseEvent>
 #include<QPushButton>
+#include<QKeyEvent>
 
 
 class tScene : public QLabel
@@ -35,6 +36,7 @@ public:
     QMovie* wavebar = new QMovie(":image/info_bar.png");
     QLabel* WaveLabel = new QLabel(this);
     QMovie* wavelabel = new QMovie(":/image/wave2.png");
+
 
 
 signals:
@@ -73,8 +75,8 @@ private:
     QLabel* btn1 = new QLabel(this);
     QLabel* btn2 = new QLabel(this);
     QLabel* title = new QLabel(this);
-    QLabel* UserName = new QLabel(this);
-    QLabel* BestTime = new QLabel(this);
+    QLabel* easyStr = new QLabel(this);
+    QLabel* hardStr = new QLabel(this);
 protected:
     void mousePressEvent(QMouseEvent *event);
 };
@@ -86,14 +88,14 @@ public:
     explicit easyScene(QWidget* parent = 0);
     ~easyScene();
 protected:
-    //void keyPressEvent(QKeyEvent *event);
+    void keyPressEvent(QKeyEvent *event);
 private:
     QMovie* background = new QMovie(":/GameMap/easyMap2.jpg");
-    //QPushButton* exit = new QPushButton(this);
+    QPushButton* exit = new QPushButton(this);
     //QPoint cell;
     void uiSetup();
 private slots:
-    //void onTimer();
+    void onTimer();
     void leave(); // emit toTitle();
 };
 

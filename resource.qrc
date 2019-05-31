@@ -25,5 +25,6 @@
         <file>image/money2.png</file>
         <file>image/life2.png</file>
         <file>image/wave2.png</file>
+        <file>image/Leave.png</file>
     </qresource>
 </RCC>
