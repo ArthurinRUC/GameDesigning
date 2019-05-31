@@ -8,7 +8,23 @@ tScene::tScene(QWidget *parent) : QLabel(parent)
 
 tScene::~tScene()
 {
+    if (!(this->MoneyFront == nullptr)) delete this->MoneyFront;
+    if (!(this->MoneyBar == nullptr)) delete this->MoneyBar;
+    if (!(this->moneybar == nullptr))delete this->moneybar;
+    if (!(this->MoneyLabel == nullptr)) delete this->MoneyLabel;
+    if (!(this->moneylabel == nullptr)) delete this->moneylabel;
 
+    if (!(this->LifeFront == nullptr))delete this->LifeFront;
+    if (!(this->LifeBar == nullptr)) delete this->LifeBar;
+    if (!(this->lifebar == nullptr)) delete this->lifebar;
+    if (!(this->LifeLabel == nullptr))delete this->LifeLabel;
+    if (!(this->lifelabel == nullptr)) delete this->lifelabel;
+
+    if (!(this->WaveFront == nullptr)) delete this->WaveFront;
+    if (!(this->WaveBar == nullptr))delete this->WaveBar;
+    if (!(this->wavebar == nullptr)) delete this->wavebar;
+    if (!(this->WaveLabel == nullptr)) delete this->WaveLabel;
+    if (!(this->wavelabel == nullptr))delete this->wavelabel;
 }
 
 tStartScreen::tStartScreen(QWidget* parent) : tScene(parent)
@@ -139,7 +155,12 @@ void easyScene::uiSetup()
     moneybar->start();
     MoneyBar->show();
     MoneyBar->setMovie(moneybar);
-
+    MoneyFront->setGeometry(10, 480, 300, 200);
+    MoneyFront->setFont(QFont("Calibri", 16));
+    MoneyFront->setText("50");
+    MoneyFront->setAlignment(Qt::AlignHCenter);
+    MoneyFront->show();
+    MoneyFront->raise();
 
 }
 

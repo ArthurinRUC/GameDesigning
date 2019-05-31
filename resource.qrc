@@ -22,5 +22,8 @@
         <file>GameMap/easyMap2.jpg</file>
         <file>GameMap/hardMap2.jpg</file>
         <file>image/info_bar.png</file>
+        <file>image/money2.png</file>
+        <file>image/life2.png</file>
+        <file>image/wave2.png</file>
     </qresource>
 </RCC>

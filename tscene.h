@@ -21,14 +21,20 @@ public:
     QLabel* MoneyFront = new QLabel(this);
     QLabel* MoneyBar = new QLabel(this);
     QMovie* moneybar = new QMovie(":/image/info_bar.png");
+    QLabel* MoneyLabel = new QLabel(this);
+    QMovie* moneylabel = new QMovie(":/image/money2.png");
 
     QLabel* LifeFront = new QLabel(this);
     QLabel* LifeBar = new QLabel(this);
     QMovie* lifebar = new QMovie(":/image/info_bar.png");
+    QLabel* LifeLabel = new QLabel(this);
+    QMovie* lifelabel = new QMovie(":/image/life2.png");
 
     QLabel* WaveFront = new QLabel(this);
     QLabel* WaveBar = new QLabel(this);
     QMovie* wavebar = new QMovie(":image/info_bar.png");
+    QLabel* WaveLabel = new QLabel(this);
+    QMovie* wavelabel = new QMovie(":/image/wave2.png");
 
 
 signals:
