@@ -3,7 +3,8 @@
 
 tScene::tScene(QWidget *parent) : QLabel(parent)
 {
-
+    this->setMouseTracking(true);
+    this->grabKeyboard();
 }
 
 tScene::~tScene()
@@ -202,18 +203,7 @@ void easyScene::uiSetup()
 easyScene::~easyScene()
 {
     delete this->background;
-    if (!(this->MoneyFront == nullptr)) delete this->MoneyFront;
-    if (!(this->MoneyBar == nullptr)) delete this->MoneyBar;
-    if (!(this->moneybar == nullptr))delete this->moneybar;
-
-    if (!(this->LifeFront == nullptr)) delete this->LifeFront;
-    if (!(this->LifeBar == nullptr)) delete this->LifeBar;
-    if (!(this->lifebar == nullptr))delete this->lifebar;
-
-    if (!(this->WaveFront == nullptr)) delete this->WaveFront;
-    if (!(this->WaveBar == nullptr)) delete this->WaveBar;
-    if (!(this->wavebar == nullptr))delete this->wavebar;
-}
+ }
 
 void easyScene::keyPressEvent(QKeyEvent *event)
 {
@@ -340,6 +330,16 @@ void hardScene::uiSetup()
     wavelabel->start();
     WaveLabel->show();
     WaveLabel->setMovie(wavelabel);
+
+    exit->setGeometry(700, 60, 60, 60); //设置退出按钮
+    exit->setFlat(true);
+    exit->setIcon(QIcon(":/image/Leave.png"));
+    exit->setIconSize(QSize(60,60));
+    exit->setStyleSheet("background: transparent");
+    exit->setCursor(Qt::PointingHandCursor);
+    connect(exit, SIGNAL(clicked()), this, SLOT(leave()));
+    exit->show();
+    exit->raise();
 }
 
 void hardScene::leave()

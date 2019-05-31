@@ -81,6 +81,7 @@ protected:
     void mousePressEvent(QMouseEvent *event);
 };
 
+
 class easyScene : public tScene
 {
     Q_OBJECT
@@ -99,6 +100,7 @@ private slots:
     void leave(); // emit toTitle();
 };
 
+
 class hardScene : public tScene
 {
     Q_OBJECT
@@ -109,7 +111,7 @@ protected:
     //void keyPressEvent(QKeyEvent *event); //僵尸的出现
 private:
     QMovie* background = new QMovie(":/GameMap/hardMap2.jpg");
-    //QPushButton* exit = new QPushButton(this);
+    QPushButton* exit = new QPushButton(this);
     //QPoint cell;
     void uiSetup(); //在PVZ中用来设计僵尸的出现等
 private slots:
