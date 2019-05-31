@@ -70,8 +70,8 @@ public:
     ~tStartScene();
 private:
     QMovie* background = new QMovie(":/GameMap/Title.jpg");
-    QMovie* easy = new QMovie(":/GameMap/choose2.jpg");
-    QMovie* hard = new QMovie(":/GameMap/choose1.jpg");
+    QMovie* easy = new QMovie(":/GameMap/EasyMap13.jpg");
+    QMovie* hard = new QMovie(":/GameMap/HardMap12.jpg");
     QLabel* btn1 = new QLabel(this);
     QLabel* btn2 = new QLabel(this);
     QLabel* title = new QLabel(this);
@@ -111,7 +111,7 @@ private:
     QMovie* background = new QMovie(":/GameMap/hardMap2.jpg");
     //QPushButton* exit = new QPushButton(this);
     //QPoint cell;
-    //void uiSetup(); //在PVZ中用来设计僵尸的出现等
+    void uiSetup(); //在PVZ中用来设计僵尸的出现等
 private slots:
     //void onTimer(); //在PVZ中用于设置阳光
     void leave();

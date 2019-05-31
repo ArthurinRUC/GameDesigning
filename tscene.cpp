@@ -285,7 +285,7 @@ hardScene::hardScene(QWidget* parent) : tScene(parent)
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(onTimer()));
     timer->start(20);
-    //this->uiSetup();
+    this->uiSetup();
 }
 
 hardScene::~hardScene()
@@ -293,7 +293,54 @@ hardScene::~hardScene()
     delete this->background;
 }
 
+void hardScene::uiSetup()
+{
+    MoneyBar->setGeometry(80, -60, 300, 200);
+    moneybar->start();
+    MoneyBar->show();
+    MoneyBar->setMovie(moneybar);
+    MoneyFront->setGeometry(-30, 20, 300, 200);
+    MoneyFront->setFont(QFont("Calibri", 16));
+    MoneyFront->setText("50");
+    MoneyFront->setAlignment(Qt::AlignHCenter);
+    MoneyFront->show();
+    MoneyFront->raise();
+    MoneyLabel->setGeometry(10, -60, 300, 200);
+    moneylabel->start();
+    MoneyLabel->show();
+    MoneyLabel->setMovie(moneylabel);
 
+    LifeBar->setGeometry(80, 20, 300, 200);
+    lifebar->start();
+    LifeBar->show();
+    LifeBar->setMovie(lifebar);
+    LifeFront->setGeometry(-30, 100, 300, 200);
+    LifeFront->setFont(QFont("Calibri", 16));
+    LifeFront->setText("10");
+    LifeFront->setAlignment(Qt::AlignHCenter);
+    LifeFront->show();
+    LifeFront->raise();
+    LifeLabel->setGeometry(10, 20, 300, 200);
+    lifelabel->start();
+    LifeLabel->show();
+    LifeLabel->setMovie(lifelabel);
+
+
+    WaveBar->setGeometry(700, -60, 300, 200);
+    wavebar->start();
+    WaveBar->show();
+    WaveBar->setMovie(wavebar);
+    WaveFront->setGeometry(590, 20, 300, 200);
+    WaveFront->setFont(QFont("Calibri", 16));
+    WaveFront->setText("1");
+    WaveFront->setAlignment(Qt::AlignHCenter);
+    WaveFront->show();
+    WaveFront->raise();
+    WaveLabel->setGeometry(620, -60, 300, 200);
+    wavelabel->start();
+    WaveLabel->show();
+    WaveLabel->setMovie(wavelabel);
+}
 
 void hardScene::leave()
 {
