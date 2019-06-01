@@ -135,6 +135,7 @@ easyScene::easyScene(QWidget* parent) : tScene(parent)
     this->setMovie(this->background);
     this->background->start();
     this->show();
+
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(onTimer()));
     timer->start(20);
@@ -189,6 +190,55 @@ void easyScene::uiSetup()
     WaveLabel->show();
     WaveLabel->setMovie(wavelabel);
 
+    btn1->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn1->setMovie(station);
+    station->start();
+    btn1->setGeometry(50, 220, 70, 70);
+    btn1->show();
+    btn1->raise();
+
+    btn2->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn2->setMovie(station);
+    station->start();
+    btn2->setGeometry(50, 150, 70, 70);
+    btn2->show();
+    btn2->raise();
+
+    btn3->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn3->setMovie(station);
+    station->start();
+    btn3->setGeometry(120, 70, 70, 70);
+    btn3->show();
+    btn3->raise();
+
+    btn4->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn4->setMovie(station);
+    station->start();
+    btn4->setGeometry(205, 235, 70, 70);
+    btn4->show();
+    btn4->raise();
+
+    btn5->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn5->setMovie(station);
+    station->start();
+    btn5->setGeometry(305, 235, 70, 70);
+    btn5->show();
+    btn5->raise();
+
+    btn6->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn6->setMovie(station);
+    station->start();
+    btn6->setGeometry(205, 315, 70, 70);
+    btn6->show();
+    btn6->raise();
+
+    btn7->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn7->setMovie(station);
+    station->start();
+    btn7->setGeometry(305, 315, 70, 70);
+    btn7->show();
+    btn7->raise();
+
     exit->setGeometry(700, 0, 60, 60); //设置退出按钮
     exit->setFlat(true);
     exit->setIcon(QIcon(":/image/Leave.png"));
@@ -203,6 +253,14 @@ void easyScene::uiSetup()
 easyScene::~easyScene()
 {
     delete this->background;
+    delete this->exit;
+    delete this->btn1;
+    delete this->btn2;
+    delete this->btn3;
+    delete this->btn4;
+    delete this->btn5;
+    delete this->btn6;
+    delete this->btn7;
  }
 
 void easyScene::keyPressEvent(QKeyEvent *event)

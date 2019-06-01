@@ -93,6 +93,17 @@ protected:
 private:
     QMovie* background = new QMovie(":/GameMap/easyMap2.jpg");
     QPushButton* exit = new QPushButton(this);
+
+
+    QMovie* station = new QMovie("/image/open_spot.png");
+    QLabel* btn1 = new QLabel(this);
+    QLabel* btn2 = new QLabel(this);
+    QLabel* btn3 = new QLabel(this);
+    QLabel* btn4 = new QLabel(this);
+    QLabel* btn5 = new QLabel(this);
+    QLabel* btn6 = new QLabel(this);
+    QLabel* btn7 = new QLabel(this);
+
     //QPoint cell;
     void uiSetup();
 private slots:
