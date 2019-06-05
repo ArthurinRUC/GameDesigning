@@ -128,6 +128,11 @@ void tStartScene::mousePressEvent(QMouseEvent *event)
 }
 
 easyScene::easyScene(QWidget* parent) : tScene(parent)
+  , m_waves(0)
+  , m_playerHp(5)
+  , m_playrGold(1000)
+  , m_gameEnded(false)
+  , m_gameWin(false)
 {
     this->setGeometry(0, 0, 800, 600);
     //this->cellSize = QPoint(81, 100);
@@ -138,8 +143,13 @@ easyScene::easyScene(QWidget* parent) : tScene(parent)
 
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(onTimer()));
+    addWayPoints();
+    connect(timer, SIGNAL(timeout()), this, SLOT(updateMap()));
     timer->start(20);
     this->uiSetup();
+
+    QTimer::singleShot(300, this, SLOT(gameStart()));
+
 }
 
 void easyScene::uiSetup()
@@ -250,6 +260,64 @@ void easyScene::uiSetup()
     exit->raise();
 }
 
+void easyScene::addWayPoints()
+{
+    //敌人航点【可改】
+    WayPoint *wayPoint1 = new WayPoint(QPoint(790, 225));
+    m_wayPointsList.push_back(wayPoint1);
+
+    WayPoint *wayPoint2 = new WayPoint(QPoint(640, 225));
+    m_wayPointsList.push_back(wayPoint2);
+    wayPoint2->setNextWayPoint(wayPoint1);
+
+    WayPoint *wayPoint3 = new WayPoint(QPoint(640, 335));
+    m_wayPointsList.push_back(wayPoint3);
+    wayPoint3->setNextWayPoint(wayPoint2);
+
+    WayPoint *wayPoint4 = new WayPoint(QPoint(415, 335));
+    m_wayPointsList.push_back(wayPoint4);
+    wayPoint4->setNextWayPoint(wayPoint3);
+
+    WayPoint *wayPoint5 = new WayPoint(QPoint(415, 195));
+    m_wayPointsList.push_back(wayPoint5);
+    wayPoint5->setNextWayPoint(wayPoint4);
+
+    WayPoint *wayPoint6 = new WayPoint(QPoint(145, 195));
+    m_wayPointsList.push_back(wayPoint6);
+    wayPoint6->setNextWayPoint(wayPoint5);
+
+    WayPoint *wayPoint7 = new WayPoint(QPoint(145, 350));
+    m_wayPointsList.push_back(wayPoint7);
+    wayPoint7->setNextWayPoint(wayPoint6);
+
+    WayPoint *wayPoint8 = new WayPoint(QPoint(0, 350));
+    m_wayPointsList.push_back(wayPoint8);
+    wayPoint8->setNextWayPoint(wayPoint7);
+}
+
+bool easyScene::loadWave()
+{
+    if (m_waves >= m_wavesInfo.size())
+        return false;
+
+    WayPoint *startWayPoint = m_wayPointsList.back();
+    QList<QVariant> curWavesInfo = m_wavesInfo[m_waves].toList();
+
+    for (int i = 0; i < curWavesInfo.size(); ++i)
+    {
+        QMap<QString, QVariant> dict = curWavesInfo[i].toMap();
+        int spawnTime = dict.value("spawnTime").toInt();
+
+        Enemy *enemy = new Enemy(startWayPoint, this);
+        m_enemyList.push_back(enemy);
+        QTimer::singleShot(spawnTime, enemy, SLOT(doActivate()));
+    }
+
+    return true;
+}
+
+
+
 easyScene::~easyScene()
 {
     delete this->background;
@@ -300,6 +368,48 @@ void easyScene::keyPressEvent(QKeyEvent *event)
     }
 }
 
+void easyScene::paintEvent(QPaintEvent *)
+{
+        /*if (m_gameEnded || m_gameWin)
+        {
+            QString text = m_gameEnded ? "YOU LOST!!!" : "YOU WIN!!!";
+            QPainter painter(this);
+            painter.setPen(QPen(Qt::red));
+            painter.drawText(rect(), Qt::AlignCenter, text);
+            return;
+        }*/
+
+        QPixmap cachePix(":/image/Bg.png"); //背景图片【可改】！！
+        //先在背景图片QPixmap上绘制，最后统一绘制QPixmap
+        QPainter cachePainter(&cachePix); //缓存，避免直接在界面上绘制而效率低下
+
+        //foreach手法，讲究
+        /*foreach (const TowerPosition &towerPos, m_towerPositionsList)
+            towerPos.draw(&cachePainter);*/
+
+        /*foreach (const Tower *tower, m_towersList)
+            tower->draw(&cachePainter);*/
+
+        foreach (const WayPoint *wayPoint, m_wayPointsList)
+            wayPoint->draw(&cachePainter);
+
+        foreach (const Enemy *enemy, m_enemyList)
+            enemy->draw(&cachePainter);
+
+        /*foreach (const Bullet *bullet, m_bulletList)
+            bullet->draw(&cachePainter);*/
+
+        /*drawWave(&cachePainter);
+        drawHP(&cachePainter);
+        drawPlayerGold(&cachePainter);*/
+
+        //初始化画笔
+        QPainter painter(this);
+        //画背景图片
+        painter.drawPixmap(0, 0, cachePix);//QPixmap cachePix(":/image/Bg.png");
+
+}
+
 void easyScene::onTimer()
 {
     /*this->removeDeath();
@@ -318,6 +428,20 @@ void easyScene::onTimer()
 void easyScene::leave()
 {
     emit toTitle();
+}
+
+void easyScene::updateMap()
+{
+    foreach (Enemy *enemy, m_enemyList)
+        enemy->move();
+    //foreach (Tower *tower, m_towersList)
+        //tower->checkEnemyInRange();
+    update();
+}
+
+void easyScene::gameStart()
+{
+    loadWave();
 }
 
 

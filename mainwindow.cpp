@@ -38,11 +38,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 
-
-
-
    /* // 以下为原有游戏的代码
-	preLoadWavesInfo();
+    preLoadWavesInfo(); //设置波数
     loadTowerPositions(); //调用位置函数
 	addWayPoints();
 
@@ -284,12 +281,12 @@ void MainWindow::removedEnemy(Enemy *enemy)
 	if (m_enemyList.empty())
 	{
 		++m_waves;
-		if (!loadWave())
-		{
+        //if (!loadWave())
+        //{
 			m_gameWin = true;
 			// 游戏胜利转到游戏胜利场景
 			// 这里暂时以打印处理
-		}
+        //}
 	}
 }
 
@@ -343,7 +340,7 @@ bool MainWindow::loadWave()
 	WayPoint *startWayPoint = m_wayPointsList.back();
 	QList<QVariant> curWavesInfo = m_wavesInfo[m_waves].toList();
 
-	for (int i = 0; i < curWavesInfo.size(); ++i)
+    /*for (int i = 0; i < curWavesInfo.size(); ++i)
 	{
 		QMap<QString, QVariant> dict = curWavesInfo[i].toMap();
 		int spawnTime = dict.value("spawnTime").toInt();
@@ -351,7 +348,7 @@ bool MainWindow::loadWave()
 		Enemy *enemy = new Enemy(startWayPoint, this);
 		m_enemyList.push_back(enemy);
 		QTimer::singleShot(spawnTime, enemy, SLOT(doActivate()));
-	}
+    }*/
 
 	return true;
 }

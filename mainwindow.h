@@ -26,6 +26,7 @@ public:
 	~MainWindow();
 
 
+    //以下为原有游戏代码
 	void getHpDamage(int damage = 1);
 	void removedEnemy(Enemy *enemy);
 	void removedBullet(Bullet *bullet);
@@ -56,7 +57,7 @@ private:
 	void drawHP(QPainter *painter);
 	void drawPlayerGold(QPainter *painter);
 	void doGameOver();
-	void preLoadWavesInfo();
+    void preLoadWavesInfo();
 
 private:
 	Ui::MainWindow *		ui;

@@ -8,7 +8,11 @@
 #include<QMouseEvent>
 #include<QPushButton>
 #include<QKeyEvent>
-
+#include<waypoint.h>
+#include<enemy.h>
+#include<tower.h>
+#include<QPaintEvent>
+#include<QPainter>
 
 class tScene : public QLabel
 {
@@ -90,9 +94,11 @@ public:
     ~easyScene();
 protected:
     void keyPressEvent(QKeyEvent *event);
+    void paintEvent(QPaintEvent *);
 private:
     QMovie* background = new QMovie(":/GameMap/easyMap2.jpg");
     QPushButton* exit = new QPushButton(this);
+
 
 
     QMovie* station = new QMovie("/image/open_spot.png");
@@ -106,9 +112,30 @@ private:
 
     //QPoint cell;
     void uiSetup();
+
+    //以下为航线设计的函数
+    void addWayPoints();
+    int						m_waves;
+    int						m_playerHp;
+    int						m_playrGold;
+    bool					m_gameEnded;
+    bool					m_gameWin;
+    //AudioPlayer *			m_audioPlayer;
+    QList<QVariant>			m_wavesInfo;
+    //QList<TowerPosition>	m_towerPositionsList; //√
+    QList<Tower *>			m_towersList; //√
+    QList<WayPoint *>		m_wayPointsList;
+    QList<Enemy *>			m_enemyList;
+    //QList<Bullet *>			m_bulletList;
+
+    bool loadWave();
+
 private slots:
     void onTimer();
     void leave(); // emit toTitle();
+    void updateMap();
+    void gameStart();
+
 };
 
 
