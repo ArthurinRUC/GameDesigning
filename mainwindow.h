@@ -40,7 +40,7 @@ protected:
 	void paintEvent(QPaintEvent *);
     void mousePressEvent(QMouseEvent *); //√
 
-private slots:
+public slots:
     void back();    // 来到主界面
     void startEasy();
     void startHard();

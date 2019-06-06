@@ -1,5 +1,6 @@
 #include "tscene.h"
 
+static const int TowerCost = 300;
 
 tScene::tScene(QWidget *parent) : QLabel(parent)
 {
@@ -99,7 +100,6 @@ tStartScene::tStartScene(QWidget* parent) : tScene(parent)
     hardStr->setFont(QFont("Consolas", 14));
     easyStr->show();
     hardStr->show();
-
 }
 
 tStartScene::~tStartScene()
@@ -127,10 +127,12 @@ void tStartScene::mousePressEvent(QMouseEvent *event)
     }
 }
 
-easyScene::easyScene(QWidget* parent) : tScene(parent)
+easyScene::easyScene(QWidget* parent)
+    : tScene(parent)
+  //, ui(new Ui::MainWindow)
   , m_waves(0)
   , m_playerHp(5)
-  , m_playrGold(1000)
+  , m_playerGold(1000)
   , m_gameEnded(false)
   , m_gameWin(false)
 {
@@ -141,15 +143,20 @@ easyScene::easyScene(QWidget* parent) : tScene(parent)
     this->background->start();
     this->show();
 
-    timer = new QTimer(this);
-    //connect(timer, SIGNAL(timeout()), this, SLOT(onTimer()));
+    preLoadWavesInfo(); //设置波数
+    //loadTowerPositions(); //调用位置函数
     addWayPoints();
-    //connect(timer, SIGNAL(timeout()), this, SLOT(updateMap()));
-    timer->start(20);
-    this->uiSetup();
 
-   // QTimer::singleShot(300, this, SLOT(gameStart()));
+    //m_audioPlayer = new AudioPlayer(this);
+    //m_audioPlayer->startBGM();
 
+    //每30ms发送一个更新信号
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(updateMap()));
+    timer->start(30);
+
+    // 设置300ms后游戏启动
+    QTimer::singleShot(300, this, SLOT(gameStart()));
 }
 
 void easyScene::uiSetup()
@@ -158,11 +165,13 @@ void easyScene::uiSetup()
     moneybar->start();
     MoneyBar->show();
     MoneyBar->setMovie(moneybar);
+
     MoneyFront->setGeometry(10, 480, 300, 200);
     MoneyFront->setFont(QFont("Calibri", 16));
     MoneyFront->setText("50");
     MoneyFront->setAlignment(Qt::AlignHCenter);
     MoneyFront->show();
+
     MoneyFront->raise();
     MoneyLabel->setGeometry(60, 400, 300, 200);
     moneylabel->start();
@@ -173,12 +182,14 @@ void easyScene::uiSetup()
     lifebar->start();
     LifeBar->show();
     LifeBar->setMovie(lifebar);
+
     LifeFront->setGeometry(290, 480, 300, 200);
     LifeFront->setFont(QFont("Calibri", 16));
     LifeFront->setText("10");
     LifeFront->setAlignment(Qt::AlignHCenter);
     LifeFront->show();
     LifeFront->raise();
+
     LifeLabel->setGeometry(340, 400, 300, 200);
     lifelabel->start();
     LifeLabel->show();
@@ -260,6 +271,33 @@ void easyScene::uiSetup()
     exit->raise();
 }
 
+void easyScene::loadTowerPositions()
+{
+    //读取文件中的炮塔位置信息，可以不用深究，但是可以修改位置【可改】
+
+    //这里可以改变炮塔的位置，文件是html格式
+    QFile file(":/config/TowersPosition.plist");
+    if (!file.open(QFile::ReadOnly | QFile::Text))
+    {
+        QMessageBox::warning(this, "TowerDefense", "Cannot Open TowersPosition.plist");
+        return;
+    }
+
+    PListReader reader;
+    reader.read(&file);
+
+    QList<QVariant> array = reader.data();
+    foreach (QVariant dict, array)
+    {
+        QMap<QString, QVariant> point = dict.toMap();
+        int x = point.value("x").toInt();
+        int y = point.value("y").toInt();
+        m_towerPositionsList.push_back(QPoint(x, y));
+    }
+
+    file.close();
+}
+
 void easyScene::addWayPoints()
 {
     //敌人航点【可改】
@@ -316,6 +354,69 @@ bool easyScene::loadWave()
     return true;
 }
 
+bool easyScene::canBuyTower() const
+{
+    if (m_playerGold >= TowerCost)
+        return true;
+    return false;
+}
+
+void easyScene::drawWave()
+{
+    WaveFront->setText(QString("%1").arg(m_waves +1));
+    WaveFront->setAlignment(Qt::AlignHCenter);
+    WaveFront->show();
+    WaveFront->raise();
+}
+
+void easyScene::drawHP()
+{
+    LifeFront->setText(QString("%1").arg(m_playerHp));
+    LifeFront->setAlignment(Qt::AlignHCenter);
+    LifeFront->show();
+    LifeFront->raise();
+}
+
+void easyScene::drawPlayerGold()
+{
+    MoneyFront->setText(QString("%1").arg(m_playerGold));
+    MoneyFront->setAlignment(Qt::AlignHCenter);
+    MoneyFront->show();
+    MoneyFront->raise();
+}
+
+void easyScene::doGameOver()
+{
+    if (!m_gameEnded)
+    {
+        m_gameEnded = true;
+        // 此处应该切换场景到结束场景
+        // 暂时以打印替代,见paintEvent处理
+    }
+}
+
+void easyScene::preLoadWavesInfo()
+{
+    QFile file(":/config/Waves.plist");
+    if (!file.open(QFile::ReadOnly | QFile::Text))
+    {
+        QMessageBox::warning(this, "TowerDefense", "Cannot Open TowersPosition.plist");
+        return;
+    }
+
+    PListReader reader;
+    reader.read(&file);
+
+    // 获取波数信息
+    m_wavesInfo = reader.data();
+
+    file.close();
+}
+
+
+
+
+
 
 
 easyScene::~easyScene()
@@ -329,7 +430,67 @@ easyScene::~easyScene()
     delete this->btn5;
     delete this->btn6;
     delete this->btn7;
- }
+    // addition 6-6
+    //delete ui;
+}
+
+void easyScene::getHpDamage(int damage)
+{
+    m_audioPlayer->playSound(LifeLoseSound);
+    m_playerHp -= damage;
+    if (m_playerHp <= 0)
+        doGameOver();
+}
+
+void easyScene::removedEnemy(Enemy *enemy)
+{
+    Q_ASSERT(enemy);
+
+    m_enemyList.removeOne(enemy);
+    delete enemy;
+
+    if (m_enemyList.empty())
+    {
+        ++m_waves;
+        //if (!loadWave())
+        //{
+            m_gameWin = true;
+            // 游戏胜利转到游戏胜利场景
+            // 这里暂时以打印处理
+        //}
+    }
+}
+
+void easyScene::removedBullet(Bullet *bullet)
+{
+    Q_ASSERT(bullet);
+
+    m_bulletList.removeOne(bullet);
+    delete bullet;
+}
+
+void easyScene::addBullet(Bullet *bullet)
+{
+    Q_ASSERT(bullet);
+
+    m_bulletList.push_back(bullet);
+}
+
+void easyScene::awardGold(int gold)
+{
+    m_playerGold += gold;
+    update();
+}
+
+AudioPlayer *easyScene::audioPlayer() const
+{
+    return m_audioPlayer;
+}
+
+QList<Enemy *> easyScene::enemyList() const
+{
+    return m_enemyList;
+}
 
 void easyScene::keyPressEvent(QKeyEvent *event)
 {
@@ -370,44 +531,67 @@ void easyScene::keyPressEvent(QKeyEvent *event)
 
 void easyScene::paintEvent(QPaintEvent *)
 {
-        /*if (m_gameEnded || m_gameWin)
+    if (m_gameEnded || m_gameWin)
+    {
+        QString text = m_gameEnded ? "YOU LOST!!!" : "YOU WIN!!!";
+        QPainter painter(this);
+        painter.setPen(QPen(Qt::red));
+        painter.drawText(rect(), Qt::AlignCenter, text);
+        return;
+    }
+
+    QPixmap cachePix(":/GameMap/easyMap2.jpg"); //背景图片【可改】！！
+    //先在背景图片QPixmap上绘制，最后统一绘制QPixmap
+    QPainter cachePainter(&cachePix); //缓存，避免直接在界面上绘制而效率低下
+
+    //foreach手法，讲究
+    /*foreach (const TowerPosition &towerPos, m_towerPositionsList)
+        towerPos.draw(&cachePainter);
+
+    foreach (const Tower *tower, m_towersList)
+        tower->draw(&cachePainter);*/
+
+    foreach (const WayPoint *wayPoint, m_wayPointsList)
+        wayPoint->draw(&cachePainter);
+
+    foreach (const Enemy *enemy, m_enemyList)
+        enemy->draw(&cachePainter);
+
+    //foreach (const Bullet *bullet, m_bulletList)
+        //bullet->draw(&cachePainter);
+
+    drawWave();
+    drawHP();
+    drawPlayerGold();
+
+    //初始化画笔
+    QPainter painter(this);
+    //画背景图片
+    painter.drawPixmap(0, 0, cachePix);//QPixmap cachePix(":/image/Bg.png");*/
+
+}
+
+void easyScene::mousePressEvent(QMouseEvent * event)
+{
+    //单击鼠标后的处理
+    QPoint pressPos = event->pos();
+    auto it = m_towerPositionsList.begin();
+    while (it != m_towerPositionsList.end())
+    {
+        if (canBuyTower() && it->containPoint(pressPos) && !it->hasTower())
         {
-            QString text = m_gameEnded ? "YOU LOST!!!" : "YOU WIN!!!";
-            QPainter painter(this);
-            painter.setPen(QPen(Qt::red));
-            painter.drawText(rect(), Qt::AlignCenter, text);
-            return;
-        }*/
+            m_audioPlayer->playSound(TowerPlaceSound);
+            m_playerGold -= TowerCost;
+            it->setHasTower();
 
-        //QPixmap cachePix(":/GameMap/easyMap13.jpg"); //背景图片【可改】！！
-        //先在背景图片QPixmap上绘制，最后统一绘制QPixmap
-        //QPainter cachePainter(&cachePix); //缓存，避免直接在界面上绘制而效率低下
+            //Tower *tower = new Tower(it->centerPos(), this);
+            //m_towersList.push_back(tower);
+            update(); //调用paintevent(),重绘画面
+            break;
+        }
 
-        //foreach手法，讲究
-        /*foreach (const TowerPosition &towerPos, m_towerPositionsList)
-            towerPos.draw(&cachePainter);*/
-
-        /*foreach (const Tower *tower, m_towersList)
-            tower->draw(&cachePainter);*/
-
-        //foreach (const WayPoint *wayPoint, m_wayPointsList)
-          //  wayPoint->draw(&cachePainter);
-
-        //foreach (const Enemy *enemy, m_enemyList)
-          //  enemy->draw(&cachePainter);
-
-        /*foreach (const Bullet *bullet, m_bulletList)
-            bullet->draw(&cachePainter);*/
-
-        /*drawWave(&cachePainter);
-        drawHP(&cachePainter);
-        drawPlayerGold(&cachePainter);*/
-
-        //初始化画笔
-        //QPainter painter(this);
-        //画背景图片
-        //painter.drawPixmap(0, 0, cachePix);//QPixmap cachePix(":/image/Bg.png");
-
+        ++it;
+    }
 }
 
 void easyScene::onTimer()
@@ -428,6 +612,11 @@ void easyScene::onTimer()
 void easyScene::leave()
 {
     emit toTitle();
+}
+
+void easyScene::back()
+{
+    //MainWindow::back();
 }
 
 void easyScene::updateMap()

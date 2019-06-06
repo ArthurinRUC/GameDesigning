@@ -13,6 +13,17 @@
 #include<tower.h>
 #include<QPaintEvent>
 #include<QPainter>
+#include<QList>
+#include <QtGlobal>
+#include <QMessageBox>
+#include <QXmlStreamReader>
+#include <QtDebug>
+
+#include"bullet.h"
+#include"audioplayer.h"
+#include"towerposition.h"
+#include"plistreader.h"
+
 
 class tScene : public QLabel
 {
@@ -44,11 +55,14 @@ public:
 
 
 signals:
-    void toTitle();
+    void toTitle(); //返回信号，返回主界面
     void toEasy();
     void toHard();
 
+
+
 public slots:
+
 };
 
 class tStartScreen : public tScene
@@ -92,9 +106,24 @@ class easyScene : public tScene
 public:
     explicit easyScene(QWidget* parent = 0);
     ~easyScene();
+
+    //增加代码 6-6
+    void getHpDamage(int damage = 1);
+    void removedEnemy(Enemy *enemy);
+    void removedBullet(Bullet *bullet);
+    void addBullet(Bullet *bullet);
+    void awardGold(int gold);
+
+    AudioPlayer* audioPlayer() const;
+    QList<Enemy *> enemyList() const;
+
 protected:
     void keyPressEvent(QKeyEvent *event);
     void paintEvent(QPaintEvent *);
+
+    //增加代码 6-6
+    void mousePressEvent(QMouseEvent *);
+
 private:
     QMovie* background = new QMovie(":/GameMap/easyMap2.jpg");
     QPushButton* exit = new QPushButton(this);
@@ -113,28 +142,47 @@ private:
     //QPoint cell;
     void uiSetup();
 
-    //以下为航线设计的函数
+    //增加代码 6-6
+private:
+    void loadTowerPositions(); //√
     void addWayPoints();
+    bool loadWave();
+    bool canBuyTower() const; //√
+    void drawWave();
+    void drawHP();
+    void drawPlayerGold();
+    void doGameOver();
+    void preLoadWavesInfo();
+
+
+
+private:
+    //MainWindow *		ui;
     int						m_waves;
     int						m_playerHp;
-    int						m_playrGold;
+    int						m_playerGold;
     bool					m_gameEnded;
     bool					m_gameWin;
-    //AudioPlayer *			m_audioPlayer;
+    AudioPlayer *			m_audioPlayer;
     QList<QVariant>			m_wavesInfo;
-    //QList<TowerPosition>	m_towerPositionsList; //√
+    QList<TowerPosition>	m_towerPositionsList; //√
     QList<Tower *>			m_towersList; //√
     QList<WayPoint *>		m_wayPointsList;
     QList<Enemy *>			m_enemyList;
-    //QList<Bullet *>			m_bulletList;
+    QList<Bullet *>			m_bulletList;
 
-    bool loadWave();
 
 private slots:
     void onTimer();
     void leave(); // emit toTitle();
-    void updateMap();
-    void gameStart();
+
+    //增加代码 6-6
+    void back();
+    //void startEasy();
+    //void startHard();
+
+    void updateMap(); //原来的槽
+    void gameStart(); //原来的槽
 
 };
 
