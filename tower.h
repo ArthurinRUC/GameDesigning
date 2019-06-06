@@ -5,17 +5,19 @@
 #include <QSize>
 #include <QPixmap>
 #include <QObject>
+#include"tscene.h"
 
 class QPainter;
 class Enemy;
 class MainWindow;
 class QTimer;
+class tScene;
 
 class Tower : QObject
 {
 	Q_OBJECT
 public:
-	Tower(QPoint pos, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/tower.png"));
+    Tower(QPoint pos, tScene *game, const QPixmap &sprite = QPixmap(":/image/tower.png"));
 	~Tower();
 
 	void draw(QPainter *painter) const;
@@ -38,7 +40,7 @@ private:
 	qreal			m_rotationSprite;
 
 	Enemy *			m_chooseEnemy;
-	MainWindow *	m_game;
+    tScene *        m_game;
 	QTimer *		m_fireRateTimer;
 
     //必备三件套~

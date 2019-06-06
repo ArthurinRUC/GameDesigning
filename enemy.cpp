@@ -16,7 +16,7 @@ static const int Health_Bar_Width = 20;
 
 const QSize Enemy::ms_fixedSize(52, 52);
 
-Enemy::Enemy(WayPoint *startWayPoint, easyScene *game, const QPixmap &sprite/* = QPixmap(":/image/enemy.png")*/)
+Enemy::Enemy(WayPoint *startWayPoint, tScene *game, const QPixmap &sprite/* = QPixmap(":/image/enemy.png")*/)
 	: QObject(0)
 	, m_active(false)
 	, m_maxHp(40)
@@ -59,8 +59,8 @@ void Enemy::move()
 		else
 		{
 			// 表示进入基地
-            //m_game->getHpDamage();
-            //m_game->removedEnemy(this);
+            m_game->getHpDamage();
+            m_game->removedEnemy(this);
             return;
 		}
 	}
@@ -120,7 +120,7 @@ void Enemy::getRemoved()
 	foreach (Tower *attacker, m_attackedTowersList)
 		attacker->targetKilled();
 	// 通知game,此敌人已经阵亡
-    //m_game->removedEnemy(this);
+    m_game->removedEnemy(this);
 }
 
 void Enemy::getDamage(int damage)

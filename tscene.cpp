@@ -3,6 +3,11 @@
 static const int TowerCost = 300;
 
 tScene::tScene(QWidget *parent) : QLabel(parent)
+  , m_waves(0)
+  , m_gameEnded(false)
+  , m_gameWin(false)
+  , m_playerHp(5)
+  , m_playerGold(1000)
 {
     this->setMouseTracking(true);
     this->grabKeyboard();
@@ -130,11 +135,6 @@ void tStartScene::mousePressEvent(QMouseEvent *event)
 easyScene::easyScene(QWidget* parent)
     : tScene(parent)
   //, ui(new Ui::MainWindow)
-  , m_waves(0)
-  , m_playerHp(5)
-  , m_playerGold(1000)
-  , m_gameEnded(false)
-  , m_gameWin(false)
 {
     this->setGeometry(0, 0, 800, 600);
     //this->cellSize = QPoint(81, 100);
@@ -154,7 +154,7 @@ easyScene::easyScene(QWidget* parent)
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(updateMap()));
     timer->start(30);
-
+    this->uiSetup();
     // 设置300ms后游戏启动
     QTimer::singleShot(300, this, SLOT(gameStart()));
 }
@@ -385,7 +385,7 @@ void easyScene::drawPlayerGold()
     MoneyFront->raise();
 }
 
-void easyScene::doGameOver()
+void tScene::doGameOver()
 {
     if (!m_gameEnded)
     {
@@ -434,7 +434,7 @@ easyScene::~easyScene()
     //delete ui;
 }
 
-void easyScene::getHpDamage(int damage)
+void tScene::getHpDamage(int damage)
 {
     m_audioPlayer->playSound(LifeLoseSound);
     m_playerHp -= damage;
@@ -442,7 +442,7 @@ void easyScene::getHpDamage(int damage)
         doGameOver();
 }
 
-void easyScene::removedEnemy(Enemy *enemy)
+void tScene::removedEnemy(Enemy *enemy)
 {
     Q_ASSERT(enemy);
 
@@ -461,7 +461,7 @@ void easyScene::removedEnemy(Enemy *enemy)
     }
 }
 
-void easyScene::removedBullet(Bullet *bullet)
+void tScene::removedBullet(Bullet *bullet)
 {
     Q_ASSERT(bullet);
 
@@ -469,14 +469,14 @@ void easyScene::removedBullet(Bullet *bullet)
     delete bullet;
 }
 
-void easyScene::addBullet(Bullet *bullet)
+void tScene::addBullet(Bullet *bullet)
 {
     Q_ASSERT(bullet);
 
     m_bulletList.push_back(bullet);
 }
 
-void easyScene::awardGold(int gold)
+void tScene::awardGold(int gold)
 {
     m_playerGold += gold;
     update();
@@ -487,7 +487,7 @@ AudioPlayer *easyScene::audioPlayer() const
     return m_audioPlayer;
 }
 
-QList<Enemy *> easyScene::enemyList() const
+QList<Enemy *> tScene::enemyList() const
 {
     return m_enemyList;
 }
@@ -643,6 +643,7 @@ hardScene::hardScene(QWidget* parent) : tScene(parent)
     this->setMovie(this->background);
     this->background->start();
     this->show();
+
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(onTimer()));
     timer->start(20);

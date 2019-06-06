@@ -37,16 +37,16 @@ public:
 	QList<Enemy *> enemyList() const;
 
 protected:
-	void paintEvent(QPaintEvent *);
-    void mousePressEvent(QMouseEvent *); //√
+    //void paintEvent(QPaintEvent *);
+    //void mousePressEvent(QMouseEvent *); //√
 
 public slots:
     void back();    // 来到主界面
     void startEasy();
     void startHard();
 
-    void updateMap(); //原来的槽
-    void gameStart(); //原来的槽
+    //void updateMap(); //原来的槽
+    //void gameStart(); //原来的槽
 
 private:
     void loadTowerPositions(); //√

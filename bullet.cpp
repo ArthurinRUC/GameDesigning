@@ -7,7 +7,7 @@
 const QSize Bullet::ms_fixedSize(8, 8);
 
 Bullet::Bullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target,
-			   MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/bullet.png")*/)
+               tScene *game, const QPixmap &sprite/* = QPixmap(":/image/bullet.png")*/)
 	: m_startPos(startPos)
 	, m_targetPos(targetPoint)
 	, m_sprite(sprite)

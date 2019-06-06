@@ -24,6 +24,7 @@
 #include"towerposition.h"
 #include"plistreader.h"
 
+class Bullet;
 
 class tScene : public QLabel
 {
@@ -52,7 +53,23 @@ public:
     QLabel* WaveLabel = new QLabel(this);
     QMovie* wavelabel = new QMovie(":/image/wave2.png");
 
-
+    // move to base class
+    QList<Enemy *> enemyList() const;
+    void addBullet(Bullet *bullet);
+    QList<Bullet *>			m_bulletList;
+    void removedEnemy(Enemy *enemy);
+    void removedBullet(Bullet *bullet);
+    QList<Enemy *>			m_enemyList;
+    QList<Tower *>			m_towersList;
+    int						m_waves;
+    bool					m_gameEnded;
+    bool					m_gameWin;
+    void awardGold(int gold);
+    void getHpDamage(int damage = 1);
+    int						m_playerHp;
+    int						m_playerGold;
+    AudioPlayer *			m_audioPlayer;
+    void doGameOver();
 
 signals:
     void toTitle(); //返回信号，返回主界面
@@ -108,14 +125,14 @@ public:
     ~easyScene();
 
     //增加代码 6-6
-    void getHpDamage(int damage = 1);
-    void removedEnemy(Enemy *enemy);
-    void removedBullet(Bullet *bullet);
-    void addBullet(Bullet *bullet);
-    void awardGold(int gold);
+    //void getHpDamage(int damage = 1);
+   // void removedEnemy(Enemy *enemy);
+    //void removedBullet(Bullet *bullet);
+    //void addBullet(Bullet *bullet);
+    //void awardGold(int gold);
 
     AudioPlayer* audioPlayer() const;
-    QList<Enemy *> enemyList() const;
+    //QList<Enemy *> enemyList() const;
 
 protected:
     void keyPressEvent(QKeyEvent *event);
@@ -151,25 +168,25 @@ private:
     void drawWave();
     void drawHP();
     void drawPlayerGold();
-    void doGameOver();
+    //void doGameOver();
     void preLoadWavesInfo();
 
 
 
 private:
     //MainWindow *		ui;
-    int						m_waves;
-    int						m_playerHp;
-    int						m_playerGold;
-    bool					m_gameEnded;
-    bool					m_gameWin;
-    AudioPlayer *			m_audioPlayer;
+    //int						m_waves;
+    //int						m_playerHp;
+    //int						m_playerGold;
+    //bool					m_gameEnded;
+    //bool					m_gameWin;
+    //AudioPlayer *			m_audioPlayer;
     QList<QVariant>			m_wavesInfo;
     QList<TowerPosition>	m_towerPositionsList; //√
-    QList<Tower *>			m_towersList; //√
+    //QList<Tower *>			m_towersList; //√
     QList<WayPoint *>		m_wayPointsList;
-    QList<Enemy *>			m_enemyList;
-    QList<Bullet *>			m_bulletList;
+    //QList<Enemy *>			m_enemyList;
+    //QList<Bullet *>			m_bulletList;
 
 
 private slots:

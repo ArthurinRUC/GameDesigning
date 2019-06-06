@@ -12,12 +12,13 @@ class QPainter;
 class MainWindow;
 class Tower;
 class easyScene;
+class tScene;
 
 class Enemy : public QObject
 {
 	Q_OBJECT
 public:
-    Enemy(WayPoint *startWayPoint, easyScene *game, const QPixmap &sprite = QPixmap(":/image/enemy.png"));
+    Enemy(WayPoint *startWayPoint, tScene *game, const QPixmap &sprite = QPixmap(":/image/enemy.png"));
 	~Enemy();
 
 	void draw(QPainter *painter) const;
@@ -40,7 +41,7 @@ private:
 
 	QPoint			m_pos;
 	WayPoint *		m_destinationWayPoint;
-    easyScene *     m_game;
+    tScene *        m_game;
 	QList<Tower *>	m_attackedTowersList;
 
 	const QPixmap	m_sprite;

@@ -3,6 +3,7 @@
 #include "bullet.h"
 #include "mainwindow.h"
 #include "utility.h"
+#include"tscene.h"
 #include <QPainter>
 #include <QColor>
 #include <QTimer>
@@ -11,7 +12,7 @@
 
 const QSize Tower::ms_fixedSize(42, 42);
 
-Tower::Tower(QPoint pos, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/tower.png"*/) //炮塔图片【可改】
+Tower::Tower(QPoint pos, tScene *game, const QPixmap &sprite/* = QPixmap(":/image/tower.png"*/) //炮塔图片【可改】
 	: m_attacking(false)
 	, m_attackRange(70)
 	, m_damage(10)

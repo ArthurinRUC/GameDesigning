@@ -5,10 +5,13 @@
 #include <QSize>
 #include <QPixmap>
 #include <QObject>
+#include"tscene.h"
 
 class QPainter;
 class Enemy;
 class MainWindow;
+class tScene;
+
 
 class Bullet : QObject
 {
@@ -18,7 +21,7 @@ class Bullet : QObject
 
 public:
 	Bullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target,
-		   MainWindow *game, const QPixmap &sprite = QPixmap(":/image/bullet.png"));
+           tScene *game, const QPixmap &sprite = QPixmap(":/image/bullet.png"));
 
 	void draw(QPainter *painter) const;
 	void move();
@@ -34,7 +37,7 @@ private:
 	const QPixmap	m_sprite;
 	QPoint			m_currentPos;
 	Enemy *			m_target;
-	MainWindow *	m_game;
+    tScene *        m_game;
 	int				m_damage;
 
 	static const QSize ms_fixedSize;

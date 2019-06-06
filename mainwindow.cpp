@@ -97,7 +97,7 @@ void MainWindow::startHard()
 
 
 
-
+/*
 
 void MainWindow::loadTowerPositions()
 {
@@ -125,8 +125,8 @@ void MainWindow::loadTowerPositions()
 
 	file.close();
 }
-
-void MainWindow::paintEvent(QPaintEvent *)
+*/
+/*void MainWindow::paintEvent(QPaintEvent *)
 {
     if (m_gameEnded || m_gameWin)
 	{
@@ -142,11 +142,11 @@ void MainWindow::paintEvent(QPaintEvent *)
     QPainter cachePainter(&cachePix); //缓存，避免直接在界面上绘制而效率低下
 
     //foreach手法，讲究
-    /*foreach (const TowerPosition &towerPos, m_towerPositionsList)
-		towerPos.draw(&cachePainter);
+    //foreach (const TowerPosition &towerPos, m_towerPositionsList)
+        //towerPos.draw(&cachePainter);
 
-	foreach (const Tower *tower, m_towersList)
-        tower->draw(&cachePainter);*/
+    //foreach (const Tower *tower, m_towersList)
+      //  tower->draw(&cachePainter);
 
 	foreach (const WayPoint *wayPoint, m_wayPointsList)
 		wayPoint->draw(&cachePainter);
@@ -164,9 +164,10 @@ void MainWindow::paintEvent(QPaintEvent *)
     //初始化画笔
     QPainter painter(this);
     //画背景图片
-    painter.drawPixmap(0, 0, cachePix);//QPixmap cachePix(":/image/Bg.png");*/
-}
+    painter.drawPixmap(0, 0, cachePix);//QPixmap cachePix(":/image/Bg.png");
+}*/
 
+/*
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
     //单击鼠标后的处理
@@ -263,7 +264,7 @@ void MainWindow::addWayPoints()
 	wayPoint6->setNextWayPoint(wayPoint5);
 }
 
-void MainWindow::getHpDamage(int damage/* = 1*/)
+void MainWindow::getHpDamage(int damage = 1)
 {
 	m_audioPlayer->playSound(LifeLoseSound);
 	m_playerHp -= damage;
@@ -340,7 +341,7 @@ bool MainWindow::loadWave()
 	WayPoint *startWayPoint = m_wayPointsList.back();
 	QList<QVariant> curWavesInfo = m_wavesInfo[m_waves].toList();
 
-    /*for (int i = 0; i < curWavesInfo.size(); ++i)
+    for (int i = 0; i < curWavesInfo.size(); ++i)
 	{
 		QMap<QString, QVariant> dict = curWavesInfo[i].toMap();
 		int spawnTime = dict.value("spawnTime").toInt();
@@ -348,7 +349,7 @@ bool MainWindow::loadWave()
 		Enemy *enemy = new Enemy(startWayPoint, this);
 		m_enemyList.push_back(enemy);
 		QTimer::singleShot(spawnTime, enemy, SLOT(doActivate()));
-    }*/
+    }
 
 	return true;
 }
@@ -361,4 +362,4 @@ QList<Enemy *> MainWindow::enemyList() const
 void MainWindow::gameStart()
 {
 	loadWave();
-}
+}*/
