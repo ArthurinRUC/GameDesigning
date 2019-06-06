@@ -128,25 +128,25 @@ void MainWindow::loadTowerPositions()
 
 void MainWindow::paintEvent(QPaintEvent *)
 {
-	if (m_gameEnded || m_gameWin)
+    if (m_gameEnded || m_gameWin)
 	{
 		QString text = m_gameEnded ? "YOU LOST!!!" : "YOU WIN!!!";
 		QPainter painter(this);
 		painter.setPen(QPen(Qt::red));
 		painter.drawText(rect(), Qt::AlignCenter, text);
 		return;
-	}
+    }
 
-    QPixmap cachePix(":/image/Bg.png"); //背景图片【可改】！！
+    QPixmap cachePix(":/GameMap/easyMap2.jpg"); //背景图片【可改】！！
     //先在背景图片QPixmap上绘制，最后统一绘制QPixmap
     QPainter cachePainter(&cachePix); //缓存，避免直接在界面上绘制而效率低下
 
     //foreach手法，讲究
-	foreach (const TowerPosition &towerPos, m_towerPositionsList)
+    /*foreach (const TowerPosition &towerPos, m_towerPositionsList)
 		towerPos.draw(&cachePainter);
 
 	foreach (const Tower *tower, m_towersList)
-		tower->draw(&cachePainter);
+        tower->draw(&cachePainter);*/
 
 	foreach (const WayPoint *wayPoint, m_wayPointsList)
 		wayPoint->draw(&cachePainter);
@@ -154,17 +154,17 @@ void MainWindow::paintEvent(QPaintEvent *)
 	foreach (const Enemy *enemy, m_enemyList)
 		enemy->draw(&cachePainter);
 
-	foreach (const Bullet *bullet, m_bulletList)
-		bullet->draw(&cachePainter);
+    //foreach (const Bullet *bullet, m_bulletList)
+        //bullet->draw(&cachePainter);
 
-	drawWave(&cachePainter);
-	drawHP(&cachePainter);
-	drawPlayerGold(&cachePainter);
+    //drawWave(&cachePainter);
+    //drawHP(&cachePainter);
+    //drawPlayerGold(&cachePainter);
 
     //初始化画笔
-	QPainter painter(this);
+    QPainter painter(this);
     //画背景图片
-    painter.drawPixmap(0, 0, cachePix);//QPixmap cachePix(":/image/Bg.png");
+    painter.drawPixmap(0, 0, cachePix);//QPixmap cachePix(":/image/Bg.png");*/
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)

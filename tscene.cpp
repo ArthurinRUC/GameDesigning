@@ -142,13 +142,13 @@ easyScene::easyScene(QWidget* parent) : tScene(parent)
     this->show();
 
     timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(onTimer()));
+    //connect(timer, SIGNAL(timeout()), this, SLOT(onTimer()));
     addWayPoints();
-    connect(timer, SIGNAL(timeout()), this, SLOT(updateMap()));
+    //connect(timer, SIGNAL(timeout()), this, SLOT(updateMap()));
     timer->start(20);
     this->uiSetup();
 
-    QTimer::singleShot(300, this, SLOT(gameStart()));
+   // QTimer::singleShot(300, this, SLOT(gameStart()));
 
 }
 
@@ -379,9 +379,9 @@ void easyScene::paintEvent(QPaintEvent *)
             return;
         }*/
 
-        QPixmap cachePix(":/image/Bg.png"); //背景图片【可改】！！
+        //QPixmap cachePix(":/GameMap/easyMap13.jpg"); //背景图片【可改】！！
         //先在背景图片QPixmap上绘制，最后统一绘制QPixmap
-        QPainter cachePainter(&cachePix); //缓存，避免直接在界面上绘制而效率低下
+        //QPainter cachePainter(&cachePix); //缓存，避免直接在界面上绘制而效率低下
 
         //foreach手法，讲究
         /*foreach (const TowerPosition &towerPos, m_towerPositionsList)
@@ -390,11 +390,11 @@ void easyScene::paintEvent(QPaintEvent *)
         /*foreach (const Tower *tower, m_towersList)
             tower->draw(&cachePainter);*/
 
-        foreach (const WayPoint *wayPoint, m_wayPointsList)
-            wayPoint->draw(&cachePainter);
+        //foreach (const WayPoint *wayPoint, m_wayPointsList)
+          //  wayPoint->draw(&cachePainter);
 
-        foreach (const Enemy *enemy, m_enemyList)
-            enemy->draw(&cachePainter);
+        //foreach (const Enemy *enemy, m_enemyList)
+          //  enemy->draw(&cachePainter);
 
         /*foreach (const Bullet *bullet, m_bulletList)
             bullet->draw(&cachePainter);*/
@@ -404,9 +404,9 @@ void easyScene::paintEvent(QPaintEvent *)
         drawPlayerGold(&cachePainter);*/
 
         //初始化画笔
-        QPainter painter(this);
+        //QPainter painter(this);
         //画背景图片
-        painter.drawPixmap(0, 0, cachePix);//QPixmap cachePix(":/image/Bg.png");
+        //painter.drawPixmap(0, 0, cachePix);//QPixmap cachePix(":/image/Bg.png");
 
 }
 
