@@ -17,19 +17,19 @@ class tScene;
 
 class Tower : public QObject
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
     Tower(QPoint pos, tScene *game, const QPixmap &sprite = QPixmap(":/image/normaltower.png"), int attackRange = 70, int damage = 10, int fireRate = 1000, int level = 1);
-	~Tower();
+    ~Tower();
 
-	void draw(QPainter *painter) const;
-	void checkEnemyInRange();
-	void targetKilled();
-	void attackEnemy();
-	void chooseEnemyForAttack(Enemy *enemy);
+    void draw(QPainter *painter) const;
+    void checkEnemyInRange();
+    void targetKilled();
+    void attackEnemy();
+    void chooseEnemyForAttack(Enemy *enemy);
     //void removeBullet();
-	void damageEnemy();
-	void lostSightOfEnemy();
+    void damageEnemy();
+    void lostSightOfEnemy();
 
     //炮塔升级
     virtual void levelup() = 0;
@@ -39,12 +39,12 @@ protected slots:
     virtual void shootWeapon() = 0;
 
 protected:
-	bool			m_attacking;
-	qreal			m_rotationSprite;
+    bool			m_attacking;
+    qreal			m_rotationSprite;
 
-	Enemy *			m_chooseEnemy;
+    Enemy *			m_chooseEnemy;
     tScene *        m_game;
-	QTimer *		m_fireRateTimer;
+    QTimer *		m_fireRateTimer;
 
     int				m_attackRange;	// 代表塔可以攻击到敌人的距离
     int				m_damage;		// 代表攻击敌人时造成的伤害
@@ -54,14 +54,14 @@ protected:
     const QPoint	m_pos; //塔的圆心
     const QPixmap	m_sprite;
 
-	static const QSize ms_fixedSize;
+    static const QSize ms_fixedSize;
 };
 
 class NormalTower: public Tower
 {
     Q_OBJECT
 public:
-    NormalTower(QPoint pos, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/tower.png"));
+    NormalTower(QPoint pos, tScene *game, const QPixmap &sprite = QPixmap(":/image/tower.png"));
     ~NormalTower();
 
     void levelup();
@@ -74,7 +74,7 @@ class FireTower : public Tower
 {
     Q_OBJECT
 public:
-    FireTower(QPoint pos, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/firetower.png"));
+    FireTower(QPoint pos, tScene *game, const QPixmap &sprite = QPixmap(":/image/firetower.png"));
     ~FireTower();
 
     void levelup();
@@ -90,7 +90,7 @@ class IceTower : public Tower
 {
     Q_OBJECT
 public:
-    IceTower(QPoint pos, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/icetower.png"));
+    IceTower(QPoint pos, tScene *game, const QPixmap &sprite = QPixmap(":/image/icetower.png"));
     ~IceTower();
 
     void levelup();
@@ -106,7 +106,7 @@ class LaserTower : public Tower
 {
     Q_OBJECT
 public:
-    LaserTower(QPoint pos, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/lasertower.png"));
+    LaserTower(QPoint pos, tScene *game, const QPixmap &sprite = QPixmap(":/image/lasertower.png"));
     ~LaserTower();
 
     void levelup();

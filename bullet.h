@@ -53,7 +53,7 @@ class NormalBullet: public Bullet
     Q_OBJECT
 
 public:
-    NormalBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/normalbullet.png"));
+    NormalBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, tScene *game, const QPixmap &sprite = QPixmap(":/image/normalbullet.png"));
 };
 
 class FireBullet: public Bullet
@@ -61,7 +61,7 @@ class FireBullet: public Bullet
     Q_OBJECT
 
 public:
-    FireBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, MainWindow *game, int kind = 1, int fire = 1, const QPixmap &sprite = QPixmap(":/image/firebullet.png"));
+    FireBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, tScene *game, int kind = 1, int fire = 1, const QPixmap &sprite = QPixmap(":/image/firebullet.png"));
 
 };
 
@@ -70,7 +70,7 @@ class IceBullet: public Bullet
     Q_OBJECT
 
 public:
-    IceBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, MainWindow *game, int kind = 2, qreal slow = 0.5, const QPixmap &sprite = QPixmap(":/image/icebullet.png"));
+    IceBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, tScene *game, int kind = 2, qreal slow = 0.5, const QPixmap &sprite = QPixmap(":/image/icebullet.png"));
 
 };
 
@@ -79,7 +79,7 @@ class LaserBullet: public Bullet
     Q_OBJECT
 
 public:
-    LaserBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/laserbullet.png"));
+    LaserBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, tScene *game, const QPixmap &sprite = QPixmap(":/image/laserbullet.png"));
 
 };
 

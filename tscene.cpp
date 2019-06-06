@@ -150,6 +150,11 @@ easyScene::easyScene(QWidget* parent)
     //m_audioPlayer = new AudioPlayer(this);
     //m_audioPlayer->startBGM();
 
+    //每100ms更新一次灼烧状态
+    QTimer *Firetime = new QTimer(this);
+    connect(Firetime, SIGNAL(timeout()), this, SLOT(FireIceattack()));
+    Firetime->start(100);
+
     //每30ms发送一个更新信号
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(updateMap()));
@@ -157,6 +162,24 @@ easyScene::easyScene(QWidget* parent)
     this->uiSetup();
     // 设置300ms后游戏启动
     QTimer::singleShot(300, this, SLOT(gameStart()));
+}
+
+void tScene::FireIceattack()
+{
+    foreach(Enemy *enemy, m_enemyList){
+        if (enemy->fire != 0){
+            enemy->fire--;
+            enemy->getFireDamage(enemy->fireattack);
+        }
+        if(enemy->ice != 0){
+            if(enemy->ice == 15)
+                enemy->m_walkingSpeed = enemy->m_slowSpeed;
+            enemy->ice--;
+            if(enemy->ice == 0)
+                enemy->m_walkingSpeed = enemy->m_normalSpeed;
+        }
+    }
+
 }
 
 void easyScene::uiSetup()

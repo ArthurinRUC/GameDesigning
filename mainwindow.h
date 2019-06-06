@@ -29,7 +29,6 @@ public:
 
 
     //以下为原有游戏代码
-	void getHpDamage(int damage = 1);
     void getHpDamage(int damage = 1);//敌人属性
 	void removedEnemy(Enemy *enemy);
 	void removedBullet(Bullet *bullet);
@@ -50,14 +49,12 @@ public slots:
 
     //void updateMap(); //原来的槽
     //void gameStart(); //原来的槽
-private slots:
-    void FireIceattack();
 
 private:
-    void loadTowerPositions(); //√
+    void loadTowerPositions();
 	void addWayPoints();
 	bool loadWave();
-    bool canBuyTower() const; //√
+    bool canBuyTower() const;
 	void drawWave(QPainter *painter);
 	void drawHP(QPainter *painter);
 	void drawPlayerGold(QPainter *painter);

@@ -118,7 +118,7 @@ void Tower::lostSightOfEnemy()
 }
 
 
-NormalTower::NormalTower(QPoint pos, MainWindow *game, const QPixmap &sprite)
+NormalTower::NormalTower(QPoint pos, tScene *game, const QPixmap &sprite)
     : Tower(pos, game, sprite)
 {
 
@@ -159,7 +159,7 @@ void NormalTower::levelup()
     m_damage += 5; //每升一级子弹加5点伤害
 }
 
-FireTower::FireTower(QPoint pos, MainWindow *game, const QPixmap &sprite)
+FireTower::FireTower(QPoint pos, tScene *game, const QPixmap &sprite)
     : Tower(pos, game, sprite)
 {
 
@@ -186,7 +186,7 @@ void FireTower::levelup()
     fireattack += 1; //每升一级，火焰子弹加1点灼烧伤害
 }
 
-IceTower::IceTower(QPoint pos, MainWindow *game, const QPixmap &sprite)
+IceTower::IceTower(QPoint pos, tScene *game, const QPixmap &sprite)
     : Tower(pos, game, sprite)
 {
 
@@ -213,7 +213,7 @@ void IceTower::shootWeapon()
     m_game->addBullet(bullet);
 }
 
-LaserTower::LaserTower(QPoint pos, MainWindow *game, const QPixmap &sprite)
+LaserTower::LaserTower(QPoint pos, tScene *game, const QPixmap &sprite)
 : Tower(pos, game, sprite)
 {
 

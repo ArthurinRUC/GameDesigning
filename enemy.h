@@ -14,6 +14,7 @@ class MainWindow;
 class Tower;
 class easyScene;
 class tScene;
+class Bullet;
 
 class Enemy : public QObject{
 	Q_OBJECT
@@ -47,7 +48,7 @@ public:
     qreal			m_rotationSprite;
     QPoint			m_pos;
     WayPoint *		m_destinationWayPoint;
-    MainWindow *	m_game;
+    tScene *	m_game;
     QList<Tower *>	m_attackedTowersList;
     const QPixmap	m_sprite;
     static const QSize ms_fixedSize;
@@ -58,31 +59,31 @@ public slots:
 class normalEnemy:public Enemy{
     Q_OBJECT
 public:
-    normalEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/enemy1.png"));
+    normalEnemy(WayPoint *startWayPoint, tScene *game, const QPixmap &sprite = QPixmap(":/image/enemy1.png"));
 };
 
 class iceEnemy:public Enemy{
     Q_OBJECT
 public:
-    iceEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/enemy2.png"));
+    iceEnemy(WayPoint *startWayPoint, tScene *game, const QPixmap &sprite = QPixmap(":/image/enemy2.png"));
 };
 
 class fireEnemy:public Enemy{
     Q_OBJECT
 public:
-    fireEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/enemy3.png"));
+    fireEnemy(WayPoint *startWayPoint, tScene *game, const QPixmap &sprite = QPixmap(":/image/enemy3.png"));
 };
 
 class fastEnemy:public Enemy{
     Q_OBJECT
 public:
-    fastEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/enemy4.png"));
+    fastEnemy(WayPoint *startWayPoint, tScene *game, const QPixmap &sprite = QPixmap(":/image/enemy4.png"));
 };
 
 class bossEnemy:public Enemy{
     Q_OBJECT
 public:
-    bossEnemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/enemy5.png"));
+    bossEnemy(WayPoint *startWayPoint, tScene *game, const QPixmap &sprite = QPixmap(":/image/enemy5.png"));
 };
 
 #endif // ENEMY_H

@@ -2,27 +2,27 @@
 #define TSCENE_H
 
 #include <QWidget>
-#include<QMovie>
-#include<QTimer>
-#include<QLabel>
-#include<QMouseEvent>
-#include<QPushButton>
-#include<QKeyEvent>
-#include<waypoint.h>
-#include<enemy.h>
-#include<tower.h>
-#include<QPaintEvent>
-#include<QPainter>
-#include<QList>
+#include <QMovie>
+#include <QTimer>
+#include <QLabel>
+#include <QMouseEvent>
+#include <QPushButton>
+#include <QKeyEvent>
+#include <waypoint.h>
+#include <enemy.h>
+#include <tower.h>
+#include <QPaintEvent>
+#include <QPainter>
+#include <QList>
 #include <QtGlobal>
 #include <QMessageBox>
 #include <QXmlStreamReader>
 #include <QtDebug>
 
-#include"bullet.h"
-#include"audioplayer.h"
-#include"towerposition.h"
-#include"plistreader.h"
+#include "bullet.h"
+#include "audioplayer.h"
+#include "towerposition.h"
+#include "plistreader.h"
 
 class Bullet;
 
@@ -54,22 +54,24 @@ public:
     QMovie* wavelabel = new QMovie(":/image/wave2.png");
 
     // move to base class
-    QList<Enemy *> enemyList() const;
     void addBullet(Bullet *bullet);
-    QList<Bullet *>			m_bulletList;
     void removedEnemy(Enemy *enemy);
     void removedBullet(Bullet *bullet);
+    QList<Enemy *> enemyList() const;
+    void awardGold(int gold);
+    void getHpDamage(int damage = 1);
+    void doGameOver();
+
+    QList<Bullet *>			m_bulletList;
     QList<Enemy *>			m_enemyList;
     QList<Tower *>			m_towersList;
     int						m_waves;
     bool					m_gameEnded;
     bool					m_gameWin;
-    void awardGold(int gold);
-    void getHpDamage(int damage = 1);
     int						m_playerHp;
     int						m_playerGold;
-    AudioPlayer *			m_audioPlayer;
-    void doGameOver();
+    AudioPlayer *		    m_audioPlayer;
+
 
 signals:
     void toTitle(); //返回信号，返回主界面
@@ -77,9 +79,8 @@ signals:
     void toHard();
 
 
-
 public slots:
-
+    void FireIceattack();
 };
 
 class tStartScreen : public tScene
