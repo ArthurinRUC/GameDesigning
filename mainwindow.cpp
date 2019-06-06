@@ -24,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
 	, m_playerHp(5)
 	, m_playrGold(1000)
 	, m_gameEnded(false)
-	, m_gameWin(false)
+    , m_gameWin(false)
 {
     //此处开始构造MainWindow
 	ui->setupUi(this);
@@ -46,6 +46,11 @@ MainWindow::MainWindow(QWidget *parent)
 	m_audioPlayer = new AudioPlayer(this);
 	m_audioPlayer->startBGM();
 
+    //每100ms更新一次灼烧状态
+    QTimer *Firetime = new QTimer(this);
+    connect(Firetime, SIGNAL(timeout()), this, SLOT(FireIceattack()));
+    Firetime->start(100);
+
     //每30ms发送一个更新信号
 	QTimer *timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(updateMap()));
@@ -55,8 +60,7 @@ MainWindow::MainWindow(QWidget *parent)
     QTimer::singleShot(300, this, SLOT(gameStart()));*/
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow(){
 	delete ui;
 }
 
@@ -101,12 +105,28 @@ void MainWindow::startHard()
 
 void MainWindow::loadTowerPositions()
 {
+    foreach(Enemy *enemy, m_enemyList){
+        if (enemy->fire != 0){
+            enemy->fire--;
+            enemy->getFireDamage(enemy->fireattack);
+        }
+        if(enemy->ice != 0){
+            if(enemy->ice == 15)
+                enemy->m_walkingSpeed = enemy->m_slowSpeed;
+            enemy->ice--;
+            if(enemy->ice == 0)
+                enemy->m_walkingSpeed = enemy->m_normalSpeed;
+        }
+    }
+
+}
+
+void MainWindow::loadTowerPositions(){
     //读取文件中的炮塔位置信息，可以不用深究，但是可以修改位置【可改】
 
     //这里可以改变炮塔的位置，文件是html格式
 	QFile file(":/config/TowersPosition.plist");
-	if (!file.open(QFile::ReadOnly | QFile::Text))
-	{
+	if (!file.open(QFile::ReadOnly | QFile::Text)){
 		QMessageBox::warning(this, "TowerDefense", "Cannot Open TowersPosition.plist");
 		return;
 	}
@@ -114,15 +134,13 @@ void MainWindow::loadTowerPositions()
 	PListReader reader;
 	reader.read(&file);
 
-	QList<QVariant> array = reader.data();
-	foreach (QVariant dict, array)
-	{
+    QList<QVariant> array = reader.data();
+    foreach (QVariant dict, array){
 		QMap<QString, QVariant> point = dict.toMap();
 		int x = point.value("x").toInt();
 		int y = point.value("y").toInt();
 		m_towerPositionsList.push_back(QPoint(x, y));
 	}
-
 	file.close();
 }
 */
@@ -173,51 +191,39 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     //单击鼠标后的处理
 	QPoint pressPos = event->pos();
 	auto it = m_towerPositionsList.begin();
-	while (it != m_towerPositionsList.end())
-	{
-		if (canBuyTower() && it->containPoint(pressPos) && !it->hasTower())
-		{
+	while (it != m_towerPositionsList.end()){
+		if (canBuyTower() && it->containPoint(pressPos) && !it->hasTower()){
 			m_audioPlayer->playSound(TowerPlaceSound);
 			m_playrGold -= TowerCost;
 			it->setHasTower();
 
-			Tower *tower = new Tower(it->centerPos(), this);
+            Tower *tower = new NormalTower(it->centerPos(), this);
 			m_towersList.push_back(tower);
             update(); //调用paintevent(),重绘画面
 			break;
 		}
-
 		++it;
 	}
 }
-
-bool MainWindow::canBuyTower() const
-{
+bool MainWindow::canBuyTower() const{
 	if (m_playrGold >= TowerCost)
 		return true;
 	return false;
 }
 
-void MainWindow::drawWave(QPainter *painter)
-{
+void MainWindow::drawWave(QPainter *painter){
 	painter->setPen(QPen(Qt::red));
 	painter->drawText(QRect(400, 5, 100, 25), QString("WAVE : %1").arg(m_waves + 1));
 }
-
-void MainWindow::drawHP(QPainter *painter)
-{
+void MainWindow::drawHP(QPainter *painter){
 	painter->setPen(QPen(Qt::red));
 	painter->drawText(QRect(30, 5, 100, 25), QString("HP : %1").arg(m_playerHp));
 }
-
-void MainWindow::drawPlayerGold(QPainter *painter)
-{
+void MainWindow::drawPlayerGold(QPainter *painter){
 	painter->setPen(QPen(Qt::red));
 	painter->drawText(QRect(200, 5, 200, 25), QString("GOLD : %1").arg(m_playrGold));
 }
-
-void MainWindow::doGameOver()
-{
+void MainWindow::doGameOver(){
 	if (!m_gameEnded)
 	{
 		m_gameEnded = true;
@@ -225,20 +231,14 @@ void MainWindow::doGameOver()
 		// 暂时以打印替代,见paintEvent处理
 	}
 }
-
-void MainWindow::awardGold(int gold)
-{
+void MainWindow::awardGold(int gold){
 	m_playrGold += gold;
 	update();
 }
-
-AudioPlayer *MainWindow::audioPlayer() const
-{
+AudioPlayer *MainWindow::audioPlayer() const{
 	return m_audioPlayer;
 }
-
-void MainWindow::addWayPoints()
-{
+void MainWindow::addWayPoints(){
     //敌人航点【可改】
 	WayPoint *wayPoint1 = new WayPoint(QPoint(420, 285));
 	m_wayPointsList.push_back(wayPoint1);
@@ -271,9 +271,7 @@ void MainWindow::getHpDamage(int damage = 1)
 	if (m_playerHp <= 0)
 		doGameOver();
 }
-
-void MainWindow::removedEnemy(Enemy *enemy)
-{
+void MainWindow::removedEnemy(Enemy *enemy){
 	Q_ASSERT(enemy);
 
 	m_enemyList.removeOne(enemy);
@@ -290,36 +288,27 @@ void MainWindow::removedEnemy(Enemy *enemy)
         //}
 	}
 }
-
-void MainWindow::removedBullet(Bullet *bullet)
-{
+void MainWindow::removedBullet(Bullet *bullet){
 	Q_ASSERT(bullet);
 
 	m_bulletList.removeOne(bullet);
 	delete bullet;
 }
-
-void MainWindow::addBullet(Bullet *bullet)
-{
+void MainWindow::addBullet(Bullet *bullet){
 	Q_ASSERT(bullet);
 
 	m_bulletList.push_back(bullet);
 }
-
-void MainWindow::updateMap()
-{
+void MainWindow::updateMap(){
 	foreach (Enemy *enemy, m_enemyList)
 		enemy->move();
 	foreach (Tower *tower, m_towersList)
 		tower->checkEnemyInRange();
 	update();
 }
-
-void MainWindow::preLoadWavesInfo()
-{
+void MainWindow::preLoadWavesInfo(){
 	QFile file(":/config/Waves.plist");
-	if (!file.open(QFile::ReadOnly | QFile::Text))
-	{
+	if (!file.open(QFile::ReadOnly | QFile::Text)){
 		QMessageBox::warning(this, "TowerDefense", "Cannot Open TowersPosition.plist");
 		return;
 	}
@@ -333,8 +322,7 @@ void MainWindow::preLoadWavesInfo()
 	file.close();
 }
 
-bool MainWindow::loadWave()
-{
+bool MainWindow::loadWave(){
 	if (m_waves >= m_wavesInfo.size())
 		return false;
 
@@ -346,20 +334,34 @@ bool MainWindow::loadWave()
 		QMap<QString, QVariant> dict = curWavesInfo[i].toMap();
 		int spawnTime = dict.value("spawnTime").toInt();
 
-		Enemy *enemy = new Enemy(startWayPoint, this);
+        Enemy *enemy;
+        int j=i%5;
+        switch(j){
+            case 0:
+                enemy = new normalEnemy(startWayPoint, this);
+                break;
+            case 1:
+                enemy=new iceEnemy(startWayPoint, this);
+                break;
+            case 2:
+                enemy=new fireEnemy(startWayPoint, this);
+                break;
+            case 3:
+                enemy=new fastEnemy(startWayPoint, this);
+                break;
+            case 4:
+                enemy=new bossEnemy(startWayPoint, this);
+                break;
+        }
 		m_enemyList.push_back(enemy);
 		QTimer::singleShot(spawnTime, enemy, SLOT(doActivate()));
     }
 
 	return true;
 }
-
-QList<Enemy *> MainWindow::enemyList() const
-{
+QList<Enemy *> MainWindow::enemyList() const{
 	return m_enemyList;
 }
-
-void MainWindow::gameStart()
-{
+void MainWindow::gameStart(){
 	loadWave();
 }*/

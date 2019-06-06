@@ -13,6 +13,8 @@ class MainWindow;
 
 class WayPoint;
 class Enemy;
+class Enemy1;
+class Enemy2;
 class Bullet;
 class AudioPlayer;
 
@@ -28,10 +30,11 @@ public:
 
     //以下为原有游戏代码
 	void getHpDamage(int damage = 1);
+    void getHpDamage(int damage = 1);//敌人属性
 	void removedEnemy(Enemy *enemy);
 	void removedBullet(Bullet *bullet);
 	void addBullet(Bullet *bullet);
-	void awardGold(int gold);
+    void awardGold(int gold);
 
 	AudioPlayer* audioPlayer() const;
 	QList<Enemy *> enemyList() const;
@@ -47,6 +50,8 @@ public slots:
 
     //void updateMap(); //原来的槽
     //void gameStart(); //原来的槽
+private slots:
+    void FireIceattack();
 
 private:
     void loadTowerPositions(); //√

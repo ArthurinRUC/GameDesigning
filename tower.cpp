@@ -12,19 +12,21 @@
 
 const QSize Tower::ms_fixedSize(42, 42);
 
-Tower::Tower(QPoint pos, tScene *game, const QPixmap &sprite/* = QPixmap(":/image/tower.png"*/) //炮塔图片【可改】
-	: m_attacking(false)
-	, m_attackRange(70)
-	, m_damage(10)
-	, m_fireRate(1000)
+Tower::Tower(QPoint pos, tScene *game, const QPixmap &sprite, int attackRange, int damage, int fireRate, int level)
+    : m_attacking(false)
 	, m_rotationSprite(0.0)
     , m_chooseEnemy(nullptr)
-	, m_game(game)
-	, m_pos(pos)
-	, m_sprite(sprite)
+    , m_game(game)
+    , m_attackRange(attackRange)
+    , m_damage(damage)
+    , m_fireRate(fireRate)//开火频率
+    , m_level(level)
+    , m_pos(pos)
+    , m_sprite(sprite)
 {
 	m_fireRateTimer = new QTimer(this);
 	connect(m_fireRateTimer, SIGNAL(timeout()), this, SLOT(shootWeapon()));
+    //start(fireRate)开始后，每经过fireRate时间，执行一次shootWeapon()
 }
 
 Tower::~Tower()
@@ -94,12 +96,6 @@ void Tower::chooseEnemyForAttack(Enemy *enemy)
 	m_chooseEnemy->getAttacked(this);
 }
 
-void Tower::shootWeapon()
-{
-	Bullet *bullet = new Bullet(m_pos, m_chooseEnemy->pos(), m_damage, m_chooseEnemy, m_game);
-	bullet->move();
-	m_game->addBullet(bullet);
-}
 
 void Tower::targetKilled()
 {
@@ -119,4 +115,126 @@ void Tower::lostSightOfEnemy()
 
 	m_fireRateTimer->stop();
 	m_rotationSprite = 0.0;
+}
+
+
+NormalTower::NormalTower(QPoint pos, MainWindow *game, const QPixmap &sprite)
+    : Tower(pos, game, sprite)
+{
+
+}
+
+NormalTower::~NormalTower()
+{
+
+}
+
+
+void NormalTower::shootWeapon()
+{
+    static int t = 0;
+    t++;
+    Bullet *bullet;
+    switch(t%3)
+    {
+    case 0:
+        bullet = new NormalBullet(m_pos, m_chooseEnemy->pos(), m_damage, m_chooseEnemy, m_game);
+        break;
+    case 1:
+        bullet = new FireBullet(m_pos, m_chooseEnemy->pos(), m_damage, m_chooseEnemy, m_game, 1, 1);
+        break;
+    case 2:
+        bullet = new IceBullet(m_pos, m_chooseEnemy->pos(), m_damage, m_chooseEnemy, m_game, 2, 0.5);
+        break;
+    }
+    bullet->move();
+    m_game->addBullet(bullet);
+}
+
+void NormalTower::levelup()
+{
+    if (m_level == 3) //3级为最高级
+        return;
+    m_level++;
+    m_damage += 5; //每升一级子弹加5点伤害
+}
+
+FireTower::FireTower(QPoint pos, MainWindow *game, const QPixmap &sprite)
+    : Tower(pos, game, sprite)
+{
+
+}
+
+FireTower::~FireTower()
+{
+
+}
+
+void FireTower::shootWeapon()
+{
+    Bullet *bullet = new FireBullet(m_pos, m_chooseEnemy->pos(), m_damage, m_chooseEnemy, m_game, fireattack);
+    bullet->move();
+    m_game->addBullet(bullet);
+}
+
+void FireTower::levelup()
+{
+    if (m_level == 3) //3级为最高级
+        return;
+    m_level++;
+    m_damage += 5; //每升一级，火焰子弹加5点伤害
+    fireattack += 1; //每升一级，火焰子弹加1点灼烧伤害
+}
+
+IceTower::IceTower(QPoint pos, MainWindow *game, const QPixmap &sprite)
+    : Tower(pos, game, sprite)
+{
+
+}
+
+IceTower::~IceTower()
+{
+
+}
+
+void IceTower::levelup()
+{
+    if (m_level == 3) //3级为最高级
+        return;
+    m_level++;
+    m_damage += 5; //每升一级，寒冰子弹加5点伤害
+    slowspeed -= 0.1; //每升一级，寒冰子弹增加10%减速效果
+}
+
+void IceTower::shootWeapon()
+{
+    Bullet *bullet = new IceBullet(m_pos, m_chooseEnemy->pos(), m_damage, m_chooseEnemy, m_game, slowspeed);
+    bullet->move();
+    m_game->addBullet(bullet);
+}
+
+LaserTower::LaserTower(QPoint pos, MainWindow *game, const QPixmap &sprite)
+: Tower(pos, game, sprite)
+{
+
+}
+
+LaserTower::~LaserTower()
+{
+
+}
+
+void LaserTower::levelup()
+{
+    if (m_level == 3) //3级为最高级
+        return;
+    m_level++;
+    m_damage += 10; //每升一级，激光子弹加10点伤害
+}
+
+void LaserTower::shootWeapon()
+{
+    Bullet *bullet = new LaserBullet(m_pos, m_chooseEnemy->pos(), m_damage, m_chooseEnemy, m_game);
+    bullet->move();
+    m_game->addBullet(bullet);
 }
