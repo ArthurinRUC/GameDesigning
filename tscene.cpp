@@ -533,10 +533,43 @@ void easyScene::paintEvent(QPaintEvent *)
 {
     if (m_gameEnded || m_gameWin)
     {
-        QString text = m_gameEnded ? "YOU LOST!!!" : "YOU WIN!!!";
+        btn1->hide();
+        btn2->hide();
+        btn3->hide();
+        btn4->hide();
+        btn5->hide();
+        btn6->hide();
+        btn7->hide();
+
+        MoneyFront->hide();
+        MoneyBar->hide();
+        MoneyLabel->hide();
+        LifeFront->hide();
+        LifeBar->hide();
+        LifeLabel->hide();
+        WaveFront->hide();
+        WaveBar->hide();
+        WaveLabel->hide();
+
+        if(m_gameWin){
+        QPixmap loseScene(":/background/victory_better.jpg");
+        //QPainter losePainter(&loseScene);
+        QPainter painter(this);
+        painter.drawPixmap(0, 0, loseScene);
+
+        /*QString text = m_gameEnded ? "YOU LOST!!!" : "YOU WIN!!!";
         QPainter painter(this);
         painter.setPen(QPen(Qt::red));
-        painter.drawText(rect(), Qt::AlignCenter, text);
+        painter.drawText(rect(), Qt::AlignCenter, text);*/
+        }
+
+        if(m_gameEnded)
+        {
+            QPixmap loseScene(":/background/lose1.jpg");
+            //QPainter losePainter(&loseScene);
+            QPainter painter(this);
+            painter.drawPixmap(0, 0, loseScene);
+        }
         return;
     }
 

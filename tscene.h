@@ -71,6 +71,8 @@ public:
     AudioPlayer *			m_audioPlayer;
     void doGameOver();
 
+    //QMovie* loseScene = new QMovie(":/background/victory1.jpg");
+
 signals:
     void toTitle(); //返回信号，返回主界面
     void toEasy();
