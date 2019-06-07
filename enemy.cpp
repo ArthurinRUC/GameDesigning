@@ -52,7 +52,7 @@ void Enemy::move(){
 		}
 		else{
 			// 表示进入基地
-			m_game->getHpDamage();//修改，减少生命数与敌人类型相关？？？
+            m_game->getHpDamage(HPdamage);//修改，减少生命数与敌人类型相关？？？
 			m_game->removedEnemy(this);
             return;
 		}

@@ -59,7 +59,7 @@ public:
     void removedBullet(Bullet *bullet);
     QList<Enemy *> enemyList() const;
     void awardGold(int gold);
-    void getHpDamage(int damage = 1);
+    void getHpDamage(int damage);
     void doGameOver();
 
     QList<Bullet *>			m_bulletList;
