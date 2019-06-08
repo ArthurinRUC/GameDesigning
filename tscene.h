@@ -269,7 +269,7 @@ private:
     QList<TowerPosition>	m_towerPositionsList; //√
     //QList<Tower *>			m_towersList; //√
     QList<WayPoint *>		m_wayPointsList;
-    QList<WayPoint *>       normalWayPointsList;
+    //QList<WayPoint *>       normalWayPointsList;
     //QList<Enemy *>			m_enemyList;
     //QList<Bullet *>			m_bulletList;
 

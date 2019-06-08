@@ -729,6 +729,7 @@ void easyScene::gameStart()
 
 
 // 以下是对复杂地图的设计
+
 AudioPlayer *hardScene::audioPlayer() const
 {
     return m_audioPlayer;
@@ -966,18 +967,19 @@ void hardScene::uiSetup()
     wavebar->start();
     WaveBar->show();
     WaveBar->setMovie(wavebar);
-    WaveFront->setGeometry(590, 20, 300, 200);
+    WaveFront->setGeometry(690, 20, 100, 50);
     WaveFront->setFont(QFont("Calibri", 16));
     WaveFront->setText("1");
     WaveFront->setAlignment(Qt::AlignHCenter);
     WaveFront->show();
+
     WaveFront->raise();
     WaveLabel->setGeometry(620, -60, 300, 200);
     wavelabel->start();
     WaveLabel->show();
     WaveLabel->setMovie(wavelabel);
 
-    exit->setGeometry(700, 0, 60, 60); //设置退出按钮
+    exit->setGeometry(700, 80, 60, 60); //设置退出按钮
     exit->setFlat(true);
     exit->setIcon(QIcon(":/image/Leave.png"));
     exit->setIconSize(QSize(60,60));
