@@ -6,7 +6,6 @@
         <file>image/icon_gold.png</file>
         <file>image/icon_HP.png</file>
         <file>image/open_spot.png</file>
-        <file>image/tower.png</file>
         <file>config/Info.plist</file>
         <file>config/TowersPosition.plist</file>
         <file>config/Waves.plist</file>
@@ -36,5 +35,9 @@
         <file>image/enemy3.png</file>
         <file>image/enemy4.png</file>
         <file>image/enemy5.png</file>
+        <file>image/firetower.png</file>
+        <file>image/icetower.png</file>
+        <file>image/lasertower.png</file>
+        <file>image/normaltower.png</file>
     </qresource>
 </RCC>

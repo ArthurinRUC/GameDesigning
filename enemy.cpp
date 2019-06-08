@@ -11,6 +11,7 @@
 #include <QVector2D>
 #include <QtMath>
 
+
 //血条长度
 static const int Health_Bar_Width = 20;
 const QSize Enemy::ms_fixedSize(52, 52);
@@ -49,8 +50,7 @@ void Enemy::move(){
 			// 还有下一个航点
 			m_pos = m_destinationWayPoint->pos();
 			m_destinationWayPoint = m_destinationWayPoint->nextWayPoint();
-		}
-		else{
+        } else {
 			// 表示进入基地
             m_game->getHpDamage(HPdamage);//修改，减少生命数与敌人类型相关？？？
 			m_game->removedEnemy(this);
@@ -65,15 +65,15 @@ void Enemy::move(){
 	// 向量标准化
 	qreal movementSpeed = m_walkingSpeed;
 	QVector2D normalized(targetPoint - m_pos);
-	normalized.normalize();
-	m_pos = m_pos + normalized.toPoint() * movementSpeed;
+    normalized.normalize();
+    m_pos = m_pos + 1.2*normalized.toPoint() * movementSpeed;
 
 	// 确定敌人选择方向
 	// 默认图片向左,需要修正180度转右
 	m_rotationSprite = qRadiansToDegrees(qAtan2(normalized.y(), normalized.x())) + 180;
 }
 void Enemy::draw(QPainter *painter) const{
-	if (!m_active)//！！！
+    if (!m_active)
 		return;
 
 	painter->save();
@@ -122,7 +122,8 @@ void Enemy::getDamage(Bullet *bullet){
             break;
         case 2://IceBullet
             ice = iceLevel;
-            m_slowSpeed = m_normalSpeed * bullet->slow_speed*antiSlowspeed;
+            m_slowSpeed = qMin(m_normalSpeed * bullet->slow_speed*antiSlowspeed, m_slowSpeed);
+            m_walkingSpeed = m_slowSpeed;
             break;
         case 3://LaserBullet
             break;

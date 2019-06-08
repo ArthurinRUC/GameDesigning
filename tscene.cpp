@@ -144,7 +144,7 @@ easyScene::easyScene(QWidget* parent)
     this->show();
 
     preLoadWavesInfo(); //设置波数
-    //loadTowerPositions(); //调用位置函数
+    loadTowerPositions(); //调用位置函数
     addWayPoints();
 
     //m_audioPlayer = new AudioPlayer(this);
@@ -172,14 +172,18 @@ void tScene::FireIceattack()
             enemy->getFireDamage(enemy->fireattack);
         }
         if(enemy->ice != 0){
-            if(enemy->ice == 15)
-                enemy->m_walkingSpeed = enemy->m_slowSpeed;
             enemy->ice--;
-            if(enemy->ice == 0)
+            if (enemy->ice == 0)
+            {
                 enemy->m_walkingSpeed = enemy->m_normalSpeed;
+                enemy->m_slowSpeed = enemy->m_normalSpeed;
+            }
+            else
+            {
+                enemy->m_walkingSpeed = enemy->m_slowSpeed;
+            }
         }
     }
-
 }
 
 void easyScene::uiSetup()
@@ -587,10 +591,10 @@ void easyScene::paintEvent(QPaintEvent *)
 
     //foreach手法，讲究
     /*foreach (const TowerPosition &towerPos, m_towerPositionsList)
-        towerPos.draw(&cachePainter);
+        towerPos.draw(&cachePainter);*/
 
     foreach (const Tower *tower, m_towersList)
-        tower->draw(&cachePainter);*/
+        tower->draw(&cachePainter);
 
     foreach (const WayPoint *wayPoint, m_wayPointsList)
         wayPoint->draw(&cachePainter);
@@ -598,8 +602,8 @@ void easyScene::paintEvent(QPaintEvent *)
     foreach (const Enemy *enemy, m_enemyList)
         enemy->draw(&cachePainter);
 
-    //foreach (const Bullet *bullet, m_bulletList)
-        //bullet->draw(&cachePainter);
+    foreach (const Bullet *bullet, m_bulletList)
+        bullet->draw(&cachePainter);
 
     drawWave();
     drawHP();
@@ -624,9 +628,8 @@ void easyScene::mousePressEvent(QMouseEvent * event)
             m_audioPlayer->playSound(TowerPlaceSound);
             m_playerGold -= TowerCost;
             it->setHasTower();
-
-            //Tower *tower = new Tower(it->centerPos(), this);
-            //m_towersList.push_back(tower);
+            Tower *tower = new NormalTower(it->centerPos(), this);
+            m_towersList.push_back(tower);
             update(); //调用paintevent(),重绘画面
             break;
         }
@@ -664,8 +667,8 @@ void easyScene::updateMap()
 {
     foreach (Enemy *enemy, m_enemyList)
         enemy->move();
-    //foreach (Tower *tower, m_towersList)
-        //tower->checkEnemyInRange();
+    foreach (Tower *tower, m_towersList)
+        tower->checkEnemyInRange();
     update();
 }
 

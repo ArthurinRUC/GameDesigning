@@ -19,7 +19,7 @@ class Tower : public QObject
 {
     Q_OBJECT
 public:
-    Tower(QPoint pos, tScene *game, const QPixmap &sprite = QPixmap(":/image/normaltower.png"), int attackRange = 70, int damage = 10, int fireRate = 1000, int level = 1);
+    Tower(QPoint pos, tScene *game, const QPixmap &sprite = QPixmap(":/image/normaltower.png"), int attackRange = 120, int damage = 10, int fireRate = 1000, int level = 1);
     ~Tower();
 
     void draw(QPainter *painter) const;
@@ -61,7 +61,7 @@ class NormalTower: public Tower
 {
     Q_OBJECT
 public:
-    NormalTower(QPoint pos, tScene *game, const QPixmap &sprite = QPixmap(":/image/tower.png"));
+    NormalTower(QPoint pos, tScene *game, const QPixmap &sprite = QPixmap(":/image/normaltower.png"));
     ~NormalTower();
 
     void levelup();

@@ -4,7 +4,7 @@
 #include <QPainter>
 #include <QPropertyAnimation>
 
-const QSize Bullet::ms_fixedSize(8, 8);
+const QSize Bullet::ms_fixedSize(26, 26);
 
 Bullet::Bullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target,
                tScene *game, int kind, int fire, qreal slow, const QPixmap &sprite/* = QPixmap(":/image/noramlbullet.png")*/)
