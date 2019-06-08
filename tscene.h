@@ -216,23 +216,6 @@ protected:
 private:
     QMovie* background = new QMovie(":/GameMap/hardMap2.jpg");
     QPushButton* exit = new QPushButton(this);
-
-    QMovie* station = new QMovie("/image/open_spot.png");
-    QLabel* btn1 = new QLabel(this);
-    QLabel* btn2 = new QLabel(this);
-    QLabel* btn3 = new QLabel(this);
-    QLabel* btn4 = new QLabel(this);
-    QLabel* btn5 = new QLabel(this);
-    QLabel* btn6 = new QLabel(this);
-    QLabel* btn7 = new QLabel(this);
-    QLabel* btn8 = new QLabel(this);
-    QLabel* btn9 = new QLabel(this);
-    QLabel* btn10 = new QLabel(this);
-    QLabel* btn11= new QLabel(this);
-    QLabel* btn12 = new QLabel(this);
-    QLabel* btn13= new QLabel(this);
-    QLabel* btn14 = new QLabel(this);
-
     //QPoint cell;
     void uiSetup(); //在PVZ中用来设计僵尸的出现等
 private slots:
