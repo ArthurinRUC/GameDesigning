@@ -180,7 +180,7 @@ private:
     void drawWave();
     void drawHP();
     void drawPlayerGold();
-    //void doGameOver(); //在基类中实现
+    //void doGameOver();
     void preLoadWavesInfo();
 
 
@@ -222,11 +222,24 @@ class hardScene : public tScene
 public:
     explicit hardScene(QWidget* parent = 0);
     ~hardScene();
-    void preLoadWavesInfo();
+
+    //增加代码 6-6
+    //void getHpDamage(int damage = 1);
+   // void removedEnemy(Enemy *enemy);
+    //void removedBullet(Bullet *bullet);
+    //void addBullet(Bullet *bullet);
+    //void awardGold(int gold);
+
+    AudioPlayer* audioPlayer() const;
+    //QList<Enemy *> enemyList() const;
+
 protected:
-    //void keyPressEvent(QKeyEvent *event); //6-8 暂时无用
-    void mousePressEvent(QMouseEvent *);  // 6-8 new
-    void paintEvent(QPaintEvent *);// 6-8 new
+    void keyPressEvent(QKeyEvent *event);
+    void paintEvent(QPaintEvent *);
+
+    //增加代码 6-6
+    void mousePressEvent(QMouseEvent *);
+
 private:
     QMovie* background = new QMovie(":/GameMap/hardMap2.jpg");
     QPushButton* exit = new QPushButton(this);
@@ -250,7 +263,6 @@ private:
     //QPoint cell;
     void uiSetup(); //在PVZ中用来设计僵尸的出现等
     QMovie* station = new QMovie("/image/open_spot.png");
-    QLabel* btn1 = new QLabel(this);
 
 private:
     void loadTowerPositions(); //√
@@ -260,7 +272,8 @@ private:
     void drawWave();
     void drawHP();
     void drawPlayerGold();
-    //void doGameOver(); //在基类中实现
+    //void doGameOver();
+    void preLoadWavesInfo();
 
 private:
     //MainWindow *		ui;
@@ -274,10 +287,9 @@ private:
     QList<TowerPosition>	m_towerPositionsList; //√
     //QList<Tower *>			m_towersList; //√
     QList<WayPoint *>		m_wayPointsList;
-    QList<WayPoint *>       normalWayPointsList;
+    //QList<WayPoint *>       normalWayPointsList;
     //QList<Enemy *>			m_enemyList;
     //QList<Bullet *>			m_bulletList;
-
 
 private slots:
     void onTimer();

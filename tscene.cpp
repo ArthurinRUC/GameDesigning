@@ -769,67 +769,46 @@ void easyScene::gameStart()
 
 
 // 以下是对复杂地图的设计
-hardScene::hardScene(QWidget* parent) : tScene(parent)
+
+AudioPlayer *hardScene::audioPlayer() const
 {
-    this->setGeometry(0, 0, 1400, 600);
-    //this->cellSize = QPoint(81, 100);
-    //this->rect = QRect(250, 85, 729, 500);
-    this->setMovie(this->background);
-    this->background->start();
-    this->show();
-
-    preLoadWavesInfo();
-    addWayPoints();
-
-    //每30ms发送一个更新信号
-    QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(updateMap()));
-    timer->start(30);
-    this->uiSetup();
-    // 设置300ms后游戏启动
-    QTimer::singleShot(300, this, SLOT(gameStart()));
+    return m_audioPlayer;
 }
 
-hardScene::~hardScene()
+void hardScene::keyPressEvent(QKeyEvent *event)
 {
-    delete this->background;
-    delete this->exit;
-    delete this->btn1;
-    delete this->btn2;
-    delete this->btn3;
-    delete this->btn4;
-    delete this->btn5;
-    delete this->btn6;
-    delete this->btn7;
-    delete this->btn8;
-    delete this->btn9;
-    delete this->btn10;
-    delete this->btn11;
-    delete this->btn12;
-    delete this->btn13;
-    delete this->btn14;
-}
-
-void hardScene::mousePressEvent(QMouseEvent * event)
-{
-    //单击鼠标后的处理
-    QPoint pressPos = event->pos();
-    auto it = m_towerPositionsList.begin();
-    while (it != m_towerPositionsList.end())
+    switch(event->key())
     {
-        if (canBuyTower() && it->containPoint(pressPos) && !it->hasTower())
-        {
-            m_audioPlayer->playSound(TowerPlaceSound);
-            m_playerGold -= TowerCost;
-            it->setHasTower();
-
-            //Tower *tower = new Tower(it->centerPos(), this);
-            //m_towersList.push_back(tower);
-            update(); //调用paintevent(),重绘画面
-            break;
-        }
-
-        ++it;
+    /*case Qt::Key_1:
+        this->putZombie(qrand() % 5, 0);
+        break;
+    case Qt::Key_2:
+        this->putZombie(qrand() % 5, 1);
+        break;
+    case Qt::Key_3:
+        this->putZombie(qrand() % 5, 2);
+        break;
+    case Qt::Key_4:
+        this->putZombie(qrand() % 5, 3);
+        break;
+    case Qt::Key_5:
+        this->putZombie(qrand() % 5, 4);
+        break;
+    case Qt::Key_6:
+        this->putZombie(qrand() % 5, 5);
+        break;
+    case Qt::Key_7:
+        this->putZombie(qrand() % 5, 6);
+        break;
+    case Qt::Key_8:
+        this->sunPoint += 100;
+        break;
+    case Qt::Key_9:
+        this->threat = 6001;
+        break;*/
+    case Qt::Key_Escape:
+        emit toTitle();
+        break;
     }
 }
 
@@ -837,8 +816,6 @@ void hardScene::paintEvent(QPaintEvent *)
 {
     if (m_gameEnded || m_gameWin)
     {
-        btn1->hide();
-
         MoneyFront->hide();
         MoneyBar->hide();
         MoneyLabel->hide();
@@ -848,7 +825,7 @@ void hardScene::paintEvent(QPaintEvent *)
         WaveFront->hide();
         WaveBar->hide();
         WaveLabel->hide();
-        Base->hide();
+
 
 
         if(m_gameWin){
@@ -904,6 +881,95 @@ void hardScene::paintEvent(QPaintEvent *)
 
 }
 
+void hardScene::mousePressEvent(QMouseEvent * event)
+{
+    //单击鼠标后的处理
+    QPoint pressPos = event->pos();
+    auto it = m_towerPositionsList.begin();
+    while (it != m_towerPositionsList.end())
+    {
+        if (canBuyTower() && it->containPoint(pressPos) && !it->hasTower())
+        {
+            m_audioPlayer->playSound(TowerPlaceSound);
+            m_playerGold -= TowerCost;
+            it->setHasTower();
+
+            //Tower *tower = new Tower(it->centerPos(), this);
+            //m_towersList.push_back(tower);
+            update(); //调用paintevent(),重绘画面
+            break;
+        }
+
+        ++it;
+    }
+}
+
+void hardScene::onTimer()
+{
+    /*this->removeDeath();
+    this->act();
+    this->SunFront->setText(QString::number(this->sunPoint));
+    this->createZombie();
+    if (qrand() % 521 < 100)
+    {
+        zBonus* sun = new zSunFall(this);
+        Bonuses.append(sun);
+    }*/
+    this->exit->raise();
+    //this->judge();
+}
+
+void hardScene::leave()
+{
+    emit toTitle();
+}
+
+void hardScene::back()
+{
+    //MainWindow::back();
+}
+
+void hardScene::updateMap()
+{
+    foreach (Enemy *enemy, m_enemyList)
+        enemy->move();
+    //foreach (Tower *tower, m_towersList)
+        //tower->checkEnemyInRange();
+    update();
+}
+
+void hardScene::gameStart()
+{
+    loadWave();
+}
+
+hardScene::hardScene(QWidget* parent)
+    : tScene(parent)
+  //, ui(new Ui::MainWindow)
+{
+    this->setGeometry(0, 0, 800, 600);
+    //this->cellSize = QPoint(81, 100);
+    //this->rect = QRect(250, 85, 729, 500);
+    this->setMovie(this->background);
+    this->background->start();
+    this->show();
+
+    preLoadWavesInfo(); //设置波数
+    //loadTowerPositions(); //调用位置函数
+    addWayPoints();
+
+    //m_audioPlayer = new AudioPlayer(this);
+    //m_audioPlayer->startBGM();
+
+    //每30ms发送一个更新信号
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(updateMap()));
+    timer->start(30);
+    this->uiSetup();
+    // 设置300ms后游戏启动
+    QTimer::singleShot(300, this, SLOT(gameStart()));
+}
+
 void hardScene::uiSetup()
 {
     MoneyBar->setGeometry(80, -60, 300, 200);
@@ -941,11 +1007,12 @@ void hardScene::uiSetup()
     wavebar->start();
     WaveBar->show();
     WaveBar->setMovie(wavebar);
-    WaveFront->setGeometry(590, 20, 300, 200);
+    WaveFront->setGeometry(690, 20, 100, 50);
     WaveFront->setFont(QFont("Calibri", 16));
     WaveFront->setText("1");
     WaveFront->setAlignment(Qt::AlignHCenter);
     WaveFront->show();
+
     WaveFront->raise();
     WaveLabel->setGeometry(620, -60, 300, 200);
     wavelabel->start();
@@ -1051,9 +1118,7 @@ void hardScene::uiSetup()
     btn14->raise();
 
 
-
-
-    exit->setGeometry(700, 60, 60, 60); //设置退出按钮
+    exit->setGeometry(700, 80, 60, 60); //设置退出按钮
     exit->setFlat(true);
     exit->setIcon(QIcon(":/image/Leave.png"));
     exit->setIconSize(QSize(60,60));
@@ -1063,12 +1128,6 @@ void hardScene::uiSetup()
     exit->show();
     exit->raise();
 
-    btn1->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
-    btn1->setMovie(station);
-    station->start();
-    btn1->setGeometry(50, 220, 70, 70);
-    btn1->show();
-    btn1->raise();
 }
 
 void hardScene::loadTowerPositions()
@@ -1101,46 +1160,46 @@ void hardScene::loadTowerPositions()
 void hardScene::addWayPoints()
 {
     WayPoint *wayPoint1 = new WayPoint(QPoint(795, 525));//终点
-        normalWayPointsList.push_back(wayPoint1);
+        m_wayPointsList.push_back(wayPoint1);
 
         WayPoint *wayPoint2 = new WayPoint(QPoint(400, 525));
-        normalWayPointsList.push_back(wayPoint2);
+        m_wayPointsList.push_back(wayPoint2);
         wayPoint2->setNextWayPoint(wayPoint1);
 
         WayPoint *wayPoint3 = new WayPoint(QPoint(400, 400));
-        normalWayPointsList.push_back(wayPoint3);
+        m_wayPointsList.push_back(wayPoint3);
         wayPoint3->setNextWayPoint(wayPoint2);
 
         WayPoint *wayPoint4 = new WayPoint(QPoint(480, 380));
-        normalWayPointsList.push_back(wayPoint4);
+        m_wayPointsList.push_back(wayPoint4);
         wayPoint4->setNextWayPoint(wayPoint3);
 
         WayPoint *wayPoint5 = new WayPoint(QPoint(490, 245));
-        normalWayPointsList.push_back(wayPoint5);
+        m_wayPointsList.push_back(wayPoint5);
         wayPoint5->setNextWayPoint(wayPoint4);
 
         WayPoint *wayPoint6 = new WayPoint(QPoint(400, 210));
-        normalWayPointsList.push_back(wayPoint6);
+        m_wayPointsList.push_back(wayPoint6);
         wayPoint6->setNextWayPoint(wayPoint5);
 
         WayPoint *wayPoint7 = new WayPoint(QPoint(310, 245));
-        normalWayPointsList.push_back(wayPoint7);
+        m_wayPointsList.push_back(wayPoint7);
         wayPoint7->setNextWayPoint(wayPoint6);
 
         WayPoint *wayPoint8 = new WayPoint(QPoint(320, 380));
-        normalWayPointsList.push_back(wayPoint8);
+        m_wayPointsList.push_back(wayPoint8);
         wayPoint8->setNextWayPoint(wayPoint7);
 
         WayPoint *wayPoint9 = new WayPoint(QPoint(400, 400));
-        normalWayPointsList.push_back(wayPoint9);
+        m_wayPointsList.push_back(wayPoint9);
         wayPoint9->setNextWayPoint(wayPoint8);
 
         WayPoint *wayPoint10 = new WayPoint(QPoint(400, 525));
-        normalWayPointsList.push_back(wayPoint10);
+        m_wayPointsList.push_back(wayPoint10);
         wayPoint10->setNextWayPoint(wayPoint9);
 
         WayPoint *wayPoint11 = new WayPoint(QPoint(5, 525));//起点
-        normalWayPointsList.push_back(wayPoint11);
+        m_wayPointsList.push_back(wayPoint11);
         wayPoint11->setNextWayPoint(wayPoint10);
 }
 
@@ -1196,20 +1255,6 @@ void hardScene::drawPlayerGold()
     MoneyFront->raise();
 }
 
-void hardScene::onTimer()
-{
-    /*this->removeDeath();
-    this->act();
-    this->SunFront->setText(QString::number(this->sunPoint));
-    this->createZombie();
-    if (qrand() % 521 < 100)
-    {
-        zBonus* sun = new zSunFall(this);
-        Bonuses.append(sun);
-    }*/
-    this->exit->raise();
-    //this->judge();
-}
 
 void hardScene::preLoadWavesInfo()
 {
@@ -1229,26 +1274,24 @@ void hardScene::preLoadWavesInfo()
     file.close();
 }
 
-void hardScene::leave()
+hardScene::~hardScene()
 {
-    emit toTitle();
-}
-
-void hardScene::back()
-{
-    //MainWindow::back();
-}
-
-void hardScene::updateMap()
-{
-    foreach (Enemy *enemy, m_enemyList)
-        enemy->move();
-    //foreach (Tower *tower, m_towersList)
-        //tower->checkEnemyInRange();
-    update();
-}
-
-void hardScene::gameStart()
-{
-    loadWave();
+    delete this->background;
+    delete this->exit;
+    delete this->btn1;
+    delete this->btn2;
+    delete this->btn3;
+    delete this->btn4;
+    delete this->btn5;
+    delete this->btn6;
+    delete this->btn7;
+    delete this->btn8;
+    delete this->btn9;
+    delete this->btn10;
+    delete this->btn11;
+    delete this->btn12;
+    delete this->btn13;
+    delete this->btn14;
+    // addition 6-6
+    //delete ui;
 }
