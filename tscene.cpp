@@ -48,6 +48,65 @@ tStartScreen::tStartScreen(QWidget* parent) : tScene(parent)
     timer->start(20);
 }
 
+
+void tScene::getHpDamage(int damage)
+{
+    m_audioPlayer->playSound(LifeLoseSound);
+    m_playerHp -= damage;
+    if (m_playerHp <= 0)
+        doGameOver();
+}
+
+void tScene::removedEnemy(Enemy *enemy)
+{
+    Q_ASSERT(enemy);
+
+    m_enemyList.removeOne(enemy);
+    delete enemy;
+
+    if (m_enemyList.empty())
+    {
+        ++m_waves;
+        //if (!loadWave())
+        //{
+        m_gameWin = true;
+        // 游戏胜利转到游戏胜利场景
+        // 这里暂时以打印处理
+        //}
+    }
+}
+
+void tScene::removedBullet(Bullet *bullet)
+{
+    Q_ASSERT(bullet);
+
+    m_bulletList.removeOne(bullet);
+    delete bullet;
+}
+
+void tScene::addBullet(Bullet *bullet)
+{
+    Q_ASSERT(bullet);
+
+    m_bulletList.push_back(bullet);
+}
+
+void tScene::awardGold(int gold)
+{
+    m_playerGold += gold;
+    update();
+}
+
+AudioPlayer *easyScene::audioPlayer() const
+{
+    return m_audioPlayer;
+}
+
+QList<Enemy *> tScene::enemyList() const
+{
+    return m_enemyList;
+}
+
 tStartScreen::~tStartScreen()
 {
     delete this->background;
@@ -458,12 +517,6 @@ void easyScene::preLoadWavesInfo()
     file.close();
 }
 
-
-
-
-
-
-
 easyScene::~easyScene()
 {
     delete this->background;
@@ -479,63 +532,6 @@ easyScene::~easyScene()
     //delete ui;
 }
 
-void tScene::getHpDamage(int damage)
-{
-    m_audioPlayer->playSound(LifeLoseSound);
-    m_playerHp -= damage;
-    if (m_playerHp <= 0)
-        doGameOver();
-}
-
-void tScene::removedEnemy(Enemy *enemy)
-{
-    Q_ASSERT(enemy);
-
-    m_enemyList.removeOne(enemy);
-    delete enemy;
-
-    if (m_enemyList.empty())
-    {
-        ++m_waves;
-        //if (!loadWave())
-        //{
-            m_gameWin = true;
-            // 游戏胜利转到游戏胜利场景
-            // 这里暂时以打印处理
-        //}
-    }
-}
-
-void tScene::removedBullet(Bullet *bullet)
-{
-    Q_ASSERT(bullet);
-
-    m_bulletList.removeOne(bullet);
-    delete bullet;
-}
-
-void tScene::addBullet(Bullet *bullet)
-{
-    Q_ASSERT(bullet);
-
-    m_bulletList.push_back(bullet);
-}
-
-void tScene::awardGold(int gold)
-{
-    m_playerGold += gold;
-    update();
-}
-
-AudioPlayer *easyScene::audioPlayer() const
-{
-    return m_audioPlayer;
-}
-
-QList<Enemy *> tScene::enemyList() const
-{
-    return m_enemyList;
-}
 
 void easyScene::keyPressEvent(QKeyEvent *event)
 {
@@ -697,6 +693,22 @@ hardScene::hardScene(QWidget* parent) : tScene(parent)
 hardScene::~hardScene()
 {
     delete this->background;
+    delete this->exit;
+    delete this->btn1;
+    delete this->btn2;
+    delete this->btn3;
+    delete this->btn4;
+    delete this->btn5;
+    delete this->btn6;
+    delete this->btn7;
+    delete this->btn8;
+    delete this->btn9;
+    delete this->btn10;
+    delete this->btn11;
+    delete this->btn12;
+    delete this->btn13;
+    delete this->btn14;
+
 }
 
 void hardScene::uiSetup()
@@ -747,6 +759,107 @@ void hardScene::uiSetup()
     WaveLabel->show();
     WaveLabel->setMovie(wavelabel);
 
+    btn1->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn1->setMovie(station);
+    station->start();
+    btn1->setGeometry(90, 425, 60, 60);
+    btn1->show();
+    btn1->raise();
+
+    btn2->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn2->setMovie(station);
+    station->start();
+    btn2->setGeometry(170, 425, 60, 60);
+    btn2->show();
+    btn2->raise();
+
+    btn3->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn3->setMovie(station);
+    station->start();
+    btn3->setGeometry(250, 425, 60, 60);
+    btn3->show();
+    btn3->raise();
+
+    btn4->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn4->setMovie(station);
+    station->start();
+    btn4->setGeometry(640, 425, 60, 60);
+    btn4->show();
+    btn4->raise();
+
+    btn5->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn5->setMovie(station);
+    station->start();
+    btn5->setGeometry(560, 425, 60, 60);
+    btn5->show();
+    btn5->raise();
+
+    btn6->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn6->setMovie(station);
+    station->start();
+    btn6->setGeometry(480, 425, 60, 60);
+    btn6->show();
+    btn6->raise();
+
+    btn7->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn7->setMovie(station);
+    station->start();
+    btn7->setGeometry(145, 280, 60, 60);
+    btn7->show();
+    btn7->raise();
+
+    btn8->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn8->setMovie(station);
+    station->start();
+    btn8->setGeometry(215, 280, 60, 60);
+    btn8->show();
+    btn8->raise();
+
+    btn9->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn9->setMovie(station);
+    station->start();
+    btn9->setGeometry(600, 280, 60, 60);
+    btn9->show();
+    btn9->raise();
+
+    btn10->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn10->setMovie(station);
+    station->start();
+    btn10->setGeometry(530, 280, 60, 60);
+    btn10->show();
+    btn10->raise();
+
+    btn11->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn11->setMovie(station);
+    station->start();
+    btn11->setGeometry(235, 140, 60, 60);
+    btn11->show();
+    btn11->raise();
+
+    btn12->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn12->setMovie(station);
+    station->start();
+    btn12->setGeometry(305, 140, 60, 60);
+    btn12->show();
+    btn12->raise();
+
+    btn13->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn13->setMovie(station);
+    station->start();
+    btn13->setGeometry(510, 140, 60, 60);
+    btn13->show();
+    btn13->raise();
+
+    btn14->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn14->setMovie(station);
+    station->start();
+    btn14->setGeometry(440, 140, 60, 60);
+    btn14->show();
+    btn14->raise();
+
+
+
+
     exit->setGeometry(700, 60, 60, 60); //设置退出按钮
     exit->setFlat(true);
     exit->setIcon(QIcon(":/image/Leave.png"));
@@ -762,3 +875,4 @@ void hardScene::leave()
 {
     emit toTitle();
 }
+
