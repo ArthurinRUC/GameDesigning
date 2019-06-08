@@ -747,6 +747,7 @@ hardScene::hardScene(QWidget* parent) : tScene(parent)
 hardScene::~hardScene()
 {
     delete this->background;
+    delete this->btn1;
 }
 
 void hardScene::uiSetup()

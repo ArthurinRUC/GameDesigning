@@ -32,5 +32,6 @@
         <file>background/victory1.jpg</file>
         <file>background/victory_better.jpg</file>
         <file>background/lose1.jpg</file>
+        <file>image/base0.png</file>
     </qresource>
 </RCC>

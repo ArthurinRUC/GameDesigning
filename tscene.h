@@ -53,6 +53,9 @@ public:
     QLabel* WaveLabel = new QLabel(this);
     QMovie* wavelabel = new QMovie(":/image/wave2.png");
 
+    QLabel* Base = new QLabel(this);
+    QMovie* base = new QMovie(":/image/base0.png");
+
     // move to base class
     QList<Enemy *> enemyList() const;
     void addBullet(Bullet *bullet);
@@ -225,6 +228,8 @@ private:
     QPushButton* exit = new QPushButton(this);
     //QPoint cell;
     void uiSetup(); //在PVZ中用来设计僵尸的出现等
+    QMovie* station = new QMovie("/image/open_spot.png");
+    QLabel* btn1 = new QLabel(this);
 private slots:
     //void onTimer(); //在PVZ中用于设置阳光
     void leave();
