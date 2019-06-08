@@ -729,7 +729,8 @@ void easyScene::gameStart()
 
 
 // 以下是对复杂地图的设计
-hardScene::hardScene(QWidget* parent) : tScene(parent)
+hardScene::hardScene(QWidget* parent) 
+    : tScene(parent)
 {
     this->setGeometry(0, 0, 1400, 600);
     //this->cellSize = QPoint(81, 100);
