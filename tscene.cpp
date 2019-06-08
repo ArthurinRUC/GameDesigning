@@ -221,7 +221,7 @@ void easyScene::uiSetup()
     btn2->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn2->setMovie(station);
     station->start();
-    btn2->setGeometry(50, 150, 70, 70);
+    btn2->setGeometry(50, 145, 70, 70);
     btn2->show();
     btn2->raise();
 
@@ -259,6 +259,48 @@ void easyScene::uiSetup()
     btn7->setGeometry(305, 315, 70, 70);
     btn7->show();
     btn7->raise();
+
+    btn8->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn8->setMovie(station);
+    station->start();
+    btn8->setGeometry(460, 125, 70, 70);
+    btn8->show();
+    btn8->raise();
+
+    btn9->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn9->setMovie(station);
+    station->start();
+    btn9->setGeometry(460, 200, 70, 70);
+    btn9->show();
+    btn9->raise();
+
+    btn10->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn10->setMovie(station);
+    station->start();
+    btn10->setGeometry(540, 200, 70, 70);
+    btn10->show();
+    btn10->raise();
+
+    btn11->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn11->setMovie(station);
+    station->start();
+    btn11->setGeometry(400, 385, 70, 70);
+    btn11->show();
+    btn11->raise();
+
+    btn12->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn12->setMovie(station);
+    station->start();
+    btn12->setGeometry(480, 385, 70, 70);
+    btn12->show();
+    btn12->raise();
+
+    btn13->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
+    btn13->setMovie(station);
+    station->start();
+    btn13->setGeometry(620, 90, 70, 70);
+    btn13->show();
+    btn13->raise();
 
     exit->setGeometry(700, 0, 60, 60); //设置退出按钮
     exit->setFlat(true);
@@ -430,6 +472,12 @@ easyScene::~easyScene()
     delete this->btn5;
     delete this->btn6;
     delete this->btn7;
+    delete this->btn8;
+    delete this->btn9;
+    delete this->btn10;
+    delete this->btn11;
+    delete this->btn12;
+    delete this->btn13;
     // addition 6-6
     //delete ui;
 }

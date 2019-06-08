@@ -157,6 +157,12 @@ private:
     QLabel* btn5 = new QLabel(this);
     QLabel* btn6 = new QLabel(this);
     QLabel* btn7 = new QLabel(this);
+    QLabel* btn8 = new QLabel(this);
+    QLabel* btn9 = new QLabel(this);
+    QLabel* btn10 = new QLabel(this);
+    QLabel* btn11 = new QLabel(this);
+    QLabel* btn12 = new QLabel(this);
+    QLabel* btn13 = new QLabel(this);
 
     //QPoint cell;
     void uiSetup();
