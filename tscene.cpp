@@ -645,8 +645,8 @@ void easyScene::paintEvent(QPaintEvent *)
     foreach (const Tower *tower, m_towersList)
         tower->draw(&cachePainter);*/
 
-    foreach (const WayPoint *wayPoint, m_wayPointsList)
-        wayPoint->draw(&cachePainter);
+    //foreach (const WayPoint *wayPoint, m_wayPointsList)
+      //  wayPoint->draw(&cachePainter);
 
     foreach (const Enemy *enemy, m_enemyList)
         enemy->draw(&cachePainter);
@@ -821,8 +821,8 @@ void hardScene::paintEvent(QPaintEvent *)
     foreach (const Tower *tower, m_towersList)
         tower->draw(&cachePainter);*/
 
-    foreach (const WayPoint *wayPoint, m_wayPointsList)
-        wayPoint->draw(&cachePainter);
+    //foreach (const WayPoint *wayPoint, m_wayPointsList)
+      //  wayPoint->draw(&cachePainter); //绘制航线
 
     foreach (const Enemy *enemy, m_enemyList)
         enemy->draw(&cachePainter);
