@@ -53,6 +53,9 @@ public:
     QLabel* WaveLabel = new QLabel(this);
     QMovie* wavelabel = new QMovie(":/image/wave2.png");
 
+    QLabel* Base = new QLabel(this);
+    QMovie* base = new QMovie(":/image/base0.png");
+
     // move to base class
     void addBullet(Bullet *bullet);
     void removedEnemy(Enemy *enemy);
@@ -72,6 +75,8 @@ public:
     int						m_playerGold;
     AudioPlayer *		    m_audioPlayer;
 
+
+    //QMovie* loseScene = new QMovie(":/background/victory1.jpg");
 
 signals:
     void toTitle(); //返回信号，返回主界面
@@ -156,6 +161,12 @@ private:
     QLabel* btn5 = new QLabel(this);
     QLabel* btn6 = new QLabel(this);
     QLabel* btn7 = new QLabel(this);
+    QLabel* btn8 = new QLabel(this);
+    QLabel* btn9 = new QLabel(this);
+    QLabel* btn10 = new QLabel(this);
+    QLabel* btn11 = new QLabel(this);
+    QLabel* btn12 = new QLabel(this);
+    QLabel* btn13 = new QLabel(this);
 
     //QPoint cell;
     void uiSetup();
@@ -169,7 +180,7 @@ private:
     void drawWave();
     void drawHP();
     void drawPlayerGold();
-    //void doGameOver();
+    //void doGameOver(); //在基类中实现
     void preLoadWavesInfo();
 
 
@@ -211,8 +222,11 @@ class hardScene : public tScene
 public:
     explicit hardScene(QWidget* parent = 0);
     ~hardScene();
+    void preLoadWavesInfo();
 protected:
-    //void keyPressEvent(QKeyEvent *event); //僵尸的出现
+    //void keyPressEvent(QKeyEvent *event); //6-8 暂时无用
+    void mousePressEvent(QMouseEvent *);  // 6-8 new
+    void paintEvent(QPaintEvent *);// 6-8 new
 private:
     QMovie* background = new QMovie(":/GameMap/hardMap2.jpg");
     QPushButton* exit = new QPushButton(this);
@@ -235,9 +249,47 @@ private:
 
     //QPoint cell;
     void uiSetup(); //在PVZ中用来设计僵尸的出现等
+    QMovie* station = new QMovie("/image/open_spot.png");
+    QLabel* btn1 = new QLabel(this);
+
+private:
+    void loadTowerPositions(); //√
+    void addWayPoints();
+    bool loadWave();
+    bool canBuyTower() const; //√
+    void drawWave();
+    void drawHP();
+    void drawPlayerGold();
+    //void doGameOver(); //在基类中实现
+
+private:
+    //MainWindow *		ui;
+    //int						m_waves;
+    //int						m_playerHp;
+    //int						m_playerGold;
+    //bool					m_gameEnded;
+    //bool					m_gameWin;
+    //AudioPlayer *			m_audioPlayer;
+    QList<QVariant>			m_wavesInfo;
+    QList<TowerPosition>	m_towerPositionsList; //√
+    //QList<Tower *>			m_towersList; //√
+    QList<WayPoint *>		m_wayPointsList;
+    QList<WayPoint *>       normalWayPointsList;
+    //QList<Enemy *>			m_enemyList;
+    //QList<Bullet *>			m_bulletList;
+
+
 private slots:
-    //void onTimer(); //在PVZ中用于设置阳光
-    void leave();
+    void onTimer();
+    void leave(); // emit toTitle();
+
+    //增加代码 6-6
+    void back();
+    //void startEasy();
+    //void startHard();
+
+    void updateMap(); //原来的槽
+    void gameStart(); //原来的槽
 };
 
 #endif // TSCENE_H
