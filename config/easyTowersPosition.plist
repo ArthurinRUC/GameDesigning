@@ -50,5 +50,41 @@
 		<key>y</key>
                 <integer>315</integer>
         </dict>
+        <dict>
+                <key>x</key>
+                <integer>460</integer>
+                <key>y</key>
+                <integer>125</integer>
+        </dict>
+        <dict>
+                <key>x</key>
+                <integer>460</integer>
+                <key>y</key>
+                <integer>200</integer>
+        </dict>
+        <dict>
+                <key>x</key>
+                <integer>540</integer>
+                <key>y</key>
+                <integer>200</integer>
+        </dict>
+        <dict>
+                <key>x</key>
+                <integer>400</integer>
+                <key>y</key>
+                <integer>385</integer>
+        </dict>
+        <dict>
+                <key>x</key>
+                <integer>480</integer>
+                <key>y</key>
+                <integer>385</integer>
+        </dict>
+        <dict>
+                <key>x</key>
+                <integer>620</integer>
+                <key>y</key>
+                <integer>90</integer>
+        </dict>
 </array>
 </plist>

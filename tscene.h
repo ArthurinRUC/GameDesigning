@@ -262,7 +262,6 @@ private:
 
     //QPoint cell;
     void uiSetup(); //在PVZ中用来设计僵尸的出现等
-    QMovie* station = new QMovie("/image/open_spot.png");
 
 private:
     void loadTowerPositions(); //√

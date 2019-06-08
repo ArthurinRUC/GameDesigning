@@ -7,7 +7,6 @@
         <file>image/icon_HP.png</file>
         <file>image/open_spot.png</file>
         <file>config/Info.plist</file>
-        <file>config/TowersPosition.plist</file>
         <file>config/Waves.plist</file>
         <file>image/logo.jpg</file>
         <file>background/scene1.jpg</file>
@@ -43,5 +42,7 @@
         <file>background/victory_better.jpg</file>
         <file>background/lose1.jpg</file>
         <file>image/base0.png</file>
+        <file>config/easyTowersPosition.plist</file>
+        <file>config/hardTowersPosition.plist</file>
     </qresource>
 </RCC>

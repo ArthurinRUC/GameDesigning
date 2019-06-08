@@ -409,7 +409,7 @@ void easyScene::loadTowerPositions()
     //读取文件中的炮塔位置信息，可以不用深究，但是可以修改位置【可改】
 
     //这里可以改变炮塔的位置，文件是html格式
-    QFile file(":/config/TowersPosition.plist");
+    QFile file(":/config/easyTowersPosition.plist");
     if (!file.open(QFile::ReadOnly | QFile::Text))
     {
         QMessageBox::warning(this, "TowerDefense", "Cannot Open TowersPosition.plist");
@@ -816,6 +816,20 @@ void hardScene::paintEvent(QPaintEvent *)
 {
     if (m_gameEnded || m_gameWin)
     {
+        btn1->hide();
+        btn2->hide();
+        btn3->hide();
+        btn4->hide();
+        btn5->hide();
+        btn6->hide();
+        btn7->hide();
+        btn8->hide();
+        btn9->hide();
+        btn10->hide();
+        btn11->hide();
+        btn12->hide();
+        btn13->hide();
+
         MoneyFront->hide();
         MoneyBar->hide();
         MoneyLabel->hide();
@@ -825,8 +839,6 @@ void hardScene::paintEvent(QPaintEvent *)
         WaveFront->hide();
         WaveBar->hide();
         WaveLabel->hide();
-
-
 
         if(m_gameWin){
         QPixmap loseScene(":/background/victory_better.jpg");
@@ -856,10 +868,10 @@ void hardScene::paintEvent(QPaintEvent *)
 
     //foreach手法，讲究
     /*foreach (const TowerPosition &towerPos, m_towerPositionsList)
-        towerPos.draw(&cachePainter);
+        towerPos.draw(&cachePainter);*/
 
     foreach (const Tower *tower, m_towersList)
-        tower->draw(&cachePainter);*/
+        tower->draw(&cachePainter);
 
     foreach (const WayPoint *wayPoint, m_wayPointsList)
         wayPoint->draw(&cachePainter);
@@ -867,8 +879,8 @@ void hardScene::paintEvent(QPaintEvent *)
     foreach (const Enemy *enemy, m_enemyList)
         enemy->draw(&cachePainter);
 
-    //foreach (const Bullet *bullet, m_bulletList)
-        //bullet->draw(&cachePainter);
+    foreach (const Bullet *bullet, m_bulletList)
+        bullet->draw(&cachePainter);
 
     drawWave();
     drawHP();
@@ -894,8 +906,8 @@ void hardScene::mousePressEvent(QMouseEvent * event)
             m_playerGold -= TowerCost;
             it->setHasTower();
 
-            //Tower *tower = new Tower(it->centerPos(), this);
-            //m_towersList.push_back(tower);
+            Tower *tower = new NormalTower(it->centerPos(), this);
+            m_towersList.push_back(tower);
             update(); //调用paintevent(),重绘画面
             break;
         }
@@ -933,8 +945,8 @@ void hardScene::updateMap()
 {
     foreach (Enemy *enemy, m_enemyList)
         enemy->move();
-    //foreach (Tower *tower, m_towersList)
-        //tower->checkEnemyInRange();
+    foreach (Tower *tower, m_towersList)
+        tower->checkEnemyInRange();
     update();
 }
 
@@ -955,7 +967,7 @@ hardScene::hardScene(QWidget* parent)
     this->show();
 
     preLoadWavesInfo(); //设置波数
-    //loadTowerPositions(); //调用位置函数
+    loadTowerPositions(); //调用位置函数
     addWayPoints();
 
     //m_audioPlayer = new AudioPlayer(this);
@@ -1135,7 +1147,7 @@ void hardScene::loadTowerPositions()
     //读取文件中的炮塔位置信息，可以不用深究，但是可以修改位置【可改】
 
     //这里可以改变炮塔的位置，文件是html格式
-    QFile file(":/config/TowersPosition.plist");
+    QFile file(":/config/hardTowersPosition.plist");
     if (!file.open(QFile::ReadOnly | QFile::Text))
     {
         QMessageBox::warning(this, "TowerDefense", "Cannot Open TowersPosition.plist");
