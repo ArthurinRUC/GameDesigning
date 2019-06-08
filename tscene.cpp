@@ -729,7 +729,8 @@ void easyScene::gameStart()
 
 
 // 以下是对复杂地图的设计
-hardScene::hardScene(QWidget* parent) : tScene(parent)
+hardScene::hardScene(QWidget* parent)
+    : tScene(parent)
 {
     this->setGeometry(0, 0, 1400, 600);
     //this->cellSize = QPoint(81, 100);
@@ -753,7 +754,8 @@ hardScene::hardScene(QWidget* parent) : tScene(parent)
 hardScene::~hardScene()
 {
     delete this->background;
-    delete this->btn1;
+    delete this->exit;
+
 }
 
 void hardScene::mousePressEvent(QMouseEvent * event)
@@ -783,8 +785,6 @@ void hardScene::paintEvent(QPaintEvent *)
 {
     if (m_gameEnded || m_gameWin)
     {
-        btn1->hide();
-
         MoneyFront->hide();
         MoneyBar->hide();
         MoneyLabel->hide();
@@ -908,12 +908,6 @@ void hardScene::uiSetup()
     exit->show();
     exit->raise();
 
-    btn1->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
-    btn1->setMovie(station);
-    station->start();
-    btn1->setGeometry(50, 220, 70, 70);
-    btn1->show();
-    btn1->raise();
 }
 
 void hardScene::loadTowerPositions()
@@ -994,7 +988,7 @@ bool hardScene::loadWave()
     if (m_waves >= m_wavesInfo.size())
         return false;
 
-    WayPoint *startWayPoint = m_wayPointsList.back();
+    WayPoint *startWayPoint = normalWayPointsList.back();
     QList<QVariant> curWavesInfo = m_wavesInfo[m_waves].toList();
 
     for (int i = 0; i < curWavesInfo.size(); ++i)

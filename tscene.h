@@ -55,6 +55,7 @@ public:
 
     QLabel* Base = new QLabel(this);
     QMovie* base = new QMovie(":/image/base0.png");
+     QPushButton* exit = new QPushButton(this);
 
     // move to base class
     QList<Enemy *> enemyList() const;
@@ -148,9 +149,6 @@ protected:
 
 private:
     QMovie* background = new QMovie(":/GameMap/easyMap2.jpg");
-    QPushButton* exit = new QPushButton(this);
-
-
 
     QMovie* station = new QMovie("/image/open_spot.png");
     QLabel* btn1 = new QLabel(this);
@@ -232,7 +230,6 @@ private:
     //QPoint cell;
     void uiSetup(); //在PVZ中用来设计僵尸的出现等
     QMovie* station = new QMovie("/image/open_spot.png");
-    QLabel* btn1 = new QLabel(this);
 
 private:
     void loadTowerPositions(); //√
