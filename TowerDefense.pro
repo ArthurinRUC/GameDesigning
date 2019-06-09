@@ -42,4 +42,18 @@ RESOURCES += \
     resource.qrc
 
 DISTFILES += \
-    uml_class.qmodel
+    uml_class.qmodel \
+    music/easy.mp3 \
+    music/First Page.mp3 \
+    music/hard.mp3 \
+    music/bossEnemyDie.mp3 \
+    music/fastEnemyDie.mp3 \
+    music/fireEnemyDie.mp3 \
+    music/iceEnemyDie.mp3 \
+    music/normalEnemyDie.mp3 \
+    music/Lose.mp3 \
+    music/Win.mp3 \
+    music/fireBullet.mp3 \
+    music/iceBulet.mp3 \
+    music/laserBullet.mp3 \
+    music/normalBullet.mp3
