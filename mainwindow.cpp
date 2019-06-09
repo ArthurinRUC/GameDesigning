@@ -16,6 +16,7 @@
 #include "tscene.h"
 
 static const int TowerCost = 300;
+static const QString s_curDir = "C:/Users/81915/Desktop/LS/Programming/GD/GameDesigning/music";
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
@@ -35,7 +36,6 @@ MainWindow::MainWindow(QWidget *parent)
     this->setFixedSize(800, 600);
     scene = new tStartScreen(this);
     connect(this->scene, SIGNAL(toTitle()), this, SLOT(back()));
-
 
 
    /* // 以下为原有游戏的代码

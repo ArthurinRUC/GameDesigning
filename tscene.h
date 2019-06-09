@@ -56,6 +56,7 @@ public:
     QLabel* Base = new QLabel(this);
     QMovie* base = new QMovie(":/image/base0.png");
 
+
     // move to base class
     void addBullet(Bullet *bullet);
     void removedEnemy(Enemy *enemy);
@@ -64,6 +65,7 @@ public:
     void awardGold(int gold);
     void getHpDamage(int damage);
     void doGameOver();
+    AudioPlayer* audioPlayer() const;
 
     QList<Bullet *>			m_bulletList;
     QList<Enemy *>			m_enemyList;
@@ -137,7 +139,7 @@ public:
     //void addBullet(Bullet *bullet);
     //void awardGold(int gold);
 
-    AudioPlayer* audioPlayer() const;
+    //AudioPlayer* audioPlayer() const;
     //QList<Enemy *> enemyList() const;
 
 protected:
@@ -230,7 +232,7 @@ public:
     //void addBullet(Bullet *bullet);
     //void awardGold(int gold);
 
-    AudioPlayer* audioPlayer() const;
+    //AudioPlayer* audioPlayer() const;
     //QList<Enemy *> enemyList() const;
 
 protected:

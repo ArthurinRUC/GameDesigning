@@ -1,6 +1,7 @@
 #include "tscene.h"
 
 static const int TowerCost = 300;
+static const QString s_curDir = "C:/Users/81915/Desktop/LS/Programming/GD/GameDesigning/music";
 
 tScene::tScene(QWidget *parent) : QLabel(parent)
   , m_waves(0)
@@ -34,19 +35,6 @@ tScene::~tScene()
     if (!(this->wavelabel == nullptr))delete this->wavelabel;
 }
 
-tStartScreen::tStartScreen(QWidget* parent) : tScene(parent)
-{
-    this->setGeometry(0, 0, 800, 600); //界面
-    this->setMovie(this->background);  //图片
-    this->background->start();      //
-    this->show();
-    this->front->setGeometry(0, 0, 800, 600);
-    this->front->show();
-    this->front->setStyleSheet("background: rgba(255,0,0,1)");
-    timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(onTimer()));
-    timer->start(20);
-}
 
 
 void tScene::getHpDamage(int damage)
@@ -97,14 +85,54 @@ void tScene::awardGold(int gold)
     update();
 }
 
-AudioPlayer *easyScene::audioPlayer() const
+AudioPlayer *tScene::audioPlayer() const
 {
     return m_audioPlayer;
+}
+
+void tScene::FireIceattack()
+{
+    foreach(Enemy *enemy, m_enemyList){
+        if (enemy->fire != 0){
+            enemy->fire--;
+            enemy->getFireDamage(enemy->fireattack);
+        }
+        if(enemy->ice != 0){
+            enemy->ice--;
+            if (enemy->ice == 0)
+            {
+                enemy->m_walkingSpeed = enemy->m_normalSpeed;
+                enemy->m_slowSpeed = enemy->m_normalSpeed;
+            }
+            else
+            {
+                enemy->m_walkingSpeed = enemy->m_slowSpeed;
+            }
+        }
+    }
 }
 
 QList<Enemy *> tScene::enemyList() const
 {
     return m_enemyList;
+}
+
+tStartScreen::tStartScreen(QWidget* parent) : tScene(parent)
+{
+    QUrl backgroundMusicUrl = QUrl::fromLocalFile(s_curDir + "/First Page.mp3");
+    m_audioPlayer = new AudioPlayer(backgroundMusicUrl,this);
+    m_audioPlayer->startBGM();
+
+    this->setGeometry(0, 0, 800, 600); //界面
+    this->setMovie(this->background);  //图片
+    this->background->start();      //
+    this->show();
+    this->front->setGeometry(0, 0, 800, 600);
+    this->front->show();
+    this->front->setStyleSheet("background: rgba(255,0,0,1)");
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(onTimer()));
+    timer->start(20);
 }
 
 tStartScreen::~tStartScreen()
@@ -135,6 +163,10 @@ void tStartScreen::onTimer()
 
 tStartScene::tStartScene(QWidget* parent) : tScene(parent)
 {
+    QUrl backgroundMusicUrl = QUrl::fromLocalFile(s_curDir + "/First Page.mp3");
+    m_audioPlayer = new AudioPlayer(backgroundMusicUrl,this);
+    m_audioPlayer->startBGM();
+
     this->setGeometry(0, 0, 800, 600);
     this->setMovie(this->background);
     this->background->start();
@@ -178,7 +210,6 @@ tStartScene::~tStartScene()
     delete this->hardStr;
 }
 
-
 void tStartScene::mousePressEvent(QMouseEvent *event)
 {
     if (QRect(120, 205, 180, 180).contains(event->pos()))
@@ -195,6 +226,10 @@ easyScene::easyScene(QWidget* parent)
     : tScene(parent)
   //, ui(new Ui::MainWindow)
 {
+    QUrl backgroundMusicUrl = QUrl::fromLocalFile(s_curDir + "/easy.mp3");
+    m_audioPlayer = new AudioPlayer(backgroundMusicUrl,this);
+    m_audioPlayer->startBGM();
+
     this->setGeometry(0, 0, 800, 600);
     //this->cellSize = QPoint(81, 100);
     //this->rect = QRect(250, 85, 729, 500);
@@ -221,28 +256,6 @@ easyScene::easyScene(QWidget* parent)
     this->uiSetup();
     // 设置300ms后游戏启动
     QTimer::singleShot(300, this, SLOT(gameStart()));
-}
-
-void tScene::FireIceattack()
-{
-    foreach(Enemy *enemy, m_enemyList){
-        if (enemy->fire != 0){
-            enemy->fire--;
-            enemy->getFireDamage(enemy->fireattack);
-        }
-        if(enemy->ice != 0){
-            enemy->ice--;
-            if (enemy->ice == 0)
-            {
-                enemy->m_walkingSpeed = enemy->m_normalSpeed;
-                enemy->m_slowSpeed = enemy->m_normalSpeed;
-            }
-            else
-            {
-                enemy->m_walkingSpeed = enemy->m_slowSpeed;
-            }
-        }
-    }
 }
 
 void easyScene::uiSetup()
@@ -770,10 +783,47 @@ void easyScene::gameStart()
 
 // 以下是对复杂地图的设计
 
-AudioPlayer *hardScene::audioPlayer() const
+hardScene::hardScene(QWidget* parent)
+    : tScene(parent)
+//, ui(new Ui::MainWindow)
+{
+    QUrl backgroundMusicUrl = QUrl::fromLocalFile(s_curDir + "/hard.mp3");
+    m_audioPlayer = new AudioPlayer(backgroundMusicUrl,this);
+    m_audioPlayer->startBGM();
+
+    this->setGeometry(0, 0, 800, 600);
+    //this->cellSize = QPoint(81, 100);
+    //this->rect = QRect(250, 85, 729, 500);
+    this->setMovie(this->background);
+    this->background->start();
+    this->show();
+
+    preLoadWavesInfo(); //设置波数
+    loadTowerPositions(); //调用位置函数
+
+    //for different enemies
+    addNormalWayPoints();
+    addIceWayPoints();
+    addFireWayPoints();
+    addFastWayPoints();
+    addBossWayPoints();
+
+    //m_audioPlayer = new AudioPlayer(this);
+    //m_audioPlayer->startBGM();
+
+    //每30ms发送一个更新信号
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(updateMap()));
+    timer->start(30);
+    this->uiSetup();
+    // 设置300ms后游戏启动
+    QTimer::singleShot(300, this, SLOT(gameStart()));
+}
+
+/*AudioPlayer *hardScene::audioPlayer() const
 {
     return m_audioPlayer;
-}
+}*/
 
 void hardScene::keyPressEvent(QKeyEvent *event)
 {
@@ -956,38 +1006,6 @@ void hardScene::gameStart()
     loadWave();
 }
 
-hardScene::hardScene(QWidget* parent)
-    : tScene(parent)
-  //, ui(new Ui::MainWindow)
-{
-    this->setGeometry(0, 0, 800, 600);
-    //this->cellSize = QPoint(81, 100);
-    //this->rect = QRect(250, 85, 729, 500);
-    this->setMovie(this->background);
-    this->background->start();
-    this->show();
-
-    preLoadWavesInfo(); //设置波数
-    loadTowerPositions(); //调用位置函数
-
-    //for different enemies
-    addNormalWayPoints();
-    addIceWayPoints();
-    addFireWayPoints();
-    addFastWayPoints();
-    addBossWayPoints();
-
-    //m_audioPlayer = new AudioPlayer(this);
-    //m_audioPlayer->startBGM();
-
-    //每30ms发送一个更新信号
-    QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(updateMap()));
-    timer->start(30);
-    this->uiSetup();
-    // 设置300ms后游戏启动
-    QTimer::singleShot(300, this, SLOT(gameStart()));
-}
 
 void hardScene::uiSetup()
 {
