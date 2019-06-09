@@ -434,34 +434,34 @@ void easyScene::loadTowerPositions()
 void easyScene::addWayPoints()
 {
     //敌人航点【可改】
-    WayPoint *wayPoint1 = new WayPoint(QPoint(790, 225));
+    WayPoint *wayPoint1 = new WayPoint(QPoint(775, 205));
     m_wayPointsList.push_back(wayPoint1);
 
-    WayPoint *wayPoint2 = new WayPoint(QPoint(640, 225));
+    WayPoint *wayPoint2 = new WayPoint(QPoint(625, 205));
     m_wayPointsList.push_back(wayPoint2);
     wayPoint2->setNextWayPoint(wayPoint1);
 
-    WayPoint *wayPoint3 = new WayPoint(QPoint(640, 335));
+    WayPoint *wayPoint3 = new WayPoint(QPoint(625, 315));
     m_wayPointsList.push_back(wayPoint3);
     wayPoint3->setNextWayPoint(wayPoint2);
 
-    WayPoint *wayPoint4 = new WayPoint(QPoint(415, 335));
+    WayPoint *wayPoint4 = new WayPoint(QPoint(400, 315));
     m_wayPointsList.push_back(wayPoint4);
     wayPoint4->setNextWayPoint(wayPoint3);
 
-    WayPoint *wayPoint5 = new WayPoint(QPoint(415, 195));
+    WayPoint *wayPoint5 = new WayPoint(QPoint(400, 175));
     m_wayPointsList.push_back(wayPoint5);
     wayPoint5->setNextWayPoint(wayPoint4);
 
-    WayPoint *wayPoint6 = new WayPoint(QPoint(145, 195));
+    WayPoint *wayPoint6 = new WayPoint(QPoint(130, 175));
     m_wayPointsList.push_back(wayPoint6);
     wayPoint6->setNextWayPoint(wayPoint5);
 
-    WayPoint *wayPoint7 = new WayPoint(QPoint(145, 350));
+    WayPoint *wayPoint7 = new WayPoint(QPoint(130, 330));
     m_wayPointsList.push_back(wayPoint7);
     wayPoint7->setNextWayPoint(wayPoint6);
 
-    WayPoint *wayPoint8 = new WayPoint(QPoint(0, 350));
+    WayPoint *wayPoint8 = new WayPoint(QPoint(0, 330));
     m_wayPointsList.push_back(wayPoint8);
     wayPoint8->setNextWayPoint(wayPoint7);
 }
@@ -686,8 +686,8 @@ void easyScene::paintEvent(QPaintEvent *)
     foreach (const Tower *tower, m_towersList)
         tower->draw(&cachePainter);
 
-    foreach (const WayPoint *wayPoint, m_wayPointsList)
-        wayPoint->draw(&cachePainter);
+    //foreach (const WayPoint *wayPoint, m_wayPointsList)
+      //  wayPoint->draw(&cachePainter);
 
     foreach (const Enemy *enemy, m_enemyList)
         enemy->draw(&cachePainter);
@@ -829,6 +829,7 @@ void hardScene::paintEvent(QPaintEvent *)
         btn11->hide();
         btn12->hide();
         btn13->hide();
+        btn14->hide();
 
         MoneyFront->hide();
         MoneyBar->hide();
@@ -873,8 +874,8 @@ void hardScene::paintEvent(QPaintEvent *)
     foreach (const Tower *tower, m_towersList)
         tower->draw(&cachePainter);
 
-    foreach (const WayPoint *wayPoint, m_wayPointsList)
-        wayPoint->draw(&cachePainter);
+   // foreach (const WayPoint *wayPoint, m_wayPointsList)
+     //   wayPoint->draw(&cachePainter);
 
     foreach (const Enemy *enemy, m_enemyList)
         enemy->draw(&cachePainter);
@@ -1171,42 +1172,42 @@ void hardScene::loadTowerPositions()
 
 void hardScene::addWayPoints()
 {
-    WayPoint *wayPoint1 = new WayPoint(QPoint(795, 525));//终点
+    WayPoint *wayPoint1 = new WayPoint(QPoint(760, 525));//终点
         m_wayPointsList.push_back(wayPoint1);
 
-        WayPoint *wayPoint2 = new WayPoint(QPoint(400, 525));
+        WayPoint *wayPoint2 = new WayPoint(QPoint(365, 525));
         m_wayPointsList.push_back(wayPoint2);
         wayPoint2->setNextWayPoint(wayPoint1);
 
-        WayPoint *wayPoint3 = new WayPoint(QPoint(400, 400));
+        WayPoint *wayPoint3 = new WayPoint(QPoint(365, 400));
         m_wayPointsList.push_back(wayPoint3);
         wayPoint3->setNextWayPoint(wayPoint2);
 
-        WayPoint *wayPoint4 = new WayPoint(QPoint(480, 380));
+        WayPoint *wayPoint4 = new WayPoint(QPoint(445, 380));
         m_wayPointsList.push_back(wayPoint4);
         wayPoint4->setNextWayPoint(wayPoint3);
 
-        WayPoint *wayPoint5 = new WayPoint(QPoint(490, 245));
+        WayPoint *wayPoint5 = new WayPoint(QPoint(455, 245));
         m_wayPointsList.push_back(wayPoint5);
         wayPoint5->setNextWayPoint(wayPoint4);
 
-        WayPoint *wayPoint6 = new WayPoint(QPoint(400, 210));
+        WayPoint *wayPoint6 = new WayPoint(QPoint(365, 210));
         m_wayPointsList.push_back(wayPoint6);
         wayPoint6->setNextWayPoint(wayPoint5);
 
-        WayPoint *wayPoint7 = new WayPoint(QPoint(310, 245));
+        WayPoint *wayPoint7 = new WayPoint(QPoint(275, 245));
         m_wayPointsList.push_back(wayPoint7);
         wayPoint7->setNextWayPoint(wayPoint6);
 
-        WayPoint *wayPoint8 = new WayPoint(QPoint(320, 380));
+        WayPoint *wayPoint8 = new WayPoint(QPoint(285, 380));
         m_wayPointsList.push_back(wayPoint8);
         wayPoint8->setNextWayPoint(wayPoint7);
 
-        WayPoint *wayPoint9 = new WayPoint(QPoint(400, 400));
+        WayPoint *wayPoint9 = new WayPoint(QPoint(365, 400));
         m_wayPointsList.push_back(wayPoint9);
         wayPoint9->setNextWayPoint(wayPoint8);
 
-        WayPoint *wayPoint10 = new WayPoint(QPoint(400, 525));
+        WayPoint *wayPoint10 = new WayPoint(QPoint(365, 525));
         m_wayPointsList.push_back(wayPoint10);
         wayPoint10->setNextWayPoint(wayPoint9);
 

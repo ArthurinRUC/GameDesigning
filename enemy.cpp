@@ -70,7 +70,7 @@ void Enemy::move(){
 
 	// 确定敌人选择方向
 	// 默认图片向左,需要修正180度转右
-	m_rotationSprite = qRadiansToDegrees(qAtan2(normalized.y(), normalized.x())) + 180;
+    //m_rotationSprite = qRadiansToDegrees(qAtan2(normalized.y(), normalized.x())) + 180;
 }
 void Enemy::draw(QPainter *painter) const{
     if (!m_active)
