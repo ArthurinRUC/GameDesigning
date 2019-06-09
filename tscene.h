@@ -265,7 +265,13 @@ private:
 
 private:
     void loadTowerPositions(); //√
-    void addWayPoints();
+    //for different enemies
+    void addNormalWayPoints();
+    void addIceWayPoints();
+    void addFireWayPoints();
+    void addFastWayPoints();
+    void addBossWayPoints();
+
     bool loadWave();
     bool canBuyTower() const; //√
     void drawWave();
@@ -285,8 +291,13 @@ private:
     QList<QVariant>			m_wavesInfo;
     QList<TowerPosition>	m_towerPositionsList; //√
     //QList<Tower *>			m_towersList; //√
-    QList<WayPoint *>		m_wayPointsList;
-    //QList<WayPoint *>       normalWayPointsList;
+    //QList<WayPoint *>		m_wayPointsList;
+    //for different enemies
+    QList<WayPoint *>       normalWayPointsList;
+    QList<WayPoint *>		iceWayPointsList;
+    QList<WayPoint *>		fireWayPointsList;
+    QList<WayPoint *>		fastWayPointsList;
+    QList<WayPoint *>		bossWayPointsList;
     //QList<Enemy *>			m_enemyList;
     //QList<Bullet *>			m_bulletList;
 
