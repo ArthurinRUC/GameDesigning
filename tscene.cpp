@@ -969,7 +969,13 @@ hardScene::hardScene(QWidget* parent)
 
     preLoadWavesInfo(); //设置波数
     loadTowerPositions(); //调用位置函数
-    addWayPoints();
+
+    //for different enemies
+    addNormalWayPoints();
+    addIceWayPoints();
+    addFireWayPoints();
+    addFastWayPoints();
+    addBossWayPoints();
 
     //m_audioPlayer = new AudioPlayer(this);
     //m_audioPlayer->startBGM();
@@ -1170,58 +1176,367 @@ void hardScene::loadTowerPositions()
     file.close();
 }
 
-void hardScene::addWayPoints()
+void hardScene::addNormalWayPoints()
 {
     WayPoint *wayPoint1 = new WayPoint(QPoint(760, 525));//终点
-        m_wayPointsList.push_back(wayPoint1);
+        normalWayPointsList.push_back(wayPoint1);
 
         WayPoint *wayPoint2 = new WayPoint(QPoint(365, 525));
-        m_wayPointsList.push_back(wayPoint2);
+        normalWayPointsList.push_back(wayPoint2);
         wayPoint2->setNextWayPoint(wayPoint1);
 
         WayPoint *wayPoint3 = new WayPoint(QPoint(365, 400));
-        m_wayPointsList.push_back(wayPoint3);
+        normalWayPointsList.push_back(wayPoint3);
         wayPoint3->setNextWayPoint(wayPoint2);
 
         WayPoint *wayPoint4 = new WayPoint(QPoint(445, 380));
-        m_wayPointsList.push_back(wayPoint4);
+        normalWayPointsList.push_back(wayPoint4);
         wayPoint4->setNextWayPoint(wayPoint3);
 
         WayPoint *wayPoint5 = new WayPoint(QPoint(455, 245));
-        m_wayPointsList.push_back(wayPoint5);
+        normalWayPointsList.push_back(wayPoint5);
         wayPoint5->setNextWayPoint(wayPoint4);
 
         WayPoint *wayPoint6 = new WayPoint(QPoint(365, 210));
-        m_wayPointsList.push_back(wayPoint6);
+        normalWayPointsList.push_back(wayPoint6);
         wayPoint6->setNextWayPoint(wayPoint5);
 
         WayPoint *wayPoint7 = new WayPoint(QPoint(275, 245));
-        m_wayPointsList.push_back(wayPoint7);
+        normalWayPointsList.push_back(wayPoint7);
         wayPoint7->setNextWayPoint(wayPoint6);
 
         WayPoint *wayPoint8 = new WayPoint(QPoint(285, 380));
-        m_wayPointsList.push_back(wayPoint8);
+        normalWayPointsList.push_back(wayPoint8);
         wayPoint8->setNextWayPoint(wayPoint7);
 
         WayPoint *wayPoint9 = new WayPoint(QPoint(365, 400));
-        m_wayPointsList.push_back(wayPoint9);
+        normalWayPointsList.push_back(wayPoint9);
         wayPoint9->setNextWayPoint(wayPoint8);
 
         WayPoint *wayPoint10 = new WayPoint(QPoint(365, 525));
-        m_wayPointsList.push_back(wayPoint10);
+        normalWayPointsList.push_back(wayPoint10);
         wayPoint10->setNextWayPoint(wayPoint9);
 
         WayPoint *wayPoint11 = new WayPoint(QPoint(5, 525));//起点
-        m_wayPointsList.push_back(wayPoint11);
+        normalWayPointsList.push_back(wayPoint11);
         wayPoint11->setNextWayPoint(wayPoint10);
 }
+
+void hardScene::addIceWayPoints(){
+    WayPoint *wayPoint1 = new WayPoint(QPoint(795, 525));//终点
+    iceWayPointsList.push_back(wayPoint1);
+
+    WayPoint *wayPoint2 = new WayPoint(QPoint(400, 525));
+    iceWayPointsList.push_back(wayPoint2);
+    wayPoint2->setNextWayPoint(wayPoint1);
+
+    WayPoint *wayPoint3 = new WayPoint(QPoint(400, 400));
+    iceWayPointsList.push_back(wayPoint3);
+    wayPoint3->setNextWayPoint(wayPoint2);
+
+    WayPoint *wayPoint4 = new WayPoint(QPoint(480, 380));
+    iceWayPointsList.push_back(wayPoint4);
+    wayPoint4->setNextWayPoint(wayPoint3);
+
+    WayPoint *wayPoint5 = new WayPoint(QPoint(680, 370));
+    iceWayPointsList.push_back(wayPoint5);
+    wayPoint5->setNextWayPoint(wayPoint4);
+
+    WayPoint *wayPoint6 = new WayPoint(QPoint(705, 330));
+    iceWayPointsList.push_back(wayPoint6);
+    wayPoint6->setNextWayPoint(wayPoint5);
+
+    WayPoint *wayPoint7 = new WayPoint(QPoint(695, 270));
+    iceWayPointsList.push_back(wayPoint7);
+    wayPoint7->setNextWayPoint(wayPoint6);
+
+    WayPoint *wayPoint8 = new WayPoint(QPoint(630, 225));
+    iceWayPointsList.push_back(wayPoint8);
+    wayPoint8->setNextWayPoint(wayPoint7);
+
+    WayPoint *wayPoint9 = new WayPoint(QPoint(615, 155));
+    iceWayPointsList.push_back(wayPoint9);
+    wayPoint9->setNextWayPoint(wayPoint8);
+
+    WayPoint *wayPoint10 = new WayPoint(QPoint(595, 120));
+    iceWayPointsList.push_back(wayPoint10);
+    wayPoint10->setNextWayPoint(wayPoint9);
+
+    WayPoint *wayPoint11 = new WayPoint(QPoint(535, 105));
+    iceWayPointsList.push_back(wayPoint11);
+    wayPoint11->setNextWayPoint(wayPoint10);
+
+    WayPoint *wayPoint12 = new WayPoint(QPoint(400, 105));
+    iceWayPointsList.push_back(wayPoint12);
+    wayPoint12->setNextWayPoint(wayPoint11);
+
+    WayPoint *wayPoint13 = new WayPoint(QPoint(400, 210));
+    iceWayPointsList.push_back(wayPoint13);
+    wayPoint13->setNextWayPoint(wayPoint12);
+
+    WayPoint *wayPoint14 = new WayPoint(QPoint(310, 245));
+    iceWayPointsList.push_back(wayPoint14);
+    wayPoint14->setNextWayPoint(wayPoint13);
+
+    WayPoint *wayPoint15 = new WayPoint(QPoint(320, 380));
+    iceWayPointsList.push_back(wayPoint15);
+    wayPoint15->setNextWayPoint(wayPoint14);
+
+    WayPoint *wayPoint16 = new WayPoint(QPoint(400, 400));
+    iceWayPointsList.push_back(wayPoint16);
+    wayPoint16->setNextWayPoint(wayPoint15);
+
+    WayPoint *wayPoint17 = new WayPoint(QPoint(400, 525));
+    iceWayPointsList.push_back(wayPoint17);
+    wayPoint17->setNextWayPoint(wayPoint16);
+
+    WayPoint *wayPoint18 = new WayPoint(QPoint(5, 525));//起点
+    iceWayPointsList.push_back(wayPoint18);
+    wayPoint18->setNextWayPoint(wayPoint17);
+}
+
+void hardScene::addFireWayPoints(){
+    WayPoint *wayPoint1 = new WayPoint(QPoint(795, 525));//终点
+    fireWayPointsList.push_back(wayPoint1);
+
+    WayPoint *wayPoint2 = new WayPoint(QPoint(400, 525));
+    fireWayPointsList.push_back(wayPoint2);
+    wayPoint2->setNextWayPoint(wayPoint1);
+
+    WayPoint *wayPoint3 = new WayPoint(QPoint(400, 400));
+    fireWayPointsList.push_back(wayPoint3);
+    wayPoint3->setNextWayPoint(wayPoint2);
+
+    WayPoint *wayPoint4 = new WayPoint(QPoint(480, 380));
+    fireWayPointsList.push_back(wayPoint4);
+    wayPoint4->setNextWayPoint(wayPoint3);
+
+    WayPoint *wayPoint5 = new WayPoint(QPoint(490, 245));
+    fireWayPointsList.push_back(wayPoint5);
+    wayPoint5->setNextWayPoint(wayPoint4);
+
+    WayPoint *wayPoint6 = new WayPoint(QPoint(400, 210));
+    fireWayPointsList.push_back(wayPoint6);
+    wayPoint6->setNextWayPoint(wayPoint5);
+
+    WayPoint *wayPoint7 = new WayPoint(QPoint(400, 105));
+    fireWayPointsList.push_back(wayPoint7);
+    wayPoint7->setNextWayPoint(wayPoint6);
+
+    WayPoint *wayPoint8 = new WayPoint(QPoint(265, 105));
+    fireWayPointsList.push_back(wayPoint8);
+    wayPoint8->setNextWayPoint(wayPoint7);
+
+    WayPoint *wayPoint9 = new WayPoint(QPoint(205, 120));
+    fireWayPointsList.push_back(wayPoint9);
+    wayPoint9->setNextWayPoint(wayPoint8);
+
+    WayPoint *wayPoint10 = new WayPoint(QPoint(185, 155));
+    fireWayPointsList.push_back(wayPoint10);
+    wayPoint10->setNextWayPoint(wayPoint9);
+
+    WayPoint *wayPoint11 = new WayPoint(QPoint(170, 225));
+    fireWayPointsList.push_back(wayPoint11);
+    wayPoint11->setNextWayPoint(wayPoint10);
+
+    WayPoint *wayPoint12 = new WayPoint(QPoint(105,270));
+    fireWayPointsList.push_back(wayPoint12);
+    wayPoint12->setNextWayPoint(wayPoint11);
+
+    WayPoint *wayPoint13 = new WayPoint(QPoint(95, 330));
+    fireWayPointsList.push_back(wayPoint13);
+    wayPoint13->setNextWayPoint(wayPoint12);
+
+    WayPoint *wayPoint14 = new WayPoint(QPoint(120, 370));
+    fireWayPointsList.push_back(wayPoint14);
+    wayPoint14->setNextWayPoint(wayPoint13);
+
+    WayPoint *wayPoint15 = new WayPoint(QPoint(320, 380));
+    fireWayPointsList.push_back(wayPoint15);
+    wayPoint15->setNextWayPoint(wayPoint14);
+
+    WayPoint *wayPoint16 = new WayPoint(QPoint(400, 400));
+    fireWayPointsList.push_back(wayPoint16);
+    wayPoint16->setNextWayPoint(wayPoint15);
+
+    WayPoint *wayPoint17 = new WayPoint(QPoint(400, 525));
+    fireWayPointsList.push_back(wayPoint17);
+    wayPoint17->setNextWayPoint(wayPoint16);
+
+    WayPoint *wayPoint18 = new WayPoint(QPoint(5, 525));//起点
+    fireWayPointsList.push_back(wayPoint18);
+    wayPoint18->setNextWayPoint(wayPoint17);
+}
+
+void hardScene::addFastWayPoints(){
+    WayPoint *wayPoint1 = new WayPoint(QPoint(795, 525));//终点
+    fastWayPointsList.push_back(wayPoint1);
+
+    WayPoint *wayPoint2 = new WayPoint(QPoint(400, 525));
+    fastWayPointsList.push_back(wayPoint2);
+    wayPoint2->setNextWayPoint(wayPoint1);
+
+    WayPoint *wayPoint3 = new WayPoint(QPoint(400, 400));
+    fastWayPointsList.push_back(wayPoint3);
+    wayPoint3->setNextWayPoint(wayPoint2);
+
+    WayPoint *wayPoint4 = new WayPoint(QPoint(480, 380));
+    fastWayPointsList.push_back(wayPoint4);
+    wayPoint4->setNextWayPoint(wayPoint3);
+
+    WayPoint *wayPoint5 = new WayPoint(QPoint(680, 370));
+    fastWayPointsList.push_back(wayPoint5);
+    wayPoint5->setNextWayPoint(wayPoint4);
+
+    WayPoint *wayPoint6 = new WayPoint(QPoint(705, 330));
+    fastWayPointsList.push_back(wayPoint6);
+    wayPoint6->setNextWayPoint(wayPoint5);
+
+    WayPoint *wayPoint7 = new WayPoint(QPoint(695, 270));
+    fastWayPointsList.push_back(wayPoint7);
+    wayPoint7->setNextWayPoint(wayPoint6);
+
+    WayPoint *wayPoint8 = new WayPoint(QPoint(630, 225));
+    fastWayPointsList.push_back(wayPoint8);
+    wayPoint8->setNextWayPoint(wayPoint7);
+
+    WayPoint *wayPoint9 = new WayPoint(QPoint(400, 210));
+    fastWayPointsList.push_back(wayPoint9);
+    wayPoint9->setNextWayPoint(wayPoint8);
+
+    WayPoint *wayPoint10 = new WayPoint(QPoint(170, 225));
+    fastWayPointsList.push_back(wayPoint10);
+    wayPoint10->setNextWayPoint(wayPoint9);
+
+    WayPoint *wayPoint11 = new WayPoint(QPoint(105, 270));
+    fastWayPointsList.push_back(wayPoint11);
+    wayPoint11->setNextWayPoint(wayPoint10);
+
+    WayPoint *wayPoint12 = new WayPoint(QPoint(95, 330));
+    fastWayPointsList.push_back(wayPoint12);
+    wayPoint12->setNextWayPoint(wayPoint11);
+
+    WayPoint *wayPoint13 = new WayPoint(QPoint(120, 370));
+    fastWayPointsList.push_back(wayPoint13);
+    wayPoint13->setNextWayPoint(wayPoint12);
+
+    WayPoint *wayPoint14 = new WayPoint(QPoint(320, 380));
+    fastWayPointsList.push_back(wayPoint14);
+    wayPoint14->setNextWayPoint(wayPoint13);
+
+    WayPoint *wayPoint15 = new WayPoint(QPoint(400, 400));
+    fastWayPointsList.push_back(wayPoint15);
+    wayPoint15->setNextWayPoint(wayPoint14);
+
+    WayPoint *wayPoint16 = new WayPoint(QPoint(400, 525));
+    fastWayPointsList.push_back(wayPoint16);
+    wayPoint16->setNextWayPoint(wayPoint15);
+
+    WayPoint *wayPoint17 = new WayPoint(QPoint(5, 525));
+    fastWayPointsList.push_back(wayPoint17);
+    wayPoint17->setNextWayPoint(wayPoint16);//起点
+}
+
+void hardScene::addBossWayPoints(){
+    WayPoint *wayPoint1 = new WayPoint(QPoint(795, 525));//终点
+    bossWayPointsList.push_back(wayPoint1);
+
+    WayPoint *wayPoint2 = new WayPoint(QPoint(400, 525));
+    bossWayPointsList.push_back(wayPoint2);
+    wayPoint2->setNextWayPoint(wayPoint1);
+
+    WayPoint *wayPoint3 = new WayPoint(QPoint(400, 400));
+    bossWayPointsList.push_back(wayPoint3);
+    wayPoint3->setNextWayPoint(wayPoint2);
+
+    WayPoint *wayPoint4 = new WayPoint(QPoint(480, 380));
+    bossWayPointsList.push_back(wayPoint4);
+    wayPoint4->setNextWayPoint(wayPoint3);
+
+    WayPoint *wayPoint5 = new WayPoint(QPoint(680, 370));
+    bossWayPointsList.push_back(wayPoint5);
+    wayPoint5->setNextWayPoint(wayPoint4);
+
+    WayPoint *wayPoint6 = new WayPoint(QPoint(705, 330));
+    bossWayPointsList.push_back(wayPoint6);
+    wayPoint6->setNextWayPoint(wayPoint5);
+
+    WayPoint *wayPoint7 = new WayPoint(QPoint(695, 270));
+    bossWayPointsList.push_back(wayPoint7);
+    wayPoint7->setNextWayPoint(wayPoint6);
+
+    WayPoint *wayPoint8 = new WayPoint(QPoint(630, 225));
+    bossWayPointsList.push_back(wayPoint8);
+    wayPoint8->setNextWayPoint(wayPoint7);
+
+    WayPoint *wayPoint9 = new WayPoint(QPoint(615, 155));
+    bossWayPointsList.push_back(wayPoint9);
+    wayPoint9->setNextWayPoint(wayPoint8);
+
+    WayPoint *wayPoint10 = new WayPoint(QPoint(595, 120));
+    bossWayPointsList.push_back(wayPoint10);
+    wayPoint10->setNextWayPoint(wayPoint9);
+
+    WayPoint *wayPoint11 = new WayPoint(QPoint(535, 105));
+    bossWayPointsList.push_back(wayPoint11);
+    wayPoint11->setNextWayPoint(wayPoint10);
+
+    WayPoint *wayPoint12 = new WayPoint(QPoint(400,105));
+    bossWayPointsList.push_back(wayPoint12);
+    wayPoint12->setNextWayPoint(wayPoint11);
+
+    WayPoint *wayPoint13 = new WayPoint(QPoint(265, 105));
+    bossWayPointsList.push_back(wayPoint13);
+    wayPoint13->setNextWayPoint(wayPoint12);
+
+    WayPoint *wayPoint14 = new WayPoint(QPoint(205, 120));
+    bossWayPointsList.push_back(wayPoint14);
+    wayPoint14->setNextWayPoint(wayPoint13);
+
+    WayPoint *wayPoint15 = new WayPoint(QPoint(185, 155));
+    bossWayPointsList.push_back(wayPoint15);
+    wayPoint15->setNextWayPoint(wayPoint14);
+
+    WayPoint *wayPoint16 = new WayPoint(QPoint(175, 225));
+    bossWayPointsList.push_back(wayPoint16);
+    wayPoint16->setNextWayPoint(wayPoint15);
+
+    WayPoint *wayPoint17 = new WayPoint(QPoint(105, 270));
+    bossWayPointsList.push_back(wayPoint17);
+    wayPoint17->setNextWayPoint(wayPoint16);
+
+    WayPoint *wayPoint18 = new WayPoint(QPoint(95, 330));
+    bossWayPointsList.push_back(wayPoint18);
+    wayPoint18->setNextWayPoint(wayPoint17);
+
+    WayPoint *wayPoint19 = new WayPoint(QPoint(120, 370));
+    bossWayPointsList.push_back(wayPoint19);
+    wayPoint19->setNextWayPoint(wayPoint18);
+
+    WayPoint *wayPoint20 = new WayPoint(QPoint(320, 380));
+    bossWayPointsList.push_back(wayPoint20);
+    wayPoint20->setNextWayPoint(wayPoint19);
+
+    WayPoint *wayPoint21 = new WayPoint(QPoint(400, 400));
+    bossWayPointsList.push_back(wayPoint21);
+    wayPoint21->setNextWayPoint(wayPoint20);
+
+    WayPoint *wayPoint22 = new WayPoint(QPoint(400, 525));
+    bossWayPointsList.push_back(wayPoint22);
+    wayPoint22->setNextWayPoint(wayPoint21);
+
+    WayPoint *wayPoint23 = new WayPoint(QPoint(5, 525));
+    bossWayPointsList.push_back(wayPoint23);
+    wayPoint23->setNextWayPoint(wayPoint22);
+}
+
 
 bool hardScene::loadWave()
 {
     if (m_waves >= m_wavesInfo.size())
         return false;
 
-    WayPoint *startWayPoint = m_wayPointsList.back();
+    //WayPoint *startWayPoint= iceWayPointsList.back();
     QList<QVariant> curWavesInfo = m_wavesInfo[m_waves].toList();
 
     for (int i = 0; i < curWavesInfo.size(); ++i)
@@ -1229,7 +1544,25 @@ bool hardScene::loadWave()
         QMap<QString, QVariant> dict = curWavesInfo[i].toMap();
         int spawnTime = dict.value("spawnTime").toInt();
 
-        Enemy *enemy = new Enemy(startWayPoint, this);
+        Enemy *enemy;
+        int j=i%5;
+        switch(j){
+        case 0:
+            enemy = new normalEnemy(normalWayPointsList.back(), this);
+            break;
+        case 1:
+            enemy=new iceEnemy(iceWayPointsList.back(), this);
+            break;
+        case 2:
+            enemy=new fireEnemy(fireWayPointsList.back(), this);
+            break;
+        case 3:
+            enemy=new fastEnemy(fastWayPointsList.back(), this);
+            break;
+        case 4:
+            enemy=new bossEnemy(bossWayPointsList.back(), this);
+            break;
+        }
         m_enemyList.push_back(enemy);
         QTimer::singleShot(spawnTime, enemy, SLOT(doActivate()));
     }
