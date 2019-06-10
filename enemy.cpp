@@ -20,13 +20,14 @@ Enemy::Enemy(WayPoint *startWayPoint, tScene *game, const QPixmap &sprite/* = QP
     , m_active(false)//决定painter是否显示enemy对象，不可通过m_active设置enemy暂停移动
     , fire(0)
     , ice(0)//暂时赋值，日后修改
-	, m_maxHp(40)
-    , m_currentHp(40)
+    , m_maxHp(60)
+    , m_currentHp(60)
+    , enemyKind(1)
     , fireattackLevel(1.0)
     , antiSlowspeed(1.0)
-    , m_normalSpeed(1.0)
+    , m_normalSpeed(2.0)
     , m_slowSpeed(1.0)
-    , m_walkingSpeed(1.0)//可以通过将m_walkingSpeed置0达到暂停移动的效果
+    , m_walkingSpeed(2.0)//可以通过将m_walkingSpeed置0达到暂停移动的效果
 	, m_rotationSprite(0.0)
 	, m_pos(startWayPoint->pos())
 	, m_destinationWayPoint(startWayPoint->nextWayPoint())
@@ -109,23 +110,26 @@ void Enemy::getRemoved(){
 	m_game->removedEnemy(this);
 }
 void Enemy::getDamage(Bullet *bullet){
-    m_game->audioPlayer()->playSound(LaserShootSound);//日后是否需要实现不同子弹击中敌人音效不同？？？
     m_currentHp -= bullet->m_damage;
 
     switch(bullet->bulletKind)
     {
         case 0://NormalBullet
+            m_game->audioPlayer()->playSound(NormalBulletSound);
             break;
         case 1://FireBullet
+            m_game->audioPlayer()->playSound(FireBulletSound);
             fire = fireLevel;
             fireattack = bullet->fire_attack*fireattackLevel;
             break;
         case 2://IceBullet
+            m_game->audioPlayer()->playSound(IceBulletSound);
             ice = iceLevel;
             m_slowSpeed = qMin(m_normalSpeed * bullet->slow_speed*antiSlowspeed, m_slowSpeed);
             m_walkingSpeed = m_slowSpeed;
             break;
         case 3://LaserBullet
+            m_game->audioPlayer()->playSound(LaserBulletSound);
             break;
     }
     
@@ -136,7 +140,24 @@ void Enemy::getDamage(Bullet *bullet){
 void Enemy::canRemove()
 {
     if (m_currentHp <= 0){
-        m_game->audioPlayer()->playSound(EnemyDestorySound);
+        switch(enemyKind){
+        case(1):
+            m_game->audioPlayer()->playSound(normalEnemyDestorySound);
+            break;
+        case(2):
+            m_game->audioPlayer()->playSound(iceEnemyDestorySound);
+            break;
+        case(3):
+            m_game->audioPlayer()->playSound(fireEnemyDestorySound);
+            break;
+        case(4):
+            m_game->audioPlayer()->playSound(fastEnemyDestorySound);
+            break;
+        case(5):
+            m_game->audioPlayer()->playSound(bossEnemyDestorySound);
+            break;
+        }
+
         m_game->awardGold(200);//奖金数额与敌人类型相关？？？
         getRemoved();
     }
@@ -174,8 +195,9 @@ normalEnemy::normalEnemy(WayPoint *startWayPoint, tScene *game, const QPixmap &s
 iceEnemy::iceEnemy(WayPoint *startWayPoint, tScene *game, const QPixmap &sprite/* = QPixmap(":/image/enemy2.png")*/)
     :Enemy(startWayPoint, game,sprite/* = QPixmap(":/image/enemy2.png")*/)
 {
-    this->m_maxHp = 45;
-    this->m_currentHp = 45;
+    this->enemyKind=2;
+    this->m_maxHp = 75;
+    this->m_currentHp = 75;
     this->antiSlowspeed=2.0;
     this->fireLevel=20;
     this->iceLevel=10;
@@ -188,10 +210,12 @@ iceEnemy::iceEnemy(WayPoint *startWayPoint, tScene *game, const QPixmap &sprite/
 fireEnemy::fireEnemy(WayPoint *startWayPoint, tScene *game, const QPixmap &sprite/* = QPixmap(":/image/enemy3.png")*/)
     :Enemy(startWayPoint, game,sprite/* = QPixmap(":/image/enemy3.png")*/)
 {
-    this->m_maxHp = 50;
-    this->m_currentHp = 50;
+
+    this->enemyKind=3;
+    this->m_maxHp = 85;
+    this->m_currentHp = 85;
     this->antiSlowspeed=1.2;
-    this->fireattackLevel=0.8;
+    this->fireattackLevel=0.5;
     this->fireLevel=10;
     this->iceLevel=20;
     this->HPdamage=2;
@@ -203,10 +227,11 @@ fireEnemy::fireEnemy(WayPoint *startWayPoint, tScene *game, const QPixmap &sprit
 fastEnemy::fastEnemy(WayPoint *startWayPoint, tScene *game, const QPixmap &sprite/* = QPixmap(":/image/enemy4.png")*/)
     :Enemy(startWayPoint, game,sprite/* = QPixmap(":/image/enemy4.png")*/)
 {
-    this->m_maxHp = 40;
-    this->m_currentHp = 40;
-    this->m_normalSpeed=2.5;
-    this->m_walkingSpeed=2.5;
+    this->enemyKind=4;
+    this->m_maxHp = 90;
+    this->m_currentHp = 90;
+    this->m_normalSpeed=4.0;
+    this->m_walkingSpeed=4.0;
     this->antiSlowspeed=2.0;
     this->fireLevel=15;
     this->iceLevel=15;
@@ -219,10 +244,11 @@ fastEnemy::fastEnemy(WayPoint *startWayPoint, tScene *game, const QPixmap &sprit
 bossEnemy::bossEnemy(WayPoint *startWayPoint, tScene *game, const QPixmap &sprite/* = QPixmap(":/image/enemy5.png")*/)
     :Enemy(startWayPoint, game,sprite/* = QPixmap(":/image/enemy5.png")*/)
 {
-    this->m_maxHp = 80;
-    this->m_currentHp = 80;
-    this->m_normalSpeed=1.5;
-    this->m_walkingSpeed=1.5;
+    this->enemyKind=5;
+    this->m_maxHp = 100;
+    this->m_currentHp = 100;
+    this->m_normalSpeed=3.0;
+    this->m_walkingSpeed=3.0;
     this->antiSlowspeed=1.5;
     this->fireattack=1.0;
     this->fireLevel=10;
