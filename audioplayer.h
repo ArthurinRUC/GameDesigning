@@ -20,7 +20,9 @@ enum SoundType
     iceEnemyDestorySound,
     fireEnemyDestorySound,
     fastEnemyDestorySound,
-    bossEnemyDestorySound
+    bossEnemyDestorySound,
+    winSound,
+    loseSound
 };
 
 class AudioPlayer : public QObject
@@ -29,9 +31,11 @@ public:
     explicit AudioPlayer(QUrl backgroundMusicUrl,QObject *parent = 0);
 	void startBGM();
 	void playSound(SoundType soundType);
+    QMediaPlayer * getMusic();
 
 private:
 	QMediaPlayer *m_backgroundMusic; // 只用来播放背景音乐
+    QMediaPlayer *m_otherMusic;
 };
 
 

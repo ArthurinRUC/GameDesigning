@@ -43,15 +43,22 @@ void AudioPlayer::playSound(SoundType soundType)
         QUrl::fromLocalFile(s_curDir + "/iceEnemyDie.mp3"),
         QUrl::fromLocalFile(s_curDir + "/fireEnemyDie.mp3"),
         QUrl::fromLocalFile(s_curDir + "/fastEnemyDie.mp3"),
-        QUrl::fromLocalFile(s_curDir + "/bossEnemyDie.mp3")
+        QUrl::fromLocalFile(s_curDir + "/bossEnemyDie.mp3"),
+        QUrl::fromLocalFile(s_curDir + "/Win.mp3"),
+        QUrl::fromLocalFile(s_curDir + "/Lose.mp3"),
+
 	};
-	static QMediaPlayer player;
+    static QMediaPlayer player;
 
 	if (QFile::exists(mediasUrls[soundType].toLocalFile()))
-	{
-		player.setMedia(mediasUrls[soundType]);
-		player.play();
+    {
+        player.setMedia(mediasUrls[soundType]);
+        player.play();
 	}
+}
+
+QMediaPlayer * AudioPlayer::getMusic(){
+    return m_backgroundMusic;
 }
 
 

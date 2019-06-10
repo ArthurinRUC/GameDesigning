@@ -1,4 +1,5 @@
 #include "tscene.h"
+#include <QMediaPlayer>
 
 static const int TowerCost = 300;
 //static const QString s_curDir = "C:/Users/81915/Desktop/LS/Programming/GD/GameDesigning/music";
@@ -228,6 +229,7 @@ easyScene::easyScene(QWidget* parent)
 {
     QUrl backgroundMusicUrl = QUrl::fromLocalFile(s_curDir + "/easy.mp3");
     m_audioPlayer = new AudioPlayer(backgroundMusicUrl,this);
+    m_audioPlayer->getMusic()->setVolume(30);
     m_audioPlayer->startBGM();
 
     this->setGeometry(0, 0, 800, 600);
@@ -554,6 +556,7 @@ void tScene::doGameOver()
     if (!m_gameEnded)
     {
         m_gameEnded = true;
+
         // 此处应该切换场景到结束场景
         // 暂时以打印替代,见paintEvent处理
     }
@@ -668,8 +671,10 @@ void easyScene::paintEvent(QPaintEvent *)
         WaveLabel->hide();
         Base->hide();
 
+        m_audioPlayer->getMusic()->stop();
 
         if(m_gameWin){
+        m_audioPlayer->playSound(winSound);
         QPixmap loseScene(":/background/victory_better.jpg");
         //QPainter losePainter(&loseScene);
         QPainter painter(this);
@@ -683,10 +688,13 @@ void easyScene::paintEvent(QPaintEvent *)
 
         if(m_gameEnded)
         {
+            m_audioPlayer->playSound(winSound);
             QPixmap loseScene(":/background/lose1.jpg");
             //QPainter losePainter(&loseScene);
             QPainter painter(this);
             painter.drawPixmap(0, 0, loseScene);
+
+
         }
         return;
     }
@@ -792,6 +800,7 @@ hardScene::hardScene(QWidget* parent)
 {
     QUrl backgroundMusicUrl = QUrl::fromLocalFile(s_curDir + "/hard.mp3");
     m_audioPlayer = new AudioPlayer(backgroundMusicUrl,this);
+    m_audioPlayer->getMusic()->setVolume(30);
     m_audioPlayer->startBGM();
 
     this->setGeometry(0, 0, 800, 600);
@@ -894,11 +903,17 @@ void hardScene::paintEvent(QPaintEvent *)
         WaveBar->hide();
         WaveLabel->hide();
 
+        m_audioPlayer->getMusic()->stop();
+
         if(m_gameWin){
+
+        m_audioPlayer->playSound(winSound);
         QPixmap loseScene(":/background/victory_better.jpg");
         //QPainter losePainter(&loseScene);
         QPainter painter(this);
         painter.drawPixmap(0, 0, loseScene);
+
+
 
         /*QString text = m_gameEnded ? "YOU LOST!!!" : "YOU WIN!!!";
         QPainter painter(this);
@@ -908,10 +923,13 @@ void hardScene::paintEvent(QPaintEvent *)
 
         if(m_gameEnded)
         {
+            m_audioPlayer->playSound(loseSound);
             QPixmap loseScene(":/background/lose1.jpg");
             //QPainter losePainter(&loseScene);
             QPainter painter(this);
             painter.drawPixmap(0, 0, loseScene);
+
+
         }
         return;
     }
