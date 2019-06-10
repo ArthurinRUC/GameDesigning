@@ -861,8 +861,6 @@ void easyScene::mousePressEvent(QMouseEvent * event)
                 m_playerGold -= 200;
                 break;
             }
-
-            tower = new NormalTower(it->centerPos(), this);
             m_towersList.push_back(tower);
             update(); //调用paintevent(),重绘画面
             currentCard->move(currentPos);
@@ -948,7 +946,7 @@ hardScene::hardScene(QWidget* parent)
 {
     QUrl backgroundMusicUrl = QUrl::fromLocalFile(s_curDir + "/hard.mp3");
     m_audioPlayer = new AudioPlayer(backgroundMusicUrl,this);
-    m_audioPlayer->getMusic()->setVolume(30);
+    //m_audioPlayer->getMusic()->setVolume(30);
     m_audioPlayer->startBGM();
 
     this->setGeometry(0, 0, 800, 600);
@@ -1071,7 +1069,7 @@ void hardScene::paintEvent(QPaintEvent *)
         WaveBar->hide();
         WaveLabel->hide();
 
-        m_audioPlayer->getMusic()->stop();
+        //m_audioPlayer->getMusic()->stop();
 
         if(m_gameWin){
 
