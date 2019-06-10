@@ -7,6 +7,7 @@ tCard::tCard(QLabel* parent) : QLabel(parent)
     back->setStyleSheet("background-color: rgba(0, 0, 0, 50%);");
     back->show();
     back->raise();
+
     front = new QWidget(this);
     front->setStyleSheet("background-color: rgba(0, 0, 0, 50%);");
     front->show();
