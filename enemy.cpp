@@ -210,7 +210,6 @@ iceEnemy::iceEnemy(WayPoint *startWayPoint, tScene *game, const QPixmap &sprite/
 fireEnemy::fireEnemy(WayPoint *startWayPoint, tScene *game, const QPixmap &sprite/* = QPixmap(":/image/enemy3.png")*/)
     :Enemy(startWayPoint, game,sprite/* = QPixmap(":/image/enemy3.png")*/)
 {
-
     this->enemyKind=3;
     this->m_maxHp = 85;
     this->m_currentHp = 85;
