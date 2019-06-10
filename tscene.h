@@ -25,11 +25,17 @@
 #include "plistreader.h"
 
 class Bullet;
+class tCard;
 
 class tScene : public QLabel
 {
     Q_OBJECT
 public:
+    int sunPoint = 50;
+    tCard* currentCard = nullptr;
+    QPoint currentPos;
+    QList<tCard*> Cards;
+
     explicit tScene(QWidget *parent = 0);
     ~tScene();
 
