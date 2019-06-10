@@ -1,5 +1,6 @@
 #include "tscene.h"
 #include <QMediaPlayer>
+#include"tcard.h"
 
 static const int TowerCost = 300;
 //static const QString s_curDir = "C:/Users/81915/Desktop/LS/Programming/GD/GameDesigning/music";
@@ -34,6 +35,13 @@ tScene::~tScene()
     if (!(this->wavebar == nullptr)) delete this->wavebar;
     if (!(this->WaveLabel == nullptr)) delete this->WaveLabel;
     if (!(this->wavelabel == nullptr))delete this->wavelabel;
+
+    delete Base;
+    delete base;
+
+
+    delete currentCard;
+
 }
 
 
@@ -46,24 +54,6 @@ void tScene::getHpDamage(int damage)
         doGameOver();
 }
 
-void tScene::removedEnemy(Enemy *enemy)
-{
-    Q_ASSERT(enemy);
-
-    m_enemyList.removeOne(enemy);
-    delete enemy;
-
-    if (m_enemyList.empty())
-    {
-        ++m_waves;
-        //if (!loadWave())
-        //{
-        m_gameWin = true;
-        // 游戏胜利转到游戏胜利场景
-        // 这里暂时以打印处理
-        //}
-    }
-}
 
 void tScene::removedBullet(Bullet *bullet)
 {
@@ -118,12 +108,13 @@ QList<Enemy *> tScene::enemyList() const
     return m_enemyList;
 }
 
-tStartScreen::tStartScreen(QWidget* parent) : tScene(parent)
+tStartScreen::tStartScreen(QWidget* parent): QLabel(parent)
 {
     QUrl backgroundMusicUrl = QUrl::fromLocalFile(s_curDir + "/First Page.mp3");
     m_audioPlayer = new AudioPlayer(backgroundMusicUrl,this);
     m_audioPlayer->startBGM();
-
+    this->setMouseTracking(true);
+    this->grabKeyboard();
     this->setGeometry(0, 0, 800, 600); //界面
     this->setMovie(this->background);  //图片
     this->background->start();      //
@@ -162,11 +153,14 @@ void tStartScreen::onTimer()
     }
 }
 
-tStartScene::tStartScene(QWidget* parent) : tScene(parent)
+tStartScene::tStartScene(QWidget* parent):QLabel(parent)
 {
     QUrl backgroundMusicUrl = QUrl::fromLocalFile(s_curDir + "/First Page.mp3");
     m_audioPlayer = new AudioPlayer(backgroundMusicUrl,this);
     m_audioPlayer->startBGM();
+    this->setMouseTracking(true);
+    this->grabKeyboard();
+
 
     this->setGeometry(0, 0, 800, 600);
     this->setMovie(this->background);
@@ -316,6 +310,7 @@ void easyScene::uiSetup()
     base->start();
     Base->show();
     Base->setMovie(base);
+    Base->raise();
 
     btn1->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn1->setMovie(station);
@@ -417,7 +412,32 @@ void easyScene::uiSetup()
     connect(exit, SIGNAL(clicked()), this, SLOT(leave()));
     exit->show();
     exit->raise();
+
+
+    tCard *card = new tNormalTowerCard(this);
+    card->setIndex(0);
+    Cards.append(card);
 }
+
+void easyScene::removedEnemy(Enemy *enemy)
+{
+    Q_ASSERT(enemy);
+
+    m_enemyList.removeOne(enemy);
+    delete enemy;
+
+    if (m_enemyList.empty())
+    {
+        ++m_waves;
+        if (!loadWave())
+        {
+        m_gameWin = true;
+        // 游戏胜利转到游戏胜利场景
+        // 这里暂时以打印处理
+        }
+    }
+}
+
 
 void easyScene::loadTowerPositions()
 {
@@ -600,6 +620,8 @@ easyScene::~easyScene()
 
     foreach (const Tower *tower, m_towersList)
         delete tower;
+    foreach (const Enemy *enemy, m_enemyList)
+        delete enemy;
     // addition 6-6
     //delete ui;
 }
@@ -672,6 +694,18 @@ void easyScene::paintEvent(QPaintEvent *)
         Base->hide();
 
         m_audioPlayer->getMusic()->stop();
+        foreach (Tower *tower, m_towersList)
+        {
+            Q_ASSERT(tower);
+            m_towersList.removeOne(tower);
+            delete tower;
+        }
+        foreach (Enemy *enemy, m_enemyList)
+        {
+            Q_ASSERT(enemy);
+            m_enemyList.removeOne(enemy);
+            delete enemy;
+        }
 
         if(m_gameWin){
         m_audioPlayer->playSound(winSound);
@@ -737,6 +771,7 @@ void easyScene::mousePressEvent(QMouseEvent * event)
     auto it = m_towerPositionsList.begin();
     while (it != m_towerPositionsList.end())
     {
+
         if (canBuyTower() && it->containPoint(pressPos) && !it->hasTower())
         {
             m_audioPlayer->playSound(TowerPlaceSound);
@@ -832,10 +867,30 @@ hardScene::hardScene(QWidget* parent)
     QTimer::singleShot(300, this, SLOT(gameStart()));
 }
 
-/*AudioPlayer *hardScene::audioPlayer() const
+AudioPlayer *hardScene::audioPlayer() const
 {
     return m_audioPlayer;
-}*/
+}
+
+void hardScene::removedEnemy(Enemy *enemy)
+{
+    Q_ASSERT(enemy);
+
+    m_enemyList.removeOne(enemy);
+    delete enemy;
+
+    if (m_enemyList.empty())
+    {
+        ++m_waves;
+        if (!loadWave())
+        {
+        m_gameWin = true;
+        // 游戏胜利转到游戏胜利场景
+        // 这里暂时以打印处理
+        }
+    }
+}
+
 
 void hardScene::keyPressEvent(QKeyEvent *event)
 {
@@ -1185,6 +1240,8 @@ void hardScene::uiSetup()
     connect(exit, SIGNAL(clicked()), this, SLOT(leave()));
     exit->show();
     exit->raise();
+
+
 
 }
 

@@ -25,11 +25,17 @@
 #include "plistreader.h"
 
 class Bullet;
+class tCard;
 
 class tScene : public QLabel
 {
     Q_OBJECT
 public:
+    int sunPoint = 50;
+    tCard* currentCard = nullptr;
+    QPoint currentPos;
+    QList<tCard*> Cards;
+
     explicit tScene(QWidget *parent = 0);
     ~tScene();
 
@@ -59,7 +65,7 @@ public:
 
     // move to base class
     void addBullet(Bullet *bullet);
-    void removedEnemy(Enemy *enemy);
+    virtual void removedEnemy(Enemy *enemy) = 0;
     void removedBullet(Bullet *bullet);
     QList<Enemy *> enemyList() const;
     void awardGold(int gold);
@@ -90,22 +96,28 @@ public slots:
     void FireIceattack();
 };
 
-class tStartScreen : public tScene
+class tStartScreen: public QLabel
 {
     Q_OBJECT
 public:
     explicit tStartScreen(QWidget* parent = 0);
     ~tStartScreen();
+    QTimer* timer = nullptr;
 private:
     QMovie* background = new QMovie(":/background/scene1.jpg");
     QWidget* front = new QWidget(this);
     int frame = 100;
 private slots:
     void onTimer();
+signals:
+    void toTitle(); //返回信号，返回主界面
+
+private:
+    AudioPlayer *		    m_audioPlayer;
 };
 
 // 下面这个类设置选择的界面
-class tStartScene : public tScene
+class tStartScene : public QLabel
 {
     Q_OBJECT
 public:
@@ -120,8 +132,14 @@ private:
     QLabel* title = new QLabel(this);
     QLabel* easyStr = new QLabel(this);
     QLabel* hardStr = new QLabel(this);
+    AudioPlayer *		    m_audioPlayer;
 protected:
     void mousePressEvent(QMouseEvent *event);
+
+signals:
+    void toEasy();
+    void toHard();
+
 };
 
 
@@ -131,6 +149,7 @@ class easyScene : public tScene
 public:
     explicit easyScene(QWidget* parent = 0);
     ~easyScene();
+    virtual void removedEnemy(Enemy *enemy);
 
     //增加代码 6-6
     //void getHpDamage(int damage = 1);
@@ -224,6 +243,7 @@ class hardScene : public tScene
 public:
     explicit hardScene(QWidget* parent = 0);
     ~hardScene();
+    virtual void removedEnemy(Enemy *enemy);
 
     //增加代码 6-6
     //void getHpDamage(int damage = 1);
@@ -232,7 +252,7 @@ public:
     //void addBullet(Bullet *bullet);
     //void awardGold(int gold);
 
-    //AudioPlayer* audioPlayer() const;
+    AudioPlayer* audioPlayer() const;
     //QList<Enemy *> enemyList() const;
 
 protected:
