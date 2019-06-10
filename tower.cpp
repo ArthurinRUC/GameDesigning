@@ -10,7 +10,7 @@
 #include <QVector2D>
 #include <QtMath>
 
-const QSize Tower::ms_fixedSize(75, 75);
+const QSize Tower::ms_fixedSize(65, 65);
 
 Tower::Tower(QPoint pos, tScene *game, const QPixmap &sprite, int attackRange, int damage, int fireRate, int level)
     : m_attacking(false)

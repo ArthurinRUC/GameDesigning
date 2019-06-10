@@ -313,91 +313,91 @@ void easyScene::uiSetup()
     btn1->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn1->setMovie(station);
     station->start();
-    btn1->setGeometry(50, 220, 70, 70);
+    btn1->setGeometry(50, 220, 60, 60);
     btn1->show();
     btn1->raise();
 
     btn2->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn2->setMovie(station);
     station->start();
-    btn2->setGeometry(50, 145, 70, 70);
+    btn2->setGeometry(50, 145, 60, 60);
     btn2->show();
     btn2->raise();
 
     btn3->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn3->setMovie(station);
     station->start();
-    btn3->setGeometry(120, 70, 70, 70);
+    btn3->setGeometry(120, 70, 60, 60);
     btn3->show();
     btn3->raise();
 
     btn4->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn4->setMovie(station);
     station->start();
-    btn4->setGeometry(205, 235, 70, 70);
+    btn4->setGeometry(205, 235, 60, 60);
     btn4->show();
     btn4->raise();
 
     btn5->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn5->setMovie(station);
     station->start();
-    btn5->setGeometry(305, 235, 70, 70);
+    btn5->setGeometry(305, 235, 60, 60);
     btn5->show();
     btn5->raise();
 
     btn6->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn6->setMovie(station);
     station->start();
-    btn6->setGeometry(205, 315, 70, 70);
+    btn6->setGeometry(205, 315, 60, 60);
     btn6->show();
     btn6->raise();
 
     btn7->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn7->setMovie(station);
     station->start();
-    btn7->setGeometry(305, 315, 70, 70);
+    btn7->setGeometry(305, 315, 60, 60);
     btn7->show();
     btn7->raise();
 
     btn8->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn8->setMovie(station);
     station->start();
-    btn8->setGeometry(460, 125, 70, 70);
+    btn8->setGeometry(460, 125, 60, 60);
     btn8->show();
     btn8->raise();
 
     btn9->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn9->setMovie(station);
     station->start();
-    btn9->setGeometry(460, 200, 70, 70);
+    btn9->setGeometry(460, 200, 60, 60);
     btn9->show();
     btn9->raise();
 
     btn10->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn10->setMovie(station);
     station->start();
-    btn10->setGeometry(540, 200, 70, 70);
+    btn10->setGeometry(540, 200, 60, 60);
     btn10->show();
     btn10->raise();
 
     btn11->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn11->setMovie(station);
     station->start();
-    btn11->setGeometry(400, 385, 70, 70);
+    btn11->setGeometry(400, 385, 60, 60);
     btn11->show();
     btn11->raise();
 
     btn12->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn12->setMovie(station);
     station->start();
-    btn12->setGeometry(480, 385, 70, 70);
+    btn12->setGeometry(480, 385, 60, 60);
     btn12->show();
     btn12->raise();
 
     btn13->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn13->setMovie(station);
     station->start();
-    btn13->setGeometry(620, 90, 70, 70);
+    btn13->setGeometry(620, 90, 60, 60);
     btn13->show();
     btn13->raise();
 
