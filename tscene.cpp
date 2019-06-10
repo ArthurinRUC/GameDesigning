@@ -44,7 +44,14 @@ tScene::~tScene()
 
 }
 
-
+void tScene::mouseMoveEvent(QMouseEvent *event)
+{
+    m = event->pos();
+    if (this->currentCard != nullptr)
+    {
+        this->currentCard->move(m + QPoint(-40, 1));
+    }
+}
 
 void tScene::getHpDamage(int damage)
 {
@@ -223,7 +230,7 @@ easyScene::easyScene(QWidget* parent)
 {
     QUrl backgroundMusicUrl = QUrl::fromLocalFile(s_curDir + "/easy.mp3");
     m_audioPlayer = new AudioPlayer(backgroundMusicUrl,this);
-    m_audioPlayer->getMusic()->setVolume(30);
+    //m_audioPlayer->getMusic()->setVolume(30);
     m_audioPlayer->startBGM();
 
     this->setGeometry(0, 0, 800, 600);
@@ -747,7 +754,7 @@ void easyScene::paintEvent(QPaintEvent *)
         WaveLabel->hide();
         Base->hide();
 
-        m_audioPlayer->getMusic()->stop();
+        //m_audioPlayer->getMusic()->stop();
 
         foreach (Tower *tower, m_towersList)
         {
@@ -823,6 +830,27 @@ void easyScene::mousePressEvent(QMouseEvent * event)
 {
     //单击鼠标后的处理
     QPoint pressPos = event->pos();
+    int posx = pressPos.x();
+    int posy = pressPos.y();
+
+    //if(state == 0) //空状态
+    int cardindex = -1;
+    if (posx >= 180 && posx <= 280 && posy >= 10 && posy <= 60)
+        cardindex = 0;
+    else if (posx >= 280 && posx <= 380 && posy >= 10 && posy <= 60)
+        cardindex = 1;
+    else if (posx >= 430 && posx <= 530 && posy >= 10 && posy <= 60)
+        cardindex = 2;
+    else if (posx >= 530 && posx <= 630 && posy >= 10 && posy <= 60)
+        cardindex = 3;
+
+    if (cardindex >= 0)
+    {
+            this->currentCard = Cards[cardindex];
+            Cards[cardindex]->move(Cards[cardindex]->pos());
+    }
+
+
     auto it = m_towerPositionsList.begin();
     while (it != m_towerPositionsList.end())
     {

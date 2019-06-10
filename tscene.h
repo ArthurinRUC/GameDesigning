@@ -19,10 +19,12 @@
 #include <QXmlStreamReader>
 #include <QtDebug>
 
+#include "tcard.h"
 #include "bullet.h"
 #include "audioplayer.h"
 #include "towerposition.h"
 #include "plistreader.h"
+
 
 class Bullet;
 class tCard;
@@ -35,9 +37,11 @@ public:
     tCard* currentCard = nullptr;
     QPoint currentPos;
     QList<tCard*> Cards;
+    QPoint m;
 
     explicit tScene(QWidget *parent = 0);
     ~tScene();
+    void mouseMoveEvent(QMouseEvent *event);
 
     QTimer* timer = nullptr;
 
@@ -67,7 +71,6 @@ public:
 
     QLabel* Base = new QLabel(this);
     QMovie* base = new QMovie(":/image/base0.png");
-
 
     // move to base class
     void addBullet(Bullet *bullet);
