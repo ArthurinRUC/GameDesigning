@@ -35,8 +35,15 @@ void AudioPlayer::playSound(SoundType soundType)
 	{
         QUrl::fromLocalFile(s_curDir + "/tower_place.mp3"),
         QUrl::fromLocalFile(s_curDir + "/life_lose.mp3"),
-        QUrl::fromLocalFile(s_curDir + "/laser_shoot.wav"),
-        QUrl::fromLocalFile(s_curDir + "/enemy_destroy.wav")
+        QUrl::fromLocalFile(s_curDir + "/normalBullet.mp3"),
+        QUrl::fromLocalFile(s_curDir + "/iceBullet.mp3"),
+        QUrl::fromLocalFile(s_curDir + "/fireBullet.mp3"),
+        QUrl::fromLocalFile(s_curDir + "/laserBullet.mp3"),
+        QUrl::fromLocalFile(s_curDir + "/normalEnemyDie.mp3"),
+        QUrl::fromLocalFile(s_curDir + "/iceEnemyDie.mp3"),
+        QUrl::fromLocalFile(s_curDir + "/fireEnemyDie.mp3"),
+        QUrl::fromLocalFile(s_curDir + "/fastEnemyDie.mp3"),
+        QUrl::fromLocalFile(s_curDir + "/bossEnemyDie.mp3")
 	};
 	static QMediaPlayer player;
 

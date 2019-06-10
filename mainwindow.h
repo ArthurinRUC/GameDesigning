@@ -25,6 +25,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     tScene* scene;
+    tStartScene* startscene;
+    tStartScreen* startscreen;
 	~MainWindow();
 
 

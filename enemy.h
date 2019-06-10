@@ -39,6 +39,7 @@ public:
     int				m_maxHp;
     int				m_currentHp;
     int             HPdamage;//对“萝卜”的伤害
+    int             enemyKind;
     qreal           fireattackLevel;
     qreal           antiSlowspeed;
     qreal           m_normalSpeed; //正常速度

@@ -20,12 +20,14 @@ static const int TowerCost = 300;
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
+    , scene(nullptr)
 	, ui(new Ui::MainWindow)
 	, m_waves(0)
 	, m_playerHp(5)
 	, m_playrGold(1000)
 	, m_gameEnded(false)
     , m_gameWin(false)
+
 {
     //此处开始构造MainWindow
 	ui->setupUi(this);
@@ -34,9 +36,8 @@ MainWindow::MainWindow(QWidget *parent)
     this->setWindowTitle("Tower Defense");
     this->setMouseTracking(true);                //track mouse when mouse isn`t pressed
     this->setFixedSize(800, 600);
-    scene = new tStartScreen(this);
-    connect(this->scene, SIGNAL(toTitle()), this, SLOT(back()));
-
+    startscreen = new tStartScreen(this);
+    connect(this->startscreen, SIGNAL(toTitle()), this, SLOT(back()));
 
    /* // 以下为原有游戏的代码
     preLoadWavesInfo(); //设置波数
@@ -67,16 +68,30 @@ MainWindow::~MainWindow(){
 void MainWindow::back()
 {
     this->setFixedSize(800, 600);
-    delete scene;
-    scene = new tStartScene(this);
-    connect(this->scene, SIGNAL(toEasy()), this, SLOT(startEasy()));
-    connect(this->scene, SIGNAL(toHard()), this, SLOT(startHard()));
+    if (scene)
+    {
+        delete scene;
+        scene = nullptr;
+    }
+    if (startscreen)
+    {
+        delete startscreen;
+        startscreen = nullptr;
+    }
+    startscene = new tStartScene(this);
+    connect(this->startscene, SIGNAL(toEasy()), this, SLOT(startEasy()));
+    connect(this->startscene, SIGNAL(toHard()), this, SLOT(startHard()));
 }
 
 void MainWindow::startEasy()
 {
     this->setFixedSize(800, 600);
-    delete scene;                            //remeber to delete !!!
+    if (startscene)
+    {
+        delete startscene;
+        startscene = nullptr;
+    }
+    //remember to delete !!!
     scene = new easyScene(this);
     connect(this->scene, SIGNAL(toTitle()), this, SLOT(back()));
 }
@@ -84,7 +99,11 @@ void MainWindow::startEasy()
 void MainWindow::startHard()
 {
     this->setFixedSize(800, 600);
-    delete scene;
+    if (startscene)
+    {
+        delete startscene;
+        startscene = nullptr;
+    }
     scene = new hardScene(this);
     connect(this->scene, SIGNAL(toTitle()), this, SLOT(back()));
 }
