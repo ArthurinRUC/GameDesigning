@@ -1,4 +1,5 @@
 #include "tscene.h"
+#include <QMediaPlayer>
 #include"tcard.h"
 
 static const int TowerCost = 300;
@@ -222,6 +223,7 @@ easyScene::easyScene(QWidget* parent)
 {
     QUrl backgroundMusicUrl = QUrl::fromLocalFile(s_curDir + "/easy.mp3");
     m_audioPlayer = new AudioPlayer(backgroundMusicUrl,this);
+    m_audioPlayer->getMusic()->setVolume(30);
     m_audioPlayer->startBGM();
 
     this->setGeometry(0, 0, 800, 600);
@@ -412,9 +414,58 @@ void easyScene::uiSetup()
     exit->raise();
 
 
-    tCard *card = new tNormalTowerCard(this);
-    card->setIndex(0);
-    Cards.append(card);
+    tCard *card0 = new tNormalTowerCard(this);
+    card0->setGeometry(180, 10 , 100, 60);
+    Cards.append(card0);
+    card0->show();
+
+    Front1 = new QLabel(this);
+    Front1->setText("100");
+    Front1->setGeometry(225, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front1->setFont(QFont("Calibri", 11));
+    Front1->show();
+    Front1->raise();
+
+    tCard *card1 = new tFireTowerCard(this);
+    card1->setGeometry(280, 10 , 100, 60);
+    Cards.append(card1);
+    card1->show();
+
+    Front2 = new QLabel(this);
+    Front2->setText("150");
+    Front2->setGeometry(325, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front2->setFont(QFont("Calibri", 11));
+    Front2->show();
+    Front2->raise();
+
+    tCard *card2 = new tIceTowerCard(this);
+    card2->setGeometry(430, 10 , 100, 60);
+    Cards.append(card2);
+    card2->show();
+
+    Front3 = new QLabel(this);
+    Front3->setText("150");
+    Front3->setGeometry(475, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front3->setFont(QFont("Calibri", 11));
+    Front3->show();
+    Front3->raise();
+
+    tCard *card3 = new tLaserTowerCard(this);
+    card3->setGeometry(530, 10 , 100, 60);
+    Cards.append(card3);
+    card3->show();
+
+    Front4 = new QLabel(this);
+    Front4->setText("200");
+    Front4->setGeometry(575, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front4->setFont(QFont("Calibri", 11));
+    Front4->show();
+    Front4->raise();
+
 }
 
 void easyScene::removedEnemy(Enemy *enemy)
@@ -574,6 +625,7 @@ void tScene::doGameOver()
     if (!m_gameEnded)
     {
         m_gameEnded = true;
+
         // 此处应该切换场景到结束场景
         // 暂时以打印替代,见paintEvent处理
     }
@@ -617,6 +669,11 @@ easyScene::~easyScene()
 
     foreach (const Tower *tower, m_towersList)
         delete tower;
+
+    delete Front1;
+    delete Front2;
+    delete Front3;
+    delete Front4;
     foreach (const Enemy *enemy, m_enemyList)
         delete enemy;
     // addition 6-6
@@ -690,6 +747,8 @@ void easyScene::paintEvent(QPaintEvent *)
         WaveLabel->hide();
         Base->hide();
 
+        m_audioPlayer->getMusic()->stop();
+
         foreach (Tower *tower, m_towersList)
         {
             Q_ASSERT(tower);
@@ -703,10 +762,8 @@ void easyScene::paintEvent(QPaintEvent *)
             delete enemy;
         }
 
-        //delete m_audioPlayer;
-
-
         if(m_gameWin){
+         m_audioPlayer->playWinSound();
         QPixmap loseScene(":/background/victory_better.jpg");
         //QPainter losePainter(&loseScene);
         QPainter painter(this);
@@ -720,10 +777,13 @@ void easyScene::paintEvent(QPaintEvent *)
 
         if(m_gameEnded)
         {
+            m_audioPlayer->playLoseSound();
             QPixmap loseScene(":/background/lose1.jpg");
             //QPainter losePainter(&loseScene);
             QPainter painter(this);
             painter.drawPixmap(0, 0, loseScene);
+
+
         }
         return;
     }
@@ -830,6 +890,7 @@ hardScene::hardScene(QWidget* parent)
 {
     QUrl backgroundMusicUrl = QUrl::fromLocalFile(s_curDir + "/hard.mp3");
     m_audioPlayer = new AudioPlayer(backgroundMusicUrl,this);
+    m_audioPlayer->getMusic()->setVolume(30);
     m_audioPlayer->startBGM();
 
     this->setGeometry(0, 0, 800, 600);
@@ -952,11 +1013,17 @@ void hardScene::paintEvent(QPaintEvent *)
         WaveBar->hide();
         WaveLabel->hide();
 
+        m_audioPlayer->getMusic()->stop();
+
         if(m_gameWin){
+
+        m_audioPlayer->playWinSound();
         QPixmap loseScene(":/background/victory_better.jpg");
         //QPainter losePainter(&loseScene);
         QPainter painter(this);
         painter.drawPixmap(0, 0, loseScene);
+
+
 
         /*QString text = m_gameEnded ? "YOU LOST!!!" : "YOU WIN!!!";
         QPainter painter(this);
@@ -966,10 +1033,14 @@ void hardScene::paintEvent(QPaintEvent *)
 
         if(m_gameEnded)
         {
+            m_audioPlayer->playLoseSound();
+
             QPixmap loseScene(":/background/lose1.jpg");
             //QPainter losePainter(&loseScene);
             QPainter painter(this);
             painter.drawPixmap(0, 0, loseScene);
+
+
         }
         return;
     }
@@ -1226,8 +1297,57 @@ void hardScene::uiSetup()
     exit->show();
     exit->raise();
 
+    tCard *card0 = new tNormalTowerCard(this);
+    card0->setGeometry(180, 10 , 100, 60);
+    Cards.append(card0);
+    card0->show();
 
+    Front1 = new QLabel(this);
+    Front1->setText("100");
+    Front1->setGeometry(225, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front1->setFont(QFont("Calibri", 11));
+    Front1->show();
+    Front1->raise();
 
+    tCard *card1 = new tFireTowerCard(this);
+    card1->setGeometry(280, 10 , 100, 60);
+    Cards.append(card1);
+    card1->show();
+
+    Front2 = new QLabel(this);
+    Front2->setText("150");
+    Front2->setGeometry(325, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front2->setFont(QFont("Calibri", 11));
+    Front2->show();
+    Front2->raise();
+
+    tCard *card2 = new tIceTowerCard(this);
+    card2->setGeometry(430, 10 , 100, 60);
+    Cards.append(card2);
+    card2->show();
+
+    Front3 = new QLabel(this);
+    Front3->setText("150");
+    Front3->setGeometry(475, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front3->setFont(QFont("Calibri", 11));
+    Front3->show();
+    Front3->raise();
+
+    tCard *card3 = new tLaserTowerCard(this);
+    card3->setGeometry(530, 10 , 100, 60);
+    Cards.append(card3);
+    card3->show();
+
+    Front4 = new QLabel(this);
+    Front4->setText("200");
+    Front4->setGeometry(575, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front4->setFont(QFont("Calibri", 11));
+    Front4->show();
+    Front4->raise();
 }
 
 void hardScene::loadTowerPositions()
@@ -1697,7 +1817,6 @@ void hardScene::drawPlayerGold()
     MoneyFront->show();
     MoneyFront->raise();
 }
-
 
 void hardScene::preLoadWavesInfo()
 {

@@ -3,27 +3,20 @@
 tCard::tCard(QLabel* parent) : QLabel(parent)
 {
     this->setCursor(Qt::PointingHandCursor);
-    back = new QWidget(this);
+    /*back = new QWidget(this);
     back->setStyleSheet("background-color: rgba(0, 0, 0, 50%);");
     back->show();
-    back->raise();
+    back->raise();*/
 
-    front = new QWidget(this);
+    /*front = new QWidget(this);
     front->setStyleSheet("background-color: rgba(0, 0, 0, 50%);");
     front->show();
-    front->raise();
-    frontText = new QLabel(this);
-    frontText->setText("50");
-    frontText->setGeometry(60, 33, 40, 20);
-    frontText->setAlignment(Qt::AlignHCenter);
-    frontText->setFont(QFont("Calibri", 11));
-    frontText->show();
-    frontText->raise();
-    this->show();
-    this->raise();
+    front->raise();*/
+
+
 }
 
-void tCard::act()
+/*void tCard::act()
 {
     if (this->frame > 0)
     {
@@ -31,14 +24,14 @@ void tCard::act()
     }
     this->transFront();
     this->raise();
-}
+}*/
 
-void tCard::setIndex(int index)
+/*void tCard::setIndex(float index)
 {
-    this->setGeometry(125, 40 + 60 * index, 100, 60);
-}
+    this->setGeometry(180+ 100 * index, 10 , 100, 60);
+}*/
 
-void tCard::transFront()
+/*void tCard::transFront()
 {
     front->setGeometry(0, 6, 100, 54 * this->frame / this->frame_max);
     if (scene->sunPoint >= this->sunPoint)
@@ -49,9 +42,9 @@ void tCard::transFront()
     {
         back->setGeometry(0, 6, 100, 54);
     }
-}
+}*/
 
-void tCard::mousePressEvent(QMouseEvent* event)
+/*void tCard::mousePressEvent(QMouseEvent* event)
 {
     if (scene->currentCard != nullptr)
     {
@@ -79,27 +72,75 @@ void tCard::mousePressEvent(QMouseEvent* event)
     {
         scene->currentCard = nullptr;
     }
-}
+}*/
 
 tCard::~tCard()
 {
-    delete (this->back);
-    delete (this->front);
-    delete (this->frontText);
+    //delete (this->back);
+    //delete (this->front);
+    //delete (this->frontText);
 }
 
 tNormalTowerCard::tNormalTowerCard(QLabel *parent):tCard(parent)
 {
     this->setMovie(anim);
     anim->start();
-    this->frontText->setText("50");
-    this->frame_max = 100;
+    //this->frontText->setText("50");
+    /*this->frame_max = 100;
     this->frame = 100;
     this->plantIndex = 1;
-    this->sunPoint = 50;
+    this->sunPoint = 50;*/
 }
 
 tNormalTowerCard::~tNormalTowerCard()
+{
+    delete this->anim;
+}
+
+tFireTowerCard::tFireTowerCard(QLabel *parent):tCard(parent)
+{
+    this->setMovie(anim);
+    anim->start();
+    //this->frontText->setText("50");
+    /*this->frame_max = 100;
+    this->frame = 100;
+    this->plantIndex = 1;
+    this->sunPoint = 50;*/
+}
+
+tFireTowerCard::~tFireTowerCard()
+{
+    delete this->anim;
+}
+
+tIceTowerCard::tIceTowerCard(QLabel *parent):tCard(parent)
+{
+    this->setMovie(anim);
+    anim->start();
+    //this->frontText->setText("50");
+    /*this->frame_max = 100;
+    this->frame = 100;
+    this->plantIndex = 1;
+    this->sunPoint = 50;*/
+}
+
+tIceTowerCard::~tIceTowerCard()
+{
+    delete this->anim;
+}
+
+tLaserTowerCard::tLaserTowerCard(QLabel *parent):tCard(parent)
+{
+    this->setMovie(anim);
+    anim->start();
+    //this->frontText->setText("50");
+    /*this->frame_max = 100;
+    this->frame = 100;
+    this->plantIndex = 1;
+    this->sunPoint = 50;*/
+}
+
+tLaserTowerCard::~tLaserTowerCard()
 {
     delete this->anim;
 }

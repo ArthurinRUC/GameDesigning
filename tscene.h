@@ -59,6 +59,12 @@ public:
     QLabel* WaveLabel = new QLabel(this);
     QMovie* wavelabel = new QMovie(":/image/wave2.png");
 
+    QLabel* Front1 = new QLabel(this);
+    QLabel* Front2 = new QLabel(this);
+    QLabel* Front3 = new QLabel(this);
+    QLabel* Front4 = new QLabel(this);
+
+
     QLabel* Base = new QLabel(this);
     QMovie* base = new QMovie(":/image/base0.png");
 
