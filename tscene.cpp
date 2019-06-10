@@ -1,7 +1,7 @@
 #include "tscene.h"
 
 static const int TowerCost = 300;
-static const QString s_curDir = "C:/Users/81915/Desktop/LS/Programming/GD/GameDesigning/music";
+//static const QString s_curDir = "C:/Users/81915/Desktop/LS/Programming/GD/GameDesigning/music";
 
 tScene::tScene(QWidget *parent) : QLabel(parent)
   , m_waves(0)
