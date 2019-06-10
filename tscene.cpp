@@ -594,6 +594,9 @@ easyScene::~easyScene()
     delete this->btn11;
     delete this->btn12;
     delete this->btn13;
+
+    foreach (const Tower *tower, m_towersList)
+        delete tower;
     // addition 6-6
     //delete ui;
 }
@@ -1656,6 +1659,9 @@ hardScene::~hardScene()
     delete this->btn12;
     delete this->btn13;
     delete this->btn14;
+
+    foreach (const Tower *tower, m_towersList)
+        delete tower;
     // addition 6-6
     //delete ui;
 }
