@@ -600,6 +600,9 @@ easyScene::~easyScene()
     delete this->btn11;
     delete this->btn12;
     delete this->btn13;
+
+    foreach (const Tower *tower, m_towersList)
+        delete tower;
     // addition 6-6
     //delete ui;
 }
@@ -1366,53 +1369,57 @@ void hardScene::addFireWayPoints(){
     fireWayPointsList.push_back(wayPoint6);
     wayPoint6->setNextWayPoint(wayPoint5);
 
-    WayPoint *wayPoint7 = new WayPoint(QPoint(375, 110));
+    WayPoint *wayPoint7 = new WayPoint(QPoint(375, 105));
     fireWayPointsList.push_back(wayPoint7);
     wayPoint7->setNextWayPoint(wayPoint6);
 
-    WayPoint *wayPoint8 = new WayPoint(QPoint(240, 110));
+    WayPoint *wayPoint8 = new WayPoint(QPoint(240, 105));
     fireWayPointsList.push_back(wayPoint8);
     wayPoint8->setNextWayPoint(wayPoint7);
 
-    WayPoint *wayPoint9 = new WayPoint(QPoint(180, 125));
+    WayPoint *wayPoint9 = new WayPoint(QPoint(200, 95));
     fireWayPointsList.push_back(wayPoint9);
     wayPoint9->setNextWayPoint(wayPoint8);
 
-    WayPoint *wayPoint10 = new WayPoint(QPoint(160, 160));
+    WayPoint *wayPoint10 = new WayPoint(QPoint(180, 125));
     fireWayPointsList.push_back(wayPoint10);
     wayPoint10->setNextWayPoint(wayPoint9);
 
-    WayPoint *wayPoint11 = new WayPoint(QPoint(145, 230));
+    WayPoint *wayPoint11 = new WayPoint(QPoint(160, 160));
     fireWayPointsList.push_back(wayPoint11);
     wayPoint11->setNextWayPoint(wayPoint10);
 
-    WayPoint *wayPoint12 = new WayPoint(QPoint(80,275));
+    WayPoint *wayPoint12 = new WayPoint(QPoint(145, 230));
     fireWayPointsList.push_back(wayPoint12);
     wayPoint12->setNextWayPoint(wayPoint11);
 
-    WayPoint *wayPoint13 = new WayPoint(QPoint(70, 335));
+    WayPoint *wayPoint13 = new WayPoint(QPoint(80,275));
     fireWayPointsList.push_back(wayPoint13);
     wayPoint13->setNextWayPoint(wayPoint12);
 
-    WayPoint *wayPoint14 = new WayPoint(QPoint(95, 375));
+    WayPoint *wayPoint14 = new WayPoint(QPoint(70, 335));
     fireWayPointsList.push_back(wayPoint14);
     wayPoint14->setNextWayPoint(wayPoint13);
 
-    WayPoint *wayPoint15 = new WayPoint(QPoint(295, 385));
+    WayPoint *wayPoint15 = new WayPoint(QPoint(95, 375));
     fireWayPointsList.push_back(wayPoint15);
     wayPoint15->setNextWayPoint(wayPoint14);
 
-    WayPoint *wayPoint16 = new WayPoint(QPoint(375, 405));
+    WayPoint *wayPoint16 = new WayPoint(QPoint(295, 385));
     fireWayPointsList.push_back(wayPoint16);
     wayPoint16->setNextWayPoint(wayPoint15);
 
-    WayPoint *wayPoint17 = new WayPoint(QPoint(375, 530));
+    WayPoint *wayPoint17 = new WayPoint(QPoint(375, 405));
     fireWayPointsList.push_back(wayPoint17);
     wayPoint17->setNextWayPoint(wayPoint16);
 
-    WayPoint *wayPoint18 = new WayPoint(QPoint(5, 525));//起点
+    WayPoint *wayPoint18 = new WayPoint(QPoint(375, 530));
     fireWayPointsList.push_back(wayPoint18);
     wayPoint18->setNextWayPoint(wayPoint17);
+
+    WayPoint *wayPoint19 = new WayPoint(QPoint(5, 525));//起点
+    fireWayPointsList.push_back(wayPoint19);
+    wayPoint19->setNextWayPoint(wayPoint18);
 }
 
 void hardScene::addFastWayPoints(){
@@ -1427,7 +1434,7 @@ void hardScene::addFastWayPoints(){
     fastWayPointsList.push_back(wayPoint3);
     wayPoint3->setNextWayPoint(wayPoint2);
 
-    WayPoint *wayPoint4 = new WayPoint(QPoint(480, 380));
+    WayPoint *wayPoint4 = new WayPoint(QPoint(480, 370));
     fastWayPointsList.push_back(wayPoint4);
     wayPoint4->setNextWayPoint(wayPoint3);
 
@@ -1435,7 +1442,7 @@ void hardScene::addFastWayPoints(){
     fastWayPointsList.push_back(wayPoint5);
     wayPoint5->setNextWayPoint(wayPoint4);
 
-    WayPoint *wayPoint6 = new WayPoint(QPoint(705, 330));
+    WayPoint *wayPoint6 = new WayPoint(QPoint(700, 330));
     fastWayPointsList.push_back(wayPoint6);
     wayPoint6->setNextWayPoint(wayPoint5);
 
@@ -1443,15 +1450,15 @@ void hardScene::addFastWayPoints(){
     fastWayPointsList.push_back(wayPoint7);
     wayPoint7->setNextWayPoint(wayPoint6);
 
-    WayPoint *wayPoint8 = new WayPoint(QPoint(630, 225));
+    WayPoint *wayPoint8 = new WayPoint(QPoint(630, 220));
     fastWayPointsList.push_back(wayPoint8);
     wayPoint8->setNextWayPoint(wayPoint7);
 
-    WayPoint *wayPoint9 = new WayPoint(QPoint(400, 210));
+    WayPoint *wayPoint9 = new WayPoint(QPoint(400, 220));
     fastWayPointsList.push_back(wayPoint9);
     wayPoint9->setNextWayPoint(wayPoint8);
 
-    WayPoint *wayPoint10 = new WayPoint(QPoint(170, 225));
+    WayPoint *wayPoint10 = new WayPoint(QPoint(170, 220));
     fastWayPointsList.push_back(wayPoint10);
     wayPoint10->setNextWayPoint(wayPoint9);
 
@@ -1496,7 +1503,7 @@ void hardScene::addBossWayPoints(){
     bossWayPointsList.push_back(wayPoint3);
     wayPoint3->setNextWayPoint(wayPoint2);
 
-    WayPoint *wayPoint4 = new WayPoint(QPoint(480, 380));
+    WayPoint *wayPoint4 = new WayPoint(QPoint(480, 360));
     bossWayPointsList.push_back(wayPoint4);
     wayPoint4->setNextWayPoint(wayPoint3);
 
@@ -1504,7 +1511,7 @@ void hardScene::addBossWayPoints(){
     bossWayPointsList.push_back(wayPoint5);
     wayPoint5->setNextWayPoint(wayPoint4);
 
-    WayPoint *wayPoint6 = new WayPoint(QPoint(705, 330));
+    WayPoint *wayPoint6 = new WayPoint(QPoint(700, 330));
     bossWayPointsList.push_back(wayPoint6);
     wayPoint6->setNextWayPoint(wayPoint5);
 
@@ -1512,69 +1519,81 @@ void hardScene::addBossWayPoints(){
     bossWayPointsList.push_back(wayPoint7);
     wayPoint7->setNextWayPoint(wayPoint6);
 
-    WayPoint *wayPoint8 = new WayPoint(QPoint(630, 225));
+    WayPoint *wayPoint8 = new WayPoint(QPoint(680, 220));
     bossWayPointsList.push_back(wayPoint8);
     wayPoint8->setNextWayPoint(wayPoint7);
 
-    WayPoint *wayPoint9 = new WayPoint(QPoint(615, 155));
+    WayPoint *wayPoint9 = new WayPoint(QPoint(625, 215));
     bossWayPointsList.push_back(wayPoint9);
     wayPoint9->setNextWayPoint(wayPoint8);
 
-    WayPoint *wayPoint10 = new WayPoint(QPoint(595, 120));
+    WayPoint *wayPoint10 = new WayPoint(QPoint(600, 155));
     bossWayPointsList.push_back(wayPoint10);
     wayPoint10->setNextWayPoint(wayPoint9);
 
-    WayPoint *wayPoint11 = new WayPoint(QPoint(535, 105));
+    WayPoint *wayPoint11 = new WayPoint(QPoint(575, 100));
     bossWayPointsList.push_back(wayPoint11);
     wayPoint11->setNextWayPoint(wayPoint10);
 
-    WayPoint *wayPoint12 = new WayPoint(QPoint(400,105));
+    WayPoint *wayPoint12 = new WayPoint(QPoint(535, 85));
     bossWayPointsList.push_back(wayPoint12);
     wayPoint12->setNextWayPoint(wayPoint11);
 
-    WayPoint *wayPoint13 = new WayPoint(QPoint(265, 105));
+    WayPoint *wayPoint13 = new WayPoint(QPoint(400,85));
     bossWayPointsList.push_back(wayPoint13);
     wayPoint13->setNextWayPoint(wayPoint12);
 
-    WayPoint *wayPoint14 = new WayPoint(QPoint(205, 120));
+    WayPoint *wayPoint14 = new WayPoint(QPoint(265, 85));
     bossWayPointsList.push_back(wayPoint14);
     wayPoint14->setNextWayPoint(wayPoint13);
 
-    WayPoint *wayPoint15 = new WayPoint(QPoint(185, 155));
+    WayPoint *wayPoint15 = new WayPoint(QPoint(215, 80));
     bossWayPointsList.push_back(wayPoint15);
     wayPoint15->setNextWayPoint(wayPoint14);
 
-    WayPoint *wayPoint16 = new WayPoint(QPoint(175, 225));
+    WayPoint *wayPoint16 = new WayPoint(QPoint(185, 100));
     bossWayPointsList.push_back(wayPoint16);
     wayPoint16->setNextWayPoint(wayPoint15);
 
-    WayPoint *wayPoint17 = new WayPoint(QPoint(105, 270));
+    WayPoint *wayPoint17 = new WayPoint(QPoint(170, 155));
     bossWayPointsList.push_back(wayPoint17);
     wayPoint17->setNextWayPoint(wayPoint16);
 
-    WayPoint *wayPoint18 = new WayPoint(QPoint(95, 330));
+    WayPoint *wayPoint18 = new WayPoint(QPoint(170, 215));
     bossWayPointsList.push_back(wayPoint18);
     wayPoint18->setNextWayPoint(wayPoint17);
 
-    WayPoint *wayPoint19 = new WayPoint(QPoint(120, 370));
+    WayPoint *wayPoint19 = new WayPoint(QPoint(110, 215));
     bossWayPointsList.push_back(wayPoint19);
     wayPoint19->setNextWayPoint(wayPoint18);
 
-    WayPoint *wayPoint20 = new WayPoint(QPoint(320, 380));
+    WayPoint *wayPoint20 = new WayPoint(QPoint(90, 270));
     bossWayPointsList.push_back(wayPoint20);
     wayPoint20->setNextWayPoint(wayPoint19);
 
-    WayPoint *wayPoint21 = new WayPoint(QPoint(400, 400));
+    WayPoint *wayPoint21 = new WayPoint(QPoint(90, 330));
     bossWayPointsList.push_back(wayPoint21);
     wayPoint21->setNextWayPoint(wayPoint20);
 
-    WayPoint *wayPoint22 = new WayPoint(QPoint(400, 525));
+    WayPoint *wayPoint22= new WayPoint(QPoint(120, 370));
     bossWayPointsList.push_back(wayPoint22);
     wayPoint22->setNextWayPoint(wayPoint21);
 
-    WayPoint *wayPoint23 = new WayPoint(QPoint(5, 525));
+    WayPoint *wayPoint23 = new WayPoint(QPoint(320, 360));
     bossWayPointsList.push_back(wayPoint23);
     wayPoint23->setNextWayPoint(wayPoint22);
+
+    WayPoint *wayPoint24 = new WayPoint(QPoint(400, 400));
+    bossWayPointsList.push_back(wayPoint24);
+    wayPoint24->setNextWayPoint(wayPoint23);
+
+    WayPoint *wayPoint25 = new WayPoint(QPoint(400, 525));
+    bossWayPointsList.push_back(wayPoint25);
+    wayPoint25->setNextWayPoint(wayPoint24);
+
+    WayPoint *wayPoint26 = new WayPoint(QPoint(5, 525));
+    bossWayPointsList.push_back(wayPoint26);
+    wayPoint26->setNextWayPoint(wayPoint25);
 }
 
 
@@ -1685,6 +1704,9 @@ hardScene::~hardScene()
     delete this->btn12;
     delete this->btn13;
     delete this->btn14;
+
+    foreach (const Tower *tower, m_towersList)
+        delete tower;
     // addition 6-6
     //delete ui;
 }
