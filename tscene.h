@@ -38,6 +38,7 @@ public:
     QPoint currentPos;
     QList<tCard*> Cards;
     QPoint m;
+    int currentIndex = -1;
 
     explicit tScene(QWidget *parent = 0);
     ~tScene();
