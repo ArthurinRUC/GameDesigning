@@ -1,4 +1,5 @@
 #include "tscene.h"
+#include"tcard.h"
 
 static const int TowerCost = 300;
 
@@ -32,6 +33,13 @@ tScene::~tScene()
     if (!(this->wavebar == nullptr)) delete this->wavebar;
     if (!(this->WaveLabel == nullptr)) delete this->WaveLabel;
     if (!(this->wavelabel == nullptr))delete this->wavelabel;
+
+    delete Base;
+    delete base;
+
+
+    delete currentCard;
+
 }
 
 tStartScreen::tStartScreen(QWidget* parent) : tScene(parent)
@@ -301,6 +309,7 @@ void easyScene::uiSetup()
     base->start();
     Base->show();
     Base->setMovie(base);
+    Base->raise();
 
     btn1->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn1->setMovie(station);
@@ -402,6 +411,11 @@ void easyScene::uiSetup()
     connect(exit, SIGNAL(clicked()), this, SLOT(leave()));
     exit->show();
     exit->raise();
+
+
+    tCard *card = new tNormalTowerCard(this);
+    card->setIndex(0);
+    Cards.append(card);
 }
 
 void easyScene::loadTowerPositions()
@@ -1146,6 +1160,8 @@ void hardScene::uiSetup()
     connect(exit, SIGNAL(clicked()), this, SLOT(leave()));
     exit->show();
     exit->raise();
+
+
 
 }
 

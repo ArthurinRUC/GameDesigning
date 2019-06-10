@@ -25,11 +25,17 @@
 #include "plistreader.h"
 
 class Bullet;
+class tCard;
 
 class tScene : public QLabel
 {
     Q_OBJECT
 public:
+    int sunPoint = 50;
+    tCard* currentCard = nullptr;
+    QPoint currentPos;
+    QList<tCard*> Cards;
+
     explicit tScene(QWidget *parent = 0);
     ~tScene();
 
@@ -55,6 +61,7 @@ public:
 
     QLabel* Base = new QLabel(this);
     QMovie* base = new QMovie(":/image/base0.png");
+
 
     // move to base class
     void addBullet(Bullet *bullet);

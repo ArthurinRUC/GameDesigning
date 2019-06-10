@@ -45,5 +45,8 @@
         <file>config/easyTowersPosition.plist</file>
         <file>config/hardTowersPosition.plist</file>
         <file>image/fireEnemy2.gif</file>
+        <file>image/terminal.gif</file>
+        <file>image/frame.png</file>
+        <file>picture/tower1.jpg</file>
     </qresource>
 </RCC>
