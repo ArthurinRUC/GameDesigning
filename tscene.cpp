@@ -45,24 +45,6 @@ void tScene::getHpDamage(int damage)
         doGameOver();
 }
 
-void tScene::removedEnemy(Enemy *enemy)
-{
-    Q_ASSERT(enemy);
-
-    m_enemyList.removeOne(enemy);
-    delete enemy;
-
-    if (m_enemyList.empty())
-    {
-        ++m_waves;
-        //if (!loadWave())
-        //{
-        m_gameWin = true;
-        // 游戏胜利转到游戏胜利场景
-        // 这里暂时以打印处理
-        //}
-    }
-}
 
 void tScene::removedBullet(Bullet *bullet)
 {
@@ -117,12 +99,13 @@ QList<Enemy *> tScene::enemyList() const
     return m_enemyList;
 }
 
-tStartScreen::tStartScreen(QWidget* parent) : tScene(parent)
+tStartScreen::tStartScreen(QWidget* parent): QLabel(parent)
 {
     QUrl backgroundMusicUrl = QUrl::fromLocalFile(s_curDir + "/First Page.mp3");
     m_audioPlayer = new AudioPlayer(backgroundMusicUrl,this);
     m_audioPlayer->startBGM();
-
+    this->setMouseTracking(true);
+    this->grabKeyboard();
     this->setGeometry(0, 0, 800, 600); //界面
     this->setMovie(this->background);  //图片
     this->background->start();      //
@@ -161,11 +144,14 @@ void tStartScreen::onTimer()
     }
 }
 
-tStartScene::tStartScene(QWidget* parent) : tScene(parent)
+tStartScene::tStartScene(QWidget* parent):QLabel(parent)
 {
     QUrl backgroundMusicUrl = QUrl::fromLocalFile(s_curDir + "/First Page.mp3");
     m_audioPlayer = new AudioPlayer(backgroundMusicUrl,this);
     m_audioPlayer->startBGM();
+    this->setMouseTracking(true);
+    this->grabKeyboard();
+
 
     this->setGeometry(0, 0, 800, 600);
     this->setMovie(this->background);
@@ -417,6 +403,26 @@ void easyScene::uiSetup()
     exit->raise();
 }
 
+void easyScene::removedEnemy(Enemy *enemy)
+{
+    Q_ASSERT(enemy);
+
+    m_enemyList.removeOne(enemy);
+    delete enemy;
+
+    if (m_enemyList.empty())
+    {
+        ++m_waves;
+        if (!loadWave())
+        {
+        m_gameWin = true;
+        // 游戏胜利转到游戏胜利场景
+        // 这里暂时以打印处理
+        }
+    }
+}
+
+
 void easyScene::loadTowerPositions()
 {
     //读取文件中的炮塔位置信息，可以不用深究，但是可以修改位置【可改】
@@ -665,6 +671,8 @@ void easyScene::paintEvent(QPaintEvent *)
         WaveLabel->hide();
         Base->hide();
 
+        //delete m_audioPlayer;
+
 
         if(m_gameWin){
         QPixmap loseScene(":/background/victory_better.jpg");
@@ -726,6 +734,7 @@ void easyScene::mousePressEvent(QMouseEvent * event)
     auto it = m_towerPositionsList.begin();
     while (it != m_towerPositionsList.end())
     {
+
         if (canBuyTower() && it->containPoint(pressPos) && !it->hasTower())
         {
             m_audioPlayer->playSound(TowerPlaceSound);
@@ -820,10 +829,30 @@ hardScene::hardScene(QWidget* parent)
     QTimer::singleShot(300, this, SLOT(gameStart()));
 }
 
-/*AudioPlayer *hardScene::audioPlayer() const
+AudioPlayer *hardScene::audioPlayer() const
 {
     return m_audioPlayer;
-}*/
+}
+
+void hardScene::removedEnemy(Enemy *enemy)
+{
+    Q_ASSERT(enemy);
+
+    m_enemyList.removeOne(enemy);
+    delete enemy;
+
+    if (m_enemyList.empty())
+    {
+        ++m_waves;
+        if (!loadWave())
+        {
+        m_gameWin = true;
+        // 游戏胜利转到游戏胜利场景
+        // 这里暂时以打印处理
+        }
+    }
+}
+
 
 void hardScene::keyPressEvent(QKeyEvent *event)
 {

@@ -13,8 +13,8 @@
 
 
 //血条长度
-static const int Health_Bar_Width = 20;
-const QSize Enemy::ms_fixedSize(52, 52);
+static const int Health_Bar_Width = 30;
+const QSize Enemy::ms_fixedSize(75, 75);
 Enemy::Enemy(WayPoint *startWayPoint, tScene *game, const QPixmap &sprite/* = QPixmap(":/image/enemy1.png")*/)
     : QObject(0)
     , m_active(false)//决定painter是否显示enemy对象，不可通过m_active设置enemy暂停移动
@@ -79,17 +79,17 @@ void Enemy::draw(QPainter *painter) const{
 	painter->save();
 
     //m_pos仍然是中心位置
-	QPoint healthBarPoint = m_pos + QPoint(-Health_Bar_Width / 2 - 5, -ms_fixedSize.height() / 3);
+    QPoint healthBarPoint = m_pos + QPoint(0, -ms_fixedSize.height()/2 - 10);
 	// 绘制血条
     //其实就是两个方框，红色方框代表总生命，固定大小不变
     //绿色方框代表当前生命，受m_currentHp / m_maxHp的变化影响
 	painter->setPen(Qt::NoPen);
 	painter->setBrush(Qt::red);
-	QRect healthBarBackRect(healthBarPoint, QSize(Health_Bar_Width, 2));
+    QRect healthBarBackRect(healthBarPoint, QSize(Health_Bar_Width, 5));
 	painter->drawRect(healthBarBackRect);
 
 	painter->setBrush(Qt::green);
-	QRect healthBarRect(healthBarPoint, QSize((double)m_currentHp / m_maxHp * Health_Bar_Width, 2));
+    QRect healthBarRect(healthBarPoint, QSize((double)m_currentHp / m_maxHp * Health_Bar_Width, 5));
 	painter->drawRect(healthBarRect);
 
 	// 绘制偏转坐标,由中心+偏移=左上
