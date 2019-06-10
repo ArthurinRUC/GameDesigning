@@ -44,7 +44,14 @@ tScene::~tScene()
 
 }
 
-
+void tScene::mouseMoveEvent(QMouseEvent *event)
+{
+    m = event->pos();
+    if (this->currentCard != nullptr)
+    {
+        this->currentCard->move(m + QPoint(-40, 1));
+    }
+}
 
 void tScene::getHpDamage(int damage)
 {
@@ -223,7 +230,7 @@ easyScene::easyScene(QWidget* parent)
 {
     QUrl backgroundMusicUrl = QUrl::fromLocalFile(s_curDir + "/easy.mp3");
     m_audioPlayer = new AudioPlayer(backgroundMusicUrl,this);
-    m_audioPlayer->getMusic()->setVolume(30);
+    //m_audioPlayer->getMusic()->setVolume(30);
     m_audioPlayer->startBGM();
 
     this->setGeometry(0, 0, 800, 600);
@@ -315,91 +322,91 @@ void easyScene::uiSetup()
     btn1->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn1->setMovie(station);
     station->start();
-    btn1->setGeometry(50, 220, 70, 70);
+    btn1->setGeometry(50, 220, 60, 60);
     btn1->show();
     btn1->raise();
 
     btn2->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn2->setMovie(station);
     station->start();
-    btn2->setGeometry(50, 145, 70, 70);
+    btn2->setGeometry(50, 145, 60, 60);
     btn2->show();
     btn2->raise();
 
     btn3->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn3->setMovie(station);
     station->start();
-    btn3->setGeometry(120, 70, 70, 70);
+    btn3->setGeometry(120, 70, 60, 60);
     btn3->show();
     btn3->raise();
 
     btn4->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn4->setMovie(station);
     station->start();
-    btn4->setGeometry(205, 235, 70, 70);
+    btn4->setGeometry(205, 235, 60, 60);
     btn4->show();
     btn4->raise();
 
     btn5->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn5->setMovie(station);
     station->start();
-    btn5->setGeometry(305, 235, 70, 70);
+    btn5->setGeometry(305, 235, 60, 60);
     btn5->show();
     btn5->raise();
 
     btn6->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn6->setMovie(station);
     station->start();
-    btn6->setGeometry(205, 315, 70, 70);
+    btn6->setGeometry(205, 315, 60, 60);
     btn6->show();
     btn6->raise();
 
     btn7->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn7->setMovie(station);
     station->start();
-    btn7->setGeometry(305, 315, 70, 70);
+    btn7->setGeometry(305, 315, 60, 60);
     btn7->show();
     btn7->raise();
 
     btn8->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn8->setMovie(station);
     station->start();
-    btn8->setGeometry(460, 125, 70, 70);
+    btn8->setGeometry(460, 125, 60, 60);
     btn8->show();
     btn8->raise();
 
     btn9->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn9->setMovie(station);
     station->start();
-    btn9->setGeometry(460, 200, 70, 70);
+    btn9->setGeometry(460, 200, 60, 60);
     btn9->show();
     btn9->raise();
 
     btn10->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn10->setMovie(station);
     station->start();
-    btn10->setGeometry(540, 200, 70, 70);
+    btn10->setGeometry(540, 200, 60, 60);
     btn10->show();
     btn10->raise();
 
     btn11->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn11->setMovie(station);
     station->start();
-    btn11->setGeometry(400, 385, 70, 70);
+    btn11->setGeometry(400, 385, 60, 60);
     btn11->show();
     btn11->raise();
 
     btn12->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn12->setMovie(station);
     station->start();
-    btn12->setGeometry(480, 385, 70, 70);
+    btn12->setGeometry(480, 385, 60, 60);
     btn12->show();
     btn12->raise();
 
     btn13->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn13->setMovie(station);
     station->start();
-    btn13->setGeometry(620, 90, 70, 70);
+    btn13->setGeometry(620, 90, 60, 60);
     btn13->show();
     btn13->raise();
 
@@ -414,9 +421,58 @@ void easyScene::uiSetup()
     exit->raise();
 
 
-    tCard *card = new tNormalTowerCard(this);
-    card->setIndex(0);
-    Cards.append(card);
+    tCard *card0 = new tNormalTowerCard(this);
+    card0->setGeometry(180, 10 , 100, 60);
+    Cards.append(card0);
+    card0->show();
+
+    Front1 = new QLabel(this);
+    Front1->setText("100");
+    Front1->setGeometry(225, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front1->setFont(QFont("Calibri", 11));
+    Front1->show();
+    Front1->raise();
+
+    tCard *card1 = new tFireTowerCard(this);
+    card1->setGeometry(280, 10 , 100, 60);
+    Cards.append(card1);
+    card1->show();
+
+    Front2 = new QLabel(this);
+    Front2->setText("150");
+    Front2->setGeometry(325, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front2->setFont(QFont("Calibri", 11));
+    Front2->show();
+    Front2->raise();
+
+    tCard *card2 = new tIceTowerCard(this);
+    card2->setGeometry(430, 10 , 100, 60);
+    Cards.append(card2);
+    card2->show();
+
+    Front3 = new QLabel(this);
+    Front3->setText("150");
+    Front3->setGeometry(475, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front3->setFont(QFont("Calibri", 11));
+    Front3->show();
+    Front3->raise();
+
+    tCard *card3 = new tLaserTowerCard(this);
+    card3->setGeometry(530, 10 , 100, 60);
+    Cards.append(card3);
+    card3->show();
+
+    Front4 = new QLabel(this);
+    Front4->setText("200");
+    Front4->setGeometry(575, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front4->setFont(QFont("Calibri", 11));
+    Front4->show();
+    Front4->raise();
+
 }
 
 void easyScene::removedEnemy(Enemy *enemy)
@@ -620,6 +676,11 @@ easyScene::~easyScene()
 
     foreach (const Tower *tower, m_towersList)
         delete tower;
+
+    delete Front1;
+    delete Front2;
+    delete Front3;
+    delete Front4;
     foreach (const Enemy *enemy, m_enemyList)
         delete enemy;
     // addition 6-6
@@ -693,7 +754,7 @@ void easyScene::paintEvent(QPaintEvent *)
         WaveLabel->hide();
         Base->hide();
 
-        m_audioPlayer->getMusic()->stop();
+        //m_audioPlayer->getMusic()->stop();
 
         foreach (Tower *tower, m_towersList)
         {
@@ -769,6 +830,27 @@ void easyScene::mousePressEvent(QMouseEvent * event)
 {
     //单击鼠标后的处理
     QPoint pressPos = event->pos();
+    int posx = pressPos.x();
+    int posy = pressPos.y();
+
+    //if(state == 0) //空状态
+    int cardindex = -1;
+    if (posx >= 180 && posx <= 280 && posy >= 10 && posy <= 60)
+        cardindex = 0;
+    else if (posx >= 280 && posx <= 380 && posy >= 10 && posy <= 60)
+        cardindex = 1;
+    else if (posx >= 430 && posx <= 530 && posy >= 10 && posy <= 60)
+        cardindex = 2;
+    else if (posx >= 530 && posx <= 630 && posy >= 10 && posy <= 60)
+        cardindex = 3;
+
+    if (cardindex >= 0)
+    {
+            this->currentCard = Cards[cardindex];
+            Cards[cardindex]->move(Cards[cardindex]->pos());
+    }
+
+
     auto it = m_towerPositionsList.begin();
     while (it != m_towerPositionsList.end())
     {
@@ -1249,8 +1331,57 @@ void hardScene::uiSetup()
     exit->show();
     exit->raise();
 
+    tCard *card0 = new tNormalTowerCard(this);
+    card0->setGeometry(180, 10 , 100, 60);
+    Cards.append(card0);
+    card0->show();
 
+    Front1 = new QLabel(this);
+    Front1->setText("100");
+    Front1->setGeometry(225, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front1->setFont(QFont("Calibri", 11));
+    Front1->show();
+    Front1->raise();
 
+    tCard *card1 = new tFireTowerCard(this);
+    card1->setGeometry(280, 10 , 100, 60);
+    Cards.append(card1);
+    card1->show();
+
+    Front2 = new QLabel(this);
+    Front2->setText("150");
+    Front2->setGeometry(325, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front2->setFont(QFont("Calibri", 11));
+    Front2->show();
+    Front2->raise();
+
+    tCard *card2 = new tIceTowerCard(this);
+    card2->setGeometry(430, 10 , 100, 60);
+    Cards.append(card2);
+    card2->show();
+
+    Front3 = new QLabel(this);
+    Front3->setText("150");
+    Front3->setGeometry(475, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front3->setFont(QFont("Calibri", 11));
+    Front3->show();
+    Front3->raise();
+
+    tCard *card3 = new tLaserTowerCard(this);
+    card3->setGeometry(530, 10 , 100, 60);
+    Cards.append(card3);
+    card3->show();
+
+    Front4 = new QLabel(this);
+    Front4->setText("200");
+    Front4->setGeometry(575, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front4->setFont(QFont("Calibri", 11));
+    Front4->show();
+    Front4->raise();
 }
 
 void hardScene::loadTowerPositions()
@@ -1720,7 +1851,6 @@ void hardScene::drawPlayerGold()
     MoneyFront->show();
     MoneyFront->raise();
 }
-
 
 void hardScene::preLoadWavesInfo()
 {
