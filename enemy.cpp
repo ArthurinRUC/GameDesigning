@@ -109,7 +109,7 @@ void Enemy::getRemoved(){
 	m_game->removedEnemy(this);
 }
 void Enemy::getDamage(Bullet *bullet){
-    //m_game->audioPlayer()->playSound(LaserShootSound);//日后是否需要实现不同子弹击中敌人音效不同？？？
+    m_game->audioPlayer()->playSound(LaserShootSound);//日后是否需要实现不同子弹击中敌人音效不同？？？
     m_currentHp -= bullet->m_damage;
 
     switch(bullet->bulletKind)
@@ -136,7 +136,7 @@ void Enemy::getDamage(Bullet *bullet){
 void Enemy::canRemove()
 {
     if (m_currentHp <= 0){
-        //m_game->audioPlayer()->playSound(EnemyDestorySound);
+        m_game->audioPlayer()->playSound(EnemyDestorySound);
         m_game->awardGold(200);//奖金数额与敌人类型相关？？？
         getRemoved();
     }
