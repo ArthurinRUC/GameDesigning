@@ -753,6 +753,17 @@ void easyScene::paintEvent(QPaintEvent *)
         WaveBar->hide();
         WaveLabel->hide();
         Base->hide();
+        Front1->hide();
+        Front2->hide();
+        Front3->hide();
+        Front4->hide();
+
+        foreach (tCard *card, Cards)
+        {
+            Q_ASSERT(card);
+            Cards.removeOne(card);
+            delete card;
+        }
 
         //m_audioPlayer->getMusic()->stop();
 
