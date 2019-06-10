@@ -412,9 +412,58 @@ void easyScene::uiSetup()
     exit->raise();
 
 
-    tCard *card = new tNormalTowerCard(this);
-    card->setIndex(0);
-    Cards.append(card);
+    tCard *card0 = new tNormalTowerCard(this);
+    card0->setGeometry(180, 10 , 100, 60);
+    Cards.append(card0);
+    card0->show();
+
+    Front1 = new QLabel(this);
+    Front1->setText("100");
+    Front1->setGeometry(225, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front1->setFont(QFont("Calibri", 11));
+    Front1->show();
+    Front1->raise();
+
+    tCard *card1 = new tFireTowerCard(this);
+    card1->setGeometry(280, 10 , 100, 60);
+    Cards.append(card1);
+    card1->show();
+
+    Front2 = new QLabel(this);
+    Front2->setText("150");
+    Front2->setGeometry(325, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front2->setFont(QFont("Calibri", 11));
+    Front2->show();
+    Front2->raise();
+
+    tCard *card2 = new tIceTowerCard(this);
+    card2->setGeometry(430, 10 , 100, 60);
+    Cards.append(card2);
+    card2->show();
+
+    Front3 = new QLabel(this);
+    Front3->setText("150");
+    Front3->setGeometry(475, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front3->setFont(QFont("Calibri", 11));
+    Front3->show();
+    Front3->raise();
+
+    tCard *card3 = new tLaserTowerCard(this);
+    card3->setGeometry(530, 10 , 100, 60);
+    Cards.append(card3);
+    card3->show();
+
+    Front4 = new QLabel(this);
+    Front4->setText("200");
+    Front4->setGeometry(575, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front4->setFont(QFont("Calibri", 11));
+    Front4->show();
+    Front4->raise();
+
 }
 
 void easyScene::removedEnemy(Enemy *enemy)
@@ -617,6 +666,11 @@ easyScene::~easyScene()
 
     foreach (const Tower *tower, m_towersList)
         delete tower;
+
+    delete Front1;
+    delete Front2;
+    delete Front3;
+    delete Front4;
     // addition 6-6
     //delete ui;
 }
@@ -1211,8 +1265,57 @@ void hardScene::uiSetup()
     exit->show();
     exit->raise();
 
+    tCard *card0 = new tNormalTowerCard(this);
+    card0->setGeometry(180, 10 , 100, 60);
+    Cards.append(card0);
+    card0->show();
 
+    Front1 = new QLabel(this);
+    Front1->setText("100");
+    Front1->setGeometry(225, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front1->setFont(QFont("Calibri", 11));
+    Front1->show();
+    Front1->raise();
 
+    tCard *card1 = new tFireTowerCard(this);
+    card1->setGeometry(280, 10 , 100, 60);
+    Cards.append(card1);
+    card1->show();
+
+    Front2 = new QLabel(this);
+    Front2->setText("150");
+    Front2->setGeometry(325, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front2->setFont(QFont("Calibri", 11));
+    Front2->show();
+    Front2->raise();
+
+    tCard *card2 = new tIceTowerCard(this);
+    card2->setGeometry(430, 10 , 100, 60);
+    Cards.append(card2);
+    card2->show();
+
+    Front3 = new QLabel(this);
+    Front3->setText("150");
+    Front3->setGeometry(475, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front3->setFont(QFont("Calibri", 11));
+    Front3->show();
+    Front3->raise();
+
+    tCard *card3 = new tLaserTowerCard(this);
+    card3->setGeometry(530, 10 , 100, 60);
+    Cards.append(card3);
+    card3->show();
+
+    Front4 = new QLabel(this);
+    Front4->setText("200");
+    Front4->setGeometry(575, 40, 40, 20);
+    //front1->setAlignment(Qt::AlignHCenter);
+    Front4->setFont(QFont("Calibri", 11));
+    Front4->show();
+    Front4->raise();
 }
 
 void hardScene::loadTowerPositions()
@@ -1682,7 +1785,6 @@ void hardScene::drawPlayerGold()
     MoneyFront->show();
     MoneyFront->raise();
 }
-
 
 void hardScene::preLoadWavesInfo()
 {
