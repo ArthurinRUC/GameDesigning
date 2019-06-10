@@ -603,6 +603,8 @@ easyScene::~easyScene()
 
     foreach (const Tower *tower, m_towersList)
         delete tower;
+    foreach (const Enemy *enemy, m_enemyList)
+        delete enemy;
     // addition 6-6
     //delete ui;
 }
@@ -673,6 +675,19 @@ void easyScene::paintEvent(QPaintEvent *)
         WaveBar->hide();
         WaveLabel->hide();
         Base->hide();
+
+        foreach (Tower *tower, m_towersList)
+        {
+            Q_ASSERT(tower);
+            m_towersList.removeOne(tower);
+            delete tower;
+        }
+        foreach (Enemy *enemy, m_enemyList)
+        {
+            Q_ASSERT(enemy);
+            m_enemyList.removeOne(enemy);
+            delete enemy;
+        }
 
         //delete m_audioPlayer;
 
