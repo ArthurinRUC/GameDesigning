@@ -3,9 +3,6 @@
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 
-// 为了解决mac下声音无法输出,总之发现使用绝对路径可以完成目标,蛋疼,因此以此种方式暂时处理.
-static const QString s_curDir = "C:/Users/81915/Desktop/LS/Programming/GD/GameDesigning/music";
-
 AudioPlayer::AudioPlayer(QUrl backgroundMusicUrl,QObject *parent)
 	: QObject(parent)
 	, m_backgroundMusic(NULL)
