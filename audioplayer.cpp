@@ -5,10 +5,15 @@
 
 AudioPlayer::AudioPlayer(QUrl backgroundMusicUrl,QObject *parent)
 	: QObject(parent)
-	, m_backgroundMusic(NULL)
+    , m_backgroundMusic(NULL)
+    , m_winMusic(NULL)
+    , m_loseMusic(NULL)
 {
 	// 创建一直播放的背景音乐
-    //QUrl backgroundMusicUrl = QUrl::fromLocalFile(s_curDir + "music/8bitDungeonLevel.mp3");搬出去！
+    m_winMusic = new QMediaPlayer(this);
+    m_winMusic->setMedia(QUrl::fromLocalFile(s_curDir + "/Win.mp3"));
+    m_loseMusic = new QMediaPlayer(this);
+    m_loseMusic->setMedia(QUrl::fromLocalFile(s_curDir + "/Lose.mp3"));
 	if (QFile::exists(backgroundMusicUrl.toLocalFile()))
 	{
 		m_backgroundMusic = new QMediaPlayer(this);
@@ -29,6 +34,16 @@ void AudioPlayer::startBGM()
 		m_backgroundMusic->play();
 }
 
+void AudioPlayer::playWinSound(){
+    if(m_winMusic)
+        m_winMusic->play();
+}
+
+void AudioPlayer::playLoseSound(){
+    if(m_loseMusic)
+        m_loseMusic->play();
+}
+
 void AudioPlayer::playSound(SoundType soundType)
 {
 	static const QUrl mediasUrls[] =
@@ -44,9 +59,6 @@ void AudioPlayer::playSound(SoundType soundType)
         QUrl::fromLocalFile(s_curDir + "/fireEnemyDie.mp3"),
         QUrl::fromLocalFile(s_curDir + "/fastEnemyDie.mp3"),
         QUrl::fromLocalFile(s_curDir + "/bossEnemyDie.mp3"),
-        QUrl::fromLocalFile(s_curDir + "/Win.mp3"),
-        QUrl::fromLocalFile(s_curDir + "/Lose.mp3"),
-
 	};
     static QMediaPlayer player;
 

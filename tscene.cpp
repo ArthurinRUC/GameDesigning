@@ -694,6 +694,7 @@ void easyScene::paintEvent(QPaintEvent *)
         Base->hide();
 
         m_audioPlayer->getMusic()->stop();
+
         foreach (Tower *tower, m_towersList)
         {
             Q_ASSERT(tower);
@@ -708,7 +709,7 @@ void easyScene::paintEvent(QPaintEvent *)
         }
 
         if(m_gameWin){
-        m_audioPlayer->playSound(winSound);
+         m_audioPlayer->playWinSound();
         QPixmap loseScene(":/background/victory_better.jpg");
         //QPainter losePainter(&loseScene);
         QPainter painter(this);
@@ -722,7 +723,7 @@ void easyScene::paintEvent(QPaintEvent *)
 
         if(m_gameEnded)
         {
-            m_audioPlayer->playSound(winSound);
+            m_audioPlayer->playLoseSound();
             QPixmap loseScene(":/background/lose1.jpg");
             //QPainter losePainter(&loseScene);
             QPainter painter(this);
@@ -962,7 +963,7 @@ void hardScene::paintEvent(QPaintEvent *)
 
         if(m_gameWin){
 
-        m_audioPlayer->playSound(winSound);
+        m_audioPlayer->playWinSound();
         QPixmap loseScene(":/background/victory_better.jpg");
         //QPainter losePainter(&loseScene);
         QPainter painter(this);
@@ -978,7 +979,8 @@ void hardScene::paintEvent(QPaintEvent *)
 
         if(m_gameEnded)
         {
-            m_audioPlayer->playSound(loseSound);
+            m_audioPlayer->playLoseSound();
+
             QPixmap loseScene(":/background/lose1.jpg");
             //QPainter losePainter(&loseScene);
             QPainter painter(this);
