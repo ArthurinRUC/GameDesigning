@@ -204,10 +204,10 @@ private:
 
     //增加代码 6-6
 private:
-    void loadTowerPositions(); //√
+    void loadTowerPositions();
     void addWayPoints();
     bool loadWave();
-    bool canBuyTower() const; //√
+    bool canBuyTower() const;
     void drawWave();
     void drawHP();
     void drawPlayerGold();
