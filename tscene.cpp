@@ -39,6 +39,14 @@ tScene::~tScene()
     delete Base;
     delete base;
 
+    delete NormalTowerPic;
+    delete normalTowerPic;
+    delete FireTowerPic;
+    delete fireTowerPic;
+    delete IceTowerPic;
+    delete iceTowerPic;
+    delete LaserTowerPic;
+    delete laserTowerPic;
 
     delete currentCard;
 
@@ -420,6 +428,25 @@ void easyScene::uiSetup()
     exit->show();
     exit->raise();
 
+    NormalTowerPic->setGeometry(180, 10, 100, 60);
+    normalTowerPic->start();
+    NormalTowerPic->show();
+    NormalTowerPic->setMovie(normalTowerPic);
+
+    FireTowerPic->setGeometry(280, 10 , 100, 60);
+    fireTowerPic->start();
+    FireTowerPic->show();
+    FireTowerPic->setMovie(fireTowerPic);
+
+    IceTowerPic->setGeometry(430, 10 , 100, 60);
+    iceTowerPic->start();
+    IceTowerPic->show();
+    IceTowerPic->setMovie(iceTowerPic);
+
+    LaserTowerPic->setGeometry(530, 10 , 100, 60);
+    laserTowerPic->start();
+    LaserTowerPic->show();
+    LaserTowerPic->setMovie(laserTowerPic);
 
     tCard *card0 = new tNormalTowerCard(this);
     card0->setGeometry(180, 10 , 100, 60);
@@ -758,6 +785,11 @@ void easyScene::paintEvent(QPaintEvent *)
         Front3->hide();
         Front4->hide();
 
+        NormalTowerPic->hide();
+        FireTowerPic->hide();
+        IceTowerPic->hide();
+        LaserTowerPic->hide();
+
         foreach (tCard *card, Cards)
         {
             Q_ASSERT(card);
@@ -1079,6 +1111,23 @@ void hardScene::paintEvent(QPaintEvent *)
         WaveFront->hide();
         WaveBar->hide();
         WaveLabel->hide();
+        Base->hide();
+        Front1->hide();
+        Front2->hide();
+        Front3->hide();
+        Front4->hide();
+
+        NormalTowerPic->hide();
+        FireTowerPic->hide();
+        IceTowerPic->hide();
+        LaserTowerPic->hide();
+
+        foreach (tCard *card, Cards)
+        {
+            Q_ASSERT(card);
+            Cards.removeOne(card);
+            delete card;
+        }
 
         //m_audioPlayer->getMusic()->stop();
 
@@ -1369,6 +1418,26 @@ void hardScene::uiSetup()
     connect(exit, SIGNAL(clicked()), this, SLOT(leave()));
     exit->show();
     exit->raise();
+
+    NormalTowerPic->setGeometry(180, 10, 100, 60);
+    normalTowerPic->start();
+    NormalTowerPic->show();
+    NormalTowerPic->setMovie(normalTowerPic);
+
+    FireTowerPic->setGeometry(280, 10 , 100, 60);
+    fireTowerPic->start();
+    FireTowerPic->show();
+    FireTowerPic->setMovie(fireTowerPic);
+
+    IceTowerPic->setGeometry(430, 10 , 100, 60);
+    iceTowerPic->start();
+    IceTowerPic->show();
+    IceTowerPic->setMovie(iceTowerPic);
+
+    LaserTowerPic->setGeometry(530, 10 , 100, 60);
+    laserTowerPic->start();
+    LaserTowerPic->show();
+    LaserTowerPic->setMovie(laserTowerPic);
 
     tCard *card0 = new tNormalTowerCard(this);
     card0->setGeometry(180, 10 , 100, 60);

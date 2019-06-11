@@ -51,5 +51,10 @@
         <file>image/firetower.png</file>
         <file>image/icetower.png</file>
         <file>image/lasertower.png</file>
+        <file>picture/normaltower.png</file>
+        <file>picture/frame.png</file>
+        <file>picture/firetower.png</file>
+        <file>picture/icetower.png</file>
+        <file>picture/lasertower.png</file>
     </qresource>
 </RCC>

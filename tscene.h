@@ -69,6 +69,15 @@ public:
     QLabel* Front3 = new QLabel(this);
     QLabel* Front4 = new QLabel(this);
 
+    QLabel* NormalTowerPic = new QLabel(this);
+    QMovie* normalTowerPic = new QMovie(":/picture/frame.png");
+    QLabel* FireTowerPic = new QLabel(this);
+    QMovie* fireTowerPic = new QMovie(":/picture/frame.png");
+    QLabel* IceTowerPic = new QLabel(this);
+    QMovie* iceTowerPic = new QMovie(":/picture/frame.png");
+    QLabel* LaserTowerPic = new QLabel(this);
+    QMovie* laserTowerPic = new QMovie(":/picture/frame.png");
+
 
     QLabel* Base = new QLabel(this);
     QMovie* base = new QMovie(":/image/base0.png");
