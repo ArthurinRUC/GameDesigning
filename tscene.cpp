@@ -110,6 +110,19 @@ void tScene::FireIceattack()
     }
 }
 
+void tScene::doGameOver()
+{
+    if (!m_gameEnded)
+    {
+        m_gameEnded = true;
+
+        m_audioPlayer->stopBGM();
+        m_audioPlayer->playLoseSound();
+        // 此处应该切换场景到结束场景
+        // 暂时以打印替代,见paintEvent处理
+    }
+}
+
 QList<Enemy *> tScene::enemyList() const
 {
     return m_enemyList;
@@ -488,6 +501,8 @@ void easyScene::removedEnemy(Enemy *enemy)
         if (!loadWave())
         {
         m_gameWin = true;
+        m_audioPlayer->stopBGM();
+        m_audioPlayer->playWinSound();
         // 游戏胜利转到游戏胜利场景
         // 这里暂时以打印处理
         }
@@ -525,34 +540,34 @@ void easyScene::loadTowerPositions()
 void easyScene::addWayPoints()
 {
     //敌人航点【可改】
-    WayPoint *wayPoint1 = new WayPoint(QPoint(775, 205));
+    WayPoint *wayPoint1 = new WayPoint(QPoint(775, 215));
     m_wayPointsList.push_back(wayPoint1);
 
-    WayPoint *wayPoint2 = new WayPoint(QPoint(625, 205));
+    WayPoint *wayPoint2 = new WayPoint(QPoint(645, 215));
     m_wayPointsList.push_back(wayPoint2);
     wayPoint2->setNextWayPoint(wayPoint1);
 
-    WayPoint *wayPoint3 = new WayPoint(QPoint(625, 315));
+    WayPoint *wayPoint3 = new WayPoint(QPoint(645, 335));
     m_wayPointsList.push_back(wayPoint3);
     wayPoint3->setNextWayPoint(wayPoint2);
 
-    WayPoint *wayPoint4 = new WayPoint(QPoint(400, 315));
+    WayPoint *wayPoint4 = new WayPoint(QPoint(410, 335));
     m_wayPointsList.push_back(wayPoint4);
     wayPoint4->setNextWayPoint(wayPoint3);
 
-    WayPoint *wayPoint5 = new WayPoint(QPoint(400, 175));
+    WayPoint *wayPoint5 = new WayPoint(QPoint(410, 185));
     m_wayPointsList.push_back(wayPoint5);
     wayPoint5->setNextWayPoint(wayPoint4);
 
-    WayPoint *wayPoint6 = new WayPoint(QPoint(130, 175));
+    WayPoint *wayPoint6 = new WayPoint(QPoint(150, 185));
     m_wayPointsList.push_back(wayPoint6);
     wayPoint6->setNextWayPoint(wayPoint5);
 
-    WayPoint *wayPoint7 = new WayPoint(QPoint(130, 330));
+    WayPoint *wayPoint7 = new WayPoint(QPoint(150, 350));
     m_wayPointsList.push_back(wayPoint7);
     wayPoint7->setNextWayPoint(wayPoint6);
 
-    WayPoint *wayPoint8 = new WayPoint(QPoint(0, 330));
+    WayPoint *wayPoint8 = new WayPoint(QPoint(0, 350));
     m_wayPointsList.push_back(wayPoint8);
     wayPoint8->setNextWayPoint(wayPoint7);
 }
@@ -627,16 +642,6 @@ void easyScene::drawPlayerGold()
     MoneyFront->raise();
 }
 
-void tScene::doGameOver()
-{
-    if (!m_gameEnded)
-    {
-        m_gameEnded = true;
-
-        // 此处应该切换场景到结束场景
-        // 暂时以打印替代,见paintEvent处理
-    }
-}
 
 void easyScene::preLoadWavesInfo()
 {
@@ -765,8 +770,6 @@ void easyScene::paintEvent(QPaintEvent *)
             delete card;
         }
 
-        //m_audioPlayer->getMusic()->stop();
-
         foreach (Tower *tower, m_towersList)
         {
             Q_ASSERT(tower);
@@ -781,7 +784,6 @@ void easyScene::paintEvent(QPaintEvent *)
         }
 
         if(m_gameWin){
-         m_audioPlayer->playWinSound();
         QPixmap loseScene(":/background/victory_better.jpg");
         //QPainter losePainter(&loseScene);
         QPainter painter(this);
@@ -795,7 +797,6 @@ void easyScene::paintEvent(QPaintEvent *)
 
         if(m_gameEnded)
         {
-            m_audioPlayer->playLoseSound();
             QPixmap loseScene(":/background/lose1.jpg");
             //QPainter losePainter(&loseScene);
             QPainter painter(this);
@@ -1007,6 +1008,8 @@ void hardScene::removedEnemy(Enemy *enemy)
         if (!loadWave())
         {
         m_gameWin = true;
+        m_audioPlayer->stopBGM();
+        m_audioPlayer->playWinSound();
         // 游戏胜利转到游戏胜利场景
         // 这里暂时以打印处理
         }
@@ -1079,12 +1082,12 @@ void hardScene::paintEvent(QPaintEvent *)
         WaveFront->hide();
         WaveBar->hide();
         WaveLabel->hide();
+        Base->hide();
 
-        //m_audioPlayer->getMusic()->stop();
+        //m_audioPlayer->stopBGM();
 
         if(m_gameWin){
 
-        m_audioPlayer->playWinSound();
         QPixmap loseScene(":/background/victory_better.jpg");
         //QPainter losePainter(&loseScene);
         QPainter painter(this);
@@ -1100,8 +1103,6 @@ void hardScene::paintEvent(QPaintEvent *)
 
         if(m_gameEnded)
         {
-            m_audioPlayer->playLoseSound();
-
             QPixmap loseScene(":/background/lose1.jpg");
             //QPainter losePainter(&loseScene);
             QPainter painter(this);

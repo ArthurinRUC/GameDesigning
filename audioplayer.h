@@ -29,6 +29,7 @@ class AudioPlayer : public QObject
 public:
     explicit AudioPlayer(QUrl backgroundMusicUrl,QObject *parent = 0);
 	void startBGM();
+    void stopBGM();
 	void playSound(SoundType soundType);
     void playWinSound();
     void playLoseSound();

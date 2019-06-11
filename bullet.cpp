@@ -74,8 +74,8 @@ IceBullet::IceBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *tar
 
 }
 
-LaserBullet::LaserBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, tScene *game, const QPixmap &sprite)
-    :Bullet(startPos, targetPoint, damage, target, game)
+LaserBullet::LaserBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, tScene *game, int kind,const QPixmap &sprite)
+    :Bullet(startPos, targetPoint, damage, target, game,kind)
 {
 
 }
