@@ -833,6 +833,51 @@ void easyScene::mousePressEvent(QMouseEvent * event)
     int posx = pressPos.x();
     int posy = pressPos.y();
 
+    if(currentCard != nullptr){
+        bool temp = 0;
+    auto it = m_towerPositionsList.begin();
+    while (it != m_towerPositionsList.end())
+    {
+
+        if (currentCard != nullptr && canBuyTower() && it->containPoint(pressPos) && !it->hasTower())
+        {
+            temp = 1;
+            m_audioPlayer->playSound(TowerPlaceSound);
+
+            it->setHasTower();
+            Tower *tower;
+            switch(currentIndex)
+            {
+            case 0:tower = new NormalTower(it->centerPos(), this);
+                m_playerGold -= 100;
+                break;
+            case 1:tower = new FireTower(it->centerPos(), this);
+                m_playerGold -= 150;
+                break;
+            case 2:tower = new IceTower(it->centerPos(), this);
+                m_playerGold -= 150;
+                break;
+            case 3:tower = new LaserTower(it->centerPos(), this);
+                m_playerGold -= 200;
+                break;
+            }
+            m_towersList.push_back(tower);
+            update(); //调用paintevent(),重绘画面
+            currentCard->move(currentPos);
+            currentCard = nullptr;
+            break;
+        }
+
+        ++it;
+    }
+    if(temp == 0)
+    {
+       currentCard->move(currentPos);
+       currentCard = nullptr;
+    }
+
+    }
+
     //if(state == 0) //空状态
     int cardindex = -1;
     if (posx >= 180 && posx <= 280 && posy >= 10 && posy <= 60)
@@ -846,28 +891,11 @@ void easyScene::mousePressEvent(QMouseEvent * event)
 
     if (cardindex >= 0)
     {
-            this->currentCard = Cards[cardindex];
-            Cards[cardindex]->move(Cards[cardindex]->pos());
+        currentPos = Cards[cardindex]->pos();
+        this->currentCard = Cards[cardindex];
+        currentIndex = cardindex;
     }
 
-
-    auto it = m_towerPositionsList.begin();
-    while (it != m_towerPositionsList.end())
-    {
-
-        if (canBuyTower() && it->containPoint(pressPos) && !it->hasTower())
-        {
-            m_audioPlayer->playSound(TowerPlaceSound);
-            m_playerGold -= TowerCost;
-            it->setHasTower();
-            Tower *tower = new NormalTower(it->centerPos(), this);
-            m_towersList.push_back(tower);
-            update(); //调用paintevent(),重绘画面
-            break;
-        }
-
-        ++it;
-    }
 }
 
 void easyScene::onTimer()
@@ -918,7 +946,7 @@ hardScene::hardScene(QWidget* parent)
 {
     QUrl backgroundMusicUrl = QUrl::fromLocalFile(s_curDir + "/hard.mp3");
     m_audioPlayer = new AudioPlayer(backgroundMusicUrl,this);
-    m_audioPlayer->getMusic()->setVolume(30);
+    //m_audioPlayer->getMusic()->setVolume(30);
     m_audioPlayer->startBGM();
 
     this->setGeometry(0, 0, 800, 600);
@@ -1041,7 +1069,7 @@ void hardScene::paintEvent(QPaintEvent *)
         WaveBar->hide();
         WaveLabel->hide();
 
-        m_audioPlayer->getMusic()->stop();
+        //m_audioPlayer->getMusic()->stop();
 
         if(m_gameWin){
 

@@ -38,6 +38,7 @@ public:
     QPoint currentPos;
     QList<tCard*> Cards;
     QPoint m;
+    int currentIndex = -1;
 
     explicit tScene(QWidget *parent = 0);
     ~tScene();
@@ -203,10 +204,10 @@ private:
 
     //增加代码 6-6
 private:
-    void loadTowerPositions(); //√
+    void loadTowerPositions();
     void addWayPoints();
     bool loadWave();
-    bool canBuyTower() const; //√
+    bool canBuyTower() const;
     void drawWave();
     void drawHP();
     void drawPlayerGold();

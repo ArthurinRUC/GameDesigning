@@ -19,10 +19,10 @@ class Tower : public QObject
 {
     Q_OBJECT
 public:
-    Tower(QPoint pos, tScene *game, const QPixmap &sprite = QPixmap(":/image/normaltower.png"), int attackRange = 120, int damage = 10, int fireRate = 1000, int level = 1);
+    Tower(QPoint pos, tScene *game, const QPixmap &sprite = QPixmap(":/image/normaltower.png"), int attackRange = 120, int damage = 10, int fireRate = 300, int level = 1);
     ~Tower();
 
-    void draw(QPainter *painter) const;
+    virtual void draw(QPainter *painter) const;
     void checkEnemyInRange();
     void targetKilled();
     void attackEnemy();
