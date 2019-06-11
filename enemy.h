@@ -33,17 +33,18 @@ public:
 
     bool            m_active;
     int             fire; //当前是否受到火焰伤害
-    int             fireLevel;//对火焰的抗性
+    int             fireLevel;//火焰效果持续时间
     int             ice; //
-    int             iceLevel;//对冰雪的抗性
+    int             iceLevel;//火焰效果持续时间
     int				m_maxHp;
     int				m_currentHp;
     int             HPdamage;//对“萝卜”的伤害
     int             enemyKind;
+    int             award;
     qreal           fireattackLevel;
     qreal           antiSlowspeed;
     qreal           m_normalSpeed; //正常速度
-    qreal             fireattack; //每0.5秒钟受到多少火焰伤害
+    qreal           fireattack; //每0.5秒钟受到多少火焰伤害
     qreal           m_slowSpeed; //寒冰状态的速度
     qreal			m_walkingSpeed;//当前行走速度
     qreal			m_rotationSprite;

@@ -34,14 +34,20 @@ void AudioPlayer::startBGM()
 		m_backgroundMusic->play();
 }
 
+void AudioPlayer::stopBGM(){
+    m_backgroundMusic->stop();
+}
+
 void AudioPlayer::playWinSound(){
     if(m_winMusic)
         m_winMusic->play();
+    //m_winMusic->stop();
 }
 
 void AudioPlayer::playLoseSound(){
     if(m_loseMusic)
         m_loseMusic->play();
+    //m_loseMusic->stop();
 }
 
 void AudioPlayer::playSound(SoundType soundType)

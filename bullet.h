@@ -79,7 +79,7 @@ class LaserBullet: public Bullet
     Q_OBJECT
 
 public:
-    LaserBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, tScene *game, const QPixmap &sprite = QPixmap(":/image/laserbullet.png"));
+    LaserBullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target, tScene *game, int kind = 3,const QPixmap &sprite = QPixmap(":/image/laserbullet.png"));
 
 };
 

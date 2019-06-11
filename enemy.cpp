@@ -19,15 +19,16 @@ Enemy::Enemy(WayPoint *startWayPoint, tScene *game, const QPixmap &sprite/* = QP
     : QObject(0)
     , m_active(false)//决定painter是否显示enemy对象，不可通过m_active设置enemy暂停移动
     , fire(0)
-    , ice(0)//暂时赋值，日后修改
+    , ice(0)
     , m_maxHp(60)
     , m_currentHp(60)
     , enemyKind(1)
+    , award(200)
     , fireattackLevel(1.0)
     , antiSlowspeed(1.0)
     , m_normalSpeed(2.0)
     , m_slowSpeed(1.0)
-    , m_walkingSpeed(2.0)//可以通过将m_walkingSpeed置0达到暂停移动的效果
+    , m_walkingSpeed(2.0)
 	, m_rotationSprite(0.0)
 	, m_pos(startWayPoint->pos())
 	, m_destinationWayPoint(startWayPoint->nextWayPoint())
@@ -53,7 +54,7 @@ void Enemy::move(){
 			m_destinationWayPoint = m_destinationWayPoint->nextWayPoint();
         } else {
 			// 表示进入基地
-            m_game->getHpDamage(HPdamage);//修改，减少生命数与敌人类型相关？？？
+            m_game->getHpDamage(HPdamage);
 			m_game->removedEnemy(this);
             return;
 		}
@@ -61,17 +62,12 @@ void Enemy::move(){
 	// 还在前往航点的路上
 	// 目标航点的坐标
 	QPoint targetPoint = m_destinationWayPoint->pos();
-	// 未来修改这个可以添加移动状态,加快,减慢,m_walkingSpeed是基准值
 
 	// 向量标准化
 	qreal movementSpeed = m_walkingSpeed;
 	QVector2D normalized(targetPoint - m_pos);
     normalized.normalize();
     m_pos = m_pos + 1.2*normalized.toPoint() * movementSpeed;
-
-	// 确定敌人选择方向
-	// 默认图片向左,需要修正180度转右
-    //m_rotationSprite = qRadiansToDegrees(qAtan2(normalized.y(), normalized.x())) + 180;
 }
 void Enemy::draw(QPainter *painter) const{
     if (!m_active)
@@ -158,7 +154,7 @@ void Enemy::canRemove()
             break;
         }
 
-        m_game->awardGold(200);//奖金数额与敌人类型相关？？？
+        m_game->awardGold(award);//奖金数额与敌人类型相关？？？
         getRemoved();
     }
 }
@@ -196,6 +192,7 @@ iceEnemy::iceEnemy(WayPoint *startWayPoint, tScene *game, const QPixmap &sprite/
     :Enemy(startWayPoint, game,sprite/* = QPixmap(":/image/enemy2.png")*/)
 {
     this->enemyKind=2;
+    this->award=250;
     this->m_maxHp = 75;
     this->m_currentHp = 75;
     this->antiSlowspeed=2.0;
@@ -211,6 +208,7 @@ fireEnemy::fireEnemy(WayPoint *startWayPoint, tScene *game, const QPixmap &sprit
     :Enemy(startWayPoint, game,sprite/* = QPixmap(":/image/enemy3.png")*/)
 {
     this->enemyKind=3;
+    this->award=300;
     this->m_maxHp = 85;
     this->m_currentHp = 85;
     this->antiSlowspeed=1.2;
@@ -227,6 +225,7 @@ fastEnemy::fastEnemy(WayPoint *startWayPoint, tScene *game, const QPixmap &sprit
     :Enemy(startWayPoint, game,sprite/* = QPixmap(":/image/enemy4.png")*/)
 {
     this->enemyKind=4;
+    this->award=350;
     this->m_maxHp = 90;
     this->m_currentHp = 90;
     this->m_normalSpeed=4.0;
@@ -244,6 +243,7 @@ bossEnemy::bossEnemy(WayPoint *startWayPoint, tScene *game, const QPixmap &sprit
     :Enemy(startWayPoint, game,sprite/* = QPixmap(":/image/enemy5.png")*/)
 {
     this->enemyKind=5;
+    this->award=400;
     this->m_maxHp = 100;
     this->m_currentHp = 100;
     this->m_normalSpeed=3.0;
