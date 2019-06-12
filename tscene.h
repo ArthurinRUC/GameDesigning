@@ -28,6 +28,7 @@
 
 class Bullet;
 class tCard;
+class TowerPosition;
 
 class tScene : public QLabel
 {

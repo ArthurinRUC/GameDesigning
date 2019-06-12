@@ -38,10 +38,14 @@ tScene::~tScene()
 
     if (!(this->LevelUp == nullptr)) delete this->LevelUp;
     if (!(this->levelup == nullptr)) delete this->levelup;
-    if (!(this->showlevel == nullptr)) delete this->showlevel;
-    if (!(this->ShowLevel == nullptr)) delete this->ShowLevel;
-    if (!(this->upgrade_money == nullptr))delete this->upgrade_money;
-    if (!(this->Upgrade_Money == nullptr))delete this->Upgrade_Money;
+
+    if (!(this->LevelFront == nullptr)) delete this->WaveFront;
+    if (!(this->levelbar == nullptr)) delete this->levelbar;
+    if (!(this->LevelBar == nullptr)) delete this->LevelBar;
+
+    if (!(this->Upgrade_MoneyFront == nullptr))delete this->Upgrade_MoneyBar;
+    if (!(this->upgrade_moneybar == nullptr))delete this->upgrade_moneybar;
+    if (!(this->Upgrade_MoneyBar == nullptr))delete this->Upgrade_MoneyBar;
 
     delete Base;
     delete base;
@@ -321,7 +325,6 @@ void easyScene::uiSetup()
     LifeLabel->show();
     LifeLabel->setMovie(lifelabel);
 
-
     WaveBar->setGeometry(680, 400, 300, 200);
     wavebar->start();
     WaveBar->show();
@@ -343,23 +346,35 @@ void easyScene::uiSetup()
     Base->setMovie(base);
     Base->raise();
 
-    ShowLevel->setGeometry(10, 340, 300, 200);
-    showlevel->start();
-    ShowLevel->show();
-    ShowLevel->setMovie(showlevel);
-    ShowLevel->raise();
-
     LevelUp->setGeometry(100, 410, 50, 50);
     levelup->start();
     LevelUp->show();
     LevelUp->setMovie(levelup);
     LevelUp->raise();
 
-    Upgrade_Money->setGeometry(170, 340, 300, 200);
-    upgrade_money->start();
-    Upgrade_Money->show();
-    Upgrade_Money->setMovie(upgrade_money);
-    Upgrade_Money->raise();
+    LevelBar->setGeometry(10, 340, 300, 200);
+    levelbar->start();
+    LevelBar->show();
+    LevelBar->setMovie(levelbar);
+    LevelBar->raise();
+    LevelFront->setGeometry(570, 480, 300, 200);
+    LevelFront->setFont(QFont("Calibri", 16));
+    LevelFront->setText("1");
+    LevelFront->setAlignment(Qt::AlignHCenter);
+    LevelFront->show();
+    LevelFront->raise();
+
+    Upgrade_MoneyBar->setGeometry(170, 340, 300, 200);
+    upgrade_moneybar->start();
+    Upgrade_MoneyBar->show();
+    Upgrade_MoneyBar->setMovie(upgrade_moneybar);
+    Upgrade_MoneyBar->raise();
+    Upgrade_MoneyFront->setGeometry(570, 480, 300, 200);
+    Upgrade_MoneyFront->setFont(QFont("Calibri", 16));
+    Upgrade_MoneyFront->setText("1");
+    Upgrade_MoneyFront->setAlignment(Qt::AlignHCenter);
+    Upgrade_MoneyFront->show();
+    Upgrade_MoneyFront->raise();//记得delete！！！
 
     btn1->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn1->setMovie(station);
@@ -810,8 +825,10 @@ void easyScene::paintEvent(QPaintEvent *)
         Front2->hide();
         Front3->hide();
         Front4->hide();
-        ShowLevel->hide();
-        Upgrade_Money->hide();
+        LevelFront->hide();
+        LevelBar->hide();
+        Upgrade_MoneyFront->hide();
+        Upgrade_MoneyBar->hide();
 
         NormalTowerPic->hide();
         FireTowerPic->hide();
@@ -926,30 +943,29 @@ void easyScene::mousePressEvent(QMouseEvent * event)
             currenttower = it->m_tower;
             //有塔状态：显示等级和升级图表
 
-
-            ShowLevel->setText("Level 100");
-            Upgrade_Money->setText("180");
-
-            //ShowLevel->show();
-            //Upgrade_Money->show();
-            //LevelUp->show();
-            ShowLevel->setText(QString("level %1").arg(it->m_tower->m_level));
+            /*
+    LifeFront->setText(QString("%1").arg(m_playerHp));
+    LifeFront->setAlignment(Qt::AlignHCenter);
+    LifeFront->show();
+    LifeFront->raise();
+*/
+            LevelFront->setText(QString("level %1").arg(it->m_tower->m_level));
             switch (it->m_tower->m_level)
             {
             case 1:
-                Upgrade_Money->setText("180");
+                Upgrade_MoneyFront->setText("180");
                 break;
             case 2:
-                Upgrade_Money->setText("280");
+                Upgrade_MoneyFront->setText("280");
                 break;
             case 3:
-                Upgrade_Money->setText("380");
+                Upgrade_MoneyFront->setText("380");
                 break;
             case 4:
-                Upgrade_Money->setText("480");
+                Upgrade_MoneyFront->setText("480");
                 break;
             default:
-                Upgrade_Money->setText("---");
+                Upgrade_MoneyFront->setText("---");
                 break;
             }
             upgradestate = 1;

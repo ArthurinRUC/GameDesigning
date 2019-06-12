@@ -33,7 +33,6 @@ public:
 
     //炮塔升级
     virtual void levelup() = 0;
-
     int             m_level;        // 等级
 
 protected slots:
