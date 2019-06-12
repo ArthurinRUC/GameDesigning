@@ -34,6 +34,8 @@ public:
     //炮塔升级
     virtual void levelup() = 0;
 
+    int             m_level;        // 等级
+
 protected slots:
     //不同派生类（不同塔）需要发射不同子弹，需要虚函数
     virtual void shootWeapon() = 0;
@@ -49,7 +51,6 @@ protected:
     int				m_attackRange;	// 代表塔可以攻击到敌人的距离
     int				m_damage;		// 代表攻击敌人时造成的伤害
     int				m_fireRate;		// 代表再次攻击敌人的时间间隔
-    int             m_level;        // 等级
 
     const QPoint	m_pos; //塔的圆心
     const QPixmap	m_sprite;

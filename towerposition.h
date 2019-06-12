@@ -4,6 +4,7 @@
 #include <QPoint>
 #include <QSize>
 #include <QPixmap>
+#include "tower.h"
 
 class QPainter;
 
@@ -20,7 +21,7 @@ public:
 	void draw(QPainter *painter) const;
 
     int         m_towerkind;
-    int         m_level;
+    Tower*       m_tower;
 
 private:
     //几乎所有对象都包含3个信息：坐标点、尺寸大小、图片信息

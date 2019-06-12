@@ -39,6 +39,8 @@ public:
     QList<tCard*> Cards;
     QPoint m;
     int currentIndex = -1;
+    int upgradestate = 0;
+    Tower* currenttower;
 
     explicit tScene(QWidget *parent = 0);
     ~tScene();
