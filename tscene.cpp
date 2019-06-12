@@ -357,7 +357,6 @@ void easyScene::uiSetup()
     LevelBar->show();
     LevelBar->setMovie(levelbar);
     LevelBar->raise();
-
     LevelFront->setGeometry(-100, 420, 300, 200);
     LevelFront->setFont(QFont("Calibri", 16));
     //LevelFront->setText("5");
@@ -919,6 +918,7 @@ void easyScene::mousePressEvent(QMouseEvent * event)
     QPoint pressPos = event->pos();
     int posx = pressPos.x();
     int posy = pressPos.y();
+
     if (upgradestate)
     {
         if (posx >= 100 && posx <= 150 && posy >= 410 && posy <= 460 && currenttower->m_level != 5)
@@ -1241,6 +1241,11 @@ void hardScene::paintEvent(QPaintEvent *)
         WaveBar->hide();
         WaveLabel->hide();
         Base->hide();
+        LevelUp->hide();
+        LevelFront->hide();
+        LevelBar->hide();
+        Upgrade_MoneyFront->hide();
+        Upgrade_MoneyBar->hide();
         Front1->hide();
         Front2->hide();
         Front3->hide();
@@ -1325,6 +1330,70 @@ void hardScene::mousePressEvent(QMouseEvent * event)
     int posx = pressPos.x();
     int posy = pressPos.y();
 
+    if (upgradestate)
+    {
+        if (posx >= 635 && posx <= 683 && posy >= 20 && posy <= 70)
+        {
+            //升级,暂时没考虑满级(5级）如何处理
+            int level = currenttower->m_level;
+            int gold = 80 + level*100;
+            if (m_playerGold >= gold)
+            {
+                m_playerGold -= gold;
+                currenttower->levelup();
+
+                LevelFront->setText(QString("level %1").arg(currenttower->m_level));
+                LevelFront->show();
+                LevelFront->raise();
+
+                Upgrade_MoneyFront->setText(QString("%1").arg(gold+100));
+                Upgrade_MoneyFront->show();
+                Upgrade_MoneyFront->raise();
+            }
+        }
+        currenttower = nullptr;
+        upgradestate = 0;
+    }
+
+    if (currentCard == nullptr ){
+        auto it = m_towerPositionsList.begin();
+        while (it != m_towerPositionsList.end())
+        {
+            if (currentCard == nullptr && it->containPoint(pressPos) && it->hasTower())
+            {
+
+                currenttower = it->m_tower;
+                //有塔状态：显示等级和升级图表
+                LevelFront->setText(QString("level %1").arg(it->m_tower->m_level));
+                LevelFront->show();
+                LevelFront->raise();
+                switch (it->m_tower->m_level)
+                {
+                case 1:
+                    Upgrade_MoneyFront->setText("180");
+                    break;
+                case 2:
+                    Upgrade_MoneyFront->setText("280");
+                    break;
+                case 3:
+                    Upgrade_MoneyFront->setText("380");
+                    break;
+                case 4:
+                    Upgrade_MoneyFront->setText("480");
+                    break;
+                default:
+                    Upgrade_MoneyFront->setText("---");
+                    break;
+                }
+                Upgrade_MoneyFront->show();
+                Upgrade_MoneyFront->raise();
+
+                upgradestate = 1;
+            }
+            ++it;
+        }
+    }
+
     if(currentCard != nullptr){
         bool temp = 0;
     auto it = m_towerPositionsList.begin();
@@ -1341,16 +1410,24 @@ void hardScene::mousePressEvent(QMouseEvent * event)
             switch(currentIndex)
             {
             case 0:tower = new NormalTower(it->centerPos(), this);
+                it->m_tower = tower;
                 m_playerGold -= 100;
+                it->m_towerkind = 0;
                 break;
             case 1:tower = new FireTower(it->centerPos(), this);
                 m_playerGold -= 150;
+                it->m_tower = tower;
+                it->m_towerkind = 1;
                 break;
             case 2:tower = new IceTower(it->centerPos(), this);
                 m_playerGold -= 150;
+                it->m_towerkind = 2;
+                it->m_tower = tower;
                 break;
             case 3:tower = new LaserTower(it->centerPos(), this);
                 m_playerGold -= 200;
+                it->m_towerkind = 3;
+                it->m_tower = tower;
                 break;
             }
             m_towersList.push_back(tower);
@@ -1431,49 +1508,47 @@ void hardScene::gameStart()
 
 void hardScene::uiSetup()
 {
-    MoneyBar->setGeometry(80, -60, 300, 200);
+    MoneyBar->setGeometry(80, -70, 300, 200);
     moneybar->start();
     MoneyBar->show();
     MoneyBar->setMovie(moneybar);
-    MoneyFront->setGeometry(-30, 20, 300, 200);
+    MoneyFront->setGeometry(-30, 10, 300, 200);
     MoneyFront->setFont(QFont("Calibri", 16));
     MoneyFront->setText("50");
     MoneyFront->setAlignment(Qt::AlignHCenter);
     MoneyFront->show();
     MoneyFront->raise();
-    MoneyLabel->setGeometry(10, -60, 300, 200);
+    MoneyLabel->setGeometry(10, -70, 300, 200);
     moneylabel->start();
     MoneyLabel->show();
     MoneyLabel->setMovie(moneylabel);
 
-    LifeBar->setGeometry(80, 20, 300, 200);
+    LifeBar->setGeometry(80, -10, 300, 200);
     lifebar->start();
     LifeBar->show();
     LifeBar->setMovie(lifebar);
-    LifeFront->setGeometry(-30, 100, 300, 200);
+    LifeFront->setGeometry(-30, 70, 300, 200);
     LifeFront->setFont(QFont("Calibri", 16));
     LifeFront->setText("10");
     LifeFront->setAlignment(Qt::AlignHCenter);
     LifeFront->show();
     LifeFront->raise();
-    LifeLabel->setGeometry(10, 20, 300, 200);
+    LifeLabel->setGeometry(10, -10, 300, 200);
     lifelabel->start();
     LifeLabel->show();
     LifeLabel->setMovie(lifelabel);
 
-
-    WaveBar->setGeometry(700, -60, 300, 200);
+    WaveBar->setGeometry(80, 50, 300, 200);
     wavebar->start();
     WaveBar->show();
     WaveBar->setMovie(wavebar);
-    WaveFront->setGeometry(690, 20, 100, 50);
+    WaveFront->setGeometry(70, 130, 100, 50);
     WaveFront->setFont(QFont("Calibri", 16));
     WaveFront->setText("1");
     WaveFront->setAlignment(Qt::AlignHCenter);
     WaveFront->show();
-
     WaveFront->raise();
-    WaveLabel->setGeometry(620, -60, 300, 200);
+    WaveLabel->setGeometry(10, 50, 300, 200);
     wavelabel->start();
     WaveLabel->show();
     WaveLabel->setMovie(wavelabel);
@@ -1483,6 +1558,36 @@ void hardScene::uiSetup()
     Base->show();
     Base->setMovie(base);
     Base->raise();
+
+    LevelUp->setGeometry(635, 20, 50, 50);
+    levelup->start();
+    LevelUp->show();
+    LevelUp->setMovie(levelup);
+    LevelUp->raise();
+
+    LevelBar->setGeometry(690, -15, 100, 80);
+    levelbar->start();
+    LevelBar->show();
+    LevelBar->setMovie(levelbar);
+    LevelBar->raise();
+    LevelFront->setGeometry(580,85, 300, 200);
+    LevelFront->setFont(QFont("Calibri", 16));
+    LevelFront->setText("5");
+    LevelFront->setAlignment(Qt::AlignHCenter);
+    LevelFront->show();
+    LevelFront->raise();
+
+    Upgrade_MoneyBar->setGeometry(690, 35, 80, 50);
+    upgrade_moneybar->start();
+    Upgrade_MoneyBar->show();
+    Upgrade_MoneyBar->setMovie(upgrade_moneybar);
+    Upgrade_MoneyBar->raise();
+    Upgrade_MoneyFront->setGeometry(690, 45, 80, 50);
+    Upgrade_MoneyFront->setFont(QFont("Calibri", 16));
+    Upgrade_MoneyFront->setText("100");
+    Upgrade_MoneyFront->setAlignment(Qt::AlignHCenter);
+    Upgrade_MoneyFront->show();
+    Upgrade_MoneyFront->raise();//记得delete！！！
 
     btn1->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn1->setMovie(station);
@@ -1583,7 +1688,7 @@ void hardScene::uiSetup()
     btn14->raise();
 
 
-    exit->setGeometry(700, 80, 60, 60); //设置退出按钮
+    exit->setGeometry(700, 130, 60, 60); //设置退出按钮
     exit->setFlat(true);
     exit->setIcon(QIcon(":/image/Leave.png"));
     exit->setIconSize(QSize(60,60));
