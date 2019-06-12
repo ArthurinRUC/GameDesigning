@@ -27,7 +27,6 @@ public:
     void targetKilled();
     void attackEnemy();
     void chooseEnemyForAttack(Enemy *enemy);
-    //void removeBullet();
     void damageEnemy();
     void lostSightOfEnemy();
 

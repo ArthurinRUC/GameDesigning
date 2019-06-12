@@ -116,14 +116,10 @@ public:
     int						m_playerGold;
     AudioPlayer *		    m_audioPlayer;
 
-
-    //QMovie* loseScene = new QMovie(":/background/victory1.jpg");
-
 signals:
     void toTitle(); //返回信号，返回主界面
     void toEasy();
     void toHard();
-
 
 public slots:
     void FireIceattack();
@@ -172,7 +168,6 @@ protected:
 signals:
     void toEasy();
     void toHard();
-
 };
 
 
@@ -184,28 +179,15 @@ public:
     ~easyScene();
     virtual void removedEnemy(Enemy *enemy);
 
-    //增加代码 6-6
-    //void getHpDamage(int damage = 1);
-   // void removedEnemy(Enemy *enemy);
-    //void removedBullet(Bullet *bullet);
-    //void addBullet(Bullet *bullet);
-    //void awardGold(int gold);
-
-    //AudioPlayer* audioPlayer() const;
-    //QList<Enemy *> enemyList() const;
-
 protected:
     void keyPressEvent(QKeyEvent *event);
     void paintEvent(QPaintEvent *);
 
-    //增加代码 6-6
     void mousePressEvent(QMouseEvent *);
 
 private:
     QMovie* background = new QMovie(":/GameMap/easyMap2.jpg");
     QPushButton* exit = new QPushButton(this);
-
-
 
     QMovie* station = new QMovie("/image/open_spot.png");
     QLabel* btn1 = new QLabel(this);
@@ -237,32 +219,16 @@ private:
     //void doGameOver();
     void preLoadWavesInfo();
 
-
-
 private:
-    //MainWindow *		ui;
-    //int						m_waves;
-    //int						m_playerHp;
-    //int						m_playerGold;
-    //bool					m_gameEnded;
-    //bool					m_gameWin;
-    //AudioPlayer *			m_audioPlayer;
     QList<QVariant>			m_wavesInfo;
     QList<TowerPosition>	m_towerPositionsList; //√
-    //QList<Tower *>			m_towersList; //√
     QList<WayPoint *>		m_wayPointsList;
-    //QList<Enemy *>			m_enemyList;
-    //QList<Bullet *>			m_bulletList;
-
 
 private slots:
     void onTimer();
     void leave(); // emit toTitle();
 
-    //增加代码 6-6
     void back();
-    //void startEasy();
-    //void startHard();
 
     void updateMap(); //原来的槽
     void gameStart(); //原来的槽
@@ -278,21 +244,13 @@ public:
     ~hardScene();
     virtual void removedEnemy(Enemy *enemy);
 
-    //增加代码 6-6
-    //void getHpDamage(int damage = 1);
-   // void removedEnemy(Enemy *enemy);
-    //void removedBullet(Bullet *bullet);
-    //void addBullet(Bullet *bullet);
-    //void awardGold(int gold);
 
     AudioPlayer* audioPlayer() const;
-    //QList<Enemy *> enemyList() const;
 
 protected:
     void keyPressEvent(QKeyEvent *event);
     void paintEvent(QPaintEvent *);
 
-    //增加代码 6-6
     void mousePressEvent(QMouseEvent *);
 
 private:
@@ -316,7 +274,7 @@ private:
     QLabel* btn14 = new QLabel(this);
 
     //QPoint cell;
-    void uiSetup(); //在PVZ中用来设计僵尸的出现等
+    void uiSetup();
 
 private:
     void loadTowerPositions(); //√
@@ -332,38 +290,21 @@ private:
     void drawWave();
     void drawHP();
     void drawPlayerGold();
-    //void doGameOver();
     void preLoadWavesInfo();
 
 private:
-    //MainWindow *		ui;
-    //int						m_waves;
-    //int						m_playerHp;
-    //int						m_playerGold;
-    //bool					m_gameEnded;
-    //bool					m_gameWin;
-    //AudioPlayer *			m_audioPlayer;
     QList<QVariant>			m_wavesInfo;
     QList<TowerPosition>	m_towerPositionsList; //√
-    //QList<Tower *>			m_towersList; //√
-    //QList<WayPoint *>		m_wayPointsList;
-    //for different enemies
     QList<WayPoint *>       normalWayPointsList;
     QList<WayPoint *>		iceWayPointsList;
     QList<WayPoint *>		fireWayPointsList;
     QList<WayPoint *>		fastWayPointsList;
     QList<WayPoint *>		bossWayPointsList;
-    //QList<Enemy *>			m_enemyList;
-    //QList<Bullet *>			m_bulletList;
 
 private slots:
     void onTimer();
     void leave(); // emit toTitle();
-
-    //增加代码 6-6
     void back();
-    //void startEasy();
-    //void startHard();
 
     void updateMap(); //原来的槽
     void gameStart(); //原来的槽

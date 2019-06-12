@@ -26,7 +26,6 @@ Tower::Tower(QPoint pos, tScene *game, const QPixmap &sprite, int attackRange, i
 {
 	m_fireRateTimer = new QTimer(this);
 	connect(m_fireRateTimer, SIGNAL(timeout()), this, SLOT(shootWeapon()));
-    //start(fireRate)开始后，每经过fireRate时间，执行一次shootWeapon()
 }
 
 Tower::~Tower()
@@ -95,7 +94,6 @@ void Tower::chooseEnemyForAttack(Enemy *enemy)
     //敌人自己要关联一个攻击者，这个用QList管理攻击者，因为可能有多个
 	m_chooseEnemy->getAttacked(this);
 }
-
 
 void Tower::targetKilled()
 {

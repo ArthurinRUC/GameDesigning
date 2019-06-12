@@ -41,13 +41,11 @@ void AudioPlayer::stopBGM(){
 void AudioPlayer::playWinSound(){
     if(m_winMusic)
         m_winMusic->play();
-    //m_winMusic->stop();
 }
 
 void AudioPlayer::playLoseSound(){
     if(m_loseMusic)
         m_loseMusic->play();
-    //m_loseMusic->stop();
 }
 
 void AudioPlayer::playSound(SoundType soundType)

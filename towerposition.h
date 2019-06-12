@@ -28,9 +28,6 @@ private:
     bool		m_hasTower;
     QPoint		m_pos; //QPoint定义点坐标，这里保存区域的左上角坐标
     QPixmap		m_sprite;
-    //QPixmap是为了在屏幕上显示图像而设计和优化的，它可以通过load或者loadFromData读取图片
-    //QPixmap pix;
-    //pix.loadFromData(data, "JPG");
 
     static const QSize ms_fixedSize; //QSize保存二维数据，这里应该指炮塔位置的长和宽
 };

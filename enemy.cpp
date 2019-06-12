@@ -128,7 +128,6 @@ void Enemy::getDamage(Bullet *bullet){
             m_game->audioPlayer()->playSound(LaserBulletSound);
             break;
     }
-    
     // 阵亡,需要移除
     canRemove();
 }
@@ -154,14 +153,13 @@ void Enemy::canRemove()
             break;
         }
 
-        m_game->awardGold(award);//奖金数额与敌人类型相关？？？
+        m_game->awardGold(award);
         getRemoved();
     }
 }
 void Enemy::getFireDamage(int damage)
 {
     m_currentHp -= damage;
-
     // 阵亡,需要移除
     canRemove();
 }

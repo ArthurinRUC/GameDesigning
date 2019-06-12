@@ -15,20 +15,6 @@ class tCard : public QLabel
 public:
     tCard(QLabel* parent = 0);
     ~tCard();
-    //int plantIndex;
-    //int sunPoint = 50;
-   // int frame_max = 1, frame = 1;
-    //virtual void act();
-
-    //QWidget* front;
-    //QWidget* back;
-    //QLabel* frontText;
-    //tScene* scene;
-
-    //void setIndex(float index);
-   // void transFront();
-protected:
-    //void mousePressEvent(QMouseEvent* event);
 };
 
 class tNormalTowerCard : public tCard

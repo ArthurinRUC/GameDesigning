@@ -3,7 +3,6 @@
 #include"tcard.h"
 
 static const int TowerCost = 300;
-//static const QString s_curDir = "C:/Users/81915/Desktop/LS/Programming/GD/GameDesigning/music";
 
 tScene::tScene(QWidget *parent) : QLabel(parent)
   , m_waves(0)
@@ -258,16 +257,12 @@ void tStartScene::mousePressEvent(QMouseEvent *event)
 
 easyScene::easyScene(QWidget* parent)
     : tScene(parent)
-  //, ui(new Ui::MainWindow)
 {
     QUrl backgroundMusicUrl = QUrl::fromLocalFile(s_curDir + "/easy.mp3");
     m_audioPlayer = new AudioPlayer(backgroundMusicUrl,this);
-    //m_audioPlayer->getMusic()->setVolume(30);
     m_audioPlayer->startBGM();
 
     this->setGeometry(0, 0, 800, 600);
-    //this->cellSize = QPoint(81, 100);
-    //this->rect = QRect(250, 85, 729, 500);
     this->setMovie(this->background);
     this->background->start();
     this->show();
@@ -275,9 +270,6 @@ easyScene::easyScene(QWidget* parent)
     preLoadWavesInfo(); //设置波数
     loadTowerPositions(); //调用位置函数
     addWayPoints();
-
-    //m_audioPlayer = new AudioPlayer(this);
-    //m_audioPlayer->startBGM();
 
     //每100ms更新一次灼烧状态
     QTimer *Firetime = new QTimer(this);
@@ -519,7 +511,6 @@ void easyScene::uiSetup()
     Front2 = new QLabel(this);
     Front2->setText("150");
     Front2->setGeometry(325, 40, 40, 20);
-    //front1->setAlignment(Qt::AlignHCenter);
     Front2->setFont(QFont("Calibri", 11));
     Front2->show();
     Front2->raise();
@@ -532,7 +523,6 @@ void easyScene::uiSetup()
     Front3 = new QLabel(this);
     Front3->setText("150");
     Front3->setGeometry(475, 40, 40, 20);
-    //front1->setAlignment(Qt::AlignHCenter);
     Front3->setFont(QFont("Calibri", 11));
     Front3->show();
     Front3->raise();
@@ -545,7 +535,6 @@ void easyScene::uiSetup()
     Front4 = new QLabel(this);
     Front4->setText("200");
     Front4->setGeometry(575, 40, 40, 20);
-    //front1->setAlignment(Qt::AlignHCenter);
     Front4->setFont(QFont("Calibri", 11));
     Front4->show();
     Front4->raise();
@@ -761,33 +750,6 @@ void easyScene::keyPressEvent(QKeyEvent *event)
 {
     switch(event->key())
     {
-    /*case Qt::Key_1:
-        this->putZombie(qrand() % 5, 0);
-        break;
-    case Qt::Key_2:
-        this->putZombie(qrand() % 5, 1);
-        break;
-    case Qt::Key_3:
-        this->putZombie(qrand() % 5, 2);
-        break;
-    case Qt::Key_4:
-        this->putZombie(qrand() % 5, 3);
-        break;
-    case Qt::Key_5:
-        this->putZombie(qrand() % 5, 4);
-        break;
-    case Qt::Key_6:
-        this->putZombie(qrand() % 5, 5);
-        break;
-    case Qt::Key_7:
-        this->putZombie(qrand() % 5, 6);
-        break;
-    case Qt::Key_8:
-        this->sunPoint += 100;
-        break;
-    case Qt::Key_9:
-        this->threat = 6001;
-        break;*/
     case Qt::Key_Escape:
         emit toTitle();
         break;
@@ -859,24 +821,16 @@ void easyScene::paintEvent(QPaintEvent *)
 
         if(m_gameWin){
         QPixmap loseScene(":/background/victory_better.jpg");
-        //QPainter losePainter(&loseScene);
         QPainter painter(this);
         painter.drawPixmap(0, 0, loseScene);
 
-        /*QString text = m_gameEnded ? "YOU LOST!!!" : "YOU WIN!!!";
-        QPainter painter(this);
-        painter.setPen(QPen(Qt::red));
-        painter.drawText(rect(), Qt::AlignCenter, text);*/
         }
 
         if(m_gameEnded)
         {
             QPixmap loseScene(":/background/lose1.jpg");
-            //QPainter losePainter(&loseScene);
             QPainter painter(this);
             painter.drawPixmap(0, 0, loseScene);
-
-
         }
         return;
     }
@@ -885,15 +839,8 @@ void easyScene::paintEvent(QPaintEvent *)
     //先在背景图片QPixmap上绘制，最后统一绘制QPixmap
     QPainter cachePainter(&cachePix); //缓存，避免直接在界面上绘制而效率低下
 
-    //foreach手法，讲究
-    /*foreach (const TowerPosition &towerPos, m_towerPositionsList)
-        towerPos.draw(&cachePainter);*/
-
     foreach (const Tower *tower, m_towersList)
         tower->draw(&cachePainter);
-
-    //foreach (const WayPoint *wayPoint, m_wayPointsList)
-      //  wayPoint->draw(&cachePainter);
 
     foreach (const Enemy *enemy, m_enemyList)
         enemy->draw(&cachePainter);
@@ -1057,17 +1004,7 @@ void easyScene::mousePressEvent(QMouseEvent * event)
 
 void easyScene::onTimer()
 {
-    /*this->removeDeath();
-    this->act();
-    this->SunFront->setText(QString::number(this->sunPoint));
-    this->createZombie();
-    if (qrand() % 521 < 100)
-    {
-        zBonus* sun = new zSunFall(this);
-        Bonuses.append(sun);
-    }*/
     this->exit->raise();
-    //this->judge();
 }
 
 void easyScene::leave()
@@ -1077,7 +1014,7 @@ void easyScene::leave()
 
 void easyScene::back()
 {
-    //MainWindow::back();
+
 }
 
 void easyScene::updateMap()
@@ -1094,21 +1031,16 @@ void easyScene::gameStart()
     loadWave();
 }
 
-
 // 以下是对复杂地图的设计
 
 hardScene::hardScene(QWidget* parent)
     : tScene(parent)
-//, ui(new Ui::MainWindow)
 {
     QUrl backgroundMusicUrl = QUrl::fromLocalFile(s_curDir + "/hard.mp3");
     m_audioPlayer = new AudioPlayer(backgroundMusicUrl,this);
-    //m_audioPlayer->getMusic()->setVolume(30);
     m_audioPlayer->startBGM();
 
     this->setGeometry(0, 0, 800, 600);
-    //this->cellSize = QPoint(81, 100);
-    //this->rect = QRect(250, 85, 729, 500);
     this->setMovie(this->background);
     this->background->start();
     this->show();
@@ -1122,9 +1054,6 @@ hardScene::hardScene(QWidget* parent)
     addFireWayPoints();
     addFastWayPoints();
     addBossWayPoints();
-
-    //m_audioPlayer = new AudioPlayer(this);
-    //m_audioPlayer->startBGM();
 
     //每30ms发送一个更新信号
     QTimer *timer = new QTimer(this);
@@ -1166,33 +1095,6 @@ void hardScene::keyPressEvent(QKeyEvent *event)
 {
     switch(event->key())
     {
-    /*case Qt::Key_1:
-        this->putZombie(qrand() % 5, 0);
-        break;
-    case Qt::Key_2:
-        this->putZombie(qrand() % 5, 1);
-        break;
-    case Qt::Key_3:
-        this->putZombie(qrand() % 5, 2);
-        break;
-    case Qt::Key_4:
-        this->putZombie(qrand() % 5, 3);
-        break;
-    case Qt::Key_5:
-        this->putZombie(qrand() % 5, 4);
-        break;
-    case Qt::Key_6:
-        this->putZombie(qrand() % 5, 5);
-        break;
-    case Qt::Key_7:
-        this->putZombie(qrand() % 5, 6);
-        break;
-    case Qt::Key_8:
-        this->sunPoint += 100;
-        break;
-    case Qt::Key_9:
-        this->threat = 6001;
-        break;*/
     case Qt::Key_Escape:
         emit toTitle();
         break;
@@ -1250,48 +1152,27 @@ void hardScene::paintEvent(QPaintEvent *)
             delete card;
         }
 
-        //m_audioPlayer->stopBGM();
-
         if(m_gameWin){
 
         QPixmap loseScene(":/background/victory_better.jpg");
-        //QPainter losePainter(&loseScene);
         QPainter painter(this);
         painter.drawPixmap(0, 0, loseScene);
-
-
-
-        /*QString text = m_gameEnded ? "YOU LOST!!!" : "YOU WIN!!!";
-        QPainter painter(this);
-        painter.setPen(QPen(Qt::red));
-        painter.drawText(rect(), Qt::AlignCenter, text);*/
         }
 
         if(m_gameEnded)
         {
             QPixmap loseScene(":/background/lose1.jpg");
-            //QPainter losePainter(&loseScene);
             QPainter painter(this);
             painter.drawPixmap(0, 0, loseScene);
-
-
         }
         return;
     }
 
     QPixmap cachePix(":/GameMap/hardMap2.jpg"); //背景图片【可改】！！
-    //先在背景图片QPixmap上绘制，最后统一绘制QPixmap
     QPainter cachePainter(&cachePix); //缓存，避免直接在界面上绘制而效率低下
-
-    //foreach手法，讲究
-    /*foreach (const TowerPosition &towerPos, m_towerPositionsList)
-        towerPos.draw(&cachePainter);*/
 
     foreach (const Tower *tower, m_towersList)
         tower->draw(&cachePainter);
-
-   // foreach (const WayPoint *wayPoint, m_wayPointsList)
-     //   wayPoint->draw(&cachePainter);
 
     foreach (const Enemy *enemy, m_enemyList)
         enemy->draw(&cachePainter);
@@ -1434,7 +1315,6 @@ void hardScene::mousePressEvent(QMouseEvent * event)
 
     }
 
-    //if(state == 0) //空状态
     int cardindex = -1;
     if (posx >= 180 && posx <= 280 && posy >= 10 && posy <= 60)
         cardindex = 0;
@@ -1455,17 +1335,7 @@ void hardScene::mousePressEvent(QMouseEvent * event)
 
 void hardScene::onTimer()
 {
-    /*this->removeDeath();
-    this->act();
-    this->SunFront->setText(QString::number(this->sunPoint));
-    this->createZombie();
-    if (qrand() % 521 < 100)
-    {
-        zBonus* sun = new zSunFall(this);
-        Bonuses.append(sun);
-    }*/
     this->exit->raise();
-    //this->judge();
 }
 
 void hardScene::leave()
@@ -1475,7 +1345,7 @@ void hardScene::leave()
 
 void hardScene::back()
 {
-    //MainWindow::back();
+
 }
 
 void hardScene::updateMap()
@@ -1739,7 +1609,6 @@ void hardScene::uiSetup()
     Front3 = new QLabel(this);
     Front3->setText("150");
     Front3->setGeometry(475, 40, 40, 20);
-    //front1->setAlignment(Qt::AlignHCenter);
     Front3->setFont(QFont("Calibri", 11));
     Front3->show();
     Front3->raise();
@@ -1752,7 +1621,6 @@ void hardScene::uiSetup()
     Front4 = new QLabel(this);
     Front4->setText("200");
     Front4->setGeometry(575, 40, 40, 20);
-    //front1->setAlignment(Qt::AlignHCenter);
     Front4->setFont(QFont("Calibri", 11));
     Front4->show();
     Front4->raise();
@@ -2267,6 +2135,4 @@ hardScene::~hardScene()
         delete tower;
     foreach (const Enemy *enemy, m_enemyList)
         delete enemy;
-    // addition 6-6
-    //delete ui;
 }
