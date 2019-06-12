@@ -44,5 +44,6 @@
         <file>image/base0.png</file>
         <file>config/easyTowersPosition.plist</file>
         <file>config/hardTowersPosition.plist</file>
+        <file>background/scene01.jpg</file>
     </qresource>
 </RCC>
