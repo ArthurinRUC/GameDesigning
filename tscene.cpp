@@ -357,9 +357,10 @@ void easyScene::uiSetup()
     LevelBar->show();
     LevelBar->setMovie(levelbar);
     LevelBar->raise();
-    LevelFront->setGeometry(570, 480, 300, 200);
+
+    LevelFront->setGeometry(-100, 420, 300, 200);
     LevelFront->setFont(QFont("Calibri", 16));
-    LevelFront->setText("1");
+    LevelFront->setText("5");
     LevelFront->setAlignment(Qt::AlignHCenter);
     LevelFront->show();
     LevelFront->raise();
@@ -369,9 +370,10 @@ void easyScene::uiSetup()
     Upgrade_MoneyBar->show();
     Upgrade_MoneyBar->setMovie(upgrade_moneybar);
     Upgrade_MoneyBar->raise();
-    Upgrade_MoneyFront->setGeometry(570, 480, 300, 200);
+
+    Upgrade_MoneyFront->setGeometry(60, 420, 300, 200);
     Upgrade_MoneyFront->setFont(QFont("Calibri", 16));
-    Upgrade_MoneyFront->setText("1");
+    Upgrade_MoneyFront->setText("100");
     Upgrade_MoneyFront->setAlignment(Qt::AlignHCenter);
     Upgrade_MoneyFront->show();
     Upgrade_MoneyFront->raise();//记得delete！！！
@@ -933,23 +935,54 @@ void easyScene::mousePressEvent(QMouseEvent * event)
         upgradestate = 0;
     }
 
+    /*
+    if (currentCard == nullptr && it->containPoint(pressPos) && it->hasTower())
+    {
+
+        currenttower = it->m_tower;
+        //有塔状态：显示等级和升级图表
+        LevelFront->setText(QString("level %1").arg(it->m_tower->m_level));
+        LevelFront->show();
+        LevelFront->raise();
+        switch (it->m_tower->m_level)
+        {
+        case 1:
+            Upgrade_MoneyFront->setText("180");
+            break;
+        case 2:
+            Upgrade_MoneyFront->setText("280");
+            break;
+        case 3:
+            Upgrade_MoneyFront->setText("380");
+            break;
+        case 4:
+            Upgrade_MoneyFront->setText("480");
+            break;
+        default:
+            Upgrade_MoneyFront->setText("---");
+            break;
+        }
+        Upgrade_MoneyFront->show();
+        Upgrade_MoneyFront->raise();
+
+        upgradestate = 1;
+    }
+    */
+
     if(currentCard != nullptr){
         bool temp = 0;
     auto it = m_towerPositionsList.begin();
     while (it != m_towerPositionsList.end())
     {
+       /*
         if (currentCard == nullptr && it->containPoint(pressPos) && it->hasTower())
         {
+
             currenttower = it->m_tower;
             //有塔状态：显示等级和升级图表
-
-            /*
-    LifeFront->setText(QString("%1").arg(m_playerHp));
-    LifeFront->setAlignment(Qt::AlignHCenter);
-    LifeFront->show();
-    LifeFront->raise();
-*/
             LevelFront->setText(QString("level %1").arg(it->m_tower->m_level));
+            LevelFront->show();
+            LevelFront->raise();
             switch (it->m_tower->m_level)
             {
             case 1:
@@ -968,9 +1001,12 @@ void easyScene::mousePressEvent(QMouseEvent * event)
                 Upgrade_MoneyFront->setText("---");
                 break;
             }
-            upgradestate = 1;
+            Upgrade_MoneyFront->show();
+            Upgrade_MoneyFront->raise();
 
-        }
+            upgradestate = 1;
+        }*/
+
         if (currentCard != nullptr && canBuyTower() && it->containPoint(pressPos) && !it->hasTower())
         {
             temp = 1;
