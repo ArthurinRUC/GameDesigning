@@ -1552,25 +1552,25 @@ void hardScene::uiSetup()
     LevelUp->setMovie(levelup);
     LevelUp->raise();
 
-    LevelBar->setGeometry(690, -15, 100, 80);
+    LevelBar->setGeometry(690, -15, 120, 100);
     levelbar->start();
     LevelBar->show();
     LevelBar->setMovie(levelbar);
     LevelBar->raise();
-    LevelFront->setGeometry(580,85, 300, 200);
-    LevelFront->setFont(QFont("Calibri", 16));
+    LevelFront->setGeometry(640,20, 180, 120);
+    LevelFront->setFont(QFont("Calibri", 12));
     LevelFront->setText("5");
     LevelFront->setAlignment(Qt::AlignHCenter);
     LevelFront->show();
     LevelFront->raise();
 
-    Upgrade_MoneyBar->setGeometry(690, 35, 80, 50);
+    Upgrade_MoneyBar->setGeometry(690, 40, 100, 80);
     upgrade_moneybar->start();
     Upgrade_MoneyBar->show();
     Upgrade_MoneyBar->setMovie(upgrade_moneybar);
     Upgrade_MoneyBar->raise();
-    Upgrade_MoneyFront->setGeometry(690, 45, 80, 50);
-    Upgrade_MoneyFront->setFont(QFont("Calibri", 16));
+    Upgrade_MoneyFront->setGeometry(685, 65, 80, 50);
+    Upgrade_MoneyFront->setFont(QFont("Calibri", 12));
     Upgrade_MoneyFront->setText("100");
     Upgrade_MoneyFront->setAlignment(Qt::AlignHCenter);
     Upgrade_MoneyFront->show();
