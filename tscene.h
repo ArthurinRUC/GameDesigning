@@ -85,11 +85,13 @@ public:
     QLabel* LevelUp = new QLabel(this);
     QMovie* levelup = new QMovie(":/image/upgrade.png");
 
-    QLabel* ShowLevel = new QLabel(this);
-    QMovie* showlevel = new QMovie(":/image/info_bar.png");
+    QLabel* LevelFront = new QLabel(this);
+    QLabel* LevelBar = new QLabel(this);
+    QMovie* levelbar = new QMovie(":/image/info_bar.png");
 
-    QLabel* Upgrade_Money = new QLabel(this);
-    QMovie* upgrade_money = new QMovie(":/image/info_bar.png");
+    QLabel* Upgrade_MoneyFront = new QLabel(this);
+    QLabel* Upgrade_MoneyBar = new QLabel(this);
+    QMovie* upgrade_moneybar = new QMovie(":/image/info_bar.png");
 
     // move to base class
     void addBullet(Bullet *bullet);

@@ -342,18 +342,35 @@ void easyScene::uiSetup()
     Base->show();
     Base->setMovie(base);
     Base->raise();
-
-    ShowLevel->setGeometry(10, 340, 300, 200);
-    showlevel->start();
-    ShowLevel->show();
-    ShowLevel->setMovie(showlevel);
-    ShowLevel->raise();
-
+    
     LevelUp->setGeometry(100, 410, 50, 50);
     levelup->start();
     LevelUp->show();
     LevelUp->setMovie(levelup);
     LevelUp->raise();
+  
+    /*
+    WaveBar->setGeometry(680, 400, 300, 200);
+    wavebar->start();
+    WaveBar->show();
+    WaveBar->setMovie(wavebar);
+    WaveFront->setGeometry(570, 480, 300, 200);
+    WaveFront->setFont(QFont("Calibri", 16));
+    WaveFront->setText("1");
+    WaveFront->setAlignment(Qt::AlignHCenter);
+    WaveFront->show();
+    WaveFront->raise();
+    WaveLabel->setGeometry(615, 400, 300, 200);
+    wavelabel->start();
+    WaveLabel->show();
+    WaveLabel->setMovie(wavelabel);
+    */
+    LevelFront->setGeometry()
+    ShowLevel->setGeometry(10, 340, 300, 200);
+    showlevel->start();
+    ShowLevel->show();
+    ShowLevel->setMovie(showlevel);
+    ShowLevel->raise();
 
     Upgrade_Money->setGeometry(170, 340, 300, 200);
     upgrade_money->start();
