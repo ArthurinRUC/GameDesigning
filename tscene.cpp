@@ -899,6 +899,22 @@ void easyScene::mousePressEvent(QMouseEvent * event)
     QPoint pressPos = event->pos();
     int posx = pressPos.x();
     int posy = pressPos.y();
+    if (upgradestate)
+    {
+        if (posx >= 100 && posx <= 150 && posy >= 410 && posy <= 460)
+        {
+            //升级,暂时没考虑满级(5级）如何处理
+            int level = currenttower->m_level;
+            int gold = 80 + level*100;
+            if (m_playerGold >= gold)
+            {
+                m_playerGold -= gold;
+                currenttower->levelup();
+            }
+        }
+        currenttower = nullptr;
+        upgradestate = 0;
+    }
 
     if(currentCard != nullptr){
         bool temp = 0;
@@ -907,10 +923,37 @@ void easyScene::mousePressEvent(QMouseEvent * event)
     {
         if (currentCard == nullptr && it->containPoint(pressPos) && it->hasTower())
         {
+            currenttower = it->m_tower;
             //有塔状态：显示等级和升级图表
+
 
             ShowLevel->setText("Level 100");
             Upgrade_Money->setText("180");
+
+            //ShowLevel->show();
+            //Upgrade_Money->show();
+            //LevelUp->show();
+            ShowLevel->setText(QString("level %1").arg(it->m_tower->m_level));
+            switch (it->m_tower->m_level)
+            {
+            case 1:
+                Upgrade_Money->setText("180");
+                break;
+            case 2:
+                Upgrade_Money->setText("280");
+                break;
+            case 3:
+                Upgrade_Money->setText("380");
+                break;
+            case 4:
+                Upgrade_Money->setText("480");
+                break;
+            default:
+                Upgrade_Money->setText("---");
+                break;
+            }
+            upgradestate = 1;
+
         }
         if (currentCard != nullptr && canBuyTower() && it->containPoint(pressPos) && !it->hasTower())
         {
@@ -922,23 +965,24 @@ void easyScene::mousePressEvent(QMouseEvent * event)
             switch(currentIndex)
             {
             case 0:tower = new NormalTower(it->centerPos(), this);
-                it->m_towerkind = 0;
+                it->m_tower = tower;
                 m_playerGold -= 100;
-                it->m_level = 1;
+                it->m_towerkind = 0;
                 break;
             case 1:tower = new FireTower(it->centerPos(), this);
                 m_playerGold -= 150;
+                it->m_tower = tower;
                 it->m_towerkind = 1;
-                it->m_level = 1;
                 break;
             case 2:tower = new IceTower(it->centerPos(), this);
                 m_playerGold -= 150;
                 it->m_towerkind = 2;
-                it->m_level = 1;
+                it->m_tower = tower;
                 break;
             case 3:tower = new LaserTower(it->centerPos(), this);
                 m_playerGold -= 200;
                 it->m_towerkind = 3;
+                it->m_tower = tower;
                 break;
             }
             m_towersList.push_back(tower);
