@@ -935,78 +935,51 @@ void easyScene::mousePressEvent(QMouseEvent * event)
         upgradestate = 0;
     }
 
-    /*
-    if (currentCard == nullptr && it->containPoint(pressPos) && it->hasTower())
-    {
 
-        currenttower = it->m_tower;
-        //有塔状态：显示等级和升级图表
-        LevelFront->setText(QString("level %1").arg(it->m_tower->m_level));
-        LevelFront->show();
-        LevelFront->raise();
-        switch (it->m_tower->m_level)
+    if (currentCard == nullptr ){
+        auto it = m_towerPositionsList.begin();
+        while (it != m_towerPositionsList.end())
         {
-        case 1:
-            Upgrade_MoneyFront->setText("180");
-            break;
-        case 2:
-            Upgrade_MoneyFront->setText("280");
-            break;
-        case 3:
-            Upgrade_MoneyFront->setText("380");
-            break;
-        case 4:
-            Upgrade_MoneyFront->setText("480");
-            break;
-        default:
-            Upgrade_MoneyFront->setText("---");
-            break;
-        }
-        Upgrade_MoneyFront->show();
-        Upgrade_MoneyFront->raise();
+            if (currentCard == nullptr && it->containPoint(pressPos) && it->hasTower())
+            {
 
-        upgradestate = 1;
+                currenttower = it->m_tower;
+                //有塔状态：显示等级和升级图表
+                LevelFront->setText(QString("level %1").arg(it->m_tower->m_level));
+                LevelFront->show();
+                LevelFront->raise();
+                switch (it->m_tower->m_level)
+                {
+                case 1:
+                    Upgrade_MoneyFront->setText("180");
+                    break;
+                case 2:
+                    Upgrade_MoneyFront->setText("280");
+                    break;
+                case 3:
+                    Upgrade_MoneyFront->setText("380");
+                    break;
+                case 4:
+                    Upgrade_MoneyFront->setText("480");
+                    break;
+                default:
+                    Upgrade_MoneyFront->setText("---");
+                    break;
+                }
+                Upgrade_MoneyFront->show();
+                Upgrade_MoneyFront->raise();
+
+                upgradestate = 1;
+            }
+            ++it;
+        }
     }
-    */
 
     if(currentCard != nullptr){
         bool temp = 0;
     auto it = m_towerPositionsList.begin();
     while (it != m_towerPositionsList.end())
     {
-       /*
-        if (currentCard == nullptr && it->containPoint(pressPos) && it->hasTower())
-        {
-
-            currenttower = it->m_tower;
-            //有塔状态：显示等级和升级图表
-            LevelFront->setText(QString("level %1").arg(it->m_tower->m_level));
-            LevelFront->show();
-            LevelFront->raise();
-            switch (it->m_tower->m_level)
-            {
-            case 1:
-                Upgrade_MoneyFront->setText("180");
-                break;
-            case 2:
-                Upgrade_MoneyFront->setText("280");
-                break;
-            case 3:
-                Upgrade_MoneyFront->setText("380");
-                break;
-            case 4:
-                Upgrade_MoneyFront->setText("480");
-                break;
-            default:
-                Upgrade_MoneyFront->setText("---");
-                break;
-            }
-            Upgrade_MoneyFront->show();
-            Upgrade_MoneyFront->raise();
-
-            upgradestate = 1;
-        }*/
-
         if (currentCard != nullptr && canBuyTower() && it->containPoint(pressPos) && !it->hasTower())
         {
             temp = 1;
@@ -1046,12 +1019,11 @@ void easyScene::mousePressEvent(QMouseEvent * event)
 
         ++it;
     }
-    if(temp == 0)
-    {
-       currentCard->move(currentPos);
-       currentCard = nullptr;
-    }
-
+        if(temp == 0)
+        {
+           currentCard->move(currentPos);
+           currentCard = nullptr;
+        }
     }
 
     //if(state == 0) //空状态
@@ -1071,8 +1043,7 @@ void easyScene::mousePressEvent(QMouseEvent * event)
         this->currentCard = Cards[cardindex];
         currentIndex = cardindex;
     }
-
-}
+    }
 
 void easyScene::onTimer()
 {
