@@ -56,5 +56,6 @@
         <file>picture/firetower.png</file>
         <file>picture/icetower.png</file>
         <file>picture/lasertower.png</file>
+        <file>image/laserbullet.png</file>
     </qresource>
 </RCC>

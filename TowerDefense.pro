@@ -58,4 +58,5 @@ DISTFILES += \
     music/fireBullet.mp3 \
     music/iceBulet.mp3 \
     music/laserBullet.mp3 \
-    music/normalBullet.mp3
+    music/normalBullet.mp3 \
+    image/laserbullet.png
