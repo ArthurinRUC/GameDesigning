@@ -36,6 +36,13 @@ tScene::~tScene()
     if (!(this->WaveLabel == nullptr)) delete this->WaveLabel;
     if (!(this->wavelabel == nullptr))delete this->wavelabel;
 
+    if (!(this->LevelUp == nullptr)) delete this->LevelUp;
+    if (!(this->levelup == nullptr)) delete this->levelup;
+    if (!(this->showlevel == nullptr)) delete this->showlevel;
+    if (!(this->ShowLevel == nullptr)) delete this->ShowLevel;
+    if (!(this->upgrade_money == nullptr))delete this->upgrade_money;
+    if (!(this->Upgrade_Money == nullptr))delete this->Upgrade_Money;
+
     delete Base;
     delete base;
 
@@ -339,6 +346,24 @@ void easyScene::uiSetup()
     Base->show();
     Base->setMovie(base);
     Base->raise();
+
+    ShowLevel->setGeometry(10, 420, 300, 200);
+    showlevel->start();
+    ShowLevel->show();
+    ShowLevel->setMovie(showlevel);
+    ShowLevel->raise();
+
+    LevelUp->setGeometry(130, 420, 50, 50);
+    levelup->start();
+    LevelUp->show();
+    LevelUp->setMovie(levelup);
+    LevelUp->raise();
+
+    Upgrade_Money->setGeometry(200, 420, 300, 200);
+    upgrade_money->start();
+    Upgrade_Money->show();
+    Upgrade_Money->setMovie(upgrade_money);
+    Upgrade_Money->raise();
 
     btn1->setStyleSheet("QLabel{border: 1px solid #000000;} QLabel:hover{border:1px solid #EE0000;}");
     btn1->setMovie(station);
@@ -789,6 +814,8 @@ void easyScene::paintEvent(QPaintEvent *)
         Front2->hide();
         Front3->hide();
         Front4->hide();
+        ShowLevel->hide();
+        Upgrade_Money->hide();
 
         NormalTowerPic->hide();
         FireTowerPic->hide();
@@ -882,7 +909,15 @@ void easyScene::mousePressEvent(QMouseEvent * event)
     auto it = m_towerPositionsList.begin();
     while (it != m_towerPositionsList.end())
     {
-
+        if (currentCard == nullptr && it->containPoint(pressPos) && it->hasTower())
+        {
+            //有塔状态：显示等级和升级图表
+            //ShowLevel->show();
+            //Upgrade_Money->show();
+            //LevelUp->show();
+            ShowLevel->setText("Level 100");
+            Upgrade_Money->setText("180");
+        }
         if (currentCard != nullptr && canBuyTower() && it->containPoint(pressPos) && !it->hasTower())
         {
             temp = 1;
@@ -893,16 +928,23 @@ void easyScene::mousePressEvent(QMouseEvent * event)
             switch(currentIndex)
             {
             case 0:tower = new NormalTower(it->centerPos(), this);
+                it->m_towerkind = 0;
                 m_playerGold -= 100;
+                it->m_level = 1;
                 break;
             case 1:tower = new FireTower(it->centerPos(), this);
                 m_playerGold -= 150;
+                it->m_towerkind = 1;
+                it->m_level = 1;
                 break;
             case 2:tower = new IceTower(it->centerPos(), this);
                 m_playerGold -= 150;
+                it->m_towerkind = 2;
+                it->m_level = 1;
                 break;
             case 3:tower = new LaserTower(it->centerPos(), this);
                 m_playerGold -= 200;
+                it->m_towerkind = 3;
                 break;
             }
             m_towersList.push_back(tower);

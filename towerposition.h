@@ -19,9 +19,12 @@ public:
 
 	void draw(QPainter *painter) const;
 
+    int         m_towerkind;
+    int         m_level;
+
 private:
     //几乎所有对象都包含3个信息：坐标点、尺寸大小、图片信息
-	bool		m_hasTower;
+    bool		m_hasTower;
     QPoint		m_pos; //QPoint定义点坐标，这里保存区域的左上角坐标
     QPixmap		m_sprite;
     //QPixmap是为了在屏幕上显示图像而设计和优化的，它可以通过load或者loadFromData读取图片

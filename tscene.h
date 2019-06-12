@@ -60,7 +60,7 @@ public:
 
     QLabel* WaveFront = new QLabel(this);
     QLabel* WaveBar = new QLabel(this);
-    QMovie* wavebar = new QMovie(":image/info_bar.png");
+    QMovie* wavebar = new QMovie(":/image/info_bar.png");
     QLabel* WaveLabel = new QLabel(this);
     QMovie* wavelabel = new QMovie(":/image/wave2.png");
 
@@ -81,6 +81,15 @@ public:
 
     QLabel* Base = new QLabel(this);
     QMovie* base = new QMovie(":/image/base0.png");
+
+    QLabel* LevelUp = new QLabel(this);
+    QMovie* levelup = new QMovie(":/image/upgrade.png");
+
+    QLabel* ShowLevel = new QLabel(this);
+    QMovie* showlevel = new QMovie(":/image/info_bar.png");
+
+    QLabel* Upgrade_Money = new QLabel(this);
+    QMovie* upgrade_money = new QMovie(":/image/info_bar.png");
 
     // move to base class
     void addBullet(Bullet *bullet);
