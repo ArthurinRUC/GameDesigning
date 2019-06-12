@@ -137,7 +137,7 @@ void NormalTower::shootWeapon()
 
 void NormalTower::levelup()
 {
-    if (m_level == 3) //3级为最高级
+    if (m_level == 5) //5级为最高级
         return;
     m_level++;
     m_damage += 5; //每升一级子弹加5点伤害
@@ -163,7 +163,7 @@ void FireTower::shootWeapon()
 
 void FireTower::levelup()
 {
-    if (m_level == 3) //3级为最高级
+    if (m_level == 5) //5级为最高级
         return;
     m_level++;
     m_damage += 5; //每升一级，火焰子弹加5点伤害
@@ -183,7 +183,7 @@ IceTower::~IceTower()
 
 void IceTower::levelup()
 {
-    if (m_level == 3) //3级为最高级
+    if (m_level == 5) //5级为最高级
         return;
     m_level++;
     m_damage += 5; //每升一级，寒冰子弹加5点伤害
@@ -210,7 +210,7 @@ LaserTower::~LaserTower()
 
 void LaserTower::levelup()
 {
-    if (m_level == 3) //3级为最高级
+    if (m_level == 5) //5级为最高级
         return;
     m_level++;
     m_damage += 10; //每升一级，激光子弹加10点伤害

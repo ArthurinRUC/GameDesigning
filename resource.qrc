@@ -9,10 +9,7 @@
         <file>config/Info.plist</file>
         <file>config/Waves.plist</file>
         <file>image/logo.jpg</file>
-        <file>background/scene1.jpg</file>
-        <file>GameMap/choose1.jpg</file>
         <file>GameMap/Title.jpg</file>
-        <file>GameMap/choose2.jpg</file>
         <file>GameMap/easyMap.jpg</file>
         <file>GameMap/hardMap.jpg</file>
         <file>GameMap/easyMap2.jpg</file>
@@ -58,5 +55,6 @@
         <file>picture/lasertower.png</file>
         <file>image/laserbullet.png</file>
         <file>image/upgrade.png</file>
+        <file>background/scene1.png</file>
     </qresource>
 </RCC>

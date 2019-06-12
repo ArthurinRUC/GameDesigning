@@ -8,8 +8,8 @@ tScene::tScene(QWidget *parent) : QLabel(parent)
   , m_waves(0)
   , m_gameEnded(false)
   , m_gameWin(false)
-  , m_playerHp(5)
-  , m_playerGold(1000)
+  , m_playerHp(15)
+  , m_playerGold(10000)
 {
     this->setMouseTracking(true);
     this->grabKeyboard();
@@ -351,7 +351,7 @@ void easyScene::uiSetup()
     LevelBar->raise();
     LevelFront->setGeometry(-100, 420, 300, 200);
     LevelFront->setFont(QFont("Calibri", 16));
-    LevelFront->setText("5");
+    //LevelFront->setText("5");
     LevelFront->setAlignment(Qt::AlignHCenter);
     LevelFront->show();
     LevelFront->raise();
@@ -364,7 +364,7 @@ void easyScene::uiSetup()
 
     Upgrade_MoneyFront->setGeometry(60, 420, 300, 200);
     Upgrade_MoneyFront->setFont(QFont("Calibri", 16));
-    Upgrade_MoneyFront->setText("100");
+    //Upgrade_MoneyFront->setText("100");
     Upgrade_MoneyFront->setAlignment(Qt::AlignHCenter);
     Upgrade_MoneyFront->show();
     Upgrade_MoneyFront->raise();//记得delete！！！
@@ -732,16 +732,34 @@ easyScene::~easyScene()
     delete this->btn12;
     delete this->btn13;
 
-    foreach (const Tower *tower, m_towersList)
-        delete tower;
+    foreach (tCard *card, Cards)
+    {
+        Q_ASSERT(card);
+        Cards.removeOne(card);
+        delete card;
+    }
 
+    foreach (Tower *tower, m_towersList)
+    {
+        Q_ASSERT(tower);
+        m_towersList.removeOne(tower);
+        delete tower;
+    }
+    foreach (Enemy *enemy, m_enemyList)
+    {
+        Q_ASSERT(enemy);
+        m_enemyList.removeOne(enemy);
+        delete enemy;
+    }
+    foreach (Bullet *bullet, m_bulletList)
+    {
+        removedBullet(bullet);
+    }
     delete Front1;
     delete Front2;
     delete Front3;
     delete Front4;
-    foreach (const Enemy *enemy, m_enemyList)
-        delete enemy;
-    // addition 6-6
+
     //delete ui;
 }
 
@@ -818,6 +836,10 @@ void easyScene::paintEvent(QPaintEvent *)
             m_enemyList.removeOne(enemy);
             delete enemy;
         }
+        foreach (Bullet *bullet, m_bulletList)
+        {
+            removedBullet(bullet);
+        }
 
         if(m_gameWin){
         QPixmap loseScene(":/background/victory_better.jpg");
@@ -868,9 +890,9 @@ void easyScene::mousePressEvent(QMouseEvent * event)
 
     if (upgradestate)
     {
-        if (posx >= 100 && posx <= 150 && posy >= 410 && posy <= 460)
+        if (posx >= 100 && posx <= 150 && posy >= 410 && posy <= 460 && currenttower->m_level != 5)
         {
-            //升级,暂时没考虑满级(5级）如何处理
+            //升级
             int level = currenttower->m_level;
             int gold = 80 + level*100;
             if (m_playerGold >= gold)
@@ -882,18 +904,31 @@ void easyScene::mousePressEvent(QMouseEvent * event)
                 LevelFront->show();
                 LevelFront->raise();
 
-                Upgrade_MoneyFront->setText(QString("%1").arg(gold+100));
+                if (level != 4)
+                    Upgrade_MoneyFront->setText(QString("%1").arg(gold+100));
+                else {
+                    Upgrade_MoneyFront->setText("---");
+                }
                 Upgrade_MoneyFront->show();
                 Upgrade_MoneyFront->raise();
 
             }
+        } else {
+            currenttower = nullptr;
+            upgradestate = 0;
+
+            LevelFront->setText("");
+            LevelFront->show();
+            LevelFront->raise();
+
+            Upgrade_MoneyFront->setText("");
+            Upgrade_MoneyFront->show();
+            Upgrade_MoneyFront->raise();
         }
-        currenttower = nullptr;
-        upgradestate = 0;
     }
 
 
-    if (currentCard == nullptr ){
+    if (currentCard == nullptr){
         auto it = m_towerPositionsList.begin();
         while (it != m_towerPositionsList.end())
         {
@@ -1000,7 +1035,7 @@ void easyScene::mousePressEvent(QMouseEvent * event)
         this->currentCard = Cards[cardindex];
         currentIndex = cardindex;
     }
-    }
+}
 
 void easyScene::onTimer()
 {
@@ -1152,6 +1187,25 @@ void hardScene::paintEvent(QPaintEvent *)
             delete card;
         }
 
+        foreach (Tower *tower, m_towersList)
+        {
+            Q_ASSERT(tower);
+            m_towersList.removeOne(tower);
+            delete tower;
+        }
+        foreach (Enemy *enemy, m_enemyList)
+        {
+            Q_ASSERT(enemy);
+            m_enemyList.removeOne(enemy);
+            delete enemy;
+        }
+        foreach (Bullet *bullet, m_bulletList)
+        {
+            removedBullet(bullet);
+        }
+
+        //m_audioPlayer->stopBGM();
+
         if(m_gameWin){
 
         QPixmap loseScene(":/background/victory_better.jpg");
@@ -1200,7 +1254,7 @@ void hardScene::mousePressEvent(QMouseEvent * event)
 
     if (upgradestate)
     {
-        if (posx >= 635 && posx <= 683 && posy >= 20 && posy <= 70)
+        if (posx >= 635 && posx <= 683 && posy >= 20 && posy <= 70 && currenttower->m_level != 5)
         {
             //升级,暂时没考虑满级(5级）如何处理
             int level = currenttower->m_level;
@@ -1214,13 +1268,26 @@ void hardScene::mousePressEvent(QMouseEvent * event)
                 LevelFront->show();
                 LevelFront->raise();
 
-                Upgrade_MoneyFront->setText(QString("%1").arg(gold+100));
+                if (level != 4)
+                    Upgrade_MoneyFront->setText(QString("%1").arg(gold+100));
+                else {
+                    Upgrade_MoneyFront->setText("---");
+                }
+                Upgrade_MoneyFront->show();
+                Upgrade_MoneyFront->raise();
+        }
+           } else {
+                currenttower = nullptr;
+                upgradestate = 0;
+
+                LevelFront->setText("");
+                LevelFront->show();
+                LevelFront->raise();
+
+                Upgrade_MoneyFront->setText("");
                 Upgrade_MoneyFront->show();
                 Upgrade_MoneyFront->raise();
             }
-        }
-        currenttower = nullptr;
-        upgradestate = 0;
     }
 
     if (currentCard == nullptr ){
@@ -1422,26 +1489,26 @@ void hardScene::uiSetup()
     LevelUp->setMovie(levelup);
     LevelUp->raise();
 
-    LevelBar->setGeometry(690, -15, 100, 80);
+    LevelBar->setGeometry(690, -15, 120, 100);
     levelbar->start();
     LevelBar->show();
     LevelBar->setMovie(levelbar);
     LevelBar->raise();
-    LevelFront->setGeometry(580,85, 300, 200);
-    LevelFront->setFont(QFont("Calibri", 16));
-    LevelFront->setText("5");
+    LevelFront->setGeometry(640,20, 180, 120);
+    LevelFront->setFont(QFont("Calibri", 12));
+    //LevelFront->setText("5");
     LevelFront->setAlignment(Qt::AlignHCenter);
     LevelFront->show();
     LevelFront->raise();
 
-    Upgrade_MoneyBar->setGeometry(690, 35, 80, 50);
+    Upgrade_MoneyBar->setGeometry(690, 40, 100, 80);
     upgrade_moneybar->start();
     Upgrade_MoneyBar->show();
     Upgrade_MoneyBar->setMovie(upgrade_moneybar);
     Upgrade_MoneyBar->raise();
-    Upgrade_MoneyFront->setGeometry(690, 45, 80, 50);
-    Upgrade_MoneyFront->setFont(QFont("Calibri", 16));
-    Upgrade_MoneyFront->setText("100");
+    Upgrade_MoneyFront->setGeometry(685, 65, 80, 50);
+    Upgrade_MoneyFront->setFont(QFont("Calibri", 12));
+    //Upgrade_MoneyFront->setText("100");
     Upgrade_MoneyFront->setAlignment(Qt::AlignHCenter);
     Upgrade_MoneyFront->show();
     Upgrade_MoneyFront->raise();//记得delete！！！
@@ -2131,8 +2198,29 @@ hardScene::~hardScene()
     delete this->btn13;
     delete this->btn14;
 
-    foreach (const Tower *tower, m_towersList)
+    foreach (tCard *card, Cards)
+    {
+        Q_ASSERT(card);
+        Cards.removeOne(card);
+        delete card;
+    }
+
+    foreach (Tower *tower, m_towersList)
+    {
+        Q_ASSERT(tower);
+        m_towersList.removeOne(tower);
         delete tower;
-    foreach (const Enemy *enemy, m_enemyList)
+    }
+    foreach (Enemy *enemy, m_enemyList)
+    {
+        Q_ASSERT(enemy);
+        m_enemyList.removeOne(enemy);
         delete enemy;
+    }
+    foreach (Bullet *bullet, m_bulletList)
+    {
+        removedBullet(bullet);
+    }
+    // addition 6-6
+    //delete ui;
 }
