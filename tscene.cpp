@@ -827,6 +827,7 @@ void easyScene::paintEvent(QPaintEvent *)
         Front2->hide();
         Front3->hide();
         Front4->hide();
+        LevelUp->hide();
         LevelFront->hide();
         LevelBar->hide();
         Upgrade_MoneyFront->hide();
@@ -929,6 +930,15 @@ void easyScene::mousePressEvent(QMouseEvent * event)
             {
                 m_playerGold -= gold;
                 currenttower->levelup();
+
+                LevelFront->setText(QString("level %1").arg(currenttower->m_level));
+                LevelFront->show();
+                LevelFront->raise();
+
+                Upgrade_MoneyFront->setText(QString("%1").arg(gold+100));
+                Upgrade_MoneyFront->show();
+                Upgrade_MoneyFront->raise();
+
             }
         }
         currenttower = nullptr;

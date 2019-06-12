@@ -5,7 +5,7 @@
 #include <QDir>
 
 // 使用绝对路径可以完成声音输出
-static const QString s_curDir = "D:/GitHub/GameDesigning/music";
+static const QString s_curDir = "C:/Users/81915/Desktop/LS/Programming/GD/GameDesigning/music";
 
 class QMediaPlayer;
 
