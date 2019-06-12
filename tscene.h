@@ -137,7 +137,7 @@ public:
     ~tStartScreen();
     QTimer* timer = nullptr;
 private:
-    QMovie* background = new QMovie(":/background/scene1.jpg");
+    QMovie* background = new QMovie(":/background/scene1.png");
     QWidget* front = new QWidget(this);
     int frame = 100;
 private slots:
