@@ -39,11 +39,11 @@ tScene::~tScene()
     if (!(this->LevelUp == nullptr)) delete this->LevelUp;
     if (!(this->levelup == nullptr)) delete this->levelup;
 
-    if (!(this->LevelFront == nullptr)) delete this->WaveFront;
+    if (!(this->LevelFront == nullptr)) delete this->LevelFront;
     if (!(this->levelbar == nullptr)) delete this->levelbar;
     if (!(this->LevelBar == nullptr)) delete this->LevelBar;
 
-    if (!(this->Upgrade_MoneyFront == nullptr))delete this->Upgrade_MoneyBar;
+    if (!(this->Upgrade_MoneyFront == nullptr))delete this->Upgrade_MoneyFront;
     if (!(this->upgrade_moneybar == nullptr))delete this->upgrade_moneybar;
     if (!(this->Upgrade_MoneyBar == nullptr))delete this->Upgrade_MoneyBar;
 
